@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="WF Staff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Winterfest Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: an operations tool for staff on the move - dark-first, high-contrast, big tap targets, team colour as the main signal. Phone column, five-tab bar. */
+:root{
+  --bg:#0c1524; --panel:#14213a; --panel-2:#1b2b49; --fg:#eef1f6; --muted:#9aa7bf; --line:#263a5e;
+  --gold:#7fc4e8; --urgent:#e0533f; --ok:#3fae6b; --info:#4a90d9;
+  --display:"Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){ --bg:#eef1f6; --panel:#ffffff; --panel-2:#f3f5f9; --fg:#0f1a2c; --muted:#56627a; --line:#d6dce8; color-scheme:light } }
+:root[data-theme="light"]{ --bg:#eef1f6; --panel:#ffffff; --panel-2:#f3f5f9; --fg:#0f1a2c; --muted:#56627a; --line:#d6dce8; color-scheme:light }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;margin:0}
+.app{max-width:480px;margin:0 auto;min-height:100%;display:flex;flex-direction:column}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#0a1220;color:#eef1f6;padding:12px 16px;border-bottom:3px solid var(--team,#c9a14a)}
+.row1{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+.brand small{display:block;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.16em;color:#7fc4e8}
+.who{display:flex;align-items:center;gap:8px;border:1px solid #2c3f63;border-radius:999px;padding:5px 10px 5px 6px;background:transparent;color:#eef1f6;font-size:13px;font-weight:600}
+.sw{width:14px;height:14px;border-radius:4px;background:var(--team,#c9a14a);flex:0 0 auto}
+main{flex:1;padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+.view{display:flex;flex-direction:column;gap:16px}
+h1,h2{font-family:var(--display);font-weight:700;margin:0;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance}
+h1{font-size:30px;line-height:1.05}
+h2{font-size:20px}
+.label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.notice{font-size:12.5px;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:8px 10px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.now{padding:16px;display:flex;flex-direction:column;gap:10px;border-left:6px solid var(--team)}
+.now .where{font-family:var(--display);font-size:34px;font-weight:700;line-height:1;text-transform:uppercase}
+.now .when{font-family:var(--mono);font-size:15px}
+.now .task{color:var(--muted)}
+.kv{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
+.kv b{font-weight:700}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:700;background:var(--gold);color:#16120a}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+.btn.ok{background:var(--ok);color:#fff}
+.btn.danger{background:var(--urgent);color:#fff}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.item{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;padding:12px;border-top:1px solid var(--line);align-items:center}
+.item:first-child{border-top:0}
+.t{font-family:var(--mono);font-size:13px}
+.t span{display:block;color:var(--muted);font-size:11px}
+.ti{font-weight:700;line-height:1.25}
+.sub{font-size:12.5px;color:var(--muted)}
+.pill{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 8px;white-space:nowrap}
+.days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.days button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:6px 12px;font-weight:700;font-size:13px}
+.days button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#16120a}
+.teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.team{background:var(--panel);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:12px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:4px;min-width:0}
+.team .n{font-family:var(--display);font-size:19px;font-weight:700;text-transform:uppercase;line-height:1.05}
+.team[aria-pressed="true"]{box-shadow:0 0 0 2px var(--c)}
+.roster .item{grid-template-columns:auto minmax(0,1fr) auto}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;color:#0c1524;background:var(--c)}
+.chan{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.chan button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.chan button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.msgs{display:flex;flex-direction:column;gap:10px;min-height:280px}
+.msg{max-width:84%;display:flex;flex-direction:column;gap:3px}
+.msg .bub{background:var(--panel);border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:9px 12px}
+.msg.me{align-self:flex-end}
+.msg.me .bub{background:var(--gold);color:#16120a;border-color:var(--gold);border-radius:14px 14px 4px 14px}
+.msg .by{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.msg.me .by{justify-content:flex-end}
+.msg.loc .bub{border-left:4px solid var(--info)}
+.compose{position:sticky;bottom:calc(76px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;background:var(--bg);padding-top:8px}
+.compose input{flex:1;min-width:0;border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:10px 12px}
+.mapbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto}
+.alert{display:grid;grid-template-columns:6px minmax(0,1fr);gap:12px;padding:12px;border-top:1px solid var(--line)}
+.alert:first-child{border-top:0}
+.alert .bar{border-radius:4px;background:var(--info)}
+.alert.urgent .bar{background:var(--urgent)}
+.alert.done{opacity:.55}
+.field{display:flex;flex-direction:column;gap:4px}
+.field select,.field input,.field textarea{border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:9px 10px}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:#0a1220;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid #1d2c48}
+.tabs nav{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tabs button{position:relative;background:none;border:0;color:#8c99b3;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 2px}
+.tabs button svg{width:22px;height:22px}
+.tabs button[aria-current="page"]{color:#7fc4e8}
+.dotc{position:absolute;top:0;right:22%;background:var(--urgent);color:#fff;border-radius:999px;font-size:10px;min-width:16px;height:16px;display:grid;place-items:center;padding:0 4px}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--panel);width:100%;max-width:480px;max-height:88%;overflow-y:auto;border-radius:18px 18px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#0a1220;color:#eef1f6;border:1px solid var(--gold);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:600;z-index:10;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+</style>
+<style>/* Leaflet 1.9.4 */
+.leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:url(images/layers.png);width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:url(images/layers-2x.png);background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:url(images/marker-icon.png)}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.leaflet-attribution-flag{display:none!important}
+#smap{height:400px;width:100%;background:#dfe7ec}
+.leaflet-container{font-family:var(--body)}
+.pm{display:grid;place-items:center;border-radius:50%;font:800 11px/1 var(--body);color:#0c1524;border:2px solid #0a1220;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pm.mine{outline:3px dashed var(--team);outline-offset:3px}
+.pm.guest{border-radius:6px;background:#2f7d4f;color:#fff;border-color:#fff}
+.pm.stop{background:#b8913a;color:#fff;border-color:#fff;width:18px!important;height:18px!important;font-size:9px}
+.zoombtns{display:flex;gap:8px;flex-wrap:wrap}
+.leaflet-popup-content{margin:10px 12px;font-size:13px;line-height:1.4;color:#0f1a2c}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="row1">
+      <div class="brand"><small>Audrain Winterfest</small>Staff</div>
+      <button class="who" type="button" id="whoBtn"><span class="sw"></span><span id="whoTxt">Gates</span></button>
+    </div>
+  </header>
+  <main id="main"></main>
+  <div class="tabs"><nav aria-label="Staff sections">
+    <button type="button" data-tab="shift" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>My shift</button>
+    <button type="button" data-tab="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat<span class="dotc" id="chatDot">4</span></button>
+    <button type="button" data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Posts</button>
+    <button type="button" data-tab="team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 6 5"/></svg>Teams</button>
+    <button type="button" data-tab="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Alerts<span class="dotc" id="alertDot">2</span></button>
+  </nav></div>
+</div>
+<div class="scrim" id="scrim" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><h2 id="sheetTitle"></h2><div id="sheetBody" style="display:flex;flex-direction:column;gap:12px"></div></div></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+// Sample staffing plan built on the real 2026 Week at a Glance. Teams, posts and people are illustrative.
+const TEAMS = {
+  ops:       {name:"Operations Desk", short:"Ops", c:"#7fc4e8", lead:"Ops Lead", radio:"Ch 1", base:null, size:0},
+  guest:     {name:"Guest Services", short:"Guest", c:"#f0b48f", lead:"Guest Services Lead", radio:"Ch 2", base:null, size:0},
+  venues:    {name:"Venue Teams", short:"Venues", c:"#9fd39a", lead:"Venue Lead", radio:"Ch 3", base:null, size:0},
+  volunteer: {name:"Volunteers", short:"Volunteers", c:"#d1a6f0", lead:"Volunteer Coordinator", radio:"Ch 4", base:null, size:0}
+};
+const POSTS = {};
+
+// Guest transport for the demo day (Sat Oct 3), from audrainconcours.com/parking-transportation.
+const GUEST = {lots:[], stops:[], loop:""};
+// Shifts per team per day: [day, start, end, post, task, event]
+const SHIFTS = {};
+const ROSTER_ROLES = ["Lead","Deputy lead","Staff","Staff","Staff","Staff","Volunteer","Volunteer"];
+const SAMPLE_NAMES = ["Sample Lead","Sample Deputy","Staff A","Staff B","Staff C","Staff D","Volunteer A","Volunteer B"];
+const CHANNELS = {
+  all:   {name:"All staff", note:"Leads post, everyone reads"},
+  team:  {name:"My team", note:""},
+  leads: {name:"Leads", note:"Team leads and Ops"},
+  ops:   {name:"Ops Desk", note:"Direct line to dispatch"}
+};
+const SEED = {
+  all: [{by:"Ops Lead", team:"ops", t:"09:00", txt:"Welcome to the Winterfest staff app. Shifts, posts and teams will load here once the event plan is set."}],
+  team: [], leads: [], ops: [{by:"Ops Desk", team:"ops", t:"09:00", txt:"Questions or issues on site? Message here."}]
+};
+const ALERTS0 = [
+  {id:1, lvl:"info", t:"09:00", to:"All staff", txt:"Staff app is set up. You'll get alerts here for where to be, schedule changes and urgent calls.", ack:false}
+];
+
+const store = { get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} } };
+const state = {
+  tab: store.get("st.tab","shift"), team: store.get("st.team","ops"), day:"2026-10-03",
+  chan:"team", msgs: store.get("st.msgs", SEED), alerts: store.get("st.alerts", ALERTS0),
+  checkin: store.get("st.checkin", {}), viewTeam:null, chatSeen:false
+};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = t => { const [h,m]=t.split(":").map(Number); return ((h%12)||12)+":"+String(m).padStart(2,"0")+((h>=12&&h<24)?" PM":" AM"); };
+const dname = d => new Date(d+"T12:00:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});
+const T = () => TEAMS[state.team];
+const myShifts = () => (SHIFTS[state.team]||[]);
+const DAYS = () => [...new Set(myShifts().map(s=>s[0]))];
+// Demo clock: pretend it is Saturday 10:15 during the event so "now" and "next" read correctly.
+const DEMO_NOW = {d:"2026-10-03", t:"10:15"};
+const mins = t => { const [h,m]=t.split(":").map(Number); return h*60+m; };
+function nowNext(){
+  const list = myShifts().filter(s=>s[0]===DEMO_NOW.d);
+  const n = mins(DEMO_NOW.t);
+  const cur = list.find(s=>mins(s[1])<=n && n<mins(s[2]));
+  const nxt = list.find(s=>mins(s[1])>n);
+  return {cur: cur || list[0] || myShifts()[0], nxt};
+}
+
+const views = {
+  shift(){
+    const {cur, nxt} = nowNext(); const tm = T();
+    if(!state.day || !DAYS().includes(state.day)) state.day = DAYS().includes(DEMO_NOW.d) ? DEMO_NOW.d : DAYS()[0];
+    const key = cur ? cur.join("|") : ""; const done = state.checkin[key];
+    const p = cur ? POSTS[cur[3]] : null;
+    return `<div class="view">
+      <div class="notice">Winterfest staff app. Your shifts, posts and team appear here once the event plan is published.</div>
+      ${cur ? `<section class="panel now">
+        <div class="label">Be here now</div>
+        <div class="where">${esc(p.name)}</div>
+        <div class="when">${fmt(cur[1])} to ${fmt(cur[2])} · ${dname(cur[0])}</div>
+        <div class="task">${esc(cur[4])}${cur[5] ? " · " + esc(cur[5]) : ""}</div>
+        <div class="kv"><span><b>Team</b> ${esc(tm.name)}</span><span><b>Lead</b> ${esc(tm.lead)}</span><span><b>Radio</b> ${tm.radio}</span></div>
+        <div class="sub">${esc(p.where)}</div>
+        <div class="btns">${done ? `<span class="pill" style="background:var(--ok);color:#fff">Checked in ${done}</span>` : `<button class="btn ok" type="button" data-checkin="${esc(key)}">Check in at post</button>`}<button class="btn ghost" type="button" data-showpost="${cur[3]}">Show on map</button><button class="btn ghost" type="button" data-tab="chat">Team chat</button></div>
+      </section>` : `<section class="panel now"><div class="label">Be here now</div><div class="where">Not scheduled yet</div><div class="task">Your Winterfest shifts appear here with where to be and when, plus an alert 15 minutes before each change.</div><div class="btns"><button class="btn ghost" type="button" data-tab="chat">Team chat</button><button class="btn ghost" type="button" data-tab="alerts">Alerts</button></div></section>`}
+      ${nxt ? `<section class="panel" style="padding:14px;display:flex;flex-direction:column;gap:4px"><div class="label">Next</div><div class="ti">${esc(POSTS[nxt[3]].name)} at ${fmt(nxt[1])}</div><div class="sub">${esc(nxt[4])}. You'll get an alert 15 minutes before with walking time.</div></section>` : ""}
+      <section style="display:flex;flex-direction:column;gap:10px">
+        <h2>My schedule</h2>
+        <div class="days" role="group" aria-label="Day">${DAYS().map(d=>`<button type="button" data-day="${d}" aria-pressed="${d===state.day}">${dname(d)}</button>`).join("")}</div>
+        <div class="list">${myShifts().filter(s=>s[0]===state.day).map(s=>`<div class="item"><div class="t">${fmt(s[1])}<span>to ${fmt(s[2])}</span></div><div><div class="ti">${esc(POSTS[s[3]].name)}</div><div class="sub">${esc(s[4])}</div></div><button class="btn ghost" type="button" data-showpost="${s[3]}" style="padding:7px 10px">Map</button></div>`).join("")}</div>
+      </section>
+    </div>`;
+  },
+  chat(){
+    state.chatSeen = true; $("#chatDot").hidden = true;
+    const ch = CHANNELS[state.chan], list = state.msgs[state.chan] || [];
+    const chName = state.chan==="team" ? T().name : ch.name;
+    return `<div class="view">
+      <div class="chan" role="group" aria-label="Channels">${Object.entries(CHANNELS).map(([k,c])=>`<button type="button" data-chan="${k}" aria-pressed="${k===state.chan}">${k==="team"?`<span class="sw" style="background:${T().c}"></span>${esc(T().short)}`:esc(c.name)}</button>`).join("")}</div>
+      <div><h2>${esc(chName)}</h2><div class="sub">${esc(state.chan==="team" ? T().radio + " · " + T().size + " people" : ch.note)}</div></div>
+      <div class="msgs" id="msgs">${list.map(m=>{ const mine = m.me; const c = TEAMS[m.team]?.c || "#888"; return `<div class="msg${mine?" me":""}${m.loc?" loc":""}"><div class="by">${mine?"":`<span class="sw" style="background:${c}"></span>`}${esc(m.by)} · ${m.t}</div><div class="bub">${m.loc?"📍 ":""}${esc(m.txt)}</div></div>`; }).join("")}</div>
+      <form class="compose" id="composeForm"><button type="button" class="btn ghost" data-shareloc="1" aria-label="Share my location" style="padding:8px 10px">Pin</button><input id="msgIn" placeholder="Message ${esc(chName)}" autocomplete="off"><button class="btn" type="submit">Send</button></form>
+    </div>`;
+  },
+  map(){
+    const mine = new Set(myShifts().map(x=>x[3]));
+    return `<div class="view">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Posts</h2></div>
+      <div class="zoombtns"><button class="btn" type="button" data-placepin="1" id="placeBtn">${placing ? "Tap the map to place…" : "Place pin"}</button><a class="btn ghost" style="text-decoration:none" href="https://www.google.com/maps/@41.4815,-71.3150,14z/data=!5m1!1e1" target="_blank" rel="noopener">Live traffic</a></div>
+      <div class="mapbox"><div id="smap" role="application" aria-label="Map of staff posts"></div></div>
+      <div class="sub">Pinch to zoom to street level. Use Place pin to drop meeting points, hazards, vehicles or notes. Pin colour = team stationed there. Dashed ring = your posts. Posts appear when the site plan is set.</div>
+      <h2>My posts</h2>
+      <div class="list">${Object.entries(POSTS).filter(([k])=>mine.has(k)).map(([k,p])=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="ti">${esc(p.name)}</div><div class="sub">${esc(p.where)}</div></div><button class="btn ghost" type="button" data-flypost="${k}" style="padding:7px 10px">Locate</button></div>`).join("") || `<div class="item"><div class="sub">No posts assigned.</div></div>`}</div>
+    </div>`;
+  },
+  team(){
+    const vt = state.viewTeam;
+    return `<div class="view">
+      <h2>Team designations</h2>
+      <div class="teams">${Object.entries(TEAMS).map(([k,t])=>`<button type="button" class="team" style="--c:${t.c}" data-viewteam="${k}" aria-pressed="${vt===k}"><span class="n">${esc(t.name)}</span><span class="sub">${t.size ? t.size + " people · " : ""}${t.radio}</span><span class="sub">${t.base && POSTS[t.base] ? "Base: " + esc(POSTS[t.base].name) : "Posts to be assigned"}</span>${k===state.team?`<span class="pill" style="background:${t.c};color:#0c1524;align-self:flex-start">Your team</span>`:""}</button>`).join("")}</div>
+      ${vt ? `<section class="panel" style="padding:14px;display:flex;flex-direction:column;gap:6px"><h2>${esc(TEAMS[vt].name)}</h2><div class="sub">Lead: ${esc(TEAMS[vt].lead)} \u00b7 ${TEAMS[vt].radio}</div><div class="sub">The roster loads when staff are assigned.</div><button class="btn ghost" type="button" data-chan="team" data-tab="chat">Open team chat</button></section>` : `<div class="notice">Tap a team to see its roster, posts and radio channel.</div>`}
+    </div>`;
+  },
+  alerts(){
+    $("#alertDot").hidden = true;
+    return `<div class="view">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Dispatch alerts</h2><button class="btn" type="button" data-compose="1">Send alert</button></div>
+      <div class="list">${state.alerts.map(a=>`<div class="alert ${a.lvl}${a.ack?" done":""}"><div class="bar"></div><div style="display:flex;flex-direction:column;gap:6px"><div class="sub">${a.lvl==="urgent"?`<span class="pill" style="background:var(--urgent);color:#fff">Urgent</span> `:""}${a.t} · to ${esc(a.to)}</div><div class="ti">${esc(a.txt)}</div>${a.ack?`<div class="sub">Acknowledged</div>`:`<div><button class="btn ok" type="button" data-ack="${a.id}" style="padding:7px 12px">Acknowledge</button></div>`}</div></div>`).join("")}</div>
+      <div class="notice">Shift alerts are automatic: 15 minutes before every post change, with where to go and walking time. Leads and Ops can send to a team, a post or everyone.</div>
+    </div>`;
+  }
+};
+
+function render(){
+  document.documentElement.style.setProperty("--team", T().c);
+  $("#whoTxt").textContent = T().short;
+  document.querySelectorAll(".tabs button").forEach(b=>{ if(b.dataset.tab===state.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
+  $("#alertDot").hidden = !state.alerts.some(a=>!a.ack);
+  $("#alertDot").textContent = state.alerts.filter(a=>!a.ack).length;
+  $("#main").innerHTML = views[state.tab]();
+  const f = document.getElementById("composeForm"); if(f) f.addEventListener("submit", sendMsg);
+  const m = document.getElementById("msgs"); if(m) m.lastElementChild?.scrollIntoView({block:"nearest"});
+  if(state.tab==="map") initStaffMap(); else if(smap){ smap.remove(); smap = null; }
+  const gl = document.getElementById("guestLayer"); if(gl) gl.addEventListener("change", ()=>{ state.guest = gl.checked; if(smap && guestLayer){ gl.checked ? guestLayer.addTo(smap) : smap.removeLayer(guestLayer); } });
+}
+function go(t){ state.tab = t; store.set("st.tab",t); render(); window.scrollTo(0,0); }
+function now(){ const d=new Date(); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+function sendMsg(ev){
+  ev.preventDefault(); const i = $("#msgIn"); const txt = i.value.trim(); if(!txt) return;
+  (state.msgs[state.chan] = state.msgs[state.chan] || []).push({by:"You", team:state.team, t:now(), txt, me:true});
+  store.set("st.msgs", state.msgs); render(); const n = $("#msgIn"); if(n) n.focus();
+}
+let tt=null; function toast(m){ const t=$("#toast"); t.textContent=m; t.hidden=false; clearTimeout(tt); tt=setTimeout(()=>t.hidden=true,2600); }
+let lastFocus=null;
+function openSheet(title, html){ lastFocus=document.activeElement; $("#sheetTitle").textContent=title; $("#sheetBody").innerHTML=html; $("#scrim").hidden=false; const f=$("#sheetBody button, #sheetBody select"); if(f) f.focus(); }
+function closeSheet(){ $("#scrim").hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+
+
+let smap = null, guestLayer = null, placing = false, pinLayer = null;
+const PIN_TYPES = {post:["Post","#4a90d9"], meet:["Meeting point","#3fae6b"], hazard:["Hazard / closed","#e0533f"], vehicle:["Vehicle / cart","#c9a14a"], note:["Note","#9aa7bf"]};
+let PINS = (()=>{ try{ return JSON.parse(localStorage.getItem("st.pins")||"[]"); }catch(e){ return []; } })();
+const savePins = () => { try{ localStorage.setItem("st.pins", JSON.stringify(PINS)); }catch(e){} };
+function drawPins(){
+  if(!smap) return; if(pinLayer) smap.removeLayer(pinLayer); pinLayer = L.layerGroup().addTo(smap);
+  PINS.forEach((p,i)=>{ const ty = PIN_TYPES[p.type]||PIN_TYPES.note;
+    L.marker(p.ll, {icon:L.divIcon({className:"", html:`<div class="pm" style="width:22px;height:22px;border-radius:6px;background:${ty[1]};color:#fff;border-color:#fff">+</div>`, iconSize:null})})
+      .bindPopup(`<b>${esc(p.label)}</b><br>${ty[0]} \u00b7 placed ${esc(p.t)} by ${esc(p.by)}<br><button type="button" data-delpin="${i}" style="margin-top:6px">Remove</button>`).addTo(pinLayer); });
+}
+function postColor(k){ const t = Object.entries(TEAMS).find(([tk,t])=>t.base===k) || Object.entries(TEAMS).find(([tk])=>(SHIFTS[tk]||[]).some(x=>x[3]===k)); return t ? t[1].c : "#8c99b3"; }
+function initStaffMap(){
+  const el = document.getElementById("smap"); if(!el) return;
+  if(!window.L){ el.innerHTML = '<p class="sub" style="padding:16px">The map could not load. Check your connection.</p>'; return; }
+  if(smap){ smap.remove(); smap = null; }
+  smap = L.map(el, {scrollWheelZoom:false}); smap.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, maxNativeZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(smap);
+  const mine = new Set(myShifts().map(x=>x[3]));
+  Object.entries(POSTS).forEach(([k,p])=>{
+    const c = postColor(k), m = mine.has(k);
+    const icon = L.divIcon({className:"", html:`<div class="pm${m?" mine":""}" style="width:26px;height:26px;background:${c}">${esc(p.name.split(" ").map(w=>w[0]).join("").slice(0,2))}</div>`, iconSize:null});
+    L.marker(p.ll, {icon, title:p.name}).bindTooltip(p.name, {direction:"top", offset:[0,-14]}).on("click", ()=>showPost(k)).addTo(smap);
+  });
+  guestLayer = L.layerGroup();
+  GUEST.lots.forEach(l=>L.marker(l.ll, {icon:L.divIcon({className:"", html:'<div class="pm guest" style="width:24px;height:24px">P</div>', iconSize:null})}).bindPopup(`<b>Guest parking: ${esc(l.name)}</b><br>${l.hours} \u00b7 free, first come`).addTo(guestLayer));
+  GUEST.stops.forEach(st=>L.marker(st.ll, {icon:L.divIcon({className:"", html:'<div class="pm stop">T</div>', iconSize:null})}).bindPopup(`<b>Trolley stop: ${esc(st.name)}</b><br>${esc(GUEST.loop)}`).addTo(guestLayer));
+  L.polyline(GUEST.stops.map(x=>x.ll), {color:"#b8913a", weight:3, dashArray:"8 6", opacity:.85}).addTo(guestLayer);
+  if(state.guest!==false) guestLayer.addTo(smap);
+  drawPins();
+  smap.on("click", ev=>{ if(!placing) return; placing = false; const b = document.getElementById("placeBtn"); if(b) b.textContent = "Place pin";
+    const ll = [Number(ev.latlng.lat.toFixed(6)), Number(ev.latlng.lng.toFixed(6))];
+    openSheet("New pin", `<div class="field"><label class="label" for="pinLabel">Name</label><input id="pinLabel" placeholder="e.g. Water station 2"></div>
+      <div class="field"><label class="label" for="pinType">Type</label><select id="pinType">${Object.entries(PIN_TYPES).map(([k,v])=>`<option value="${k}">${v[0]}</option>`).join("")}</select></div>
+      <div class="sub">${ll[0]}, ${ll[1]}</div>
+      <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-savepin="${ll.join(",")}">Save pin</button></div>`); });
+  zoomTo(mine.size && [...mine].every(k=>POSTS[k].sample) ? "fort" : "all");
+  setTimeout(()=>smap && smap.invalidateSize(), 60);
+}
+function zoomTo(which){
+  if(!smap) return;
+  if(!Object.keys(POSTS).length && !GUEST.stops.length){ smap.setView([41.4835,-71.3125], 14); return; }
+  const pts = Object.values(POSTS).filter(p=> which==="all" ? true : which==="fort" ? p.sample : !p.sample).map(p=>p.ll);
+  if(which==="all") GUEST.stops.forEach(x=>pts.push(x.ll));
+  smap.fitBounds(L.latLngBounds(pts).pad(which==="fort" ? 0.25 : 0.15));
+}
+
+function showPost(k){
+  const p = POSTS[k]; const teams = Object.entries(TEAMS).filter(([tk,t])=>t.base===k || (SHIFTS[tk]||[]).some(s=>s[3]===k));
+  const mine = myShifts().filter(s=>s[3]===k);
+  const html = `<div class="sub">${esc(p.where)}</div>
+    <div class="label">Teams at this post</div>
+    <div class="btns">${teams.map(([tk,t])=>`<span class="pill" style="background:${t.c};color:#0c1524">${esc(t.short)}</span>`).join("") || `<span class="sub">None assigned</span>`}</div>
+    ${mine.length ? `<div class="label">You are here</div><div class="list">${mine.map(s=>`<div class="item" style="grid-template-columns:auto minmax(0,1fr)"><div class="t">${fmt(s[1])}</div><div><div class="ti">${dname(s[0])}</div><div class="sub">${esc(s[4])}</div></div></div>`).join("")}</div>` : ""}
+    ${p.sample ? `<div class="sub">Sample placement inside Fort Adams.</div>` : ""}<a class="btn ghost" style="text-align:center;text-decoration:none" href="https://maps.google.com/?q=${p.ll[0]},${p.ll[1]}" target="_blank" rel="noopener">Directions</a>
+    <div class="btns" style="justify-content:flex-end"><button class="btn" type="button" data-close="1">Done</button></div>`;
+  openSheet(p.name, html);
+}
+
+document.addEventListener("click", ev=>{
+  const t = ev.target.closest("button"); if(!t) return; const ds = t.dataset;
+  if(ds.tab){ go(ds.tab); return; }
+  if(ds.day){ state.day = ds.day; render(); return; }
+  if(ds.checkin){ const d=new Date(); state.checkin[ds.checkin] = d.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}); store.set("st.checkin",state.checkin); toast("Checked in. Your lead can see you're at your post."); render(); return; }
+  if(ds.showpost){ if(state.tab!=="map"){ go("map"); } showPost(ds.showpost); if(smap) smap.flyTo(POSTS[ds.showpost].ll, 17, {duration:.6}); return; }
+  if(ds.flypost){ if(smap){ smap.flyTo(POSTS[ds.flypost].ll, 17, {duration:.6}); document.getElementById("smap").scrollIntoView({behavior:"smooth", block:"center"}); } return; }
+  if(ds.zoom){ zoomTo(ds.zoom); return; }
+  if(ds.placepin){ placing = !placing; t.textContent = placing ? "Tap the map to place\u2026" : "Place pin"; if(placing){ toast("Zoom in, then tap where it goes"); document.getElementById("smap").scrollIntoView({behavior:"smooth", block:"center"}); } return; }
+  if(ds.savepin){ const ll = ds.savepin.split(",").map(Number); const label = (document.getElementById("pinLabel").value||"").trim() || "Pin"; PINS.push({ll, label, type:document.getElementById("pinType").value, t:now(), by:T().short}); savePins(); closeSheet(); drawPins(); toast("Pin placed. Everyone on staff sees it in the live app."); return; }
+  if(ds.delpin){ PINS.splice(Number(ds.delpin),1); savePins(); if(smap) smap.closePopup(); drawPins(); toast("Pin removed"); return; }
+  if(ds.chan){ state.chan = ds.chan; render(); return; }
+  if(ds.shareloc){ (state.msgs[state.chan] = state.msgs[state.chan]||[]).push({by:"You", team:state.team, t:now(), txt:"Shared location: " + POSTS[nowNext().cur[3]].name, me:true, loc:true}); store.set("st.msgs",state.msgs); render(); return; }
+  if(ds.viewteam){ state.viewTeam = state.viewTeam===ds.viewteam ? null : ds.viewteam; render(); return; }
+  if(ds.dm){ state.chan = "ops"; go("chat"); toast("Direct messages open in Ops Desk for this demo"); return; }
+  if(ds.ack){ const a = state.alerts.find(x=>x.id==ds.ack); a.ack = true; store.set("st.alerts",state.alerts); toast("Acknowledged. Ops can see you've got it."); render(); return; }
+  if(ds.compose){ openSheet("Send alert", `<div class="field"><label class="label" for="aTo">Send to</label><select id="aTo"><option>All staff</option>${Object.values(TEAMS).map(x=>`<option>${esc(x.name)}</option>`).join("")}${Object.values(POSTS).map(p=>`<option>Everyone at ${esc(p.name)}</option>`).join("")}</select></div>
+      <div class="field"><label class="label" for="aLvl">Priority</label><select id="aLvl"><option value="info">Info</option><option value="urgent">Urgent</option></select></div>
+      <div class="field"><label class="label" for="aTxt">Message</label><textarea id="aTxt" rows="3" placeholder="Where to be, when, and what to do"></textarea></div>
+      <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-sendalert="1">Send</button></div>`); return; }
+  if(ds.sendalert){ const txt = $("#aTxt").value.trim(); if(!txt){ toast("Write the alert first"); return; } state.alerts.unshift({id:Date.now(), lvl:$("#aLvl").value, t:now(), to:$("#aTo").value, txt, ack:false}); store.set("st.alerts",state.alerts); closeSheet(); toast("Alert sent"); render(); return; }
+  if(ds.close){ closeSheet(); return; }
+  if(t.id==="whoBtn"){ openSheet("Switch team (demo)", `<p class="sub">Staff sign in and see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
+  if(ds.pickteam){ state.team = ds.pickteam; store.set("st.team",state.team); state.day=null; closeSheet(); toast("Now viewing as " + T().name); render(); return; }
+});
+document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && !$("#scrim").hidden) closeSheet(); if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g[data-showpost]")){ ev.preventDefault(); showPost(ev.target.dataset.showpost); } });
+$("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
+if(!views[state.tab]) state.tab="shift";
+render();
+})();
+</script>
+
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>
