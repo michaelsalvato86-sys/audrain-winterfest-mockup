@@ -147,12 +147,52 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 .wallet{background:linear-gradient(135deg,#2A6F97,#6b55c9);border-radius:22px;padding:18px;color:#fff;display:flex;flex-direction:column;gap:8px}
 .wallet b{font-family:var(--display);font-size:28px}
 @media (prefers-reduced-motion: reduce){ .hero::before{animation:none} *{transition:none!important} }
+
+.pms{display:flex;gap:6px;flex-wrap:wrap}
+.pms button{border:1.5px solid rgba(168,216,234,.35);background:rgba(11,30,63,.55);color:var(--snow);border-radius:999px;padding:8px 13px;font-weight:800;font-size:13.5px}
+.pms button[aria-pressed="true"]{background:var(--snow);color:#0B1E3F;border-color:var(--snow)}
+.lines{display:flex;flex-direction:column;gap:4px;font-size:14.5px}
+.lines div{display:flex;justify-content:space-between;gap:10px}
+.total{display:flex;justify-content:space-between;font-family:var(--display);font-size:20px;border-top:1px solid rgba(168,216,234,.3);padding-top:8px}
+.step{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid rgba(168,216,234,.18)}
+.step .ctl{display:flex;align-items:center;gap:10px}
+.step .ctl button{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(168,216,234,.45);background:transparent;color:var(--snow);font-size:18px;font-weight:800}
+.step output{min-width:22px;text-align:center;font-weight:800;font-size:17px}
+.order{border:1px solid rgba(168,216,234,.3);border-radius:20px;padding:14px;background:rgba(15,40,80,.72);display:flex;flex-direction:column;gap:10px}
+.ohead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.st-paid{border-color:#5EE6C8!important;color:#5EE6C8!important}
+.st-pending{border-color:#D8C27A!important;color:#D8C27A!important}
+.tkrow{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.tk{flex:0 0 82%;max-width:300px;scroll-snap-align:center;border-radius:18px;padding:14px;background:linear-gradient(160deg,#F4FAFD,#E6F4FA);color:#0B1E3F;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+.tk .qr{background:#fff;padding:8px;border-radius:10px;width:136px;height:136px}
+.tk .qr img,.tk .qr canvas{width:120px!important;height:120px!important}
+.tk input{width:100%;border:1.5px solid #9fb9d6;border-radius:10px;padding:8px 10px;font:inherit;text-align:center;color:#0B1E3F;background:#fff}
+.tk .ser{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:#1F4E79}
+.tk .tst{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.tk .btn{width:100%}
+.tk.done{opacity:.75}
+.scanbox{position:relative;border-radius:18px;overflow:hidden;background:#06122a;aspect-ratio:1/1;max-width:100%}
+.scanbox video{width:100%;height:100%;object-fit:cover;display:block}
+.scanbox .frame{position:absolute;inset:18%;border:3px solid #5EE6C8;border-radius:18px;box-shadow:0 0 0 999px rgba(6,18,42,.45)}
+.scanmsg{font-size:13.5px;color:var(--frost)}
+#admit{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;color:#F4FAFD;background:radial-gradient(120% 90% at 50% 10%,#2A6F97 0%,#1F4E79 35%,#0B1E3F 80%)}
+#admit h2{font-family:var(--display);font-size:40px;letter-spacing:.12em;color:#5EE6C8;margin:0}
+#admit svg{width:120px;height:120px}
+#admit .ck{stroke-dasharray:80;stroke-dashoffset:80;animation:ck .6s .2s ease forwards}
+@keyframes ck{to{stroke-dashoffset:0}}
+#admit ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:18px;font-weight:700}
+#admit li{opacity:0;animation:fadein .35s ease forwards}
+@keyframes fadein{to{opacity:1}}
+@media (prefers-reduced-motion: reduce){ #admit .ck{animation:none;stroke-dashoffset:0} #admit li{animation:none;opacity:1} }
 </style>
 <style>/* Leaflet 1.9.4 */
 .leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:url(images/layers.png);width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:url(images/layers-2x.png);background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:url(images/marker-icon.png)}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 .leaflet-attribution-flag{display:none!important}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
 <canvas id="bgsnow" aria-hidden="true"></canvas>
 <svg id="skyline" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
   <defs><linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EE6C8" stop-opacity=".0"/><stop offset="1" stop-color="#C9B8F0" stop-opacity=".18"/></linearGradient></defs>
@@ -160,8 +200,6 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
   <path d="M0 150 V112 L40 112 L40 90 L70 70 L100 90 L100 112 L150 112 L150 80 L170 60 L190 80 L190 112 L240 112 L250 98 L262 74 L274 98 L284 112 L330 112 L330 86 L365 62 L400 86 L400 112 L450 112 L462 92 L476 64 L490 92 L502 112 L560 112 L560 78 L600 50 L640 78 L640 112 L700 112 L712 94 L726 70 L740 94 L752 112 L800 112 L800 88 L830 66 L860 88 L860 112 L910 112 L920 96 L934 72 L948 96 L958 112 L1010 112 L1010 84 L1045 60 L1080 84 L1080 112 L1130 112 L1142 94 L1156 70 L1170 94 L1182 112 L1200 112 V150 Z" fill="#0d2449" stroke="#24427a" stroke-width="2"/>
   <g fill="#D8C27A" opacity=".55"><rect x="60" y="96" width="6" height="8" rx="1"/><rect x="160" y="92" width="6" height="8" rx="1"/><rect x="350" y="94" width="6" height="8" rx="1"/><rect x="372" y="94" width="6" height="8" rx="1"/><rect x="580" y="90" width="6" height="8" rx="1"/><rect x="606" y="90" width="6" height="8" rx="1"/><rect x="815" y="96" width="6" height="8" rx="1"/><rect x="1030" y="94" width="6" height="8" rx="1"/><rect x="1052" y="94" width="6" height="8" rx="1"/><rect x="1145" y="100" width="6" height="8" rx="1"/><rect x="470" y="98" width="6" height="8" rx="1"/><rect x="262" y="100" width="6" height="8" rx="1"/></g>
 </svg>
-</head>
-<body>
 <div class="app">
   <header class="top">
     <div class="brand"><small>AUDRAIN</small>WINTERFEST</div>
@@ -180,6 +218,7 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
   <button type="button" data-tab="tickets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4z"/></svg>Tickets</button>
   <button type="button" data-tab="visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>My Visit</button>
 </nav>
+<div id="admit" hidden role="dialog" aria-modal="true" aria-label="Admitted"></div>
 <div class="scrim" id="scrim" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><h2 id="sheetTitle"></h2><div id="sheetBody" style="display:flex;flex-direction:column;gap:12px"></div></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
 <script>
@@ -189,7 +228,7 @@ const TRAFFIC = "https://www.google.com/maps/@41.4815,-71.3150,14z/data=!5m1!1e1
 const CATS = {food:["Food","#A8D8EA"], sweets:["Sweets","#F2B8C6"], drinks:["Warm drinks","#C9B8F0"], shops:["Holiday shops","#5EE6C8"], play:["Experiences","#D8C27A"], help:["Guest services","#F4FAFD"]};
 const DIET = {V:"Vegan", VG:"Vegetarian", GF:"Gluten-free", NF:"Nut-free", D:"Contains dairy", N:"Contains nuts", A:"21+"};
 const ZONES = {N:"North promenade", E:"East terrace", S:"South promenade", W:"West lawn", R:"Rinkside"};
-const PAY = ["Card", "Apple Pay", "Google Pay"];
+const PAY_ACCEPTED = ["Card", "Apple Pay", "Google Pay"];
 const VENDORS = [
   {code:"W1", cat:"help", name:"Welcome Lodge", x:70, y:300, hours:["10:00","22:00"], sub:"Info, tickets, lost and found", menu:[]},
   {code:"N3", cat:"drinks", name:"Hot Cocoa Bar", x:120, y:110, hours:["11:00","22:00"], sub:"Cocoa with toppings", order:true, menu:[["Classic hot cocoa","$6",["VG","GF","D"]],["Oat-milk peppermint cocoa","$7",["V","GF","NF"]],["Toasted marshmallow add-on","$1",["GF"]]]},
@@ -215,11 +254,29 @@ const PRODUCTS = [
   {id:"igloo", name:"Igloo lounge (90 min)", sub:"Heated dome for up to 8, with a food and drink package", price:180}
 ];
 const SLOTS = ["4:00","5:30","7:00","8:30"];
+// ---------- Payments. Shopify is Audrain's live rail (its checkout shows Shop Pay, PayPal, Google Pay, Venmo and card; Apple Pay on Apple devices).
+// Every Winterfest item is "pending" until Audrain creates it in Shopify. To go live: create the item (no shipping),
+// paste one variant id per ticket type below, and set rail:"shopify". Example: skate:{rail:"shopify", variants:{adult:44000000000001, child:44000000000002, infant:44000000000003}}
+const STORE = "https://shop.audrainautomuseum.org";
+const PAY = {
+  entry:{rail:"pending"}, skate:{rail:"pending"}, rental:{rail:"pending"}, lesson:{rail:"pending"}, igloo:{rail:"pending"},
+  order:{rail:"pending"}, credit:{rail:"pending"}
+};
+const TYPES = [{k:"adult", n:"Adult", f:1}, {k:"child", n:"Child (3-12)", f:0.6}, {k:"infant", n:"Under 3", f:0}];
+const AREA = {entry:"entry", skate:"rink", rental:"rink", lesson:"rink", igloo:"igloo"};
+const AREA_NAME = {entry:"Village entry", rink:"Rink", igloo:"Igloo lounges"};
+const AREA_SHORT = {entry:"ENT", rink:"RNK", igloo:"IGL"};
+const SHORT_AREA = {ENT:"entry", RNK:"rink", IGL:"igloo"};
+function cartLink(items){ return STORE + "/cart/" + items.map(i=>i.variant + ":" + i.qty).join(","); }
+function isApple(){ const u = navigator.userAgent; return !!window.ApplePaySession || /iPhone|iPad|iPod/.test(u) || (/Macintosh/.test(u) && /Safari/.test(u) && !/Chrome|Chromium|Edg|Firefox/.test(u)); }
+const money = n => "$" + (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0);
 const ALERTS = [["Snow showers tonight","The rink stays open; paths are being treated.","weather"],["Rink near capacity","Next open skate session is 7:00 PM.","rink"],["Igloos sold out Saturday","Join the waitlist in Tickets.","sold"],["Cocoa special at N3","Peppermint cocoa is $5 until 6 PM.","special"]];
 const st = { get(k,f){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : f; }catch(e){ return f; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
 const S = { tab:"village", mapv:"plan", cat:"all", open:false, diet:"", q:"", fav:new Set(st.get("wf.fav",[])), visits:st.get("wf.visits",[]), account:st.get("wf.account",null), cart:null, slot:SLOTS[0], seenAlerts:st.get("wf.seen",false),
   fun:"guide", evfav:new Set(st.get("wf.evfav",[])), evrem:new Set(st.get("wf.evrem",[])), doors:new Set(st.get("wf.doors",[])), found:new Set(st.get("wf.found",[])), demo:false,
-  best:st.get("wf.best",0), mtiles:[], msel:[], credit:st.get("wf.credit",0), vouchers:st.get("wf.vouchers",[]) };
+  best:st.get("wf.best",0), mtiles:[], msel:[], credit:st.get("wf.credit",0), vouchers:st.get("wf.vouchers",[]),
+  payMethod:null, qty:{adult:1, child:0, infant:0}, expanded:new Set() };
+S.visits = S.visits.map(v => (v.kind!=="booking" || v.tickets) ? v : Object.assign({}, v, {area: /igloo/i.test(v.name) ? "igloo" : /skate|lesson/i.test(v.name) ? "rink" : "entry", slot: (v.when||"").replace(" PM",""), status:"paid", tickets:[{serial:v.ref + "-1", type:"Adult", holder:"", used:false, checkins:[], transferred:false}]}));
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const SAMPLE = '<span class="tag sample">Sample</span>';
@@ -305,6 +362,9 @@ function tickets(){
   return `<h1 style="font-size:26px">Tickets and rink</h1>
     ${walletCard()}
     <div class="glass"><p class="muted">Timed entry, skating, lessons and igloos, paid with Apple Pay or Google Pay. Bookings go to My Visit. ${SAMPLE}</p><p class="muted" style="font-size:13px">Arrive at your ticket time; ice time starts shortly after.</p></div>
+    <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>My tickets</h2><button class="btn sm ghost" type="button" data-claimopen="1">Add a ticket I was sent</button></div>
+      ${S.visits.filter(v=>v.kind==="booking").length ? S.visits.filter(v=>v.kind==="booking").map(orderCard).join("") : `<div class="glass"><p class="muted">Tickets you buy for yourself and your family land here, each with its own QR. Check in by scanning the code posted at the gate.</p></div>`}</section>
+    <h2>Buy</h2>
     ${PRODUCTS.map(p=>`<div class="prod"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:13.5px">${esc(p.sub)}</div><div style="color:var(--frost);font-weight:800;margin-top:4px">${p.price?"$"+p.price:"Free"}</div></div><button class="btn sm aurora" type="button" data-book="${p.id}">Book</button></div>`).join("")}`;
 }
 function visit(){
@@ -313,11 +373,86 @@ function visit(){
     ${walletCard()}
     ${S.vouchers.length ? `<section style="display:flex;flex-direction:column;gap:8px"><h2>Rewards</h2>${S.vouchers.map(v=>`<div class="prod"><div><b>${esc(v.name)}</b><div class="muted" style="font-size:13.5px">${esc(v.from)} · ${esc(v.ref)}</div></div><span class="tag sample">Sample</span></div>`).join("")}</section>` : ""}
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Bookings and orders</h2>
-      ${S.visits.length ? S.visits.map(b=>`<div class="prod"><div><b>${esc(b.name)}</b><div class="muted" style="font-size:13.5px">${esc(b.when)} · ${esc(b.ref)}</div></div><span class="tag diet">${b.kind}</span></div>`).join("") : `<div class="glass"><p class="muted">Book skating or an igloo in Tickets, or order ahead from a menu. It all lands here.</p></div>`}</section>
+      ${S.visits.length ? S.visits.map(b=> b.kind==="booking" ? orderCard(b) : `<div class="prod"><div><b>${esc(b.name)}</b><div class="muted" style="font-size:13.5px">${esc(b.when)} · ${esc(b.ref)}</div></div><span class="tag diet ${b.status==="pending"?"st-pending":""}">${b.status==="pending"?"pending":b.kind}</span></div>`).join("") : `<div class="glass"><p class="muted">Book skating or an igloo in Tickets, or order ahead from a menu. It all lands here.</p></div>`}</section>
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Favourites</h2>
       ${favs.length ? favs.map(v=>vrow(v)).join("") : `<div class="glass"><p class="muted">Tap the heart on any vendor to save it here.</p></div>`}</section>`;
 }
 function walletCard(){ return `<div class="wallet"><span class="eyebrow" style="color:#E6F4FA">Village credit ${'<span class="tag" style="border-color:#fff;color:#fff">Sample</span>'}</span><b>$${S.credit.toFixed(2)}</b><span style="font-size:14px">Use at games, the rink and vendors. Top up with Apple Pay or Google Pay.</span><div style="display:flex;gap:8px;flex-wrap:wrap">${[10,25,50].map(a=>`<button class="btn sm" type="button" data-topup="${a}" style="background:#fff;color:#1F4E79">+ $${a}</button>`).join("")}</div></div>`; }
+
+// ---------- Ticket orders: one card per family/group order, swipeable individual tickets
+function eligible(o){ return o.tickets.map((t,i)=>i).filter(i=>{ const t = o.tickets[i]; return !t.transferred && (o.area==="entry" || !t.used); }); }
+function orderCard(o){
+  const n = o.tickets.length, el = eligible(o), open = S.expanded.has(o.id);
+  return `<div class="order"><div class="ohead"><div><b>${esc(o.name)}</b><div class="muted" style="font-size:13.5px">${esc(o.when)} · ${n} ticket${n===1?"":"s"} · ${esc(o.ref)}</div></div><span class="tag ${o.status==="pending"?"st-pending":"st-paid"}">${o.status==="pending"?"Pending confirmation":"Paid"}</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${el.length ? `<button class="btn aurora" type="button" data-checkall="${o.id}">${el.length>1 ? "Check in all " + el.length : "Check in"}</button>` : `<span class="tag st-paid">All checked in</span>`}<button class="btn ghost" type="button" data-expand="${o.id}">${open?"Hide tickets":"Show tickets"}</button></div>
+    ${open ? `<div class="tkrow">${o.tickets.map((t,i)=>ticketCard(o,t,i)).join("")}</div><p class="muted" style="font-size:12.5px">Swipe for each ticket. Names are optional.</p>` : ""}</div>`;
+}
+function ticketCard(o, t, i){
+  const state = t.transferred ? "Transferred" : t.used ? (o.area==="entry" ? `In · re-entry OK` : `Checked in ${t.checkins[t.checkins.length-1].t}`) : "Ready";
+  return `<div class="tk${t.transferred?" done":""}"><span class="tst" style="color:${t.transferred?"#8a5a00":t.used?"#1d7a5f":"#1F4E79"}">${state}</span>
+    <input value="${esc(t.holder)}" placeholder="Name on ticket (optional)" aria-label="Name on ticket ${i+1}" data-holder="${o.id}|${i}" ${t.transferred?"disabled":""}>
+    <div style="font-weight:800">${esc(t.type)} · ${AREA_NAME[o.area]}</div>
+    <div class="qr" data-qr="WINTERFEST-TICKET:${esc(t.serial)}" aria-label="Ticket QR"></div>
+    <div class="ser">${esc(t.serial)}</div>
+    ${t.transferred ? "" : `${(o.area==="entry" || !t.used) ? `<button class="btn sm aurora" type="button" data-checkone="${o.id}|${i}">Check in</button>` : ""}<button class="btn sm ghost" type="button" data-send="${o.id}|${i}" style="color:#1F4E79;border-color:#9fb9d6">Send to someone</button>`}</div>`;
+}
+function drawQRs(){ if(!window.QRCode) return; document.querySelectorAll(".qr[data-qr]").forEach(el=>{ if(el.dataset.done) return; el.dataset.done = "1"; try{ new QRCode(el, {text: el.dataset.qr, width:120, height:120, colorDark:"#0B1E3F", colorLight:"#ffffff", correctLevel: QRCode.CorrectLevel.M}); }catch(e){} }); }
+
+// ---------- Self check-in: scan the QR posted at the gate
+const scan = {order:null, idxs:null, stream:null, timer:null, det:null};
+function loadJsQR(){ return new Promise(res=>{ if(window.jsQR) return res(true); const sc = document.createElement("script"); sc.src = "https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"; sc.onload = ()=>res(true); sc.onerror = ()=>res(false); document.head.appendChild(sc); }); }
+function stopCamera(){ clearInterval(scan.timer); scan.timer = null; if(scan.stream){ scan.stream.getTracks().forEach(t=>t.stop()); scan.stream = null; } }
+function checkInSheet(orderId, idxs){
+  const o = S.visits.find(v=>v.id===orderId); scan.order = orderId; scan.idxs = idxs;
+  const names = idxs.map(i=>o.tickets[i].holder || o.tickets[i].type);
+  openSheet(idxs.length>1 ? `Check in ${idxs.length} people` : "Check in", `<p class="muted">${esc(o.name)} · ${esc(o.when)}<br>${esc(names.join(", "))}</p>
+    <div class="scanbox"><video id="scanVid" playsinline muted></video><div class="frame"></div></div>
+    <div class="scanmsg" id="scanMsg">Point your camera at the Winterfest check-in code posted at the ${AREA_NAME[o.area].toLowerCase()} gate.</div>
+    <div style="display:flex;gap:8px"><input class="inp" id="gateCode" placeholder="Or type the gate code, e.g. ${AREA_SHORT[o.area]}-1" aria-label="Gate code" autocapitalize="characters" style="flex:1"><button class="btn" type="button" data-gatecode="1">Enter</button></div>
+    <button class="btn ghost" type="button" data-simscan="1">Simulate gate scan (demo)</button>
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button></div>`);
+  startCamera();
+}
+async function startCamera(){
+  const msg = t => { const m = document.getElementById("scanMsg"); if(m) m.textContent = t; };
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ msg("This device can't open the camera here. Type the gate code instead."); return; }
+  try{
+    scan.stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}, audio:false});
+    const v = document.getElementById("scanVid"); if(!v){ stopCamera(); return; } v.srcObject = scan.stream; await v.play();
+    if("BarcodeDetector" in window){ try{ scan.det = new BarcodeDetector({formats:["qr_code"]}); }catch(e){ scan.det = null; } }
+    if(!scan.det && !(await loadJsQR())){ msg("Scanner couldn't load. Type the gate code instead."); return; }
+    const c = document.createElement("canvas"), x = c.getContext("2d", {willReadFrequently:true});
+    scan.timer = setInterval(async ()=>{ if(!v.videoWidth) return;
+      try{
+        if(scan.det){ const r = await scan.det.detect(v); if(r[0]) handleGate(r[0].rawValue); return; }
+        c.width = v.videoWidth; c.height = v.videoHeight; x.drawImage(v, 0, 0); const img = x.getImageData(0, 0, c.width, c.height); const r = window.jsQR(img.data, c.width, c.height); if(r) handleGate(r.data);
+      }catch(e){} }, 250);
+  }catch(e){ msg("Camera permission was declined. Type the gate code instead."); }
+}
+function parseGate(code){ const t = String(code||"").trim().toUpperCase();
+  let m = t.match(/^WINTERFEST-CHECKIN:(ENTRY|RINK|IGLOO):([A-Z0-9-]{1,12})$/); if(m) return {area:m[1].toLowerCase(), gate:m[2]};
+  m = t.match(/^(ENT|RNK|IGL)-([A-Z0-9]{1,6})$/); if(m) return {area:SHORT_AREA[m[1]], gate:m[2]}; return null; }
+function inWindow(o){ if(o.area!=="rink") return true; const [h,mm] = o.slot.split(":").map(Number), start = (h%12 + 12)*60 + mm, d = new Date(), n = d.getHours()*60 + d.getMinutes(); return n >= start - 15 && n <= start + 50; }
+function handleGate(code, override){
+  const o = S.visits.find(v=>v.id===scan.order); if(!o) return; const g = parseGate(code);
+  const msg = (t, extra) => { const m = document.getElementById("scanMsg"); if(m) m.innerHTML = esc(t) + (extra||""); };
+  if(!g){ msg("That isn't a Winterfest check-in code."); return; }
+  if(g.area !== o.area){ msg(`This code is for the ${AREA_NAME[g.area].toLowerCase()} gate. Your tickets are for the ${AREA_NAME[o.area].toLowerCase()}.`); return; }
+  if(!override && !inWindow(o)){ stopCamera(); msg(`Your rink session is at ${o.slot} PM. Check-in opens 15 minutes before. `, `<button class="btn sm" type="button" data-override="${esc(code)}">Check in anyway (demo)</button>`); return; }
+  const now = new Date().toLocaleTimeString("en-US", {hour:"numeric", minute:"2-digit"});
+  const admitted = scan.idxs.filter(i=>!o.tickets[i].transferred && (o.area==="entry" || !o.tickets[i].used));
+  admitted.forEach(i=>{ const t = o.tickets[i]; t.used = true; t.checkins.push({t:now, gate:g.gate}); });
+  st.set("wf.visits", S.visits); stopCamera(); closeSheet(); render(); showAdmit(o, admitted, g, now);
+}
+function showAdmit(o, idxs, g, now){
+  const a = document.getElementById("admit");
+  a.innerHTML = `<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="none" stroke="#5EE6C8" stroke-width="6" opacity=".35"/><path class="ck" d="M34 62 L52 80 L88 42" fill="none" stroke="#5EE6C8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h2>ADMITTED</h2><div style="font-size:15px;color:#A8D8EA">${esc(o.name)} · ${AREA_NAME[o.area]} · gate ${esc(g.gate)} · ${now}</div>
+    <ul>${idxs.map((i,k)=>`<li style="animation-delay:${.4 + k*.15}s">\u2713 ${esc(o.tickets[i].holder || o.tickets[i].type)} <span style="font-size:13px;color:#A8D8EA">${esc(o.tickets[i].serial)}</span></li>`).join("")}</ul>
+    <div style="font-size:13.5px;color:#C9B8F0">${o.area==="entry" ? "Re-entry allowed today." : "Enjoy your session."} ${S.account ? esc(S.account.name) : ""}</div>
+    <button class="btn" type="button" data-admitdone="1" style="background:#F4FAFD;color:#0B1E3F">Done</button>`;
+  a.hidden = false; const b = a.querySelector("button"); if(b) b.focus();
+}
 
 // ---------- Fun: event guide, advent calendar with a building village and hidden objects, games
 const GUIDE = [
@@ -407,6 +542,7 @@ function render(){
   if(S.tab==="map" && S.mapv==="getting") initMap(); else if(wmap){ wmap.remove(); wmap = null; }
   const q = document.getElementById("q"); if(q){ q.addEventListener("input", ()=>{ S.q = q.value; const pos = q.selectionStart; render(); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(pos,pos); }); }
   paintAcct();
+  drawQRs();
 }
 function go(t){ stopGame(); S.tab = t; render(); window.scrollTo(0,0); }
 // Full-screen falling snow behind every screen: one persistent canvas, two depth layers, DPR-aware, pauses when hidden.
@@ -425,7 +561,8 @@ function bgSnow(){
 }
 
 function openSheet(t, h){ $("#sheetTitle").textContent = t; $("#sheetBody").innerHTML = h; $("#scrim").hidden = false; const f = $("#sheetBody button, #sheetBody a, #sheetBody input"); if(f) f.focus(); }
-function closeSheet(){ $("#scrim").hidden = true; }
+function closeSheet(){ stopCamera(); $("#scrim").hidden = true; }
+function claimSheet(code){ openSheet("Add a ticket I was sent", `<p class="muted">Paste the code or open the link someone sent you.</p><input class="inp" id="claimCode" value="${esc(code)}" placeholder="WFX-..." aria-label="Ticket code" autocapitalize="characters"><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-claim="1">Add ticket</button></div>`); }
 let tt = null; function toast(m){ const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(()=>t.hidden=true, 2600); }
 
 function vendorSheet(code){ const v = VENDORS.find(x=>x.code===code), c = CATS[v.cat];
@@ -433,25 +570,42 @@ function vendorSheet(code){ const v = VENDORS.find(x=>x.code===code), c = CATS[v
     <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="tag" style="border-color:${c[1]};color:${c[1]}">${c[0]}</span>${SAMPLE}<span class="tag">${ZONES[v.code[0]]}</span>
       <button class="heart" type="button" data-fav="${v.code}" aria-pressed="${S.fav.has(v.code)}" aria-label="Save to favourites" style="margin-left:auto">${HEART(S.fav.has(v.code))}</button></div>
     <p class="muted">${esc(v.sub)}</p>
-    <div class="muted" style="font-size:14px"><b style="color:var(--snow)">Hours</b> ${fmt(v.hours[0])} to ${fmt(v.hours[1])} · ${isOpen(v)?'<span style="color:var(--mint);font-weight:800">Open now</span>':"Closed now"}<br><b style="color:var(--snow)">Pays with</b> ${PAY.join(", ")}</div>
+    <div class="muted" style="font-size:14px"><b style="color:var(--snow)">Hours</b> ${fmt(v.hours[0])} to ${fmt(v.hours[1])} · ${isOpen(v)?'<span style="color:var(--mint);font-weight:800">Open now</span>':"Closed now"}<br><b style="color:var(--snow)">Pays with</b> ${PAY_ACCEPTED.join(", ")}</div>
     ${v.menu.length ? `<h3>Menu</h3><div>${v.menu.map(m=>`<div class="mi"><div><div>${esc(m[0])}</div><div style="margin-top:4px">${tagHtml(m[2])}</div></div><span class="p">${m[1]}</span></div>`).join("")}</div><p class="muted" style="font-size:12.5px">Sample menu, prices and allergen tags. Always confirm allergens with the vendor.</p>` : ""}
     <div class="sheetfoot" style="justify-content:flex-start">${v.order ? `<button class="btn aurora" type="button" data-order="${v.code}">Order ahead</button>` : ""}<button class="btn ghost" type="button" data-showonmap="${v.code}">Show on map</button><button class="btn ghost" type="button" data-close="1">Close</button></div>`); }
 
-function payWith(label, onDone){
-  if(!S.account){ afterSignIn = ()=>payWith(label, onDone); signInSheet("Sign in to finish. Your bookings and orders are saved to your account."); return; }
-  openSheet("Checkout", `<p class="muted">${esc(label)}</p>
-    <button class="btn apple" type="button" data-paynow="apple">Pay with Apple Pay</button>
-    <button class="btn gpay" type="button" data-paynow="google">Pay with Google Pay</button>
-    <p class="muted" style="font-size:12.5px">Demo only: no payment is taken.</p>
-    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button></div>`);
+let payPaint = null;
+function payWith(o, onDone){
+  if(!S.account){ afterSignIn = ()=>payWith(o, onDone); signInSheet("Sign in to finish. Your tickets, bookings and orders are saved to your account."); return; }
+  const rail = PAY[o.key] || {rail:"pending"}, apple = isApple();
+  if(!S.payMethod) S.payMethod = apple ? "apple" : "google";
+  const methods = [[apple ? "apple" : "google", apple ? "Apple Pay" : "Google Pay"], ["paypal","PayPal"], ["venmo","Venmo"], ["card","Card"]];
+  const items = (rail.rail==="shopify" && rail.variants) ? (o.lines||[]).filter(l=>l.qty && rail.variants[l.type]).map(l=>({variant:rail.variants[l.type], qty:l.qty})) : [];
+  const live = items.length > 0;
   pendingPay = onDone;
+  payPaint = () => { const mName = (methods.find(m=>m[0]===S.payMethod) || methods[0])[1]; openSheet("Checkout", `<p class="muted">${esc(o.label)}</p>
+    ${(o.lines||[]).length ? `<div class="lines">${o.lines.filter(l=>l.qty).map(l=>`<div><span>${l.qty} \u00d7 ${esc(l.name)}</span><span>${money(l.qty*l.price)}</span></div>`).join("")}</div>` : ""}
+    <div class="total"><span>Total</span><span>${money(o.total)}</span></div>
+    <div class="muted" style="font-size:13px">Pay with</div>
+    <div class="pms" role="group" aria-label="Payment method">${methods.map(m=>`<button type="button" data-pm="${m[0]}" aria-pressed="${S.payMethod===m[0]}">${m[1]}</button>`).join("")}</div>
+    ${live ? `<a class="btn aurora" href="${cartLink(items)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Pay ${money(o.total)} with ${mName}</a>
+      <p class="muted" style="font-size:12.5px">Opens Audrain's secure checkout (Shopify), where ${mName} is offered with PayPal, Venmo and card. Come back when you're done.</p>
+      <button class="btn ghost" type="button" data-paidext="1">I've paid - add my tickets</button>`
+    : `<button class="btn aurora" type="button" data-paynow="1">Pay ${money(o.total)} with ${mName}</button>
+      <p class="muted" style="font-size:12.5px">Payments open when Audrain adds this to the store. Demo: no payment is taken.</p>`}
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button></div>`); };
+  payPaint();
 }
 let pendingPay = null, afterSignIn = null;
+function priceOf(p, t){ return Math.round(p.price * t.f); }
 function bookSheet(id){ const p = PRODUCTS.find(x=>x.id===id);
-  const paint = () => openSheet(p.name, `<p class="muted">${esc(p.sub)} ${SAMPLE}</p>
+  const paint = () => { const total = TYPES.reduce((a,t)=>a + S.qty[t.k]*priceOf(p,t), 0), n = TYPES.reduce((a,t)=>a + S.qty[t.k], 0);
+    openSheet(p.name, `<p class="muted">${esc(p.sub)} ${SAMPLE}</p>
     <div class="muted" style="font-size:13px">Pick a time</div>
     <div class="slots" role="group" aria-label="Times">${SLOTS.map(s=>`<button type="button" data-slot="${s}" aria-pressed="${S.slot===s}">${s} PM</button>`).join("")}</div>
-    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-checkout="${id}">${p.price?"Continue · $"+p.price:"Reserve free entry"}</button></div>`);
+    <div class="muted" style="font-size:13px">Who's coming? One person can buy for the whole family.</div>
+    <div>${TYPES.map(t=>`<div class="step"><div><b>${t.n}</b><div class="muted" style="font-size:13px">${priceOf(p,t) ? money(priceOf(p,t)) : "Free"}</div></div><div class="ctl"><button type="button" data-qty="${t.k}|-1" aria-label="Fewer ${t.n}">\u2212</button><output>${S.qty[t.k]}</output><button type="button" data-qty="${t.k}|1" aria-label="More ${t.n}">+</button></div></div>`).join("")}</div>
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-checkout="${id}" ${n?"":"disabled"}>${n ? (total ? `Continue \u00b7 ${n} ticket${n===1?"":"s"} \u00b7 ${money(total)}` : `Reserve ${n} free ticket${n===1?"":"s"}`) : "Add a ticket"}</button></div>`); };
   bookPaint = paint; paint(); }
 let bookPaint = null;
 function addVisit(rec){ S.visits.unshift(rec); st.set("wf.visits", S.visits); }
@@ -500,19 +654,46 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.mt!==undefined && b.classList.contains("mt")){ const i = +d.mt; if(S.mtiles[i].gone || S.msel.includes(i)) return; S.msel.push(i); render();
     if(S.msel.length===3){ const same = S.msel.every(j=>S.mtiles[j].k===S.mtiles[S.msel[0]].k); setTimeout(()=>{ if(same){ S.msel.forEach(j=>S.mtiles[j].gone = true); toast("Matched!"); } S.msel = []; if(S.mtiles.every(t=>t.gone)){ reward("Winter match badge", "Winter match"); newBoard(); } render(); }, 350); } return; }
   if(d.mreset){ newBoard(); render(); return; }
-  if(d.topup){ const a = +d.topup; payWith(`Top up village credit by $${a}`, ()=>{ S.credit += a; st.set("wf.credit", S.credit); toast(`$${a} added to your village credit`); }); return; }
+  if(d.topup){ const a = +d.topup; payWith({label:`Top up village credit by $${a}`, total:a, key:"credit", lines:[]}, (res)=>{ if(res.status==="pending"){ toast("Top-up pending confirmation"); return; } S.credit += a; st.set("wf.credit", S.credit); toast(`$${a} added to your village credit`); }); return; }
   if(d.cat){ S.cat = d.cat; render(); return; }
   if(d.openf){ S.open = !S.open; render(); return; }
   if(d.vendor && !b.classList.contains("hid")){ vendorSheet(d.vendor); return; }
   if(d.fav){ S.fav.has(d.fav) ? S.fav.delete(d.fav) : S.fav.add(d.fav); st.set("wf.fav", [...S.fav]); b.setAttribute("aria-pressed", S.fav.has(d.fav)); b.innerHTML = HEART(S.fav.has(d.fav)); toast(S.fav.has(d.fav) ? "Saved to My Visit" : "Removed"); return; }
   if(d.showonmap){ closeSheet(); S.tab = "map"; S.mapv = "plan"; S.cat = "all"; S.open = false; S.diet = ""; render(); const g = document.querySelector(`g.kiosk[data-vendor="${d.showonmap}"] rect`); if(g){ g.setAttribute("stroke","#5EE6C8"); g.setAttribute("stroke-width","5"); g.closest("svg").scrollIntoView({behavior:"smooth",block:"center"}); } return; }
-  if(d.order){ const v = VENDORS.find(x=>x.code===d.order); payWith(`Order ahead from ${v.code} ${v.name}`, ()=>{ addVisit({name:`Order from ${v.name}`, when:`Pick up at ${v.code}`, ref:ref("ORD"), kind:"order"}); toast(`Order placed. Pick up at ${v.code}.`); }); return; }
-  if(d.book){ S.slot = SLOTS[0]; bookSheet(d.book); return; }
+  if(d.order){ const v = VENDORS.find(x=>x.code===d.order), it = v.menu[0], pr = Number(String(it[1]).replace(/[^0-9.]/g,""))||0; payWith({label:`Order ahead from ${v.code} ${v.name}`, total:pr, key:"order", lines:[{type:"adult", qty:1, name:it[0], price:pr}]}, (res)=>{ addVisit({name:`Order from ${v.name}`, when:`Pick up at ${v.code}`, ref:ref("ORD"), kind:"order", status:res.status}); toast(res.status==="pending" ? "Order pending confirmation" : `Order placed. Pick up at ${v.code}.`); }); return; }
+  if(d.book){ S.slot = SLOTS[0]; S.qty = {adult:1, child:0, infant:0}; bookSheet(d.book); return; }
+  if(d.qty){ const [k, dv] = d.qty.split("|"); S.qty[k] = Math.max(0, Math.min(10, S.qty[k] + Number(dv))); bookPaint(); return; }
   if(d.slot){ S.slot = d.slot; bookPaint(); return; }
-  if(d.checkout){ const p = PRODUCTS.find(x=>x.id===d.checkout); const done = ()=>{ addVisit({name:p.name, when:`${S.slot} PM`, ref:ref("WF"), kind:"booking"}); toast(`${p.name} booked for ${S.slot} PM`); render(); };
-    if(!p.price){ if(!S.account){ afterSignIn = ()=>{ done(); }; signInSheet("Sign in to reserve your entry time."); return; } closeSheet(); done(); return; }
-    payWith(`${p.name} at ${S.slot} PM · $${p.price}`, done); return; }
-  if(d.paynow){ closeSheet(); const f = pendingPay; pendingPay = null; if(f) f(); render(); return; }
+  if(d.checkout){ const p = PRODUCTS.find(x=>x.id===d.checkout);
+    const lines = TYPES.map(t=>({type:t.k, qty:S.qty[t.k], name:t.n, price:priceOf(p,t)})).filter(l=>l.qty), total = lines.reduce((a,l)=>a + l.qty*l.price, 0), slot = S.slot;
+    if(!lines.length){ toast("Add at least one ticket"); return; }
+    const done = (res)=>{ const r = ref("WF"), tk = []; lines.forEach(l=>{ for(let k=0;k<l.qty;k++) tk.push({serial:`${r}-${tk.length+1}`, type:l.name, holder:"", used:false, checkins:[], transferred:false}); });
+      const o = {id:r, ref:r, kind:"booking", product:p.id, name:p.name, when:`${slot} PM`, slot, area:AREA[p.id], status:(res&&res.status)||"paid", tickets:tk};
+      addVisit(o); S.expanded.add(r); toast(`${tk.length} ticket${tk.length===1?"":"s"} for ${p.name}, ${slot} PM`); S.tab = "tickets"; render(); };
+    if(!total){ if(!S.account){ afterSignIn = ()=>done({status:"paid"}); signInSheet("Sign in to reserve your entry time."); return; } closeSheet(); done({status:"paid"}); return; }
+    payWith({label:`${p.name} at ${slot} PM`, total, key:p.id, lines}, done); return; }
+  if(d.pm){ S.payMethod = d.pm; if(payPaint) payPaint(); return; }
+  if(d.paidext){ closeSheet(); const f = pendingPay; pendingPay = null; if(f) f({status:"pending"}); render(); return; }
+  if(d.expand){ S.expanded.has(d.expand) ? S.expanded.delete(d.expand) : S.expanded.add(d.expand); render(); return; }
+  if(d.checkall){ const o = S.visits.find(v=>v.id===d.checkall); checkInSheet(o.id, eligible(o)); return; }
+  if(d.checkone){ const [id, i] = d.checkone.split("|"); checkInSheet(id, [Number(i)]); return; }
+  if(d.simscan){ const o = S.visits.find(v=>v.id===scan.order); handleGate(`WINTERFEST-CHECKIN:${o.area}:1`); return; }
+  if(d.gatecode){ handleGate(($("#gateCode").value||"")); return; }
+  if(d.override){ handleGate(d.override, true); return; }
+  if(d.admitdone){ $("#admit").hidden = true; return; }
+  if(d.send){ const [id, i] = d.send.split("|"), o = S.visits.find(v=>v.id===id), t = o.tickets[Number(i)], code = `WFX-${AREA_SHORT[o.area]}-${t.serial}`, link = location.href.split("#")[0] + "#claim-" + code;
+    openSheet("Send this ticket", `<p class="muted">${esc(t.holder || t.type)} · ${esc(o.name)} · ${esc(o.when)}</p><p>Share this code or link. Whoever adds it gets the ticket on their phone, and it stops working on yours.</p>
+      <div class="glass" style="padding:12px;font-family:ui-monospace,Consolas,monospace;word-break:break-all">${esc(code)}<br><span style="font-size:12px;color:var(--frost)">${esc(link)}</span></div>
+      <div class="sheetfoot"><button class="btn ghost" type="button" data-copy="${esc(link)}">Copy link</button><button class="btn aurora" type="button" data-dosend="${id}|${i}">Mark as sent</button></div><p class="muted" style="font-size:12.5px">Demo: transfers stay on this phone until the ticketing backend is live.</p>`); return; }
+  if(d.copy){ (navigator.clipboard ? navigator.clipboard.writeText(d.copy) : Promise.reject()).then(()=>toast("Link copied")).catch(()=>toast("Copy the code shown")); return; }
+  if(d.dosend){ const [id, i] = d.dosend.split("|"), o = S.visits.find(v=>v.id===id); o.tickets[Number(i)].transferred = true; st.set("wf.visits", S.visits); closeSheet(); toast("Ticket sent. It now shows Transferred."); render(); return; }
+  if(d.claimopen){ claimSheet(""); return; }
+  if(d.claim){ const c = ($("#claimCode").value||"").trim().toUpperCase(), m = c.match(/^WFX-(ENT|RNK|IGL)-(WF-[A-Z0-9]{5}-\d+)$/);
+    if(!m){ toast("That code doesn't look right. It starts with WFX-"); return; }
+    if(S.visits.some(v=>v.tickets && v.tickets.some(t=>t.serial===m[2] && !t.transferred))){ toast("That ticket is already on this phone"); return; }
+    const r = ref("WF"); addVisit({id:r, ref:r, kind:"booking", name:"Ticket sent to you", when:"See the booking details", slot:"7:00", area:SHORT_AREA[m[1]], status:"paid", received:true, tickets:[{serial:m[2], type:"Shared ticket", holder:"", used:false, checkins:[], transferred:false}]});
+    S.expanded.add(r); closeSheet(); toast("Ticket added to My tickets"); S.tab = "tickets"; render(); return; }
+  if(d.paynow){ closeSheet(); const f = pendingPay; pendingPay = null; if(f) f({status:"paid"}); render(); return; }
   if(d.auth){ signedIn(d.auth==="apple" ? {name:"Apple ID user", email:"private relay (hidden by Apple)", method:"Apple"} : {name:"Google user", email:"you@gmail.com", method:"Google"}); return; }
   if(d.sendcode){ const e = ($("#authEmail").value||"").trim(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ toast("Enter a valid email"); return; }
     openSheet("Enter your code", `<p class="muted">We sent a 6-digit code to <b style="color:var(--snow)">${esc(e)}</b>.</p><input class="inp" id="authCode" inputmode="numeric" maxlength="6" placeholder="000000" aria-label="Code" style="letter-spacing:.5em;text-align:center;font-size:20px"><p class="muted" style="font-size:12.5px">Demo: any 6 digits work.</p><div class="sheetfoot"><button class="btn ghost" type="button" data-signin="1">Back</button><button class="btn aurora" type="button" data-verify="${esc(e)}">Sign in</button></div>`); return; }
@@ -526,12 +707,14 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(b.id==="infoBtn"){ infoSheet(); return; }
   if(b.id==="acctBtn"){ S.account ? accountSheet() : signInSheet(); return; }
 });
-document.addEventListener("change", ev=>{ if(ev.target.id==="dietSel"){ S.diet = ev.target.value; render(); } });
-document.addEventListener("keydown", ev=>{ if(ev.key==="Escape") closeSheet(); if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.kiosk")){ ev.preventDefault(); vendorSheet(ev.target.dataset.vendor); } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.hid")){ ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); } });
+document.addEventListener("change", ev=>{ if(ev.target.id==="dietSel"){ S.diet = ev.target.value; render(); }
+  if(ev.target.dataset && ev.target.dataset.holder){ const [id, i] = ev.target.dataset.holder.split("|"), o = S.visits.find(v=>v.id===id); if(o){ o.tickets[Number(i)].holder = ev.target.value.trim().slice(0,40); st.set("wf.visits", S.visits); toast("Name saved"); } } });
+document.addEventListener("keydown", ev=>{ if(ev.key==="Escape"){ closeSheet(); $("#admit").hidden = true; } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.kiosk")){ ev.preventDefault(); vendorSheet(ev.target.dataset.vendor); } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.hid")){ ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); } });
 $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
 newBoard();
 bgSnow();
 render();
+if(/^#claim-/.test(location.hash)) setTimeout(()=>claimSheet(decodeURIComponent(location.hash.slice(7))), 300);
 })();
 </script>
 
