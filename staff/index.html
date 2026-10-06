@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0a1220">
+<meta name="theme-color" content="#081733">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,19 +16,17 @@
 <title>Winterfest Staff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
 <style>
-/* Layout: an operations tool for staff on the move - dark-first, high-contrast, big tap targets, team colour as the main signal. Phone column, five-tab bar. */
+/* Layout: the Winterfest night-palace staff tool - midnight base, ice accents, Cinzel headers, tabs along the TOP (unlike the Concours staff app), big tap targets, team colour as the main signal. Single dark theme. */
 :root{
-  --bg:#0c1524; --panel:#14213a; --panel-2:#1b2b49; --fg:#eef1f6; --muted:#9aa7bf; --line:#263a5e;
-  --gold:#7fc4e8; --urgent:#e0533f; --ok:#3fae6b; --info:#4a90d9;
-  --display:"Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
-  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bg:#0B1E3F; --panel:#11284F; --panel-2:#173563; --fg:#F4FAFD; --muted:#B9C8DE; --line:#24427a;
+  --gold:#A8D8EA; --urgent:#e0533f; --ok:#3fae6b; --info:#5aa8e8;
+  --display:"Cinzel", "Trajan Pro", Georgia, serif;
+  --body:"Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
   color-scheme:dark;
 }
-@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){ --bg:#eef1f6; --panel:#ffffff; --panel-2:#f3f5f9; --fg:#0f1a2c; --muted:#56627a; --line:#d6dce8; color-scheme:light } }
-:root[data-theme="light"]{ --bg:#eef1f6; --panel:#ffffff; --panel-2:#f3f5f9; --fg:#0f1a2c; --muted:#56627a; --line:#d6dce8; color-scheme:light }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;margin:0}
@@ -37,13 +35,13 @@ button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#0a1220;color:#eef1f6;padding:12px 16px;border-bottom:3px solid var(--team,#c9a14a)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#081733;color:#eef1f6;padding:12px 16px;border-bottom:3px solid var(--team,#c9a14a)}
 .row1{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .brand{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
 .brand small{display:block;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.16em;color:#7fc4e8}
 .who{display:flex;align-items:center;gap:8px;border:1px solid #2c3f63;border-radius:999px;padding:5px 10px 5px 6px;background:transparent;color:#eef1f6;font-size:13px;font-weight:600}
 .sw{width:14px;height:14px;border-radius:4px;background:var(--team,#c9a14a);flex:0 0 auto}
-main{flex:1;padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+main{flex:1;padding:16px 16px calc(28px + env(safe-area-inset-bottom,0px))}
 .view{display:flex;flex-direction:column;gap:16px}
 h1,h2{font-family:var(--display);font-weight:700;margin:0;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance}
 h1{font-size:30px;line-height:1.05}
@@ -90,7 +88,7 @@ h2{font-size:20px}
 .msg .by{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:center}
 .msg.me .by{justify-content:flex-end}
 .msg.loc .bub{border-left:4px solid var(--info)}
-.compose{position:sticky;bottom:calc(76px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;background:var(--bg);padding-top:8px}
+.compose{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;background:var(--bg);padding-top:8px}
 .compose input{flex:1;min-width:0;border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:10px 12px}
 .mapbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .mapbox svg{display:block;width:100%;height:auto}
@@ -101,15 +99,29 @@ h2{font-size:20px}
 .alert.done{opacity:.55}
 .field{display:flex;flex-direction:column;gap:4px}
 .field select,.field input,.field textarea{border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:9px 10px}
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:#0a1220;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid #1d2c48}
-.tabs nav{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tabs{position:static;background:transparent;padding:10px 0 0;margin:0 -8px}
+.tabs nav{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
 .tabs button{position:relative;background:none;border:0;color:#8c99b3;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 2px}
 .tabs button svg{width:22px;height:22px}
-.tabs button[aria-current="page"]{color:#7fc4e8}
+.tabs button[aria-current="page"]{color:#0B1E3F;background:#A8D8EA;border-radius:10px}
 .dotc{position:absolute;top:0;right:22%;background:var(--urgent);color:#fff;border-radius:999px;font-size:10px;min-width:16px;height:16px;display:grid;place-items:center;padding:0 4px}
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:flex;align-items:flex-end;justify-content:center}
 .sheet{background:var(--panel);width:100%;max-width:480px;max-height:88%;overflow-y:auto;border-radius:18px 18px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#0a1220;color:#eef1f6;border:1px solid var(--gold);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:600;z-index:10;max-width:calc(100% - 32px)}
+.toast{position:fixed;left:50%;top:calc(150px + env(safe-area-inset-top,0px));transform:translateX(-50%);background:#081733;color:#eef1f6;border:1px solid var(--gold);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:600;z-index:10;max-width:calc(100% - 32px)}
+#bgsnow{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.app{position:relative;z-index:1}
+#gate{position:fixed;inset:0;z-index:30;background:radial-gradient(90% 50% at 80% 0%,rgba(94,230,200,.18),transparent 60%),#0B1E3F;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+#gate .box{width:100%;max-width:400px;background:rgba(17,40,79,.92);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px}
+#gate h1{font-family:var(--display);font-size:24px;margin:0;letter-spacing:.08em}
+#gate input[type=email],#gate input[type=password],#gate input[type=text]{border:1px solid var(--line);background:#0B1E3F;color:var(--fg);border-radius:12px;padding:12px;width:100%}
+.err{color:#ffb3a8;font-weight:700;font-size:13.5px;min-height:18px}
+.linkbtn{background:none;border:0;padding:0;color:#A8D8EA;font-weight:700;text-decoration:underline;align-self:flex-start}
+#pingBanner{position:fixed;left:50%;transform:translateX(-50%);top:calc(10px + env(safe-area-inset-top,0px));z-index:25;width:min(460px,calc(100% - 20px));background:linear-gradient(135deg,#2A6F97,#6b55c9);color:#fff;border-radius:18px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:8px}
+#pingBanner b{font-size:16px}
+.acks{display:flex;gap:6px;flex-wrap:wrap}
+.ackp{font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;background:var(--panel-2);color:var(--muted)}
+.ackp.ok{background:var(--ok);color:#fff}
+.dirmk{width:30px;height:30px;border-radius:50%;background:#5EE6C8;border:3px solid #0B1E3F;box-shadow:0 0 0 6px rgba(94,230,200,.35)}
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
 <style>/* Leaflet 1.9.4 */
@@ -128,27 +140,48 @@ h2{font-size:20px}
 
 </head>
 <body>
+<canvas id="bgsnow" aria-hidden="true"></canvas>
+<div id="gate" hidden>
+  <form class="box" id="gateForm" autocomplete="on" novalidate>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.3em;color:#5EE6C8">AUDRAIN WINTERFEST</div>
+    <h1>Staff sign in</h1>
+    <p class="sub" style="margin:0">Use your work email and password.</p>
+    <label class="label" for="gEmail">Work email</label><input id="gEmail" type="email" autocomplete="username" placeholder="name@audrainautomuseum.org" required>
+    <label class="label" for="gPass">Password</label><input id="gPass" type="password" autocomplete="current-password" minlength="8" required>
+    <label class="sub" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="gShow"> Show password</label>
+    <div class="err" id="gErr" role="alert"></div>
+    <button class="btn" type="submit" style="padding:12px">Sign in</button>
+    <button class="linkbtn" type="button" id="gForgot">Forgot password?</button>
+    <p class="sub" style="font-size:12px;margin:0">Demo gate only. On this public mockup it is not security.</p>
+  </form>
+</div>
+<div id="pingBanner" hidden role="alertdialog" aria-live="assertive"></div>
 <div class="app">
   <header class="top">
     <div class="row1">
       <div class="brand"><small>Audrain Winterfest</small>Staff</div>
       <button class="who" type="button" id="whoBtn"><span class="sw"></span><span id="whoTxt">Gates</span></button>
     </div>
-  </header>
-  <main id="main"></main>
   <div class="tabs"><nav aria-label="Staff sections">
     <button type="button" data-tab="shift" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>My shift</button>
     <button type="button" data-tab="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat<span class="dotc" id="chatDot">4</span></button>
+    <button type="button" data-tab="pings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg>Pings<span class="dotc" id="pingDot" hidden>1</span></button>
     <button type="button" data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Posts</button>
     <button type="button" data-tab="team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 6 5"/></svg>Teams</button>
     <button type="button" data-tab="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Alerts<span class="dotc" id="alertDot">2</span></button>
   </nav></div>
+  </header>
+  <main id="main"></main>
 </div>
 <div class="scrim" id="scrim" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><h2 id="sheetTitle"></h2><div id="sheetBody" style="display:flex;flex-direction:column;gap:12px"></div></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
 (function(){
+// Work-email domains allowed into the staff app. CONFIRM WITH MICHAEL before launch.
+const STAFF_DOMAINS = ["audrainautomuseum.org","audrainconcours.com","mwmwealth.com"];
+// Demo only: real auth needs a backend (identity service or Microsoft 365 / Entra sign-in). This page checks format, not a real password.
+const GATE_KEY = "wfst.session";
 // Sample staffing plan built on the real 2026 Week at a Glance. Teams, posts and people are illustrative.
 const TEAMS = {
   ops:       {name:"Operations Desk", short:"Ops", c:"#7fc4e8", lead:"Ops Lead", radio:"Ch 1", base:null, size:0},
@@ -182,8 +215,13 @@ const store = { get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.pa
 const state = {
   tab: store.get("st.tab","shift"), team: store.get("st.team","ops"), day:"2026-10-03",
   chan:"team", msgs: store.get("st.msgs", SEED), alerts: store.get("st.alerts", ALERTS0),
-  checkin: store.get("st.checkin", {}), viewTeam:null, chatSeen:false
+  checkin: store.get("st.checkin", {}), viewTeam:null, chatSeen:false,
+  pings: store.get("wfst.pings", []), dirs: store.get("wfst.dirs", []), dirPick:false, myLL:null
 };
+// SAMPLE recipients and posts for pings and directions until the real roster and site plan exist.
+const PEOPLE = ["Ops Lead","Guest Services Lead","Venue Lead","Volunteer Coordinator","Staff A","Staff B","Volunteer A"];
+const WF_POSTS = {"W1 Welcome Lodge":[41.4842,-71.3122], "R1 Skate Rentals":[41.4836,-71.3116], "N3 Hot Cocoa Bar":[41.4848,-71.3119], "E9 Chowder Shack":[41.4839,-71.3104]};
+const PRESETS = ["Need you at {post} now","Running 10 min late","Break relief needed","All clear"];
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = t => { const [h,m]=t.split(":").map(Number); return ((h%12)||12)+":"+String(m).padStart(2,"0")+((h>=12&&h<24)?" PM":" AM"); };
@@ -203,6 +241,17 @@ function nowNext(){
 }
 
 const views = {
+  pings(){
+    const inc = state.dirs.filter(d=>d.incoming);
+    return `<div class="view">
+      <div class="btns"><button class="btn" type="button" data-newping="1">Send a ping</button><button class="btn ghost" type="button" data-newdir="1">Send directions</button><button class="btn ghost" type="button" data-simping="1">Demo: receive a ping</button></div>
+      <section style="display:flex;flex-direction:column;gap:10px"><h2>Pings</h2>
+        <div class="list">${state.pings.length ? state.pings.map(p=>`<div class="item" style="grid-template-columns:minmax(0,1fr)"><div><div class="sub">${p.t} \u00b7 to ${esc(p.to.join(", "))}${p.incoming?" \u00b7 received":""}</div><div class="ti">${esc(p.msg)}</div><div class="acks" style="margin-top:6px">${p.to.map(r=>`<span class="ackp${p.acks[r]?" ok":""}">${esc(r)}: ${esc(p.acks[r]||"sent")}</span>`).join("")}</div></div></div>`).join("") : `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">No pings yet. Ping a person, a team or everyone at a post.</div></div>`}</div></section>
+      <section style="display:flex;flex-direction:column;gap:10px"><h2>Directions</h2>
+        <div class="list">${state.dirs.length ? state.dirs.map((d,i)=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="sub">${d.t} \u00b7 ${d.incoming?"from "+esc(d.from):"to "+esc(d.to)}</div><div class="ti">${esc(d.label)}</div>${d.note?`<div class="sub">${esc(d.note)}</div>`:""}</div><button class="btn ghost" type="button" data-opendir="${i}" style="padding:7px 10px">Open</button></div>`).join("") : `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">Send someone directions to a post or a point you drop on the map.</div></div>`}</div></section>
+      <div class="notice">Demo: pings, replies and directions stay on this phone. Real delivery and push notifications need the staff backend.</div>
+    </div>`;
+  },
   shift(){
     const {cur, nxt} = nowNext(); const tm = T();
     if(!state.day || !DAYS().includes(state.day)) state.day = DAYS().includes(DEMO_NOW.d) ? DEMO_NOW.d : DAYS()[0];
@@ -292,6 +341,78 @@ function openSheet(title, html){ lastFocus=document.activeElement; $("#sheetTitl
 function closeSheet(){ $("#scrim").hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
 
 
+function bgSnow(){
+  const c = document.getElementById("bgsnow"); if(!c) return; const x = c.getContext("2d"); const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W = 0, H = 0, fl = [], raf = null;
+  function size(){ const dpr = Math.min(devicePixelRatio||1, 2); W = innerWidth; H = innerHeight; c.width = W*dpr; c.height = H*dpr; x.setTransform(dpr,0,0,dpr,0,0); const n = W < 600 ? 40 : 60; while(fl.length < n) fl.push(mk(true)); fl.length = n; draw(); }
+  function mk(any){ return {x:Math.random()*W, y:any?Math.random()*H:-5, r:0.6+Math.random()*1.4, v:0.2+Math.random()*0.45, p:Math.random()*6.28}; }
+  function draw(){ x.clearRect(0,0,W,H); x.fillStyle = "rgba(244,250,253,.38)"; fl.forEach(f=>{ x.beginPath(); x.arc(f.x,f.y,f.r,0,6.283); x.fill(); }); }
+  function step(){ fl.forEach(f=>{ f.y += f.v; f.p += .01; f.x += Math.sin(f.p)*.25; if(f.y > H+5) Object.assign(f, mk(false)); }); draw(); raf = requestAnimationFrame(step); }
+  size(); addEventListener("resize", size); if(reduce) return;
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden){ cancelAnimationFrame(raf); raf = null; } else if(!raf) raf = requestAnimationFrame(step); });
+  raf = requestAnimationFrame(step); window.__staffSnow = ()=>fl.reduce((a,f)=>a+f.y,0);
+}
+function session(){ try{ return JSON.parse(localStorage.getItem(GATE_KEY)||"null"); }catch(e){ return null; } }
+function showGate(on){ $("#gate").hidden = !on; document.querySelector(".app").hidden = on; document.querySelector(".app").setAttribute("aria-hidden", on ? "true" : "false"); if(on) setTimeout(()=>$("#gEmail").focus(), 50); }
+function gateSubmit(ev){
+  ev.preventDefault(); const e = $("#gEmail").value.trim().toLowerCase(), p = $("#gPass").value, err = $("#gErr");
+  const dom = e.split("@")[1] || "";
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) || !STAFF_DOMAINS.includes(dom)){ err.textContent = "Use your work email."; return; }
+  if(p.length < 8){ err.textContent = "Password must be at least 8 characters."; return; }
+  err.textContent = ""; try{ localStorage.setItem(GATE_KEY, JSON.stringify({email:e, at:Date.now()})); }catch(x){}
+  $("#gPass").value = ""; showGate(false); render(); toast("Signed in as " + e);
+}
+function signOut(){ try{ localStorage.removeItem(GATE_KEY); }catch(x){} closeSheet(); showGate(true); }
+function recipients(){ return `<optgroup label="People (sample)">${PEOPLE.map(p=>`<option value="person:${esc(p)}">${esc(p)}</option>`).join("")}</optgroup><optgroup label="Teams">${Object.values(TEAMS).map(t=>`<option value="team:${esc(t.name)}">${esc(t.name)}</option>`).join("")}</optgroup><optgroup label="Everyone at a post (sample)">${Object.keys(WF_POSTS).map(k=>`<option value="post:${esc(k)}">Everyone at ${esc(k)}</option>`).join("")}</optgroup><option value="all:Everyone">Everyone</option>`; }
+function expand(v){ const [kind, name] = v.split(/:(.*)/s); if(kind==="person") return [name]; if(kind==="team") return [name + " (lead)", name + " (staff)"]; if(kind==="post") return ["Staff at " + name.split(" ")[0]]; return ["All staff"]; }
+function pingSheet(){
+  openSheet("Send a ping", `<div class="field"><label class="label" for="pTo">To</label><select id="pTo">${recipients()}</select></div>
+    <div class="field"><label class="label" for="pPre">Message</label><select id="pPre">${PRESETS.map((p,i)=>`<option value="${i}">${esc(p.replace("{post}","a post"))}</option>`).join("")}<option value="custom">Custom\u2026</option></select></div>
+    <div class="field"><label class="label" for="pPost">Post (for "Need you at")</label><select id="pPost">${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
+    <div class="field"><label class="label" for="pTxt">Custom message</label><input id="pTxt" placeholder="Optional"></div>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-sendping="1">Send ping</button></div>`);
+}
+function sendPing(){
+  const to = expand($("#pTo").value), pre = $("#pPre").value, custom = $("#pTxt").value.trim();
+  const msg = pre==="custom" ? (custom || "Ping") : PRESETS[+pre].replace("{post}", $("#pPost").value);
+  const p = {id:Date.now(), t:now(), to, msg, acks:{}}; state.pings.unshift(p); store.set("wfst.pings", state.pings); closeSheet(); toast("Ping sent"); render();
+  // Demo: simulate acknowledgements arriving a couple of seconds later.
+  to.forEach((r,i)=>setTimeout(()=>{ const q = state.pings.find(x=>x.id===p.id); if(!q) return; q.acks[r] = ["On my way","Done","On my way"][i%3]; store.set("wfst.pings", state.pings); if(state.tab==="pings") render(); }, 1600 + i*700));
+}
+function incomingPing(msg, from){
+  const b = $("#pingBanner"); try{ if(navigator.vibrate) navigator.vibrate([200,100,200]); }catch(e){}
+  const id = Date.now(); state.pings.unshift({id, t:now(), to:["You"], msg:`${from}: ${msg}`, acks:{}, incoming:true}); store.set("wfst.pings", state.pings);
+  b.innerHTML = `<div style="font-size:11px;font-weight:800;letter-spacing:.2em">PING FROM ${esc(from.toUpperCase())}</div><b>${esc(msg)}</b><div class="btns">${["On my way","Can't","Done"].map(r=>`<button class="btn" type="button" data-pingreply="${id}|${r}" style="background:#fff;color:#1F4E79;padding:8px 12px">${r}</button>`).join("")}</div>`;
+  b.hidden = false; const d = $("#pingDot"); if(d) d.hidden = false;
+}
+function dirSheet(ll, label){
+  openSheet("Send directions", `<div class="field"><label class="label" for="dDest">Destination</label><select id="dDest">${ll?`<option value="pt">${esc(label||"Point dropped on the map")}</option>`:""}${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
+    ${ll?"":`<button class="btn ghost" type="button" data-pickpoint="1">Drop a point on the map instead</button>`}
+    <div class="field"><label class="label" for="dTo">To</label><select id="dTo">${recipients()}</select></div>
+    <div class="field"><label class="label" for="dNote">Note</label><input id="dNote" placeholder="e.g. Use the side gate by the rink"></div>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-senddir="${ll?ll.join(","):""}">Send</button></div>`);
+}
+function sendDir(llStr){
+  const dest = $("#dDest").value, ll = dest==="pt" ? llStr.split(",").map(Number) : WF_POSTS[dest], label = dest==="pt" ? "Dropped point" : dest;
+  const to = $("#dTo").selectedOptions[0].textContent, note = $("#dNote").value.trim();
+  state.dirs.unshift({t:now(), to, label, note, ll}); state.dirs.unshift({t:now(), from:"You (demo copy as received)", label, note, ll, incoming:true});
+  store.set("wfst.dirs", state.dirs); closeSheet(); toast("Directions sent"); render();
+}
+let dirMarker = null;
+function openDir(i){
+  const d = state.dirs[i]; go("map");
+  setTimeout(()=>{ if(!smap) return; if(dirMarker) smap.removeLayer(dirMarker);
+    dirMarker = L.marker(d.ll, {icon:L.divIcon({className:"", html:'<div class="dirmk"></div>', iconSize:[30,30]})}).addTo(smap);
+    smap.flyTo(d.ll, 18, {duration:.6});
+    const walk = `https://www.google.com/maps/dir/?api=1&destination=${d.ll[0]},${d.ll[1]}&travelmode=walking`;
+    openSheet(d.label, `${d.note?`<p>${esc(d.note)}</p>`:""}<div class="sub" id="dDist">Distance: allow location to see it.</div>
+      <a class="btn" style="text-align:center;text-decoration:none" href="${walk}" target="_blank" rel="noopener">Walk there</a>
+      <button class="btn ghost" type="button" data-distance="${d.ll.join(",")}">Show distance from me</button>
+      <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Close</button></div>`);
+  }, 200);
+}
+function meters(a, b){ const R = 6371000, r = x=>x*Math.PI/180, dl = r(b[0]-a[0]), dg = r(b[1]-a[1]); const h = Math.sin(dl/2)**2 + Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(dg/2)**2; return 2*R*Math.asin(Math.sqrt(h)); }
+
 let smap = null, guestLayer = null, placing = false, pinLayer = null;
 const PIN_TYPES = {post:["Post","#4a90d9"], meet:["Meeting point","#3fae6b"], hazard:["Hazard / closed","#e0533f"], vehicle:["Vehicle / cart","#c9a14a"], note:["Note","#9aa7bf"]};
 let PINS = (()=>{ try{ return JSON.parse(localStorage.getItem("st.pins")||"[]"); }catch(e){ return []; } })();
@@ -321,7 +442,7 @@ function initStaffMap(){
   L.polyline(GUEST.stops.map(x=>x.ll), {color:"#b8913a", weight:3, dashArray:"8 6", opacity:.85}).addTo(guestLayer);
   if(state.guest!==false) guestLayer.addTo(smap);
   drawPins();
-  smap.on("click", ev=>{ if(!placing) return; placing = false; const b = document.getElementById("placeBtn"); if(b) b.textContent = "Place pin";
+  smap.on("click", ev=>{ if(state.dirPick){ state.dirPick = false; dirSheet([+ev.latlng.lat.toFixed(6), +ev.latlng.lng.toFixed(6)], "Point dropped on the map"); return; } if(!placing) return; placing = false; const b = document.getElementById("placeBtn"); if(b) b.textContent = "Place pin";
     const ll = [Number(ev.latlng.lat.toFixed(6)), Number(ev.latlng.lng.toFixed(6))];
     openSheet("New pin", `<div class="field"><label class="label" for="pinLabel">Name</label><input id="pinLabel" placeholder="e.g. Water station 2"></div>
       <div class="field"><label class="label" for="pinType">Type</label><select id="pinType">${Object.entries(PIN_TYPES).map(([k,v])=>`<option value="${k}">${v[0]}</option>`).join("")}</select></div>
@@ -352,7 +473,17 @@ function showPost(k){
 
 document.addEventListener("click", ev=>{
   const t = ev.target.closest("button"); if(!t) return; const ds = t.dataset;
-  if(ds.tab){ go(ds.tab); return; }
+  if(ds.tab){ if(ds.tab==="pings"){ const d = $("#pingDot"); if(d) d.hidden = true; } go(ds.tab); return; }
+  if(ds.newping){ pingSheet(); return; }
+  if(ds.sendping){ sendPing(); return; }
+  if(ds.simping){ incomingPing("Need you at R1 Skate Rentals now", "Ops Lead"); return; }
+  if(ds.pingreply){ const [id, r] = ds.pingreply.split("|"); const p = state.pings.find(x=>x.id==id); if(p){ p.acks["You"] = r; store.set("wfst.pings", state.pings); } $("#pingBanner").hidden = true; toast("Replied: " + r); if(state.tab==="pings") render(); return; }
+  if(ds.newdir){ dirSheet(null); return; }
+  if(ds.pickpoint){ closeSheet(); state.dirPick = true; go("map"); toast("Tap the map where they should go"); return; }
+  if(ds.senddir!==undefined && t.matches("[data-senddir]")){ sendDir(ds.senddir); return; }
+  if(ds.opendir){ openDir(+ds.opendir); return; }
+  if(ds.distance){ const ll = ds.distance.split(",").map(Number); if(!navigator.geolocation){ $("#dDist").textContent = "Location isn't available on this device."; return; } navigator.geolocation.getCurrentPosition(p=>{ const m = meters([p.coords.latitude,p.coords.longitude], ll); $("#dDist").textContent = `Distance: ${m<1000 ? Math.round(m)+" m" : (m/1000).toFixed(1)+" km"} (about ${Math.max(1,Math.round(m/80))} min walk)`; }, ()=>{ $("#dDist").textContent = "Location permission was declined."; }); return; }
+  if(ds.signout){ signOut(); return; }
   if(ds.day){ state.day = ds.day; render(); return; }
   if(ds.checkin){ const d=new Date(); state.checkin[ds.checkin] = d.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}); store.set("st.checkin",state.checkin); toast("Checked in. Your lead can see you're at your post."); render(); return; }
   if(ds.showpost){ if(state.tab!=="map"){ go("map"); } showPost(ds.showpost); if(smap) smap.flyTo(POSTS[ds.showpost].ll, 17, {duration:.6}); return; }
@@ -362,7 +493,10 @@ document.addEventListener("click", ev=>{
   if(ds.savepin){ const ll = ds.savepin.split(",").map(Number); const label = (document.getElementById("pinLabel").value||"").trim() || "Pin"; PINS.push({ll, label, type:document.getElementById("pinType").value, t:now(), by:T().short}); savePins(); closeSheet(); drawPins(); toast("Pin placed. Everyone on staff sees it in the live app."); return; }
   if(ds.delpin){ PINS.splice(Number(ds.delpin),1); savePins(); if(smap) smap.closePopup(); drawPins(); toast("Pin removed"); return; }
   if(ds.chan){ state.chan = ds.chan; render(); return; }
-  if(ds.shareloc){ (state.msgs[state.chan] = state.msgs[state.chan]||[]).push({by:"You", team:state.team, t:now(), txt:"Shared location: " + POSTS[nowNext().cur[3]].name, me:true, loc:true}); store.set("st.msgs",state.msgs); render(); return; }
+  if(ds.shareloc){ const post = (nowNext().cur && POSTS[nowNext().cur[3]]) ? POSTS[nowNext().cur[3]].name : null;
+    const push = txt => { (state.msgs[state.chan] = state.msgs[state.chan]||[]).push({by:"You", team:state.team, t:now(), txt, me:true, loc:true}); store.set("st.msgs",state.msgs); render(); };
+    if(post){ push("Shared location: " + post); return; }
+    if(navigator.geolocation){ navigator.geolocation.getCurrentPosition(p=>push(`Shared location: ${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`), ()=>push("Shared location (permission declined)")); } else push("Shared location"); return; }
   if(ds.viewteam){ state.viewTeam = state.viewTeam===ds.viewteam ? null : ds.viewteam; render(); return; }
   if(ds.dm){ state.chan = "ops"; go("chat"); toast("Direct messages open in Ops Desk for this demo"); return; }
   if(ds.ack){ const a = state.alerts.find(x=>x.id==ds.ack); a.ack = true; store.set("st.alerts",state.alerts); toast("Acknowledged. Ops can see you've got it."); render(); return; }
@@ -372,12 +506,17 @@ document.addEventListener("click", ev=>{
       <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-sendalert="1">Send</button></div>`); return; }
   if(ds.sendalert){ const txt = $("#aTxt").value.trim(); if(!txt){ toast("Write the alert first"); return; } state.alerts.unshift({id:Date.now(), lvl:$("#aLvl").value, t:now(), to:$("#aTo").value, txt, ack:false}); store.set("st.alerts",state.alerts); closeSheet(); toast("Alert sent"); render(); return; }
   if(ds.close){ closeSheet(); return; }
-  if(t.id==="whoBtn"){ openSheet("Switch team (demo)", `<p class="sub">Staff sign in and see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
+  if(t.id==="whoBtn"){ const ss = session(); openSheet("Account and team", `<p class="sub">Signed in as <b>${esc(ss ? ss.email : "")}</b>.</p><button class="btn ghost" type="button" data-signout="1">Sign out</button><p class="sub">Staff see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
   if(ds.pickteam){ state.team = ds.pickteam; store.set("st.team",state.team); state.day=null; closeSheet(); toast("Now viewing as " + T().name); render(); return; }
 });
 document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && !$("#scrim").hidden) closeSheet(); if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g[data-showpost]")){ ev.preventDefault(); showPost(ev.target.dataset.showpost); } });
 $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
 if(!views[state.tab]) state.tab="shift";
+$("#gateForm").addEventListener("submit", gateSubmit);
+$("#gShow").addEventListener("change", ev=>{ $("#gPass").type = ev.target.checked ? "text" : "password"; });
+$("#gForgot").addEventListener("click", ()=>{ $("#gErr").textContent = "Contact Ops to reset your password."; });
+bgSnow();
+if(!session()) showGate(true); else showGate(false);
 render();
 })();
 </script>
