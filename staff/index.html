@@ -181,6 +181,8 @@ h2{font-size:20px}
 <script>
 (function(){
 // Work-email domains allowed into the staff app. CONFIRM WITH MICHAEL before launch.
+// STAFF_LOCK: false = open (Michael 2026-10-09). Set true to require work email + password again.
+const STAFF_LOCK = false;
 const STAFF_DOMAINS = ["audrainautomuseum.org","audrainconcours.com","mwmwealth.com"];
 // Demo only: real auth needs a backend (identity service or Microsoft 365 / Entra sign-in). This page checks format, not a real password.
 const GATE_KEY = "wfst.session";
@@ -380,7 +382,7 @@ function gateSubmit(ev){
   err.textContent = ""; try{ localStorage.setItem(GATE_KEY, JSON.stringify({email:e, at:Date.now()})); }catch(x){}
   $("#gPass").value = ""; showGate(false); render(); toast("Signed in as " + e);
 }
-function signOut(){ try{ localStorage.removeItem(GATE_KEY); }catch(x){} closeSheet(); showGate(true); }
+function signOut(){ if(!STAFF_LOCK){ closeSheet(); toast("Sign-in is off for now"); return; } try{ localStorage.removeItem(GATE_KEY); }catch(x){} closeSheet(); showGate(true); }
 function recipients(){ return `<optgroup label="People (sample)">${PEOPLE.map(p=>`<option value="person:${esc(p)}">${esc(p)}</option>`).join("")}</optgroup><optgroup label="Teams">${Object.values(TEAMS).map(t=>`<option value="team:${esc(t.name)}">${esc(t.name)}</option>`).join("")}</optgroup><optgroup label="Everyone at a post (sample)">${Object.keys(WF_POSTS).map(k=>`<option value="post:${esc(k)}">Everyone at ${esc(k)}</option>`).join("")}</optgroup><option value="all:Everyone">Everyone</option>`; }
 function expand(v){ const [kind, name] = v.split(/:(.*)/s); if(kind==="person") return [name]; if(kind==="team") return [name + " (lead)", name + " (staff)"]; if(kind==="post") return ["Staff at " + name.split(" ")[0]]; return ["All staff"]; }
 function pingSheet(){
@@ -535,7 +537,7 @@ $("#gateForm").addEventListener("submit", gateSubmit);
 $("#gShow").addEventListener("change", ev=>{ $("#gPass").type = ev.target.checked ? "text" : "password"; });
 $("#gForgot").addEventListener("click", ()=>{ $("#gErr").textContent = "Contact Ops to reset your password."; });
 bgSnow();
-if(!session()) showGate(true); else showGate(false);
+if(STAFF_LOCK && !session()) showGate(true); else showGate(false);
 render();
 })();
 </script>
