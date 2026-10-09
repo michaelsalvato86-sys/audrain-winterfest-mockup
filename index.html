@@ -16,6 +16,13 @@
 .herologo{align-self:center;background:rgba(255,255,255,.94);border-radius:22px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);margin-bottom:6px;max-width:100%}
 .herologo img{display:block;width:min(300px,72vw);height:auto;max-width:100%}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.outopts{display:flex;flex-direction:column;gap:8px}
+.outopts label.btn{text-align:center;cursor:pointer}
+.outprev{display:flex;flex-direction:column;gap:8px;align-items:center}
+.oqr{align-self:center;background:#fff;padding:12px;border-radius:14px;width:max-content;max-width:100%}
+.oqr img,.oqr canvas{display:block;width:200px;height:200px;max-width:100%}
+.obar{align-self:center;background:#fff;color:#0B1E3F;font:800 26px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.08em;padding:12px 16px;border-radius:12px;word-break:break-all;text-align:center;max-width:100%}
+.oimg{display:block;max-width:100%;max-height:340px;border-radius:12px;margin:0 auto;background:#fff}
 </style>
 <title>Newport Winterfest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -288,6 +295,7 @@ const S = { tab:"village", mapv:"plan", cat:"all", open:false, diet:"", q:"", fa
   fun:"guide", evfav:new Set(st.get("wf.evfav",[])), evrem:new Set(st.get("wf.evrem",[])), doors:new Set(st.get("wf.doors",[])), found:new Set(st.get("wf.found",[])), demo:false,
   best:st.get("wf.best",0), mtiles:[], msel:[], credit:st.get("wf.credit",0), vouchers:st.get("wf.vouchers",[]),
   payMethod:null, qty:{adult:1, child:0, infant:0}, expanded:new Set(), iday:"all", ilayer:"all", snow:st.get("wf.snow",[]) };
+S.outside = st.get("wf.outside", []);
 S.visits = S.visits.map(v => (v.kind!=="booking" || v.tickets) ? v : Object.assign({}, v, {area: /igloo/i.test(v.name) ? "igloo" : /skate|lesson/i.test(v.name) ? "rink" : "entry", slot: (v.when||"").replace(" PM",""), status:"paid", tickets:[{serial:v.ref + "-1", type:"Adult", holder:"", used:false, checkins:[], transferred:false}]}));
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -377,6 +385,9 @@ function tickets(){
     <div class="glass"><p class="muted">Timed entry, skating, lessons and igloos, paid with Apple Pay or Google Pay. Bookings go to My Visit. ${SAMPLE}</p><p class="muted" style="font-size:13px">Arrive at your ticket time; ice time starts shortly after.</p></div>
     <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>My tickets</h2><button class="btn sm ghost" type="button" data-claimopen="1">Add a ticket I was sent</button></div>
       ${S.visits.filter(v=>v.kind==="booking").length ? S.visits.filter(v=>v.kind==="booking").map(orderCard).join("") : `<div class="glass"><p class="muted">Tickets you buy for yourself and your family land here, each with its own QR. Check in by scanning the code posted at the gate.</p></div>`}</section>
+    <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h2>From other sites</h2><button class="btn sm aurora" type="button" data-addout="1">Add a ticket from another site</button></div>
+      ${S.outside.length ? S.outside.map(outCard).join("") : `<div class="glass"><p class="muted">Bought a ticket from a local business on Eventbrite, Square or their own site? Add it here so all your Winterfest tickets are in one place.</p></div>`}
+      <p class="muted" style="font-size:12.5px">Saved on this phone only.</p></section>
     <div class="prod"><div><b>Igloos at The Reef</b><div class="muted" style="font-size:13.5px">Heated igloos for groups at The Reef, booked on Resy.</div></div>${resyBtn("sm aurora")}</div>
     <div class="prod"><div><b>Signature events</b><div class="muted" style="font-size:13.5px">Newport Life's ticketed events, by day.</div></div><button class="btn sm ghost" type="button" data-tab="fun" data-fungo="guide">See itinerary</button></div>
     <h2>Buy</h2>
@@ -411,7 +422,118 @@ function ticketCard(o, t, i){
     <div class="ser">${esc(t.serial)}</div>
     ${t.transferred ? "" : `${(o.area==="entry" || !t.used) ? `<button class="btn sm aurora" type="button" data-checkone="${o.id}|${i}">Check in</button>` : ""}<button class="btn sm ghost" type="button" data-send="${o.id}|${i}" style="color:#1F4E79;border-color:#9fb9d6">Send to someone</button>`}</div>`;
 }
-function drawQRs(){ if(!window.QRCode) return; document.querySelectorAll(".qr[data-qr]").forEach(el=>{ if(el.dataset.done) return; el.dataset.done = "1"; try{ new QRCode(el, {text: el.dataset.qr, width:120, height:120, colorDark:"#0B1E3F", colorLight:"#ffffff", correctLevel: QRCode.CorrectLevel.M}); }catch(e){} }); }
+function drawQRs(){ drawOutQRs(); if(!window.QRCode) return; document.querySelectorAll(".qr[data-qr]").forEach(el=>{ if(el.dataset.done) return; el.dataset.done = "1"; try{ new QRCode(el, {text: el.dataset.qr, width:120, height:120, colorDark:"#0B1E3F", colorLight:"#ffffff", correctLevel: QRCode.CorrectLevel.M}); }catch(e){} }); }
+
+// ---------- Tickets bought on other sites. Display only: the seller checks them in. Saved on this phone only (localStorage).
+const SELLERS = ["Eventbrite","Square","Showpass","Ticketmaster","DICE","Venue website","Other"];
+const LIVE_SELLERS = {Ticketmaster:"https://www.ticketmaster.com/", DICE:"https://dice.fm/"}; // rotating, app-only tickets: a copy won't scan
+const OUT = {draft:null, stream:null, timer:null};
+function saveOut(){ st.set("wf.outside", S.outside); if(st.get("wf.outside", []).length !== S.outside.length) toast("Couldn't save - phone storage is full. Try a smaller screenshot."); }
+function outDayLabel(k){ const f = FEST_DAYS.find(x=>x.key===k); return f ? `${f.wd} Feb ${f.n}` : "Date not set"; }
+function comById(id){ return COMM.find(e=>e.id===id); }
+function codeKind(c){ return /^\d{6,24}$/.test(c) ? "barcode" : "qr"; }
+function outStep1(pre){
+  const d = OUT.draft = Object.assign({id:"", commId:"", name:"", seller:"", sellerType:"Eventbrite", date:FEST_DAYS[0].key, time:"", place:"", code:"", kind:"", img:null, url:""}, pre||{});
+  if(d.commId && !d.name){ const c = comById(d.commId); if(c){ d.name = c.name; d.seller = c.biz; d.place = c.place; d.time = c.t; if(c.d!=="all") d.date = FEST_DAYS[c.d].key; } }
+  openSheet(d.id ? "Edit outside ticket" : "Add a ticket from another site", `
+    <p class="muted" style="font-size:13.5px">Bought a ticket from a local business on another site? Keep it here with your Winterfest tickets. You still show it at that seller's door.</p>
+    <label class="muted" for="oEvent">Event</label>
+    <select class="inp" id="oEvent"><option value="">Other event</option>${COMM.map(e=>`<option value="${e.id}" ${d.commId===e.id?"selected":""}>${esc(e.name)} - ${esc(e.biz)}</option>`).join("")}</select>
+    <label class="muted" for="oName">Event name</label><input class="inp" id="oName" value="${esc(d.name)}" placeholder="e.g. Harbor helicopter tour">
+    <label class="muted" for="oSeller">Sold by</label><input class="inp" id="oSeller" value="${esc(d.seller)}" placeholder="Business name">
+    <label class="muted" for="oType">Ticket site</label><select class="inp" id="oType">${SELLERS.map(s=>`<option ${d.sellerType===s?"selected":""}>${s}</option>`).join("")}</select>
+    <div style="display:flex;gap:8px"><div style="flex:1;min-width:0"><label class="muted" for="oDate">Date</label><select class="inp" id="oDate">${FEST_DAYS.map(f=>`<option value="${f.key}" ${d.date===f.key?"selected":""}>${f.wd} Feb ${f.n}</option>`).join("")}<option value="" ${!d.date?"selected":""}>Other / not set</option></select></div>
+      <div style="flex:1;min-width:0"><label class="muted" for="oTime">Time</label><input class="inp" id="oTime" type="time" value="${esc(d.time)}"></div></div>
+    <label class="muted" for="oPlace">Location</label><input class="inp" id="oPlace" value="${esc(d.place)}" placeholder="Where it is">
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-outnext="1">Next</button></div>`);
+}
+function readStep1(){ const d = OUT.draft; d.commId = $("#oEvent").value; d.name = ($("#oName").value||"").trim(); d.seller = ($("#oSeller").value||"").trim() || "the seller"; d.sellerType = $("#oType").value; d.date = $("#oDate").value; d.time = $("#oTime").value; d.place = ($("#oPlace").value||"").trim(); return !!d.name; }
+function outPreview(d){
+  if(d.code) return (d.kind==="barcode" ? `<div class="obar">${esc(d.code)}</div>` : `<div class="oqr" data-oqr="${esc(d.code)}" aria-label="Ticket QR"></div>`) + (d.kind==="barcode" && d.img ? `<img class="oimg" src="${d.img}" alt="Original ticket">` : "") + `<span class="muted" style="font-size:12.5px">Code: ${esc(d.code.length>60 ? d.code.slice(0,60)+"..." : d.code)}</span>`;
+  if(d.img) return `<img class="oimg" src="${d.img}" alt="Ticket picture"><span class="muted" style="font-size:12.5px">No code found - we'll save the picture so you can show it at the door.</span>`;
+  return "";
+}
+function updatePreview(){ const p = document.getElementById("oPrev"); if(p) p.innerHTML = outPreview(OUT.draft); const s = document.getElementById("oSave"); if(s) s.disabled = !(OUT.draft.code || OUT.draft.img); drawOutQRs(); }
+function outStep2(){
+  const d = OUT.draft;
+  if(LIVE_SELLERS[d.sellerType]){
+    openSheet(d.name, `<div class="glass" style="border-color:var(--gold)"><b>Live ticket</b><span class="muted" style="font-size:13.5px">This seller uses live tickets that change every few seconds - a copy won't scan. Open the ${esc(d.sellerType)} app at the door.</span></div>
+      <label class="muted" for="oUrl">Link to your ticket (optional)</label><input class="inp" id="oUrl" value="${esc(d.url || LIVE_SELLERS[d.sellerType])}">
+      <div class="sheetfoot"><button class="btn ghost" type="button" data-outback="1">Back</button><button class="btn aurora" type="button" data-outsave="live">Save reminder</button></div>`);
+    return;
+  }
+  openSheet(d.name, `<p class="muted" style="font-size:13.5px">Add your ticket. We read the code so it scans cleanly at the door.</p>
+    <div class="outopts">
+      <button class="btn ghost" type="button" data-outcam="1">Scan QR code</button>
+      <label class="btn ghost" for="oImg">Upload screenshot or photo</label><input type="file" id="oImg" accept="image/*" hidden>
+      <label class="btn ghost" for="oPdf">Upload PDF ticket</label><input type="file" id="oPdf" accept="application/pdf" hidden>
+    </div>
+    <div id="oCamBox" hidden><div class="scanbox"><video id="oVid" playsinline muted></video><div class="frame"></div></div></div>
+    <div style="display:flex;gap:8px"><input class="inp" id="oCode" placeholder="Or type the ticket code" value="${esc(d.code)}" aria-label="Ticket code" style="flex:1;min-width:0"><button class="btn" type="button" data-outcode="1">Use code</button></div>
+    <div id="oPrev" class="outprev">${outPreview(d)}</div>
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-outback="1">Back</button><button class="btn aurora" type="button" data-outsave="1" id="oSave" ${d.code||d.img?"":"disabled"}>Save ticket</button></div>`);
+  drawOutQRs();
+}
+async function decodeCanvas(c){
+  if("BarcodeDetector" in window){ try{ const r = await new BarcodeDetector().detect(c); if(r[0]) return r[0].rawValue; }catch(e){} }
+  if(await loadJsQR()){ try{ const im = c.getContext("2d").getImageData(0, 0, c.width, c.height); const r = window.jsQR(im.data, c.width, c.height); if(r) return r.data; }catch(e){} }
+  return "";
+}
+function fitCanvas(src, w, h){ const k = Math.min(1, 1600/Math.max(w, h)), c = document.createElement("canvas"); c.width = Math.max(1, Math.round(w*k)); c.height = Math.max(1, Math.round(h*k)); const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.drawImage(src, 0, 0, c.width, c.height); return c; }
+function fileToCanvas(file){ return new Promise((res, rej)=>{ const u = URL.createObjectURL(file), im = new Image(); im.onload = ()=>{ const c = fitCanvas(im, im.naturalWidth, im.naturalHeight); URL.revokeObjectURL(u); res(c); }; im.onerror = ()=>{ URL.revokeObjectURL(u); rej(new Error("image")); }; im.src = u; }); }
+function loadPdfJs(){ return new Promise(res=>{ if(window.pdfjsLib) return res(true); const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+  s.onload = ()=>{ try{ window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"; }catch(e){} res(!!window.pdfjsLib); }; s.onerror = ()=>res(false); document.head.appendChild(s); }); }
+async function pdfToCanvas(file){
+  if(!(await loadPdfJs())) throw new Error("pdf.js");
+  const pdf = await window.pdfjsLib.getDocument({data: await file.arrayBuffer()}).promise, pg = await pdf.getPage(1);
+  const v1 = pg.getViewport({scale:1}), vp = pg.getViewport({scale: Math.min(3, 1600/Math.max(v1.width, v1.height))});
+  const c = document.createElement("canvas"); c.width = Math.round(vp.width); c.height = Math.round(vp.height); const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height);
+  await pg.render({canvasContext:x, viewport:vp}).promise; return c;
+}
+async function onOutFile(c){ const code = await decodeCanvas(c), d = OUT.draft; if(!d) return; d.img = c.toDataURL("image/jpeg", 0.8); d.code = code || ""; d.kind = code ? codeKind(code) : "none"; updatePreview(); toast(code ? "Ticket code read" : "No code found - the picture will be saved"); }
+async function outCam(){
+  const box = document.getElementById("oCamBox"); if(box) box.hidden = false; stopOutCam();
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ toast("This device can't open the camera here. Upload a screenshot instead."); return; }
+  try{
+    OUT.stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}, audio:false});
+    const v = document.getElementById("oVid"); if(!v){ stopOutCam(); return; } v.srcObject = OUT.stream; await v.play();
+    let det = null; if("BarcodeDetector" in window){ try{ det = new BarcodeDetector(); }catch(e){} } if(!det) await loadJsQR();
+    const c = document.createElement("canvas"), x = c.getContext("2d", {willReadFrequently:true});
+    OUT.timer = setInterval(async ()=>{ if(!v.videoWidth || !OUT.draft) return; c.width = v.videoWidth; c.height = v.videoHeight; x.drawImage(v, 0, 0); let code = "";
+      try{ if(det){ const r = await det.detect(c); if(r[0]) code = r[0].rawValue; } else if(window.jsQR){ const im = x.getImageData(0, 0, c.width, c.height), r = window.jsQR(im.data, c.width, c.height); if(r) code = r.data; } }catch(e){}
+      if(code){ const d = OUT.draft; d.code = code; d.kind = codeKind(code); d.img = fitCanvas(c, c.width, c.height).toDataURL("image/jpeg", 0.8); stopOutCam(); const b = document.getElementById("oCamBox"); if(b) b.hidden = true; updatePreview(); toast("Ticket code read"); } }, 300);
+  }catch(e){ toast("Camera permission was declined. Upload a screenshot instead."); }
+}
+function stopOutCam(){ clearInterval(OUT.timer); OUT.timer = null; if(OUT.stream){ OUT.stream.getTracks().forEach(t=>t.stop()); OUT.stream = null; } }
+function outSave(live){
+  const d = OUT.draft; if(!d) return;
+  if(live){ d.url = (($("#oUrl")||{}).value||"").trim() || LIVE_SELLERS[d.sellerType]; d.code = ""; d.kind = "live"; d.img = null; }
+  else if(!d.code && !d.img){ toast("Add the ticket first"); return; }
+  const fresh = !d.id; if(fresh){ d.id = "out" + Date.now().toString(36); d.added = new Date().toISOString(); S.outside.push(Object.assign({}, d)); }
+  else { const i = S.outside.findIndex(x=>x.id===d.id); if(i>=0) S.outside[i] = Object.assign({}, d); }
+  saveOut(); if(fresh){ S.evrem.add("out:" + d.id); st.set("wf.evrem", [...S.evrem]); }
+  stopOutCam(); closeSheet(); OUT.draft = null; S.tab = "tickets"; render(); toast(live ? "Reminder saved to My Tickets" : "Ticket saved to My Tickets");
+}
+function outCard(o){
+  const on = S.evrem.has("out:" + o.id);
+  const ticket = o.kind==="live" ? `<div class="glass" style="border-color:var(--gold)"><span class="muted" style="font-size:13.5px">This seller uses live tickets that change every few seconds - a copy won't scan. Open the ${esc(o.sellerType)} app at the door.</span><a class="btn sm aurora" href="${esc(o.url)}" target="_blank" rel="noopener" style="align-self:flex-start;text-decoration:none">Open ${esc(o.sellerType)}</a></div>`
+    : o.kind==="qr" ? `<div class="oqr" data-oqr="${esc(o.code)}" aria-label="Ticket QR for ${esc(o.name)}"></div>`
+    : o.kind==="barcode" ? `<div class="obar">${esc(o.code)}</div>${o.img ? `<img class="oimg" src="${o.img}" alt="Original ticket">` : ""}`
+    : o.img ? `<img class="oimg" src="${o.img}" alt="Ticket picture">` : "";
+  return `<div class="order outt"><div class="ohead"><div><b>${esc(o.name)}</b><div class="muted" style="font-size:13.5px">${esc(outDayLabel(o.date))}${o.time ? " · " + fmt(o.time) : ""}${o.place ? " · " + esc(o.place) : ""}</div></div><span class="tag">From ${esc(o.sellerType)}</span></div>
+    ${ticket}
+    ${o.kind!=="live" ? `<p class="muted" style="font-size:13px">Sold by ${esc(o.seller)} - show this at their door. Check-in is handled by ${esc(o.seller)}. Turn your screen brightness up at the door.</p>` : ""}
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm ghost" type="button" data-outrem="${o.id}" aria-pressed="${on}">${on ? "Reminder on" : "Remind me"}</button><button class="btn sm ghost" type="button" data-outedit="${o.id}">Edit</button><button class="btn sm ghost" type="button" data-outdel="${o.id}">Delete</button></div></div>`;
+}
+function drawOutQRs(){ if(!window.QRCode) return; document.querySelectorAll(".oqr[data-oqr]").forEach(el=>{ if(el.dataset.done) return; el.dataset.done = "1"; try{ new QRCode(el, {text: el.dataset.oqr, width:200, height:200, colorDark:"#000000", colorLight:"#ffffff", correctLevel: QRCode.CorrectLevel.M}); }catch(e){ el.textContent = el.dataset.oqr; } }); }
+function comOutExtra(e){ return S.outside.some(o=>o.commId===e.id) ? ` <button class="btn sm ghost" type="button" data-tab="tickets" style="margin-top:6px">Ticket saved - show it</button>` : ` <button class="btn sm ghost" type="button" data-addout="${e.id}" style="margin-top:6px">Already bought? Add it here</button>`; }
+function outRows(day, layer){
+  if(layer==="sig") return "";
+  const key = day==="all" ? null : FEST_DAYS[day].key;
+  return S.outside.filter(o=>!o.commId && (day==="all" || o.date===key)).map(o=>{ const on = S.evrem.has("out:" + o.id);
+    return `<div class="ev"><span class="tm">${o.time ? fmt(o.time) : "--"}<br><span style="font-size:11px;color:var(--frost)">${esc(outDayLabel(o.date))}</span></span><span><b>${esc(o.name)}</b> <span class="tag">Your ticket</span><br><span class="muted" style="font-size:13px">${esc(o.seller)}${o.place ? " · " + esc(o.place) : ""}</span><br><button class="btn sm ghost" type="button" data-tab="tickets" style="margin-top:6px">Show ticket</button></span>
+      <button class="bell" type="button" data-outrem="${o.id}" aria-pressed="${on}" aria-label="Remind me about ${esc(o.name)}"><svg viewBox="0 0 24 24" fill="${on?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; }).join("");
+}
 
 // ---------- Self check-in: scan the QR posted at the gate
 const scan = {order:null, idxs:null, stream:null, timer:null, det:null};
@@ -511,13 +633,13 @@ function guideView(){
   const evs = [...SIG, ...COMM].filter(e=>(layer==="all" || e.layer===layer) && (day==="all" ? true : (e.d==="all" || e.d===day))).sort((a,b)=>(a.d==="all"?-1:a.d)-(b.d==="all"?-1:b.d) || mins(a.t)-mins(b.t));
   const row = e => { const dl = e.d==="all" ? "Daily" : FEST_DAYS[e.d].wd + " " + FEST_DAYS[e.d].n;
     return `<div class="ev"><span class="tm">${fmt(e.t)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}<br><span class="muted" style="font-size:13px">${esc(e.layer==="com" ? e.biz + " \u00b7 " + e.place : e.place)}</span><br>
-      ${e.layer==="sig" ? `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>` : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}</span>
+      ${e.layer==="sig" ? `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>` : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}${e.layer==="com" ? comOutExtra(e) : ""}</span>
       <button class="heart" type="button" data-evfav="${e.id}" aria-pressed="${S.evfav.has(e.id)}" aria-label="Save ${esc(e.name)}">${HEART(S.evfav.has(e.id))}</button><button class="bell" type="button" data-evrem="${e.id}" aria-pressed="${S.evrem.has(e.id)}" aria-label="Remind me about ${esc(e.name)}"><svg viewBox="0 0 24 24" fill="${S.evrem.has(e.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; };
   return `<p class="muted" style="font-size:13.5px">Dates to be confirmed - Feb 12-21, 2027 expected. ${SAMPLE}</p>
     <div class="chips" role="group" aria-label="Event type">${[["all","All"],["sig","Signature"],["com","Community"]].map(([k,l])=>`<button type="button" data-ilayer="${k}" aria-pressed="${layer===k}">${l}</button>`).join("")}</div>
     <div class="chips" role="group" aria-label="Day"><button type="button" data-iday="all" aria-pressed="${day==="all"}">All days</button>${FEST_DAYS.map(f=>`<button type="button" data-iday="${f.i}" aria-pressed="${day===f.i}">${f.wd} ${f.n}</button>`).join("")}</div>
     <div class="glass" style="flex-direction:row;align-items:center;justify-content:space-between;gap:10px"><span class="muted" style="font-size:13.5px">Signature events are Newport Life's and sell here. Community events are run by local businesses, who sell their own tickets.</span></div>
-    ${evs.length ? evs.map(row).join("") : `<div class="glass"><p class="muted">Nothing on this day yet.</p></div>`}
+    ${outRows(day, layer)}${evs.length ? evs.map(row).join("") : `<div class="glass"><p class="muted">Nothing on this day yet.</p></div>`}
     <div class="glass"><b>Running something during Winterfest?</b><span class="muted" style="font-size:13.5px">Local businesses can submit an event to the community calendar.</span><button class="btn sm aurora" type="button" data-submitevent="1" style="align-self:flex-start">Submit your event</button></div>`;
 }
 function submitEventSheet(){
@@ -630,7 +752,7 @@ function bgSnow(){
 }
 
 function openSheet(t, h){ $("#sheetTitle").textContent = t; $("#sheetBody").innerHTML = h; $("#scrim").hidden = false; const f = $("#sheetBody button, #sheetBody a, #sheetBody input"); if(f) f.focus(); }
-function closeSheet(){ stopCamera(); $("#scrim").hidden = true; }
+function closeSheet(){ stopCamera(); stopOutCam(); $("#scrim").hidden = true; }
 function claimSheet(code){ openSheet("Add a ticket I was sent", `<p class="muted">Paste the code or open the link someone sent you.</p><input class="inp" id="claimCode" value="${esc(code)}" placeholder="WFX-..." aria-label="Ticket code" autocapitalize="characters"><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-claim="1">Add ticket</button></div>`); }
 let tt = null; function toast(m){ const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(()=>t.hidden=true, 2600); }
 
@@ -712,6 +834,16 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.iday){ S.iday = d.iday==="all" ? "all" : Number(d.iday); render(); return; }
   if(d.ilayer){ S.ilayer = d.ilayer; render(); return; }
   if(d.commlink){ toast("The business adds its ticket link when it submits the event"); return; }
+  if(d.addout){ outStep1(String(d.addout).startsWith("com") ? {commId:d.addout} : null); return; }
+  if(d.outnext){ if(!readStep1()){ toast("Add the event name"); return; } outStep2(); return; }
+  if(d.outback){ stopOutCam(); outStep1(OUT.draft); return; }
+  if(d.outcam){ outCam(); return; }
+  if(d.outcode){ const c = ($("#oCode").value||"").trim(); if(!c){ toast("Type the ticket code"); return; } OUT.draft.code = c; OUT.draft.kind = codeKind(c); updatePreview(); return; }
+  if(d.outsave){ outSave(d.outsave==="live"); return; }
+  if(d.outrem){ const k = "out:" + d.outrem; S.evrem.has(k) ? S.evrem.delete(k) : S.evrem.add(k); st.set("wf.evrem", [...S.evrem]); render(); toast(S.evrem.has(k) ? "We'll remind you before it starts" : "Reminder off"); return; }
+  if(d.outedit){ const o = S.outside.find(x=>x.id===d.outedit); if(o) outStep1(Object.assign({}, o)); return; }
+  if(d.outdel){ const o = S.outside.find(x=>x.id===d.outdel); if(!o) return; openSheet("Delete this ticket?", `<p class="muted">${esc(o.name)} will be removed from this phone. Your ticket with ${esc(o.seller)} isn't affected.</p><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Keep</button><button class="btn" type="button" data-outdelok="${o.id}" style="background:#b23a48">Delete</button></div>`); return; }
+  if(d.outdelok){ S.outside = S.outside.filter(x=>x.id!==d.outdelok); saveOut(); S.evrem.delete("out:" + d.outdelok); st.set("wf.evrem", [...S.evrem]); closeSheet(); render(); toast("Ticket deleted"); return; }
   if(d.resy){ toast("The Reef's Resy link is coming from Newport Life"); return; }
   if(d.submitevent){ submitEventSheet(); return; }
   if(d.submitgo){ const biz = ($("#seBiz").value||"").trim(), nm = ($("#seName").value||"").trim(); if(!biz || !nm){ toast("Add the business and event name"); return; } closeSheet(); toast("Sent to Newport Life for review"); return; }
@@ -787,6 +919,9 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(b.id==="acctBtn"){ S.account ? accountSheet() : signInSheet(); return; }
 });
 document.addEventListener("change", ev=>{ if(ev.target.id==="dietSel"){ S.diet = ev.target.value; render(); }
+  if(ev.target.id==="oEvent"){ const c = comById(ev.target.value); if(c){ $("#oName").value = c.name; $("#oSeller").value = c.biz; $("#oPlace").value = c.place; $("#oTime").value = c.t; if(c.d!=="all") $("#oDate").value = FEST_DAYS[c.d].key; } }
+  if(ev.target.id==="oImg" && ev.target.files && ev.target.files[0]){ fileToCanvas(ev.target.files[0]).then(onOutFile).catch(()=>toast("Couldn't read that image")); }
+  if(ev.target.id==="oPdf" && ev.target.files && ev.target.files[0]){ toast("Reading the PDF..."); pdfToCanvas(ev.target.files[0]).then(onOutFile).catch(()=>toast("Couldn't read that PDF - try a screenshot instead")); }
   if(ev.target.dataset && ev.target.dataset.holder){ const [id, i] = ev.target.dataset.holder.split("|"), o = S.visits.find(v=>v.id===id); if(o){ o.tickets[Number(i)].holder = ev.target.value.trim().slice(0,40); st.set("wf.visits", S.visits); toast("Name saved"); } } });
 document.addEventListener("keydown", ev=>{ if(ev.key==="Escape"){ closeSheet(); $("#admit").hidden = true; } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.kiosk")){ ev.preventDefault(); vendorSheet(ev.target.dataset.vendor); } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.hid")){ ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); } });
 $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
