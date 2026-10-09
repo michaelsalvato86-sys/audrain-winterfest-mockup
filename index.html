@@ -8,11 +8,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Winterfest">
+<meta name="apple-mobile-web-app-title" content="Winter Festival">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
-<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}.brandlogo{height:40px;width:auto;border-radius:10px;background:#fff;padding:3px 6px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.herologo{align-self:center;background:rgba(255,255,255,.94);border-radius:22px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);margin-bottom:6px;max-width:100%}
+.herologo img{display:block;width:min(300px,72vw);height:auto;max-width:100%}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
 <title>Newport Winterfest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +210,7 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 </svg>
 <div class="app">
   <header class="top">
-    <div class="brand" id="brand"><small>NEWPORT</small>WINTERFEST</div>
+    <div class="brand" id="brand" style="display:flex;align-items:center;gap:10px"><img src="logo-header.png" alt="Newport Winter Festival" class="brandlogo"><span class="sr-only">Newport Winter Festival</span></div>
     <div class="tools">
       <button class="ib" type="button" id="infoBtn" aria-label="Info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
       <button class="ib" type="button" id="alertBtn" aria-label="Alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="dot" id="alertDot">4</span></button>
@@ -228,7 +232,7 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 <script>
 (function(){
 // Brand shown in the app. The App Store name is Katelyn's call (Newport Life owns Winterfest); rename here only.
-const APP_BRAND = "Newport Winterfest";
+const APP_BRAND = "Newport Winter Festival"; // official name from the logo Katelyn sent 2026-10-09; App Store name is still her call
 const TRAFFIC = "https://www.google.com/maps/@41.4815,-71.3150,14z/data=!5m1!1e1";
 // SAMPLE village: layout, vendors, menus, hours and prices are placeholders until the real lineup is set.
 const CATS = {food:["Food","#A8D8EA"], sweets:["Sweets","#F2B8C6"], drinks:["Warm drinks","#C9B8F0"], shops:["Holiday shops","#5EE6C8"], play:["Experiences","#D8C27A"], help:["Guest services","#F4FAFD"]};
@@ -300,7 +304,7 @@ const GEM = (c, path) => `<span class="gem" style="background:${c}"><svg viewBox
 function village(){
   const happening = VENDORS.filter(v=>v.cat!=="help").slice(0,6);
   return `<section class="hero">
-      <div class="eyebrow">Newport, Rhode Island</div><h1>The winter village by the sea</h1>
+      <div class="herologo"><img src="logo.png" alt="Newport Winter Festival logo"></div><div class="eyebrow">Newport, Rhode Island</div><h1>The winter village by the sea</h1>
       <div class="status"><span class="pill"><i></i>Feb 12-21, 2027 (expected, to be confirmed)</span><span class="pill">Today's hours: TBA</span></div>
       <div class="count" id="countdown" aria-label="Countdown to opening day, Feb 12, 2027 (expected)">${countHtml()}</div>
       <p class="muted" style="color:#d6e3f3">Skating, a food hall with full menus, holiday shops and heated igloos.</p>
@@ -788,7 +792,7 @@ document.addEventListener("keydown", ev=>{ if(ev.key==="Escape"){ closeSheet(); 
 $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
 newBoard();
 bgSnow();
-(function(){ const b = document.getElementById("brand"), w = APP_BRAND.split(" "); if(b) b.innerHTML = `<small>${esc(w.slice(0,-1).join(" ").toUpperCase())}</small>${esc(w[w.length-1].toUpperCase())}`; document.title = APP_BRAND; })();
+(function(){ document.title = APP_BRAND; const i = document.querySelector('#brand img'); if(i) i.alt = APP_BRAND; })();
 render();
 if(/^#claim-/.test(location.hash)) setTimeout(()=>claimSheet(decodeURIComponent(location.hash.slice(7))), 300);
 })();

@@ -1,11 +1,11 @@
 {
- "name": "Audrain Winterfest",
- "short_name": "Winterfest",
+ "name": "Newport Winter Festival",
+ "short_name": "Winter Festival",
  "id": "./",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
- "background_color": "#12304a",
+ "background_color": "#ffffff",
  "theme_color": "#12304a",
  "icons": [
   {

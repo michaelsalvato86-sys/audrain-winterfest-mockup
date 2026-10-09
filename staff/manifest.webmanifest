@@ -1,11 +1,11 @@
 {
- "name": "Winterfest Staff",
+ "name": "Newport Winter Festival Staff",
  "short_name": "WF Staff",
  "id": "./",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
- "background_color": "#0a1220",
+ "background_color": "#ffffff",
  "theme_color": "#0a1220",
  "icons": [
   {
