@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
-<title>Audrain Winterfest</title>
+<title>Newport Winterfest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
@@ -184,6 +184,10 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 #admit li{opacity:0;animation:fadein .35s ease forwards}
 @keyframes fadein{to{opacity:1}}
 @media (prefers-reduced-motion: reduce){ #admit .ck{animation:none;stroke-dashoffset:0} #admit li{animation:none;opacity:1} }
+.snowgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.snowcard{margin:0;border-radius:16px;overflow:hidden;background:#13305d;border:1px solid rgba(168,216,234,.25)}
+.snowcard img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;max-width:100%}
+.snowcard figcaption{padding:8px 10px;display:flex;flex-direction:column;gap:4px;color:var(--snow)}
 </style>
 <style>/* Leaflet 1.9.4 */
 .leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:url(images/layers.png);width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:url(images/layers-2x.png);background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:url(images/marker-icon.png)}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
@@ -202,7 +206,7 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 </svg>
 <div class="app">
   <header class="top">
-    <div class="brand"><small>AUDRAIN</small>WINTERFEST</div>
+    <div class="brand" id="brand"><small>NEWPORT</small>WINTERFEST</div>
     <div class="tools">
       <button class="ib" type="button" id="infoBtn" aria-label="Info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
       <button class="ib" type="button" id="alertBtn" aria-label="Alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="dot" id="alertDot">4</span></button>
@@ -214,8 +218,8 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 <nav class="nav" aria-label="Winterfest sections">
   <button type="button" data-tab="village" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></svg>Village</button>
   <button type="button" data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Map</button>
+  <button type="button" data-tab="tickets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4z"/></svg>My Tickets</button>
   <button type="button" data-tab="fun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/></svg>Fun</button>
-  <button type="button" data-tab="tickets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4z"/></svg>Tickets</button>
   <button type="button" data-tab="visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>My Visit</button>
 </nav>
 <div id="admit" hidden role="dialog" aria-modal="true" aria-label="Admitted"></div>
@@ -223,6 +227,8 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 <div class="toast" id="toast" role="status" hidden></div>
 <script>
 (function(){
+// Brand shown in the app. The App Store name is Katelyn's call (Newport Life owns Winterfest); rename here only.
+const APP_BRAND = "Newport Winterfest";
 const TRAFFIC = "https://www.google.com/maps/@41.4815,-71.3150,14z/data=!5m1!1e1";
 // SAMPLE village: layout, vendors, menus, hours and prices are placeholders until the real lineup is set.
 const CATS = {food:["Food","#A8D8EA"], sweets:["Sweets","#F2B8C6"], drinks:["Warm drinks","#C9B8F0"], shops:["Holiday shops","#5EE6C8"], play:["Experiences","#D8C27A"], help:["Guest services","#F4FAFD"]};
@@ -242,7 +248,7 @@ const VENDORS = [
   {code:"S10", cat:"shops", name:"Candle Works", x:285, y:490, hours:["11:00","20:00"], sub:"Hand-poured winter candles", menu:[]},
   {code:"W9", cat:"play", name:"Kids' Craft Tent", x:60, y:400, hours:["10:00","18:00"], sub:"Ornaments, cards, cookie decorating", menu:[]},
   {code:"R1", cat:"play", name:"Skate Rentals", x:175, y:300, hours:["10:00","22:00"], sub:"Rentals, lockers, skate aids", menu:[]},
-  {code:"R4", cat:"play", name:"Igloo Lounges", x:300, y:370, hours:["12:00","22:00"], sub:"Private heated domes for up to 8", menu:[]},
+  {code:"R4", cat:"play", name:"Igloos at The Reef", x:300, y:370, hours:["12:00","22:00"], sub:"Heated igloos at The Reef - book on Resy", resy:true, menu:[]},
   {code:"R7", cat:"drinks", name:"Rinkside Bar", x:300, y:250, hours:["14:00","22:00"], sub:"Warm drinks by the ice", order:true, menu:[["Hot toddy","$14",["V","GF","NF","A"]],["Spiced hot chocolate","$7",["VG","GF","D"]]]}
 ];
 const LANDMARKS = [{t:"i", name:"Info", x:70, y:340}, {t:"WC", name:"Restrooms", x:130, y:400}, {t:"+", name:"First aid", x:345, y:430}, {t:"WC", name:"Restrooms", x:345, y:130}];
@@ -250,11 +256,13 @@ const PRODUCTS = [
   {id:"entry", name:"Village entry (timed)", sub:"Free entry, timed after 4 PM on peak nights", price:0},
   {id:"skate", name:"Skate session, own skates", sub:"About 50 minutes on the ice", price:10},
   {id:"rental", name:"Skate session with rental", sub:"Skates, helmet and locker", price:22},
-  {id:"lesson", name:"Learn to skate lesson", sub:"Group lesson, all ages", price:35},
-  {id:"igloo", name:"Igloo lounge (90 min)", sub:"Heated dome for up to 8, with a food and drink package", price:180}
+  {id:"lesson", name:"Learn to skate lesson", sub:"Group lesson, all ages", price:35}
 ];
+// Igloos are at The Reef and are booked on Resy (Katelyn, 2026-10-09). Paste the Resy link here when Newport Life has it.
+const RESY_REEF_URL = "";
+function resyBtn(cls){ return RESY_REEF_URL ? `<a class="btn ${cls||"aurora"}" href="${RESY_REEF_URL}" target="_blank" rel="noopener" style="text-decoration:none">Book on Resy</a>` : `<button class="btn ${cls||"ghost"}" type="button" data-resy="1">Resy link coming</button>`; }
 const SLOTS = ["4:00","5:30","7:00","8:30"];
-// ---------- Payments. Shopify is Audrain's live rail (its checkout shows Shop Pay, PayPal, Google Pay, Venmo and card; Apple Pay on Apple devices).
+// ---------- Payments. Demo rail = Audrain's Shopify store; Newport Life's own payment account is to be decided (its checkout shows Shop Pay, PayPal, Google Pay, Venmo and card; Apple Pay on Apple devices).
 // Every Winterfest item is "pending" until Audrain creates it in Shopify. To go live: create the item (no shipping),
 // paste one variant id per ticket type below, and set rail:"shopify". Example: skate:{rail:"shopify", variants:{adult:44000000000001, child:44000000000002, infant:44000000000003}}
 const STORE = "https://shop.audrainautomuseum.org";
@@ -270,12 +278,12 @@ const SHORT_AREA = {ENT:"entry", RNK:"rink", IGL:"igloo"};
 function cartLink(items){ return STORE + "/cart/" + items.map(i=>i.variant + ":" + i.qty).join(","); }
 function isApple(){ const u = navigator.userAgent; return !!window.ApplePaySession || /iPhone|iPad|iPod/.test(u) || (/Macintosh/.test(u) && /Safari/.test(u) && !/Chrome|Chromium|Edg|Firefox/.test(u)); }
 const money = n => "$" + (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0);
-const ALERTS = [["Snow showers tonight","The rink stays open; paths are being treated.","weather"],["Rink near capacity","Next open skate session is 7:00 PM.","rink"],["Igloos sold out Saturday","Join the waitlist in Tickets.","sold"],["Cocoa special at N3","Peppermint cocoa is $5 until 6 PM.","special"]];
+const ALERTS = [["Snow showers tonight","The rink stays open; paths are being treated.","weather"],["Rink near capacity","Next open skate session is 7:00 PM.","rink"],["Igloos at The Reef: Saturday is full","Check Resy for other nights.","sold"],["Cocoa special at N3","Peppermint cocoa is $5 until 6 PM.","special"]];
 const st = { get(k,f){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : f; }catch(e){ return f; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
 const S = { tab:"village", mapv:"plan", cat:"all", open:false, diet:"", q:"", fav:new Set(st.get("wf.fav",[])), visits:st.get("wf.visits",[]), account:st.get("wf.account",null), cart:null, slot:SLOTS[0], seenAlerts:st.get("wf.seen",false),
   fun:"guide", evfav:new Set(st.get("wf.evfav",[])), evrem:new Set(st.get("wf.evrem",[])), doors:new Set(st.get("wf.doors",[])), found:new Set(st.get("wf.found",[])), demo:false,
   best:st.get("wf.best",0), mtiles:[], msel:[], credit:st.get("wf.credit",0), vouchers:st.get("wf.vouchers",[]),
-  payMethod:null, qty:{adult:1, child:0, infant:0}, expanded:new Set() };
+  payMethod:null, qty:{adult:1, child:0, infant:0}, expanded:new Set(), iday:"all", ilayer:"all", snow:st.get("wf.snow",[]) };
 S.visits = S.visits.map(v => (v.kind!=="booking" || v.tickets) ? v : Object.assign({}, v, {area: /igloo/i.test(v.name) ? "igloo" : /skate|lesson/i.test(v.name) ? "rink" : "entry", slot: (v.when||"").replace(" PM",""), status:"paid", tickets:[{serial:v.ref + "-1", type:"Adult", holder:"", used:false, checkins:[], transferred:false}]}));
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -293,8 +301,8 @@ function village(){
   const happening = VENDORS.filter(v=>v.cat!=="help").slice(0,6);
   return `<section class="hero">
       <div class="eyebrow">Newport, Rhode Island</div><h1>The winter village by the sea</h1>
-      <div class="status"><span class="pill"><i></i>Dates to be announced</span><span class="pill">Today's hours: TBA</span></div>
-      <div class="count" aria-label="Countdown to opening, starts when dates are set"><div><b>--</b><span>days</span></div><div><b>--</b><span>hrs</span></div><div><b>--</b><span>min</span></div></div>
+      <div class="status"><span class="pill"><i></i>Feb 12-21, 2027 (expected, to be confirmed)</span><span class="pill">Today's hours: TBA</span></div>
+      <div class="count" id="countdown" aria-label="Countdown to opening day, Feb 12, 2027 (expected)">${countHtml()}</div>
       <p class="muted" style="color:#d6e3f3">Skating, a food hall with full menus, holiday shops and heated igloos.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn aurora" type="button" data-tab="tickets">Tickets and skating</button><button class="btn ghost" type="button" data-tab="map">Village map</button></div></section>
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Happening now ${SAMPLE}</h2>
@@ -303,10 +311,11 @@ function village(){
       <button class="tile" type="button" data-tab="map">${GEM("#A8D8EA",'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/>')}<b>Village map</b><small>Every kiosk by code</small></button>
       <button class="tile" type="button" data-tab="map" data-mapvgo="dir" data-catgo="food">${GEM("#F2B8C6",'<path d="M5 11h12v3a6 6 0 0 1-12 0z"/>')}<b>Food and menus</b><small>Prices and dietary tags</small></button>
       <button class="tile" type="button" data-tab="map" data-mapvgo="dir" data-catgo="shops">${GEM("#5EE6C8",'<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>')}<b>Holiday shops</b><small>Local makers and gifts</small></button>
-      <button class="tile" type="button" data-tab="tickets">${GEM("#D8C27A",'<path d="M6 4h5v8l6 2a2 2 0 0 1 2 2v1H5z"/><path d="M4 20h17"/>')}<b>Skate and igloos</b><small>Book a time</small></button>
+      <button class="tile" type="button" data-tab="tickets">${GEM("#D8C27A",'<path d="M6 4h5v8l6 2a2 2 0 0 1 2 2v1H5z"/><path d="M4 20h17"/>')}<b>Skate and igloos</b><small>Rink times; igloos at The Reef on Resy</small></button>
     </div>
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Fun ${SAMPLE}</h2><div class="funrow">
-      <button class="tile" type="button" data-tab="fun" data-fungo="guide">${GEM("#C9B8F0",'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/>')}<b>What's on</b></button>
+      <button class="tile" type="button" data-tab="fun" data-fungo="guide">${GEM("#C9B8F0",'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/>')}<b>Itinerary</b></button>
+      <button class="tile" type="button" data-tab="fun" data-fungo="snow">${GEM("#F4FAFD",'<circle cx="12" cy="15" r="5"/><circle cx="12" cy="7" r="3.2"/>')}<b>Snowman contest</b></button>
       <button class="tile" type="button" data-tab="fun" data-fungo="advent">${GEM("#D8C27A",'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/>')}<b>Advent</b></button>
       <button class="tile" type="button" data-tab="fun" data-fungo="games">${GEM("#5EE6C8",'<path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/>')}<b>Games</b></button>
     </div></section>`;
@@ -364,8 +373,10 @@ function tickets(){
     <div class="glass"><p class="muted">Timed entry, skating, lessons and igloos, paid with Apple Pay or Google Pay. Bookings go to My Visit. ${SAMPLE}</p><p class="muted" style="font-size:13px">Arrive at your ticket time; ice time starts shortly after.</p></div>
     <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>My tickets</h2><button class="btn sm ghost" type="button" data-claimopen="1">Add a ticket I was sent</button></div>
       ${S.visits.filter(v=>v.kind==="booking").length ? S.visits.filter(v=>v.kind==="booking").map(orderCard).join("") : `<div class="glass"><p class="muted">Tickets you buy for yourself and your family land here, each with its own QR. Check in by scanning the code posted at the gate.</p></div>`}</section>
+    <div class="prod"><div><b>Igloos at The Reef</b><div class="muted" style="font-size:13.5px">Heated igloos for groups at The Reef, booked on Resy.</div></div>${resyBtn("sm aurora")}</div>
+    <div class="prod"><div><b>Signature events</b><div class="muted" style="font-size:13.5px">Newport Life's ticketed events, by day.</div></div><button class="btn sm ghost" type="button" data-tab="fun" data-fungo="guide">See itinerary</button></div>
     <h2>Buy</h2>
-    ${PRODUCTS.map(p=>`<div class="prod"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:13.5px">${esc(p.sub)}</div><div style="color:var(--frost);font-weight:800;margin-top:4px">${p.price?"$"+p.price:"Free"}</div></div><button class="btn sm aurora" type="button" data-book="${p.id}">Book</button></div>`).join("")}`;
+    ${PRODUCTS.filter(p=>!p.sig).map(p=>`<div class="prod"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:13.5px">${esc(p.sub)}</div><div style="color:var(--frost);font-weight:800;margin-top:4px">${p.price?"$"+p.price:"Free"}</div></div><button class="btn sm aurora" type="button" data-book="${p.id}">Book</button></div>`).join("")}`;
 }
 function visit(){
   const favs = VENDORS.filter(v=>S.fav.has(v.code));
@@ -377,7 +388,7 @@ function visit(){
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Favourites</h2>
       ${favs.length ? favs.map(v=>vrow(v)).join("") : `<div class="glass"><p class="muted">Tap the heart on any vendor to save it here.</p></div>`}</section>`;
 }
-function walletCard(){ return `<div class="wallet"><span class="eyebrow" style="color:#E6F4FA">Village credit ${'<span class="tag" style="border-color:#fff;color:#fff">Sample</span>'}</span><b>$${S.credit.toFixed(2)}</b><span style="font-size:14px">Use at games, the rink and vendors. Top up with Apple Pay or Google Pay.</span><div style="display:flex;gap:8px;flex-wrap:wrap">${[10,25,50].map(a=>`<button class="btn sm" type="button" data-topup="${a}" style="background:#fff;color:#1F4E79">+ $${a}</button>`).join("")}</div></div>`; }
+function walletCard(){ return `<div class="wallet"><span class="eyebrow" style="color:#E6F4FA">Village credit ${'<span class="tag" style="border-color:#fff;color:#fff">Sample</span>'}</span><span style="font-size:12.5px;opacity:.9">If Newport Life offers a stored-value card (to be decided)</span><b>$${S.credit.toFixed(2)}</b><span style="font-size:14px">Use at games, the rink and vendors. Top up with Apple Pay or Google Pay.</span><div style="display:flex;gap:8px;flex-wrap:wrap">${[10,25,50].map(a=>`<button class="btn sm" type="button" data-topup="${a}" style="background:#fff;color:#1F4E79">+ $${a}</button>`).join("")}</div></div>`; }
 
 // ---------- Ticket orders: one card per family/group order, swipeable individual tickets
 function eligible(o){ return o.tickets.map((t,i)=>i).filter(i=>{ const t = o.tickets[i]; return !t.transferred && (o.area==="entry" || !t.used); }); }
@@ -455,23 +466,77 @@ function showAdmit(o, idxs, g, now){
 }
 
 // ---------- Fun: event guide, advent calendar with a building village and hidden objects, games
-const GUIDE = [
-  ["Opening night", [["5:00 PM","Tree lighting","West lawn"],["6:00 PM","Carolers on the promenade","N promenade"],["8:30 PM","Opening skate","Rink"]]],
-  ["Weekend one", [["4:00 PM","Kids' craft hour","W9 Craft Tent"],["7:00 PM","Ice show","Rink"]]],
-  ["Weekend two", [["2:00 PM","Visits with Santa","Welcome Lodge"],["8:00 PM","Fireworks over the harbor","East terrace"]]]
-];
+// Itinerary: two layers (Katelyn, 2026-10-09). SIGNATURE = Newport Life's ~10 ticketed events (sold in this app).
+// COMMUNITY = events businesses submit; they sell their own tickets (link out). All SAMPLE until the real lineup arrives
+// (signature events from Katelyn; community events about January).
+const FEST_DAYS = Array.from({length:10},(_,i)=>{ const d = new Date(2027, 1, 12+i); return {i, key:"2027-02-"+String(12+i).padStart(2,"0"), wd:d.toLocaleDateString("en-US",{weekday:"short"}), n:12+i}; });
+const SIG = [
+  {d:0, t:"17:00", name:"Opening night tree lighting", place:"Village green", price:0},
+  {d:0, t:"19:00", name:"Winter Village by the Sea skate night", place:"Rink", price:15},
+  {d:1, t:"18:00", name:"Chowder cook-off", place:"Food hall", price:25},
+  {d:2, t:"11:00", name:"Snow sculpture showcase", place:"West lawn", price:10},
+  {d:3, t:"14:00", name:"Family winter carnival", place:"Village green", price:12},
+  {d:4, t:"19:30", name:"Ice carving after dark", place:"Rinkside", price:15},
+  {d:5, t:"18:30", name:"Cocoa and cookie crawl", place:"Village kiosks", price:20},
+  {d:6, t:"20:00", name:"Winter cabaret", place:"Village tent", price:40},
+  {d:8, t:"12:00", name:"Polar plunge", place:"Harbor beach", price:25},
+  {d:9, t:"18:00", name:"Closing night fireworks", place:"Harbor", price:0}
+].map((e,k)=>Object.assign(e, {id:"sig"+k, layer:"sig"}));
+const COMM = [
+  {d:"all", t:"10:00", name:"Harbor helicopter tours", biz:"Local tour operator", place:"Newport airfield", url:""},
+  {d:"all", t:"11:00", name:"Classic car winter tours", biz:"Local tour company", place:"Downtown pickup", url:""},
+  {d:"all", t:"10:00", name:"Crystal garden exhibit", biz:"Local garden", place:"Bellevue Ave", url:""},
+  {d:1, t:"17:30", name:"Wine tasting by the fire", biz:"Local wine bar", place:"Thames St", url:""},
+  {d:2, t:"09:00", name:"Winter bird walk", biz:"Local nature group", place:"Ocean Drive", url:""},
+  {d:4, t:"20:00", name:"Live music night", biz:"Local pub", place:"Broadway", url:""},
+  {d:7, t:"13:00", name:"Mansion candlelight tour", biz:"Local museum", place:"Bellevue Ave", url:""}
+].map((e,k)=>Object.assign(e, {id:"com"+k, layer:"com"}));
+SIG.forEach(e=>{ PRODUCTS.push({id:e.id, sig:true, name:e.name, sub:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)} \u00b7 ${e.place}`, price:e.price, time:e.t, when:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)}`}); AREA[e.id] = "entry"; });
+
 const TREATS = [["Free hot cocoa","Show this at N3 for a free classic cocoa.","voucher"],["Fun fact","The rink holds about 40,000 gallons of water when frozen.","fact"],["Photo prompt","Snap your crew under the village lights and share it.","photo"],["Vendor offer","10% off at Candle Works (S10) today.","offer"]];
 const SCENE = ["tree","lamp","cottage","skaters","lights"];
 const HIDDEN = [["mitten",62,212],["lantern",318,96],["sled",250,236],["owl",36,120],["candy cane",188,140],["star",378,60]];
 function fun(){
   const sec = S.fun;
-  return `<div class="seg" role="group" aria-label="Fun"><button type="button" data-fungo="guide" aria-pressed="${sec==="guide"}">What's on</button><button type="button" data-fungo="advent" aria-pressed="${sec==="advent"}">Advent</button><button type="button" data-fungo="games" aria-pressed="${sec==="games"}">Games</button></div>
-    <div class="glass"><span class="eyebrow">This week's challenge ${SAMPLE}</span><b>Find three kiosks with vegan menu items, then try one.</b><span class="muted" style="font-size:13.5px">Use the Directory's dietary filter. Reward: $2 village credit.</span></div>
-    ${sec==="guide" ? guideView() : sec==="advent" ? adventView() : gamesView()}`;
+  return `<div class="seg" role="group" aria-label="Fun"><button type="button" data-fungo="guide" aria-pressed="${sec==="guide"}">Itinerary</button><button type="button" data-fungo="advent" aria-pressed="${sec==="advent"}">Advent</button><button type="button" data-fungo="games" aria-pressed="${sec==="games"}">Games</button><button type="button" data-fungo="snow" aria-pressed="${sec==="snow"}">Snowman</button></div>
+    ${sec==="guide" || sec==="snow" ? "" : `<div class="glass"><span class="eyebrow">This week's challenge ${SAMPLE}</span><b>Find three kiosks with vegan menu items, then try one.</b><span class="muted" style="font-size:13.5px">Use the Directory's dietary filter. Reward: $2 village credit.</span></div>`}
+    ${sec==="guide" ? guideView() : sec==="advent" ? adventView() : sec==="snow" ? snowView() : gamesView()}`;
 }
 function guideView(){
-  return `<p class="muted" style="font-size:13.5px">Sample events. Save them and get a reminder before they start.</p>` + GUIDE.map(([day, items])=>`<div class="group">${day.toUpperCase()}</div>${items.map(([t,n,w])=>{ const id = (day+n).replace(/\W/g,""); return `<div class="ev"><span class="tm">${t}</span><span><b>${esc(n)}</b><br><span class="muted" style="font-size:13px">${esc(w)}</span></span><button class="heart" type="button" data-evfav="${id}" aria-pressed="${S.evfav.has(id)}" aria-label="Save ${esc(n)}">${HEART(S.evfav.has(id))}</button><button class="bell" type="button" data-evrem="${id}" aria-pressed="${S.evrem.has(id)}" aria-label="Remind me about ${esc(n)}"><svg viewBox="0 0 24 24" fill="${S.evrem.has(id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; }).join("")}`).join("");
+  const day = S.iday, layer = S.ilayer;
+  const evs = [...SIG, ...COMM].filter(e=>(layer==="all" || e.layer===layer) && (day==="all" ? true : (e.d==="all" || e.d===day))).sort((a,b)=>(a.d==="all"?-1:a.d)-(b.d==="all"?-1:b.d) || mins(a.t)-mins(b.t));
+  const row = e => { const dl = e.d==="all" ? "Daily" : FEST_DAYS[e.d].wd + " " + FEST_DAYS[e.d].n;
+    return `<div class="ev"><span class="tm">${fmt(e.t)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}<br><span class="muted" style="font-size:13px">${esc(e.layer==="com" ? e.biz + " \u00b7 " + e.place : e.place)}</span><br>
+      ${e.layer==="sig" ? `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>` : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}</span>
+      <button class="heart" type="button" data-evfav="${e.id}" aria-pressed="${S.evfav.has(e.id)}" aria-label="Save ${esc(e.name)}">${HEART(S.evfav.has(e.id))}</button><button class="bell" type="button" data-evrem="${e.id}" aria-pressed="${S.evrem.has(e.id)}" aria-label="Remind me about ${esc(e.name)}"><svg viewBox="0 0 24 24" fill="${S.evrem.has(e.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; };
+  return `<p class="muted" style="font-size:13.5px">Dates to be confirmed - Feb 12-21, 2027 expected. ${SAMPLE}</p>
+    <div class="chips" role="group" aria-label="Event type">${[["all","All"],["sig","Signature"],["com","Community"]].map(([k,l])=>`<button type="button" data-ilayer="${k}" aria-pressed="${layer===k}">${l}</button>`).join("")}</div>
+    <div class="chips" role="group" aria-label="Day"><button type="button" data-iday="all" aria-pressed="${day==="all"}">All days</button>${FEST_DAYS.map(f=>`<button type="button" data-iday="${f.i}" aria-pressed="${day===f.i}">${f.wd} ${f.n}</button>`).join("")}</div>
+    <div class="glass" style="flex-direction:row;align-items:center;justify-content:space-between;gap:10px"><span class="muted" style="font-size:13.5px">Signature events are Newport Life's and sell here. Community events are run by local businesses, who sell their own tickets.</span></div>
+    ${evs.length ? evs.map(row).join("") : `<div class="glass"><p class="muted">Nothing on this day yet.</p></div>`}
+    <div class="glass"><b>Running something during Winterfest?</b><span class="muted" style="font-size:13.5px">Local businesses can submit an event to the community calendar.</span><button class="btn sm aurora" type="button" data-submitevent="1" style="align-self:flex-start">Submit your event</button></div>`;
 }
+function submitEventSheet(){
+  openSheet("Submit your event", `<p class="muted">Newport Life reviews every submission before it goes on the community calendar.</p>
+    ${[["seBiz","Business name","text"],["seName","Event name","text"],["seWhen","Dates and times","text"],["seWhere","Location","text"],["seLink","Ticket or info link","url"],["seContact","Contact email or phone","text"]].map(([id,l,t])=>`<label class="muted" for="${id}" style="font-size:13px">${l}</label><input class="inp" id="${id}" type="${t}">`).join("")}
+    <label class="muted" for="seDesc" style="font-size:13px">Description</label><textarea class="inp" id="seDesc" rows="3"></textarea>
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-submitgo="1">Send for review</button></div>`); }
+// Snowman contest: entries crowdsource photos Newport Life can use in marketing (with consent).
+function snowView(){
+  const feat = S.snow.filter(x=>x.featured), card = x => `<figure class="snowcard"><img src="${x.img}" alt="${esc(x.title)}"><figcaption><b>${esc(x.title)}</b><br><span class="muted" style="font-size:12.5px">${esc(x.kind)} \u00b7 ${esc(x.by)}</span><br><button class="btn sm ghost" type="button" data-feature="${x.id}">${x.featured?"Unfeature":"Feature"} (Newport Life demo)</button></figcaption></figure>`;
+  return `<div class="glass"><h2>Snowman contest</h2><span class="muted" style="font-size:13.5px">Build a snowman or draw one, snap a photo and enter. Newport Life features the best. ${SAMPLE}</span>
+      <label class="muted" for="snTitle" style="font-size:13px">Name your snowman</label><input class="inp" id="snTitle" placeholder="e.g. Frosty by the Sea">
+      <label class="muted" for="snKind" style="font-size:13px">Entry type</label><select class="inp" id="snKind"><option>Built snowman</option><option>Drawing</option></select>
+      <label class="muted" for="snFile" style="font-size:13px">Photo</label><input class="inp" id="snFile" type="file" accept="image/*">
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:13.5px"><input type="checkbox" id="snConsent" style="margin-top:3px"> I agree Newport Life may use my photo in Winterfest marketing.</label>
+      <button class="btn aurora" type="button" data-snowsubmit="1" style="align-self:flex-start">Enter the contest</button></div>
+    <h2>Featured</h2>${feat.length ? `<div class="snowgrid">${feat.map(card).join("")}</div>` : `<div class="glass"><p class="muted">Newport Life picks featured entries during the festival.</p></div>`}
+    <h2>All entries (${S.snow.length})</h2>${S.snow.length ? `<div class="snowgrid">${S.snow.map(card).join("")}</div>` : `<div class="glass"><p class="muted">No entries yet. Be the first.</p></div>`}`;
+}
+function thumb(file){ return new Promise((res, rej)=>{ const r = new FileReader(); r.onload = ()=>{ const im = new Image(); im.onload = ()=>{ const c = document.createElement("canvas"), k = Math.min(1, 360/Math.max(im.width, im.height)); c.width = Math.round(im.width*k); c.height = Math.round(im.height*k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL("image/jpeg", .78)); }; im.onerror = rej; im.src = r.result; }; r.onerror = rej; r.readAsDataURL(file); }); }
+function countHtml(){ const target = new Date(2027, 1, 12, 10, 0).getTime(), ms = Math.max(0, target - Date.now()), dd = Math.floor(ms/864e5), hh = Math.floor(ms%864e5/36e5), mm = Math.floor(ms%36e5/6e4);
+  return `<div><b>${dd}</b><span>days</span></div><div><b>${hh}</b><span>hrs</span></div><div><b>${mm}</b><span>min</span></div>`; }
+setInterval(()=>{ const c = document.getElementById("countdown"); if(c) c.innerHTML = countHtml(); }, 30000);
 function doorOpenable(n){ const d = new Date(); if(d.getMonth()===11) return n <= d.getDate(); return S.demo && n <= 3; }
 function sceneSvg(){
   const parts = [...S.doors].sort((a,b)=>a-b).map(n=>{ const type = SCENE[(n-1)%SCENE.length], x = 30 + ((n*67)%360), y = 170 + ((n*29)%60);
@@ -572,7 +637,7 @@ function vendorSheet(code){ const v = VENDORS.find(x=>x.code===code), c = CATS[v
     <p class="muted">${esc(v.sub)}</p>
     <div class="muted" style="font-size:14px"><b style="color:var(--snow)">Hours</b> ${fmt(v.hours[0])} to ${fmt(v.hours[1])} · ${isOpen(v)?'<span style="color:var(--mint);font-weight:800">Open now</span>':"Closed now"}<br><b style="color:var(--snow)">Pays with</b> ${PAY_ACCEPTED.join(", ")}</div>
     ${v.menu.length ? `<h3>Menu</h3><div>${v.menu.map(m=>`<div class="mi"><div><div>${esc(m[0])}</div><div style="margin-top:4px">${tagHtml(m[2])}</div></div><span class="p">${m[1]}</span></div>`).join("")}</div><p class="muted" style="font-size:12.5px">Sample menu, prices and allergen tags. Always confirm allergens with the vendor.</p>` : ""}
-    <div class="sheetfoot" style="justify-content:flex-start">${v.order ? `<button class="btn aurora" type="button" data-order="${v.code}">Order ahead</button>` : ""}<button class="btn ghost" type="button" data-showonmap="${v.code}">Show on map</button><button class="btn ghost" type="button" data-close="1">Close</button></div>`); }
+    <div class="sheetfoot" style="justify-content:flex-start">${v.resy ? resyBtn() : ""}${v.order ? `<button class="btn aurora" type="button" data-order="${v.code}">Order ahead</button>` : ""}<button class="btn ghost" type="button" data-showonmap="${v.code}">Show on map</button><button class="btn ghost" type="button" data-close="1">Close</button></div>`); }
 
 let payPaint = null;
 function payWith(o, onDone){
@@ -589,10 +654,10 @@ function payWith(o, onDone){
     <div class="muted" style="font-size:13px">Pay with</div>
     <div class="pms" role="group" aria-label="Payment method">${methods.map(m=>`<button type="button" data-pm="${m[0]}" aria-pressed="${S.payMethod===m[0]}">${m[1]}</button>`).join("")}</div>
     ${live ? `<a class="btn aurora" href="${cartLink(items)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Pay ${money(o.total)} with ${mName}</a>
-      <p class="muted" style="font-size:12.5px">Opens Audrain's secure checkout (Shopify), where ${mName} is offered with PayPal, Venmo and card. Come back when you're done.</p>
+      <p class="muted" style="font-size:12.5px">Opens the secure checkout (Shopify), where ${mName} is offered with PayPal, Venmo and card. Come back when you're done.</p>
       <button class="btn ghost" type="button" data-paidext="1">I've paid - add my tickets</button>`
     : `<button class="btn aurora" type="button" data-paynow="1">Pay ${money(o.total)} with ${mName}</button>
-      <p class="muted" style="font-size:12.5px">Payments open when Audrain adds this to the store. Demo: no payment is taken.</p>`}
+      <p class="muted" style="font-size:12.5px">Payments open when Newport Life adds this to the store. Demo: no payment is taken.</p>`}
     <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button></div>`); };
   payPaint();
 }
@@ -601,8 +666,8 @@ function priceOf(p, t){ return Math.round(p.price * t.f); }
 function bookSheet(id){ const p = PRODUCTS.find(x=>x.id===id);
   const paint = () => { const total = TYPES.reduce((a,t)=>a + S.qty[t.k]*priceOf(p,t), 0), n = TYPES.reduce((a,t)=>a + S.qty[t.k], 0);
     openSheet(p.name, `<p class="muted">${esc(p.sub)} ${SAMPLE}</p>
-    <div class="muted" style="font-size:13px">Pick a time</div>
-    <div class="slots" role="group" aria-label="Times">${SLOTS.map(s=>`<button type="button" data-slot="${s}" aria-pressed="${S.slot===s}">${s} PM</button>`).join("")}</div>
+    ${p.sig ? `<div class="muted" style="font-size:13px">When: <b style="color:var(--snow)">${esc(p.when)}</b></div>` : `<div class="muted" style="font-size:13px">Pick a time</div>
+    <div class="slots" role="group" aria-label="Times">${SLOTS.map(s=>`<button type="button" data-slot="${s}" aria-pressed="${S.slot===s}">${s} PM</button>`).join("")}</div>`}
     <div class="muted" style="font-size:13px">Who's coming? One person can buy for the whole family.</div>
     <div>${TYPES.map(t=>`<div class="step"><div><b>${t.n}</b><div class="muted" style="font-size:13px">${priceOf(p,t) ? money(priceOf(p,t)) : "Free"}</div></div><div class="ctl"><button type="button" data-qty="${t.k}|-1" aria-label="Fewer ${t.n}">\u2212</button><output>${S.qty[t.k]}</output><button type="button" data-qty="${t.k}|1" aria-label="More ${t.n}">+</button></div></div>`).join("")}</div>
     <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-checkout="${id}" ${n?"":"disabled"}>${n ? (total ? `Continue \u00b7 ${n} ticket${n===1?"":"s"} \u00b7 ${money(total)}` : `Reserve ${n} free ticket${n===1?"":"s"}`) : "Add a ticket"}</button></div>`); };
@@ -640,6 +705,16 @@ function infoSheet(){
 document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.kiosk, g.hid"); if(!b) return; const d = b.dataset;
   if(d.tab){ if(d.catgo){ S.cat = d.catgo; } if(d.mapvgo){ S.mapv = d.mapvgo; } if(d.fungo){ S.fun = d.fungo; } go(d.tab); return; }
   if(d.fungo){ stopGame(); S.fun = d.fungo; render(); return; }
+  if(d.iday){ S.iday = d.iday==="all" ? "all" : Number(d.iday); render(); return; }
+  if(d.ilayer){ S.ilayer = d.ilayer; render(); return; }
+  if(d.commlink){ toast("The business adds its ticket link when it submits the event"); return; }
+  if(d.resy){ toast("The Reef's Resy link is coming from Newport Life"); return; }
+  if(d.submitevent){ submitEventSheet(); return; }
+  if(d.submitgo){ const biz = ($("#seBiz").value||"").trim(), nm = ($("#seName").value||"").trim(); if(!biz || !nm){ toast("Add the business and event name"); return; } closeSheet(); toast("Sent to Newport Life for review"); return; }
+  if(d.snowsubmit){ const f = $("#snFile").files[0], title = ($("#snTitle").value||"").trim() || "Untitled snowman";
+    if(!f){ toast("Add a photo of your snowman or drawing"); return; } if(!$("#snConsent").checked){ toast("Tick the consent box to enter"); return; }
+    thumb(f).then(img=>{ S.snow.unshift({id:ref("SNO"), title, kind:$("#snKind").value, by:(S.account && S.account.name) || "Guest", img, featured:false}); try{ st.set("wf.snow", S.snow.slice(0,24)); }catch(e){} toast("Entry received. Good luck!"); render(); }).catch(()=>toast("That photo couldn't be read")); return; }
+  if(d.feature){ const x = S.snow.find(e=>e.id===d.feature); if(x){ x.featured = !x.featured; st.set("wf.snow", S.snow); render(); } return; }
   if(d.gotab){ closeSheet(); go(d.gotab); return; }
   if(d.mapv){ S.mapv = d.mapv; render(); return; }
   if(d.locate){ if(!navigator.geolocation){ toast("Location isn't available on this device"); return; } navigator.geolocation.getCurrentPosition(p=>{ if(!wmap) return; const ll = [p.coords.latitude, p.coords.longitude]; L.circleMarker(ll, {radius:8, color:"#0B1E3F", weight:2, fillColor:"#5EE6C8", fillOpacity:1}).addTo(wmap).bindPopup("You are here").openPopup(); wmap.setView(ll, 16); }, ()=>toast("Location permission was declined"), {enableHighAccuracy:true, timeout:10000}); return; }
@@ -661,17 +736,17 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.fav){ S.fav.has(d.fav) ? S.fav.delete(d.fav) : S.fav.add(d.fav); st.set("wf.fav", [...S.fav]); b.setAttribute("aria-pressed", S.fav.has(d.fav)); b.innerHTML = HEART(S.fav.has(d.fav)); toast(S.fav.has(d.fav) ? "Saved to My Visit" : "Removed"); return; }
   if(d.showonmap){ closeSheet(); S.tab = "map"; S.mapv = "plan"; S.cat = "all"; S.open = false; S.diet = ""; render(); const g = document.querySelector(`g.kiosk[data-vendor="${d.showonmap}"] rect`); if(g){ g.setAttribute("stroke","#5EE6C8"); g.setAttribute("stroke-width","5"); g.closest("svg").scrollIntoView({behavior:"smooth",block:"center"}); } return; }
   if(d.order){ const v = VENDORS.find(x=>x.code===d.order), it = v.menu[0], pr = Number(String(it[1]).replace(/[^0-9.]/g,""))||0; payWith({label:`Order ahead from ${v.code} ${v.name}`, total:pr, key:"order", lines:[{type:"adult", qty:1, name:it[0], price:pr}]}, (res)=>{ addVisit({name:`Order from ${v.name}`, when:`Pick up at ${v.code}`, ref:ref("ORD"), kind:"order", status:res.status}); toast(res.status==="pending" ? "Order pending confirmation" : `Order placed. Pick up at ${v.code}.`); }); return; }
-  if(d.book){ S.slot = SLOTS[0]; S.qty = {adult:1, child:0, infant:0}; bookSheet(d.book); return; }
+  if(d.book){ const bp = PRODUCTS.find(x=>x.id===d.book); S.slot = SLOTS[0]; if(bp && bp.sig) S.slot = bp.time; S.qty = {adult:1, child:0, infant:0}; bookSheet(d.book); return; }
   if(d.qty){ const [k, dv] = d.qty.split("|"); S.qty[k] = Math.max(0, Math.min(10, S.qty[k] + Number(dv))); bookPaint(); return; }
   if(d.slot){ S.slot = d.slot; bookPaint(); return; }
   if(d.checkout){ const p = PRODUCTS.find(x=>x.id===d.checkout);
     const lines = TYPES.map(t=>({type:t.k, qty:S.qty[t.k], name:t.n, price:priceOf(p,t)})).filter(l=>l.qty), total = lines.reduce((a,l)=>a + l.qty*l.price, 0), slot = S.slot;
     if(!lines.length){ toast("Add at least one ticket"); return; }
     const done = (res)=>{ const r = ref("WF"), tk = []; lines.forEach(l=>{ for(let k=0;k<l.qty;k++) tk.push({serial:`${r}-${tk.length+1}`, type:l.name, holder:"", used:false, checkins:[], transferred:false}); });
-      const o = {id:r, ref:r, kind:"booking", product:p.id, name:p.name, when:`${slot} PM`, slot, area:AREA[p.id], status:(res&&res.status)||"paid", tickets:tk};
-      addVisit(o); S.expanded.add(r); toast(`${tk.length} ticket${tk.length===1?"":"s"} for ${p.name}, ${slot} PM`); S.tab = "tickets"; render(); };
+      const o = {id:r, ref:r, kind:"booking", product:p.id, name:p.name, when:p.when || `${slot} PM`, slot: p.time ? p.time.split(":").map(Number).map((v,k)=>k?String(v).padStart(2,"0"):((v%12)||12)).join(":") : slot, area:AREA[p.id], status:(res&&res.status)||"paid", tickets:tk};
+      addVisit(o); S.expanded.add(r); toast(`${tk.length} ticket${tk.length===1?"":"s"} for ${p.name}, ${p.when || slot + " PM"}`); S.tab = "tickets"; render(); };
     if(!total){ if(!S.account){ afterSignIn = ()=>done({status:"paid"}); signInSheet("Sign in to reserve your entry time."); return; } closeSheet(); done({status:"paid"}); return; }
-    payWith({label:`${p.name} at ${slot} PM`, total, key:p.id, lines}, done); return; }
+    payWith({label:`${p.name} · ${p.when || slot + " PM"}`, total, key:p.id, lines}, done); return; }
   if(d.pm){ S.payMethod = d.pm; if(payPaint) payPaint(); return; }
   if(d.paidext){ closeSheet(); const f = pendingPay; pendingPay = null; if(f) f({status:"pending"}); render(); return; }
   if(d.expand){ S.expanded.has(d.expand) ? S.expanded.delete(d.expand) : S.expanded.add(d.expand); render(); return; }
@@ -700,7 +775,7 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.verify){ if(!/^\d{6}$/.test(($("#authCode").value||"").trim())){ toast("Enter the 6-digit code"); return; } signedIn({name:d.verify.split("@")[0], email:d.verify, method:"email code"}); return; }
   if(d.signin){ signInSheet(); return; }
   if(d.signout){ S.account = null; st.set("wf.account", null); closeSheet(); toast("Signed out"); render(); return; }
-  if(d.delacct){ openSheet("Delete your account?", `<p class="muted">This removes your account, favourites and saved bookings from Audrain Winterfest. Paid tickets stay valid with your order email.</p><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Keep account</button><button class="btn" type="button" data-delconfirm="1" style="background:#b23a48">Delete account</button></div>`); return; }
+  if(d.delacct){ openSheet("Delete your account?", `<p class="muted">This removes your account, favourites and saved bookings from ${APP_BRAND}. Paid tickets stay valid with your order email.</p><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Keep account</button><button class="btn" type="button" data-delconfirm="1" style="background:#b23a48">Delete account</button></div>`); return; }
   if(d.delconfirm){ S.account = null; st.set("wf.account", null); S.fav = new Set(); st.set("wf.fav", []); S.visits = []; st.set("wf.visits", []); closeSheet(); toast("Account deleted"); render(); return; }
   if(d.close){ closeSheet(); return; }
   if(b.id==="alertBtn"){ alertsSheet(); return; }
@@ -713,11 +788,11 @@ document.addEventListener("keydown", ev=>{ if(ev.key==="Escape"){ closeSheet(); 
 $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
 newBoard();
 bgSnow();
+(function(){ const b = document.getElementById("brand"), w = APP_BRAND.split(" "); if(b) b.innerHTML = `<small>${esc(w.slice(0,-1).join(" ").toUpperCase())}</small>${esc(w[w.length-1].toUpperCase())}`; document.title = APP_BRAND; })();
 render();
 if(/^#claim-/.test(location.hash)) setTimeout(()=>claimSheet(decodeURIComponent(location.hash.slice(7))), 300);
 })();
 </script>
-
 <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>
 </html>

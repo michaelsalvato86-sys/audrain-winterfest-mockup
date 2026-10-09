@@ -100,9 +100,17 @@ h2{font-size:20px}
 .field{display:flex;flex-direction:column;gap:4px}
 .field select,.field input,.field textarea{border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:9px 10px}
 .tabs{position:static;background:transparent;padding:10px 0 0;margin:0 -8px}
-.tabs nav{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
+.tabs nav{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
 .tabs button{position:relative;background:none;border:0;color:#8c99b3;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 2px}
 .tabs button svg{width:22px;height:22px}
+.scanbox{position:relative;border-radius:16px;overflow:hidden;background:#06122a;aspect-ratio:1/1;max-width:100%}
+.scanbox video{width:100%;height:100%;object-fit:cover;display:block}
+.scanbox .frame{position:absolute;inset:18%;border:3px solid #5EE6C8;border-radius:16px;box-shadow:0 0 0 999px rgba(6,18,42,.35)}
+.verdict{border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px;font-weight:700}
+.verdict b{font-size:26px;letter-spacing:.06em}
+.verdict.ok{background:#1f7a52;color:#fff}.verdict.used{background:#d8a32a;color:#1a1300}.verdict.bad{background:#b23a48;color:#fff}
+.help{background:linear-gradient(135deg,#b23a48,#e0533f);color:#fff;border:0;border-radius:14px;padding:14px;font-weight:800;font-size:16px;width:100%}
+.ro{border:1px dashed var(--line);border-radius:12px;padding:10px;font-size:13.5px;color:var(--muted)}
 .tabs button[aria-current="page"]{color:#0B1E3F;background:#A8D8EA;border-radius:10px}
 .dotc{position:absolute;top:0;right:22%;background:var(--urgent);color:#fff;border-radius:999px;font-size:10px;min-width:16px;height:16px;display:grid;place-items:center;padding:0 4px}
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:flex;align-items:flex-end;justify-content:center}
@@ -145,7 +153,7 @@ h2{font-size:20px}
 <canvas id="bgsnow" aria-hidden="true"></canvas>
 <div id="gate" hidden>
   <form class="box" id="gateForm" autocomplete="on" novalidate>
-    <div style="font-size:11px;font-weight:800;letter-spacing:.3em;color:#5EE6C8">AUDRAIN WINTERFEST</div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.3em;color:#5EE6C8">NEWPORT WINTERFEST</div>
     <h1>Staff sign in</h1>
     <p class="sub" style="margin:0">Use your work email and password.</p>
     <label class="label" for="gEmail">Work email</label><input id="gEmail" type="email" autocomplete="username" placeholder="name@audrainautomuseum.org" required>
@@ -161,13 +169,14 @@ h2{font-size:20px}
 <div class="app">
   <header class="top">
     <div class="row1">
-      <div class="brand"><small>Audrain Winterfest</small>Staff</div>
+      <div class="brand"><small>Newport Winterfest</small>Staff</div>
       <button class="who" type="button" id="whoBtn"><span class="sw"></span><span id="whoTxt">Gates</span></button>
     </div>
   <div class="tabs"><nav aria-label="Staff sections">
     <button type="button" data-tab="shift" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>My shift</button>
     <button type="button" data-tab="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat<span class="dotc" id="chatDot">4</span></button>
     <button type="button" data-tab="pings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg>Pings<span class="dotc" id="pingDot" hidden>1</span></button>
+    <button type="button" data-tab="scan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></svg>Scan</button>
     <button type="button" data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Posts</button>
     <button type="button" data-tab="team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 6 5"/></svg>Teams</button>
     <button type="button" data-tab="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Alerts<span class="dotc" id="alertDot">2</span></button>
@@ -181,7 +190,7 @@ h2{font-size:20px}
 <script>
 (function(){
 // Work-email domains allowed into the staff app. CONFIRM WITH MICHAEL before launch.
-// STAFF_LOCK: false = open (Michael 2026-10-09). Set true to require work email + password again.
+// STAFF_LOCK: false = open (Michael 2026-10-09: "unlock them, we can lock it up later"). Set true to require work email + password again.
 const STAFF_LOCK = false;
 const STAFF_DOMAINS = ["audrainautomuseum.org","audrainconcours.com","mwmwealth.com"];
 // Demo only: real auth needs a backend (identity service or Microsoft 365 / Entra sign-in). This page checks format, not a real password.
@@ -202,12 +211,14 @@ const SHIFTS = {};
 const ROSTER_ROLES = ["Lead","Deputy lead","Staff","Staff","Staff","Staff","Volunteer","Volunteer"];
 const SAMPLE_NAMES = ["Sample Lead","Sample Deputy","Staff A","Staff B","Staff C","Staff D","Volunteer A","Volunteer B"];
 const CHANNELS = {
-  all:   {name:"All staff", note:"Leads post, everyone reads"},
+  ann:   {name:"Announcements", note:"Read-only: leads and Ops post, everyone reads", ro:true},
+  all:   {name:"All staff", note:"Everyone can post"},
   team:  {name:"My team", note:""},
   leads: {name:"Leads", note:"Team leads and Ops"},
   ops:   {name:"Ops Desk", note:"Direct line to dispatch"}
 };
 const SEED = {
+  ann: [{by:"Ops Lead", team:"ops", t:"08:45", txt:"Read-only channel. Only leads and Ops post here, so nothing important gets buried."}],
   all: [{by:"Ops Lead", team:"ops", t:"09:00", txt:"Welcome to the Winterfest staff app. Shifts, posts and teams will load here once the event plan is set."}],
   team: [], leads: [], ops: [{by:"Ops Desk", team:"ops", t:"09:00", txt:"Questions or issues on site? Message here."}]
 };
@@ -220,7 +231,8 @@ const state = {
   tab: store.get("st.tab","shift"), team: store.get("st.team","ops"), day:"2026-10-03",
   chan:"team", msgs: store.get("st.msgs", SEED), alerts: store.get("st.alerts", ALERTS0),
   checkin: store.get("st.checkin", {}), viewTeam:null, chatSeen:false,
-  pings: store.get("wfst.pings", []), dirs: store.get("wfst.dirs", []), dirPick:false, myLL:null
+  pings: store.get("wfst.pings", []), dirs: store.get("wfst.dirs", []), dirPick:false, myLL:null,
+  lead: store.get("wfst.lead", false), redeemed: store.get("wfst.redeemed", {}), door: store.get("wfst.door", []), scans:0, verdict:null, roster: store.get("wfst.roster", [])
 };
 // SAMPLE recipients and posts for pings and directions until the real roster and site plan exist.
 const PEOPLE = ["Ops Lead","Guest Services Lead","Venue Lead","Volunteer Coordinator","Staff A","Staff B","Volunteer A"];
@@ -245,9 +257,25 @@ function nowNext(){
 }
 
 const views = {
+  scan(){
+    const v = state.verdict, todayDoor = state.door.slice(0,8);
+    return `<div class="view">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Scan tickets</h2><span class="pill" style="background:var(--panel-2)">${state.scans} scanned this shift</span></div>
+      ${v ? `<div class="verdict ${v.cls}" role="status"><b>${v.title}</b><span>${esc(v.line1)}</span><span style="font-weight:600;opacity:.9">${esc(v.line2||"")}</span></div>` : `<div class="sub">Point the camera at a guest's ticket QR. Green = admit, amber = already used, red = not valid.</div>`}
+      <div class="scanbox" id="scanBox"><video id="scanVid" playsinline muted></video><div class="frame"></div></div>
+      <div class="btns"><button class="btn" type="button" data-scanstart="1">Start camera</button><button class="btn ghost" type="button" data-scanstop="1">Stop</button><button class="btn ghost" type="button" data-scandemo="1">Demo: simulate a scan</button></div>
+      <div class="field"><label class="label" for="manSer">Can't scan? Type the ticket number</label><div style="display:flex;gap:8px"><input id="manSer" placeholder="WF-ABCDE-1" autocapitalize="characters" style="flex:1"><button class="btn" type="button" data-scanman="1">Check</button></div></div>
+      <section style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Door tickets</h2><button class="btn ghost" type="button" data-doorissue="1">Issue door ticket</button></div>
+        <div class="list">${todayDoor.length ? todayDoor.map(d=>`<div class="item" style="grid-template-columns:minmax(0,1fr)"><div><div class="ti">${esc(d.name)} \u00b7 ${esc(d.type)}</div><div class="sub">${esc(d.serial)} \u00b7 Issued at door ${d.t} by ${esc(d.by)}</div></div></div>`).join("") : `<div class="item"><div class="sub">For guests handed entry at the door. Issued tickets count in attendance.</div></div>`}</div></section>
+      <section style="display:flex;flex-direction:column;gap:8px"><h2>Redemption log</h2>
+        <div class="list">${Object.entries(state.redeemed).slice(-8).reverse().map(([ser,r])=>`<div class="item" style="grid-template-columns:minmax(0,1fr)"><div><div class="ti">${esc(ser)}</div><div class="sub">${r.t} \u00b7 ${esc(r.by)}${r.door?" \u00b7 door":""}</div></div></div>`).join("") || `<div class="item"><div class="sub">No tickets redeemed yet.</div></div>`}</div></section>
+      <div class="notice">Demo: the redemption log lives on this phone. Live, every scanner checks the same ticket server so a ticket can't be used twice at different gates.</div>
+    </div>`;
+  },
   pings(){
     const inc = state.dirs.filter(d=>d.incoming);
     return `<div class="view">
+      <button class="help" type="button" data-help="1">I need help here</button>
       <div class="btns"><button class="btn" type="button" data-newping="1">Send a ping</button><button class="btn ghost" type="button" data-newdir="1">Send directions</button><button class="btn ghost" type="button" data-simping="1">Demo: receive a ping</button><button class="btn ghost" type="button" data-gateqr="1">Gate check-in code</button></div>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>Pings</h2>
         <div class="list">${state.pings.length ? state.pings.map(p=>`<div class="item" style="grid-template-columns:minmax(0,1fr)"><div><div class="sub">${p.t} \u00b7 to ${esc(p.to.join(", "))}${p.incoming?" \u00b7 received":""}</div><div class="ti">${esc(p.msg)}</div><div class="acks" style="margin-top:6px">${p.to.map(r=>`<span class="ackp${p.acks[r]?" ok":""}">${esc(r)}: ${esc(p.acks[r]||"sent")}</span>`).join("")}</div></div></div>`).join("") : `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">No pings yet. Ping a person, a team or everyone at a post.</div></div>`}</div></section>
@@ -272,7 +300,7 @@ const views = {
         <div class="kv"><span><b>Team</b> ${esc(tm.name)}</span><span><b>Lead</b> ${esc(tm.lead)}</span><span><b>Radio</b> ${tm.radio}</span></div>
         <div class="sub">${esc(p.where)}</div>
         <div class="btns">${done ? `<span class="pill" style="background:var(--ok);color:#fff">Checked in ${done}</span>` : `<button class="btn ok" type="button" data-checkin="${esc(key)}">Check in at post</button>`}<button class="btn ghost" type="button" data-showpost="${cur[3]}">Show on map</button><button class="btn ghost" type="button" data-tab="chat">Team chat</button></div>
-      </section>` : `<section class="panel now"><div class="label">Be here now</div><div class="where">Not scheduled yet</div><div class="task">Your Winterfest shifts appear here with where to be and when, plus an alert 15 minutes before each change.</div><div class="btns"><button class="btn ghost" type="button" data-tab="chat">Team chat</button><button class="btn ghost" type="button" data-tab="alerts">Alerts</button></div></section>`}
+      </section>` : `<section class="panel now"><div class="label">Be here now</div><div class="where">Not scheduled yet</div><button class="help" type="button" data-help="1" style="margin:6px 0">I need help here</button><div class="task">Your Winterfest shifts appear here with where to be and when, plus an alert 15 minutes before each change.</div><div class="btns"><button class="btn ghost" type="button" data-tab="chat">Team chat</button><button class="btn ghost" type="button" data-tab="alerts">Alerts</button></div></section>`}
       ${nxt ? `<section class="panel" style="padding:14px;display:flex;flex-direction:column;gap:4px"><div class="label">Next</div><div class="ti">${esc(POSTS[nxt[3]].name)} at ${fmt(nxt[1])}</div><div class="sub">${esc(nxt[4])}. You'll get an alert 15 minutes before with walking time.</div></section>` : ""}
       <section style="display:flex;flex-direction:column;gap:10px">
         <h2>My schedule</h2>
@@ -283,13 +311,14 @@ const views = {
   },
   chat(){
     state.chatSeen = true; $("#chatDot").hidden = true;
+    if(!state.msgs.ann) state.msgs.ann = SEED.ann;
     const ch = CHANNELS[state.chan], list = state.msgs[state.chan] || [];
     const chName = state.chan==="team" ? T().name : ch.name;
     return `<div class="view">
       <div class="chan" role="group" aria-label="Channels">${Object.entries(CHANNELS).map(([k,c])=>`<button type="button" data-chan="${k}" aria-pressed="${k===state.chan}">${k==="team"?`<span class="sw" style="background:${T().c}"></span>${esc(T().short)}`:esc(c.name)}</button>`).join("")}</div>
       <div><h2>${esc(chName)}</h2><div class="sub">${esc(state.chan==="team" ? T().radio + " · " + T().size + " people" : ch.note)}</div></div>
       <div class="msgs" id="msgs">${list.map(m=>{ const mine = m.me; const c = TEAMS[m.team]?.c || "#888"; return `<div class="msg${mine?" me":""}${m.loc?" loc":""}"><div class="by">${mine?"":`<span class="sw" style="background:${c}"></span>`}${esc(m.by)} · ${m.t}</div><div class="bub">${m.loc?"📍 ":""}${esc(m.txt)}</div></div>`; }).join("")}</div>
-      <form class="compose" id="composeForm"><button type="button" class="btn ghost" data-shareloc="1" aria-label="Share my location" style="padding:8px 10px">Pin</button><input id="msgIn" placeholder="Message ${esc(chName)}" autocomplete="off"><button class="btn" type="submit">Send</button></form>
+      ${ch && ch.ro && !state.lead ? `<div class="ro">Read-only. Leads and Ops post announcements here. <button class="btn ghost" type="button" data-leadtoggle="1" style="padding:6px 10px;margin-left:6px">I'm a lead (demo)</button></div>` : `<form class="compose" id="composeForm"><button type="button" class="btn ghost" data-shareloc="1" aria-label="Share my location" style="padding:8px 10px">Pin</button><input id="msgIn" placeholder="Message ${esc(chName)}" autocomplete="off"><button class="btn" type="submit">Send</button></form>`}
     </div>`;
   },
   map(){
@@ -306,9 +335,9 @@ const views = {
   team(){
     const vt = state.viewTeam;
     return `<div class="view">
-      <h2>Team designations</h2>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Team designations</h2><button class="btn ghost" type="button" data-roster="1">Import roster</button></div>
       <div class="teams">${Object.entries(TEAMS).map(([k,t])=>`<button type="button" class="team" style="--c:${t.c}" data-viewteam="${k}" aria-pressed="${vt===k}"><span class="n">${esc(t.name)}</span><span class="sub">${t.size ? t.size + " people · " : ""}${t.radio}</span><span class="sub">${t.base && POSTS[t.base] ? "Base: " + esc(POSTS[t.base].name) : "Posts to be assigned"}</span>${k===state.team?`<span class="pill" style="background:${t.c};color:#0c1524;align-self:flex-start">Your team</span>`:""}</button>`).join("")}</div>
-      ${vt ? `<section class="panel" style="padding:14px;display:flex;flex-direction:column;gap:6px"><h2>${esc(TEAMS[vt].name)}</h2><div class="sub">Lead: ${esc(TEAMS[vt].lead)} \u00b7 ${TEAMS[vt].radio}</div><div class="sub">The roster loads when staff are assigned.</div><button class="btn ghost" type="button" data-chan="team" data-tab="chat">Open team chat</button></section>` : `<div class="notice">Tap a team to see its roster, posts and radio channel.</div>`}
+      ${vt ? `<section class="panel" style="padding:14px;display:flex;flex-direction:column;gap:6px"><h2>${esc(TEAMS[vt].name)}</h2><div class="sub">Lead: ${esc(TEAMS[vt].lead)} \u00b7 ${TEAMS[vt].radio}</div><div class="sub">The roster loads when staff are assigned.</div><button class="btn ghost" type="button" data-chan="team" data-tab="chat">Open team chat</button>${rosterFor(vt)}</section>` : `<div class="notice">Tap a team to see its roster, posts and radio channel.</div>`}
     </div>`;
   },
   alerts(){
@@ -345,6 +374,7 @@ function render(){
   $("#main").innerHTML = views[state.tab]();
   const f = document.getElementById("composeForm"); if(f) f.addEventListener("submit", sendMsg);
   const m = document.getElementById("msgs"); if(m) m.lastElementChild?.scrollIntoView({block:"nearest"});
+  if(state.tab!=="scan") stopScan();
   if(state.tab==="map") initStaffMap(); else if(smap){ smap.remove(); smap = null; }
   const gl = document.getElementById("guestLayer"); if(gl) gl.addEventListener("change", ()=>{ state.guest = gl.checked; if(smap && guestLayer){ gl.checked ? guestLayer.addTo(smap) : smap.removeLayer(guestLayer); } });
 }
@@ -383,6 +413,61 @@ function gateSubmit(ev){
   $("#gPass").value = ""; showGate(false); render(); toast("Signed in as " + e);
 }
 function signOut(){ if(!STAFF_LOCK){ closeSheet(); toast("Sign-in is off for now"); return; } try{ localStorage.removeItem(GATE_KEY); }catch(x){} closeSheet(); showGate(true); }
+function rosterFor(k){ const r = state.roster.filter(p=>p.team===k); return r.length ? `<div class="list">${r.map(p=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="ti">${esc(p.name)}</div><div class="sub">${esc(p.role)} \u00b7 ${esc(p.email)}</div></div></div>`).join("")}</div>` : ""; }
+function teamKey(name){ const n = (name||"").toLowerCase(); const hit = Object.entries(TEAMS).find(([k,t])=>t.name.toLowerCase()===n || t.short.toLowerCase()===n || k===n || n.includes(t.short.toLowerCase())); return hit ? hit[0] : "volunteer"; }
+function rosterSheet(){ openSheet("Import roster", `<p class="sub">Paste a CSV with columns name, email, team, role. One person per line. The real roster loads from Newport Life's staff list.</p>
+    <textarea id="rosterCsv" rows="7" style="width:100%;font-family:ui-monospace,Consolas,monospace;font-size:13px">name,email,team,role\nSample Person A,a@example.com,Guest Services,Lead\nSample Person B,b@example.com,Volunteers,Volunteer\nSample Person C,c@example.com,Venue Teams,Staff</textarea>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-rostergo="1">Import</button></div>`); }
+function importRoster(){ const lines = ($("#rosterCsv").value||"").split(/\r?\n/).map(l=>l.trim()).filter(Boolean); if(/^name\s*,/i.test(lines[0]||"")) lines.shift();
+  const ppl = lines.map(l=>l.split(",").map(x=>x.trim())).filter(c=>c[0]).map(c=>({name:c[0], email:c[1]||"", team:teamKey(c[2]), role:c[3]||"Staff"}));
+  state.roster = ppl; store.set("wfst.roster", ppl); Object.keys(TEAMS).forEach(k=>TEAMS[k].size = ppl.filter(p=>p.team===k).length); closeSheet(); toast(`${ppl.length} people imported into ${new Set(ppl.map(p=>p.team)).size} teams`); render(); }
+function sendHelp(){
+  const finish = (ll, how) => { const to = ["Ops Lead","Leads"], p = {id:Date.now(), t:now(), to, msg:`Help needed here (${how})`, acks:{}, ll}; state.pings.unshift(p); store.set("wfst.pings", state.pings);
+    state.dirs.unshift({t:now(), from:"Help ping (demo copy as received by Ops)", label:"Help needed", note:`From ${T().short} \u00b7 ${how}`, ll, incoming:true, help:true}); store.set("wfst.dirs", state.dirs);
+    toast("Help ping sent to Ops and leads with your location"); render();
+    setTimeout(()=>{ const q = state.pings.find(x=>x.id===p.id); if(q){ q.acks["Ops Lead"] = "On my way"; store.set("wfst.pings", state.pings); if(state.tab==="pings") render(); } }, 1800);
+    setTimeout(()=>helpBanner(0), 900); };
+  if(navigator.geolocation){ navigator.geolocation.getCurrentPosition(pos=>finish([+pos.coords.latitude.toFixed(6), +pos.coords.longitude.toFixed(6)], "GPS"), ()=>finish(Object.values(WF_POSTS)[0], "nearest post: " + Object.keys(WF_POSTS)[0]), {timeout:4000}); }
+  else finish(Object.values(WF_POSTS)[0], "nearest post: " + Object.keys(WF_POSTS)[0]);
+}
+function helpBanner(i){ const b = $("#pingBanner"), d = state.dirs[i]; if(!d) return; try{ if(navigator.vibrate) navigator.vibrate([300,100,300]); }catch(e){}
+  b.innerHTML = `<div style="font-size:11px;font-weight:800;letter-spacing:.2em">HELP NEEDED (DEMO: AS OPS SEES IT)</div><b>${esc(d.note)}</b><div class="btns"><button class="btn" type="button" data-helpgo="${i}" style="background:#fff;color:#1F4E79;padding:8px 12px">Go</button><button class="btn" type="button" data-helpack="1" style="background:#fff;color:#1F4E79;padding:8px 12px">Acknowledge</button></div>`;
+  b.hidden = false; }
+// ---------- Ticket scanning. Attendee tickets encode "WINTERFEST-TICKET:<serial>" (also accepts "WFT:<serial>").
+let scanStream = null, scanTimer = null;
+function loadJsQR(){ return new Promise(res=>{ if(window.jsQR) return res(true); const sc = document.createElement("script"); sc.src = "https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"; sc.onload = ()=>res(true); sc.onerror = ()=>res(false); document.head.appendChild(sc); }); }
+function stopScan(){ clearInterval(scanTimer); scanTimer = null; if(scanStream){ scanStream.getTracks().forEach(t=>t.stop()); scanStream = null; } }
+async function startScan(){
+  const v = document.getElementById("scanVid"); if(!v) return;
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ toast("Camera isn't available here. Type the ticket number."); return; }
+  try{ scanStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}}); }catch(e){ toast("Camera permission was declined. Type the ticket number."); return; }
+  v.srcObject = scanStream; await v.play().catch(()=>{});
+  const det = ("BarcodeDetector" in window) ? new BarcodeDetector({formats:["qr_code"]}) : null; if(!det) await loadJsQR();
+  const c = document.createElement("canvas"), x = c.getContext("2d", {willReadFrequently:true}); let last = "", lastAt = 0;
+  scanTimer = setInterval(async ()=>{ if(!v.videoWidth) return; let txt = null;
+    try{ if(det){ const r = await det.detect(v); if(r[0]) txt = r[0].rawValue; } else if(window.jsQR){ c.width = v.videoWidth; c.height = v.videoHeight; x.drawImage(v,0,0); const img = x.getImageData(0,0,c.width,c.height); const r = window.jsQR(img.data, c.width, c.height); if(r) txt = r.data; } }catch(e){}
+    if(txt && (txt!==last || Date.now()-lastAt > 3000)){ last = txt; lastAt = Date.now(); checkTicket(txt); } }, 350);
+}
+function serialFrom(raw){ const t = String(raw||"").trim(); let m = t.match(/^(?:WINTERFEST-TICKET|WFT):(.+)$/i); return (m ? m[1] : t).toUpperCase(); }
+function checkTicket(raw){
+  const ser = serialFrom(raw), door = state.door.find(d=>d.serial===ser); state.scans++;
+  try{ if(navigator.vibrate) navigator.vibrate(80); }catch(e){}
+  if(!/^(WF-[A-Z0-9]{5}-\d+|WFD-[A-Z0-9]{5}-\d+)$/.test(ser)){ state.verdict = {cls:"bad", title:"NOT VALID", line1:ser || "Empty code", line2:"Not a Winterfest ticket. Send the guest to the box office."}; render(); return; }
+  const r = state.redeemed[ser];
+  if(r){ state.verdict = {cls:"used", title:"ALREADY USED", line1:ser, line2:`Scanned ${r.t} by ${r.by}. Check ID or send to the box office.`}; render(); return; }
+  state.redeemed[ser] = {t:now(), by:T().short}; store.set("wfst.redeemed", state.redeemed);
+  state.verdict = {cls:"ok", title:"VALID - ADMIT", line1:door ? `${door.name} \u00b7 ${door.type}` : "Winterfest ticket", line2:ser}; render();
+}
+function doorSheet(){ openSheet("Issue door ticket", `<p class="sub">For guests given entry at the door. Each ticket is logged with who issued it.</p>
+    <div class="field"><label class="label" for="dtName">Name</label><input id="dtName" placeholder="Guest name"></div>
+    <div class="field"><label class="label" for="dtType">Type</label><select id="dtType"><option>Adult</option><option>Child</option><option>Comp</option><option>Vendor guest</option></select></div>
+    <div class="field"><label class="label" for="dtCount">How many</label><input id="dtCount" type="number" min="1" max="20" value="1"></div>
+    <label class="sub" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="dtAdmit" checked> Admit now (marks them redeemed)</label>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-doorgo="1">Issue</button></div>`); }
+function issueDoor(){ const name = ($("#dtName").value||"").trim() || "Door guest", type = $("#dtType").value, n = Math.max(1, Math.min(20, +$("#dtCount").value||1)), admit = $("#dtAdmit").checked;
+  const base = "WFD-" + Math.random().toString(36).slice(2,7).toUpperCase(), by = T().short + " (" + ((session()||{}).email || "staff") + ")";
+  for(let i=1;i<=n;i++){ const serial = `${base}-${i}`; state.door.unshift({serial, name, type, t:now(), by}); if(admit) state.redeemed[serial] = {t:now(), by:T().short, door:true}; }
+  store.set("wfst.door", state.door); store.set("wfst.redeemed", state.redeemed); closeSheet(); toast(`${n} door ticket${n===1?"":"s"} issued`); render(); }
 function recipients(){ return `<optgroup label="People (sample)">${PEOPLE.map(p=>`<option value="person:${esc(p)}">${esc(p)}</option>`).join("")}</optgroup><optgroup label="Teams">${Object.values(TEAMS).map(t=>`<option value="team:${esc(t.name)}">${esc(t.name)}</option>`).join("")}</optgroup><optgroup label="Everyone at a post (sample)">${Object.keys(WF_POSTS).map(k=>`<option value="post:${esc(k)}">Everyone at ${esc(k)}</option>`).join("")}</optgroup><option value="all:Everyone">Everyone</option>`; }
 function expand(v){ const [kind, name] = v.split(/:(.*)/s); if(kind==="person") return [name]; if(kind==="team") return [name + " (lead)", name + " (staff)"]; if(kind==="post") return ["Staff at " + name.split(" ")[0]]; return ["All staff"]; }
 function pingSheet(){
@@ -496,6 +581,18 @@ document.addEventListener("click", ev=>{
   if(ds.gateqr){ gateQRSheet(); return; }
   if(ds.tab){ if(ds.tab==="pings"){ const d = $("#pingDot"); if(d) d.hidden = true; } go(ds.tab); return; }
   if(ds.newping){ pingSheet(); return; }
+  if(ds.help){ sendHelp(); return; }
+  if(ds.helpgo){ $("#pingBanner").hidden = true; openDir(+ds.helpgo); return; }
+  if(ds.helpack){ $("#pingBanner").hidden = true; toast("Acknowledged. They can see you're on it."); return; }
+  if(ds.leadtoggle){ state.lead = !state.lead; store.set("wfst.lead", state.lead); toast(state.lead ? "Posting as a lead (demo)" : "Posting as staff"); render(); return; }
+  if(ds.scanstart){ startScan(); return; }
+  if(ds.scanstop){ stopScan(); return; }
+  if(ds.scandemo){ const known = Object.keys(state.redeemed); checkTicket(known.length && Math.random()<.5 ? "WINTERFEST-TICKET:" + known[known.length-1] : "WINTERFEST-TICKET:WF-DEMO" + String.fromCharCode(65 + Math.floor(Math.random()*26)) + "-1"); return; }
+  if(ds.scanman){ checkTicket($("#manSer").value); return; }
+  if(ds.doorissue){ doorSheet(); return; }
+  if(ds.doorgo){ issueDoor(); return; }
+  if(ds.roster){ rosterSheet(); return; }
+  if(ds.rostergo){ importRoster(); return; }
   if(ds.sendping){ sendPing(); return; }
   if(ds.simping){ incomingPing("Need you at R1 Skate Rentals now", "Ops Lead"); return; }
   if(ds.pingreply){ const [id, r] = ds.pingreply.split("|"); const p = state.pings.find(x=>x.id==id); if(p){ p.acks["You"] = r; store.set("wfst.pings", state.pings); } $("#pingBanner").hidden = true; toast("Replied: " + r); if(state.tab==="pings") render(); return; }
@@ -527,7 +624,7 @@ document.addEventListener("click", ev=>{
       <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-sendalert="1">Send</button></div>`); return; }
   if(ds.sendalert){ const txt = $("#aTxt").value.trim(); if(!txt){ toast("Write the alert first"); return; } state.alerts.unshift({id:Date.now(), lvl:$("#aLvl").value, t:now(), to:$("#aTo").value, txt, ack:false}); store.set("st.alerts",state.alerts); closeSheet(); toast("Alert sent"); render(); return; }
   if(ds.close){ closeSheet(); return; }
-  if(t.id==="whoBtn"){ const ss = session(); openSheet("Account and team", `<p class="sub">Signed in as <b>${esc(ss ? ss.email : "")}</b>.</p><button class="btn ghost" type="button" data-signout="1">Sign out</button><p class="sub">Staff see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
+  if(t.id==="whoBtn"){ const ss = session(); openSheet("Account and team", `<p class="sub">Signed in as <b>${esc(ss ? ss.email : "")}</b>.</p><button class="btn ghost" type="button" data-signout="1">Sign out</button><button class="btn ghost" type="button" data-leadtoggle="1">${state.lead ? "Lead mode on (demo)" : "Turn on lead mode (demo)"}</button><p class="sub">Staff see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
   if(ds.pickteam){ state.team = ds.pickteam; store.set("st.team",state.team); state.day=null; closeSheet(); toast("Now viewing as " + T().name); render(); return; }
 });
 document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && !$("#scrim").hidden) closeSheet(); if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g[data-showpost]")){ ev.preventDefault(); showPost(ev.target.dataset.showpost); } });
@@ -536,12 +633,12 @@ if(!views[state.tab]) state.tab="shift";
 $("#gateForm").addEventListener("submit", gateSubmit);
 $("#gShow").addEventListener("change", ev=>{ $("#gPass").type = ev.target.checked ? "text" : "password"; });
 $("#gForgot").addEventListener("click", ()=>{ $("#gErr").textContent = "Contact Ops to reset your password."; });
+Object.keys(TEAMS).forEach(k=>{ const n = state.roster.filter(p=>p.team===k).length; if(n) TEAMS[k].size = n; });
 bgSnow();
 if(STAFF_LOCK && !session()) showGate(true); else showGate(false);
 render();
 })();
 </script>
-
 <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>
 </html>
