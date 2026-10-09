@@ -132,6 +132,21 @@ h2{font-size:20px}
 .dirmk{width:30px;height:30px;border-radius:50%;background:#5EE6C8;border:3px solid #0B1E3F;box-shadow:0 0 0 6px rgba(94,230,200,.35)}
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
+<style>/* Live (back end) additions 2026-10-09 */
+.livepill{font-size:10px;font-weight:800;letter-spacing:.12em;border-radius:999px;padding:2px 7px;background:#2a3f66;color:#B9C8DE}
+.livepill.on{background:var(--ok);color:#fff}
+.admtabs{display:flex;gap:6px;flex-wrap:wrap}
+.admtabs button{border:1px solid var(--line);background:var(--panel-2);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700}
+.admtabs button[aria-pressed="true"]{background:var(--gold);color:#16120a;border-color:var(--gold)}
+.claimqr{align-self:center;background:#fff;padding:14px;border-radius:18px;width:288px;height:288px}
+.claimqr img,.claimqr canvas{width:260px!important;height:260px!important}
+.mini{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--panel-2)}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:10px 12px;border-top:1px solid var(--line)}
+.rrow:first-child{border-top:0}
+.rrow .ctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rrow select,.rrow input[type=text]{border:1px solid var(--line);background:var(--panel-2);border-radius:8px;padding:6px 8px;font-size:13px}
+@media (min-width:760px){ .app{max-width:760px} .sheet{max-width:680px} .tabs nav{gap:6px} }
+</style>
 <style>.gqbox{align-self:center;background:#fff;padding:14px;border-radius:16px;width:248px;height:248px}.gqbox img,.gqbox canvas{width:220px!important;height:220px!important}.gqcode{font-family:var(--mono);text-align:center;font-size:15px;letter-spacing:.06em}</style>
 <style>/* Leaflet 1.9.4 */
 .leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:url(images/layers.png);width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:url(images/layers-2x.png);background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:url(images/marker-icon.png)}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
@@ -147,22 +162,28 @@ h2{font-size:20px}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>/* Staff back end: Supabase project newport-life-events. The anon key is public by design; the database enforces every rule. */
+window.SB_CONFIG = {url:"https://tjzxgrworbbauqtvcnjh.supabase.co", anon:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqenhncndvcmJiYXVxdHZjbmpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1ODE1MjgsImV4cCI6MjEwNzE1NzUyOH0.JcjA5NlzSWZR8HYSHEQoV_aH6lV7nJUTdN7JVJWs6GY", app:"winterfest", storageKey:"sb-winterfest-staff", guest:false};</script>
+<script src="sb.js"></script>
 
 </head>
 <body>
 <canvas id="bgsnow" aria-hidden="true"></canvas>
 <div id="gate" hidden>
   <form class="box" id="gateForm" autocomplete="on" novalidate>
-    <div style="font-size:11px;font-weight:800;letter-spacing:.3em;color:#5EE6C8">NEWPORT WINTERFEST</div>
-    <h1>Staff sign in</h1>
-    <p class="sub" style="margin:0">Use your work email and password.</p>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.3em;color:#5EE6C8">NEWPORT WINTER FESTIVAL</div>
+    <h1 id="gTitle">Staff sign in</h1>
+    <p class="sub" style="margin:0" id="gSub">Use your work email and password.</p>
+    <div class="field" id="gNameRow" hidden><label class="label" for="gName">Your name</label><input id="gName" type="text" autocomplete="name" placeholder="First and last name"></div>
     <label class="label" for="gEmail">Work email</label><input id="gEmail" type="email" autocomplete="username" placeholder="name@audrainautomuseum.org" required>
     <label class="label" for="gPass">Password</label><input id="gPass" type="password" autocomplete="current-password" minlength="8" required>
     <label class="sub" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="gShow"> Show password</label>
     <div class="err" id="gErr" role="alert"></div>
-    <button class="btn" type="submit" style="padding:12px">Sign in</button>
+    <button class="btn" type="submit" style="padding:12px" id="gGo">Sign in</button>
+    <button class="linkbtn" type="button" id="gMode">First time? Create your account</button>
     <button class="linkbtn" type="button" id="gForgot">Forgot password?</button>
-    <p class="sub" style="font-size:12px;margin:0">Demo gate only. On this public mockup it is not security.</p>
+    <button class="btn ghost" type="button" id="gLater" hidden>Not now - keep using the demo</button>
+    <p class="sub" style="font-size:12px;margin:0">Work emails only. Your login is checked by the staff server; an admin sets your team and role.</p>
   </form>
 </div>
 <div id="pingBanner" hidden role="alertdialog" aria-live="assertive"></div>
@@ -170,7 +191,7 @@ h2{font-size:20px}
   <header class="top">
     <div class="row1">
       <div class="brand" style="display:flex;align-items:center;gap:10px"><img src="logo-header.png" alt="Newport Winter Festival" style="height:36px;width:auto;border-radius:8px;background:#fff;padding:2px 5px"><span>Staff</span></div>
-      <button class="who" type="button" id="whoBtn"><span class="sw"></span><span id="whoTxt">Gates</span></button>
+      <button class="who" type="button" id="whoBtn"><span class="sw"></span><span id="whoTxt">Gates</span><span class="livepill" id="livePill">DEMO</span></button>
     </div>
   <div class="tabs"><nav aria-label="Staff sections">
     <button type="button" data-tab="shift" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>My shift</button>
@@ -258,6 +279,7 @@ function nowNext(){
 
 const views = {
   scan(){
+    if(isLive()) return liveScanView();
     const v = state.verdict, todayDoor = state.door.slice(0,8);
     return `<div class="view">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Scan tickets</h2><span class="pill" style="background:var(--panel-2)">${state.scans} scanned this shift</span></div>
@@ -273,6 +295,7 @@ const views = {
     </div>`;
   },
   pings(){
+    if(isLive()) return livePingsView();
     const inc = state.dirs.filter(d=>d.incoming);
     return `<div class="view">
       <button class="help" type="button" data-help="1">I need help here</button>
@@ -290,6 +313,7 @@ const views = {
     const key = cur ? cur.join("|") : ""; const done = state.checkin[key];
     const p = cur ? POSTS[cur[3]] : null;
     return `<div class="view">
+      ${liveStatus()}
       <div class="notice">Winterfest staff app. Your shifts, posts and team appear here once the event plan is published.</div>
       <button class="btn" type="button" data-gateqr="1" style="align-self:flex-start">Show gate check-in code</button>
       ${cur ? `<section class="panel now">
@@ -311,6 +335,7 @@ const views = {
   },
   chat(){
     state.chatSeen = true; $("#chatDot").hidden = true;
+    if(isLive()) return liveChatView();
     if(!state.msgs.ann) state.msgs.ann = SEED.ann;
     const ch = CHANNELS[state.chan], list = state.msgs[state.chan] || [];
     const chName = state.chan==="team" ? T().name : ch.name;
@@ -333,6 +358,7 @@ const views = {
     </div>`;
   },
   team(){
+    if(isLive()) return liveTeamView();
     const vt = state.viewTeam;
     return `<div class="view">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Team designations</h2><button class="btn ghost" type="button" data-roster="1">Import roster</button></div>
@@ -342,6 +368,7 @@ const views = {
   },
   alerts(){
     $("#alertDot").hidden = true;
+    if(isLive()) return liveAlertsView();
     return `<div class="view">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Dispatch alerts</h2><button class="btn" type="button" data-compose="1">Send alert</button></div>
       <div class="list">${state.alerts.map(a=>`<div class="alert ${a.lvl}${a.ack?" done":""}"><div class="bar"></div><div style="display:flex;flex-direction:column;gap:6px"><div class="sub">${a.lvl==="urgent"?`<span class="pill" style="background:var(--urgent);color:#fff">Urgent</span> `:""}${a.t} · to ${esc(a.to)}</div><div class="ti">${esc(a.txt)}</div>${a.ack?`<div class="sub">Acknowledged</div>`:`<div><button class="btn ok" type="button" data-ack="${a.id}" style="padding:7px 12px">Acknowledge</button></div>`}</div></div>`).join("")}</div>
@@ -350,28 +377,36 @@ const views = {
   }
 };
 
-const GQ_AREAS = {entry:["Village entry","ENT"], rink:["Rink","RNK"], igloo:["Igloo lounges","IGL"]};
+// Gate check-in codes. Must match tix.gates in the staff server (seeded 2026-10-09) and the attendee app's parser.
+const GATES_WF = [
+  {code:"WINTERFEST-CHECKIN:ENTRY:1", name:"Village entry", pin:"1201"},
+  {code:"WINTERFEST-CHECKIN:RINK:1", name:"Rink gate", pin:"1202"},
+  {code:"WINTERFEST-CHECKIN:IGLOO:1", name:"Igloo lounges", pin:"1203"}
+];
+const gateList = () => (LIVE.gates && LIVE.gates.length ? LIVE.gates : GATES_WF);
 function gateQRSheet(){
   openSheet("Gate check-in code", `<p class="sub">Guests open their tickets and scan this code to check themselves in. Post it at the gate (print it) or hold this screen up.</p>
-    <div style="display:flex;gap:8px"><div class="field" style="flex:1"><label class="label" for="gqArea">Area</label><select id="gqArea">${Object.entries(GQ_AREAS).map(([k,v])=>`<option value="${k}">${v[0]}</option>`).join("")}</select></div>
-    <div class="field" style="width:110px"><label class="label" for="gqGate">Gate</label><select id="gqGate">${[1,2,3,4].map(n=>`<option>${n}</option>`).join("")}</select></div></div>
+    <div class="field"><label class="label" for="gqArea">Gate</label><select id="gqArea">${gateList().map(g=>`<option value="${esc(g.code)}">${esc(g.name)}</option>`).join("")}</select></div>
     <div class="gqbox" id="gqBox" role="img" aria-label="Gate check-in QR code"></div>
     <div class="gqcode" id="gqText"></div>
     <div class="btns" style="justify-content:flex-end"><button class="btn" type="button" data-close="1">Done</button></div>`);
   drawGateQR();
 }
-function drawGateQR(){ const a = $("#gqArea").value, g = $("#gqGate").value, box = $("#gqBox"); if(!box) return; box.innerHTML = "";
-  const text = `WINTERFEST-CHECKIN:${a}:${g}`;
+function drawGateQR(){ const sel = $("#gqArea"), box = $("#gqBox"); if(!box || !sel) return; box.innerHTML = "";
+  const g = gateList().find(x=>x.code===sel.value) || gateList()[0], text = g.code;
   if(window.QRCode){ try{ new QRCode(box, {text, width:220, height:220, colorDark:"#0B1E3F", colorLight:"#ffffff", correctLevel: QRCode.CorrectLevel.M}); }catch(e){ box.textContent = "QR unavailable"; } } else box.textContent = "QR library didn't load";
-  $("#gqText").innerHTML = `${esc(text)}<br><span class="sub">Manual code: <b>${GQ_AREAS[a][1]}-${esc(g)}</b></span>`; }
-document.addEventListener("change", ev=>{ if(ev.target.id==="gqArea" || ev.target.id==="gqGate") drawGateQR(); });
+  $("#gqText").innerHTML = `${esc(text)}<br><span class="sub">Manual code: <b>${esc(g.pin||"")}</b></span>`; }
+document.addEventListener("change", ev=>{ if(ev.target.id==="gqArea") drawGateQR(); if(ev.target.id==="scanGate"){ LIVE.gate = ev.target.value; store.set("wfst.gate", LIVE.gate); } });
 function render(){
   document.documentElement.style.setProperty("--team", T().c);
-  $("#whoTxt").textContent = T().short;
+  $("#whoTxt").textContent = isLive() ? (LIVE.me.name || LIVE.me.email).split(" ")[0] + " \u00b7 " + LIVE.me.role : T().short;
+  const lp = $("#livePill"); if(lp){ lp.textContent = isLive() ? "LIVE" : "DEMO"; lp.classList.toggle("on", isLive()); }
   document.querySelectorAll(".tabs button").forEach(b=>{ if(b.dataset.tab===state.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  $("#alertDot").hidden = !state.alerts.some(a=>!a.ack);
-  $("#alertDot").textContent = state.alerts.filter(a=>!a.ack).length;
+  const unacked = isLive() ? LIVE.anns.filter(a=>!LIVE.acked.has(a.id) && a.created_by!==myId()).length : state.alerts.filter(a=>!a.ack).length;
+  $("#alertDot").hidden = !unacked;
+  $("#alertDot").textContent = unacked;
   $("#main").innerHTML = views[state.tab]();
+  const sv = document.getElementById("scanVid"); if(sv && scanStream && sv.srcObject!==scanStream){ sv.srcObject = scanStream; sv.play().catch(()=>{}); }
   const f = document.getElementById("composeForm"); if(f) f.addEventListener("submit", sendMsg);
   const m = document.getElementById("msgs"); if(m) m.lastElementChild?.scrollIntoView({block:"nearest"});
   if(state.tab!=="scan") stopScan();
@@ -382,6 +417,7 @@ function go(t){ state.tab = t; store.set("st.tab",t); render(); window.scrollTo(
 function now(){ const d=new Date(); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
 function sendMsg(ev){
   ev.preventDefault(); const i = $("#msgIn"); const txt = i.value.trim(); if(!txt) return;
+  if(isLive()) return liveSend(txt);
   (state.msgs[state.chan] = state.msgs[state.chan] || []).push({by:"You", team:state.team, t:now(), txt, me:true});
   store.set("st.msgs", state.msgs); render(); const n = $("#msgIn"); if(n) n.focus();
 }
@@ -402,17 +438,39 @@ function bgSnow(){
   document.addEventListener("visibilitychange", ()=>{ if(document.hidden){ cancelAnimationFrame(raf); raf = null; } else if(!raf) raf = requestAnimationFrame(step); });
   raf = requestAnimationFrame(step); window.__staffSnow = ()=>fl.reduce((a,f)=>a+f.y,0);
 }
-function session(){ try{ return JSON.parse(localStorage.getItem(GATE_KEY)||"null"); }catch(e){ return null; } }
-function showGate(on){ $("#gate").hidden = !on; document.querySelector(".app").hidden = on; document.querySelector(".app").setAttribute("aria-hidden", on ? "true" : "false"); if(on) setTimeout(()=>$("#gEmail").focus(), 50); }
-function gateSubmit(ev){
-  ev.preventDefault(); const e = $("#gEmail").value.trim().toLowerCase(), p = $("#gPass").value, err = $("#gErr");
+function session(){ if(isLive()) return {email:LIVE.me.email}; try{ return JSON.parse(localStorage.getItem(GATE_KEY)||"null"); }catch(e){ return null; } }
+function showGate(on){ $("#gate").hidden = !on; document.querySelector(".app").hidden = on; document.querySelector(".app").setAttribute("aria-hidden", on ? "true" : "false");
+  const later = $("#gLater"); if(later) later.hidden = STAFF_LOCK; if(on) setTimeout(()=>$("#gEmail").focus(), 50); }
+let gateMode = "signin";
+function setGateMode(m){ gateMode = m; const c = m==="create";
+  $("#gTitle").textContent = c ? "Create your staff account" : "Staff sign in";
+  $("#gSub").textContent = c ? "Use your work email and choose a password (8 or more characters)." : "Use your work email and password.";
+  $("#gNameRow").hidden = !c; $("#gGo").textContent = c ? "Create account" : "Sign in";
+  $("#gMode").textContent = c ? "Already have an account? Sign in" : "First time? Create your account";
+  $("#gPass").autocomplete = c ? "new-password" : "current-password"; $("#gErr").textContent = ""; }
+const domainOk = d => STAFF_DOMAINS.some(x=>d===x || d.endsWith("."+x));
+async function gateSubmit(ev){
+  ev.preventDefault(); const e = $("#gEmail").value.trim().toLowerCase(), p = $("#gPass").value, err = $("#gErr"), create = gateMode==="create";
   const dom = e.split("@")[1] || "";
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) || !STAFF_DOMAINS.includes(dom)){ err.textContent = "Use your work email."; return; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) || !domainOk(dom)){ err.textContent = "Use your work email."; return; }
   if(p.length < 8){ err.textContent = "Password must be at least 8 characters."; return; }
-  err.textContent = ""; try{ localStorage.setItem(GATE_KEY, JSON.stringify({email:e, at:Date.now()})); }catch(x){}
-  $("#gPass").value = ""; showGate(false); render(); toast("Signed in as " + e);
+  if(!window.SB){ err.textContent = "The staff server didn't load. Check your connection and try again."; return; }
+  const btn = $("#gGo"); btn.disabled = true; err.textContent = create ? "Creating your account\u2026" : "Signing in\u2026"; LIVE.busy = true;
+  try{
+    if(create) await SB.signUp(e, p); else await SB.signIn(e, p);
+    const me = await liveJoin(create ? $("#gName").value.trim() : null);
+    err.textContent = ""; $("#gPass").value = ""; showGate(false); render(); toast(`Signed in as ${me.name || me.email} \u00b7 ${me.role}`);
+  }catch(x){
+    err.textContent = x.message || "Sign-in failed";
+    if(window.SB && SB.user && !LIVE.me){ try{ await SB.signOut(); }catch(y){} }
+  }finally{ btn.disabled = false; LIVE.busy = false; }
 }
-function signOut(){ if(!STAFF_LOCK){ closeSheet(); toast("Sign-in is off for now"); return; } try{ localStorage.removeItem(GATE_KEY); }catch(x){} closeSheet(); showGate(true); }
+async function signOut(){
+  closeSheet();
+  if(window.SB && SB.user){ liveStop(); try{ await SB.signOut(); }catch(e){} toast("Signed out"); }
+  else if(!STAFF_LOCK){ toast("You're using the demo. Sign in for the live staff tools."); }
+  if(STAFF_LOCK) showGate(true); render();
+}
 function rosterFor(k){ const r = state.roster.filter(p=>p.team===k); return r.length ? `<div class="list">${r.map(p=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="ti">${esc(p.name)}</div><div class="sub">${esc(p.role)} \u00b7 ${esc(p.email)}</div></div></div>`).join("")}</div>` : ""; }
 function teamKey(name){ const n = (name||"").toLowerCase(); const hit = Object.entries(TEAMS).find(([k,t])=>t.name.toLowerCase()===n || t.short.toLowerCase()===n || k===n || n.includes(t.short.toLowerCase())); return hit ? hit[0] : "volunteer"; }
 function rosterSheet(){ openSheet("Import roster", `<p class="sub">Paste a CSV with columns name, email, team, role. One person per line. The real roster loads from Newport Life's staff list.</p>
@@ -422,6 +480,7 @@ function importRoster(){ const lines = ($("#rosterCsv").value||"").split(/\r?\n/
   const ppl = lines.map(l=>l.split(",").map(x=>x.trim())).filter(c=>c[0]).map(c=>({name:c[0], email:c[1]||"", team:teamKey(c[2]), role:c[3]||"Staff"}));
   state.roster = ppl; store.set("wfst.roster", ppl); Object.keys(TEAMS).forEach(k=>TEAMS[k].size = ppl.filter(p=>p.team===k).length); closeSheet(); toast(`${ppl.length} people imported into ${new Set(ppl.map(p=>p.team)).size} teams`); render(); }
 function sendHelp(){
+  if(isLive()) return liveHelp();
   const finish = (ll, how) => { const to = ["Ops Lead","Leads"], p = {id:Date.now(), t:now(), to, msg:`Help needed here (${how})`, acks:{}, ll}; state.pings.unshift(p); store.set("wfst.pings", state.pings);
     state.dirs.unshift({t:now(), from:"Help ping (demo copy as received by Ops)", label:"Help needed", note:`From ${T().short} \u00b7 ${how}`, ll, incoming:true, help:true}); store.set("wfst.dirs", state.dirs);
     toast("Help ping sent to Ops and leads with your location"); render();
@@ -444,12 +503,13 @@ async function startScan(){
   v.srcObject = scanStream; await v.play().catch(()=>{});
   const det = ("BarcodeDetector" in window) ? new BarcodeDetector({formats:["qr_code"]}) : null; if(!det) await loadJsQR();
   const c = document.createElement("canvas"), x = c.getContext("2d", {willReadFrequently:true}); let last = "", lastAt = 0;
-  scanTimer = setInterval(async ()=>{ if(!v.videoWidth) return; let txt = null;
+  scanTimer = setInterval(async ()=>{ const v = document.getElementById("scanVid"); if(!v || !v.videoWidth) return; let txt = null;
     try{ if(det){ const r = await det.detect(v); if(r[0]) txt = r[0].rawValue; } else if(window.jsQR){ c.width = v.videoWidth; c.height = v.videoHeight; x.drawImage(v,0,0); const img = x.getImageData(0,0,c.width,c.height); const r = window.jsQR(img.data, c.width, c.height); if(r) txt = r.data; } }catch(e){}
     if(txt && (txt!==last || Date.now()-lastAt > 3000)){ last = txt; lastAt = Date.now(); checkTicket(txt); } }, 350);
 }
 function serialFrom(raw){ const t = String(raw||"").trim(); let m = t.match(/^(?:WINTERFEST-TICKET|WFT):(.+)$/i); return (m ? m[1] : t).toUpperCase(); }
 function checkTicket(raw){
+  if(isLive()) return liveCheck(raw);
   const ser = serialFrom(raw), door = state.door.find(d=>d.serial===ser); state.scans++;
   try{ if(navigator.vibrate) navigator.vibrate(80); }catch(e){}
   if(!/^(WF-[A-Z0-9]{5}-\d+|WFD-[A-Z0-9]{5}-\d+)$/.test(ser)){ state.verdict = {cls:"bad", title:"NOT VALID", line1:ser || "Empty code", line2:"Not a Winterfest ticket. Send the guest to the box office."}; render(); return; }
@@ -458,7 +518,7 @@ function checkTicket(raw){
   state.redeemed[ser] = {t:now(), by:T().short}; store.set("wfst.redeemed", state.redeemed);
   state.verdict = {cls:"ok", title:"VALID - ADMIT", line1:door ? `${door.name} \u00b7 ${door.type}` : "Winterfest ticket", line2:ser}; render();
 }
-function doorSheet(){ openSheet("Issue door ticket", `<p class="sub">For guests given entry at the door. Each ticket is logged with who issued it.</p>
+function doorSheet(){ if(isLive()) return liveDoorSheet(); openSheet("Issue door ticket", `<p class="sub">For guests given entry at the door. Each ticket is logged with who issued it.</p>
     <div class="field"><label class="label" for="dtName">Name</label><input id="dtName" placeholder="Guest name"></div>
     <div class="field"><label class="label" for="dtType">Type</label><select id="dtType"><option>Adult</option><option>Child</option><option>Comp</option><option>Vendor guest</option></select></div>
     <div class="field"><label class="label" for="dtCount">How many</label><input id="dtCount" type="number" min="1" max="20" value="1"></div>
@@ -471,6 +531,7 @@ function issueDoor(){ const name = ($("#dtName").value||"").trim() || "Door gues
 function recipients(){ return `<optgroup label="People (sample)">${PEOPLE.map(p=>`<option value="person:${esc(p)}">${esc(p)}</option>`).join("")}</optgroup><optgroup label="Teams">${Object.values(TEAMS).map(t=>`<option value="team:${esc(t.name)}">${esc(t.name)}</option>`).join("")}</optgroup><optgroup label="Everyone at a post (sample)">${Object.keys(WF_POSTS).map(k=>`<option value="post:${esc(k)}">Everyone at ${esc(k)}</option>`).join("")}</optgroup><option value="all:Everyone">Everyone</option>`; }
 function expand(v){ const [kind, name] = v.split(/:(.*)/s); if(kind==="person") return [name]; if(kind==="team") return [name + " (lead)", name + " (staff)"]; if(kind==="post") return ["Staff at " + name.split(" ")[0]]; return ["All staff"]; }
 function pingSheet(){
+  if(isLive()) return livePingSheet();
   openSheet("Send a ping", `<div class="field"><label class="label" for="pTo">To</label><select id="pTo">${recipients()}</select></div>
     <div class="field"><label class="label" for="pPre">Message</label><select id="pPre">${PRESETS.map((p,i)=>`<option value="${i}">${esc(p.replace("{post}","a post"))}</option>`).join("")}<option value="custom">Custom\u2026</option></select></div>
     <div class="field"><label class="label" for="pPost">Post (for "Need you at")</label><select id="pPost">${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
@@ -491,6 +552,7 @@ function incomingPing(msg, from){
   b.hidden = false; const d = $("#pingDot"); if(d) d.hidden = false;
 }
 function dirSheet(ll, label){
+  if(isLive()) return liveDirSheet(ll, label);
   openSheet("Send directions", `<div class="field"><label class="label" for="dDest">Destination</label><select id="dDest">${ll?`<option value="pt">${esc(label||"Point dropped on the map")}</option>`:""}${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
     ${ll?"":`<button class="btn ghost" type="button" data-pickpoint="1">Drop a point on the map instead</button>`}
     <div class="field"><label class="label" for="dTo">To</label><select id="dTo">${recipients()}</select></div>
@@ -504,8 +566,9 @@ function sendDir(llStr){
   store.set("wfst.dirs", state.dirs); closeSheet(); toast("Directions sent"); render();
 }
 let dirMarker = null;
-function openDir(i){
-  const d = state.dirs[i]; go("map");
+function openDir(i){ showDir(state.dirs[i]); }
+function showDir(d){
+  if(!d || !d.ll) return; go("map");
   setTimeout(()=>{ if(!smap) return; if(dirMarker) smap.removeLayer(dirMarker);
     dirMarker = L.marker(d.ll, {icon:L.divIcon({className:"", html:'<div class="dirmk"></div>', iconSize:[30,30]})}).addTo(smap);
     smap.flyTo(d.ll, 18, {duration:.6});
@@ -576,6 +639,462 @@ function showPost(k){
   openSheet(p.name, html);
 }
 
+// ---------- LIVE: the real staff back end (Supabase project newport-life-events, app "winterfest"), wired 2026-10-09.
+// Signed in with a work email = live: chat, pings, alerts, roster, ticket scans, door sales and the admin panel all go
+// through the server, and the database enforces who can do what. Not signed in (or no connection at start) = the demo above.
+const APP = "winterfest";
+const LIVE = {me:null, busy:false, joining:null, members:[], msgs:[], anns:[], pings:[], gates:[], sellable:[], counts:null,
+  log:[], door:[], unsub:[], acked:new Set(store.get("wfst.annAck", [])), queue:store.get("wfst.scanq", []),
+  gate:store.get("wfst.gate", "WINTERFEST-CHECKIN:ENTRY:1"), adm:"comp", found:[], report:[], act:null, claim:null};
+const DEVICE = (()=>{ let d = store.get("wfst.device", null); if(!d){ d = "wfst-" + Math.random().toString(36).slice(2,10); store.set("wfst.device", d); } return d; })();
+const RANK = {volunteer:1, staff:2, lead:3, admin:4};
+function isLive(){ return !!(LIVE.me && window.SB && SB.ok && SB.user); }
+const can = r => isLive() && (RANK[LIVE.me.role]||0) >= RANK[r];
+const myId = () => (window.SB && SB.user) ? SB.user.id : null;
+const member = id => LIVE.members.find(m=>m.user_id===id);
+const nameOf = id => { if(id===myId()) return "You"; const m = member(id); return m ? (m.name || m.email) : "Staff"; };
+const teamColor = id => { const m = member(id); return m && m.team ? (TEAMS[teamKey(m.team)]||{}).c || "#888" : "#888"; };
+const hhmm = ts => { const d = new Date(ts); return String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0"); };
+const dollars = c => "$" + (c/100).toFixed(c % 100 ? 2 : 0);
+const isNetErr = e => !navigator.onLine || /connection|fetch|network|Load failed/i.test((e && e.message) || "");
+
+function liveBoot(){
+  if(!window.SB) return;
+  SB.onAuth(async u=>{
+    if(u && !LIVE.me && !LIVE.busy){ try{ await liveJoin(); showGate(false); render(); }catch(e){ console.warn("[live] not staff:", e.message); if(STAFF_LOCK) showGate(true); } }
+    else if(!u && LIVE.me){ liveStop(); if(STAFF_LOCK) showGate(true); render(); }
+  });
+  addEventListener("online", ()=>{ if(isLive()) flushQueue(); });
+}
+function liveJoin(name){
+  if(LIVE.joining) return LIVE.joining;
+  LIVE.joining = SB.rpc("staff", "join", {p_app:APP, p_name:name || null}).then(async me=>{
+    LIVE.me = me; await liveLoad(); liveSubscribe(); if(LIVE.queue.length) flushQueue(); return LIVE.me;
+  }).finally(()=>{ LIVE.joining = null; });
+  return LIVE.joining;
+}
+function liveStop(){ LIVE.unsub.forEach(f=>{ try{ f(); }catch(e){} }); LIVE.unsub = []; LIVE.me = null; LIVE.members = []; LIVE.msgs = []; LIVE.anns = []; LIVE.pings = []; LIVE.sellable = []; }
+async function liveLoad(){
+  const jobs = [
+    SB.select("staff","members", q=>q.eq("app",APP).order("name")).then(r=>{ LIVE.members = r; }),
+    SB.select("staff","messages", q=>q.eq("app",APP).order("created_at",{ascending:false}).limit(300)).then(r=>{ LIVE.msgs = r.reverse(); }),
+    SB.select("staff","announcements", q=>q.eq("app",APP).order("created_at",{ascending:false}).limit(60)).then(r=>{ LIVE.anns = r; }),
+    SB.select("staff","pings", q=>q.eq("app",APP).order("created_at",{ascending:false}).limit(80)).then(r=>{ LIVE.pings = r; }),
+    SB.select("tix","gates", q=>q.eq("app",APP).eq("active",true).order("code")).then(r=>{ LIVE.gates = r; }),
+    refreshCounts(),
+    can("staff") ? SB.rpc("tix","sellable",{p_app:APP}).then(r=>{ LIVE.sellable = r || []; }) : null
+  ];
+  await Promise.all(jobs.map(p=>p && p.catch(e=>console.warn("[live]", e.message))));
+  const mine = member(myId());
+  if(mine){ Object.assign(LIVE.me, {role:mine.role, team:mine.team, name:mine.name, can_override:mine.can_override}); }
+  if(LIVE.me.team) state.team = teamKey(LIVE.me.team);
+  if(LIVE.gates.length && !LIVE.gates.some(g=>g.code===LIVE.gate)) LIVE.gate = LIVE.gates[0].code;
+}
+function refreshCounts(){ return SB.rpc("tix","gate_counts",{p_app:APP}).then(r=>{ LIVE.counts = r; if(state.tab==="scan") keepRender(); }).catch(()=>{}); }
+// Re-render without losing what someone is typing in the chat box.
+function keepRender(){ const i = $("#msgIn"), v = i ? i.value : "", f = i && document.activeElement===i; render(); const n = $("#msgIn"); if(n && v){ n.value = v; if(f) n.focus(); } }
+function forMe(p){
+  if(p.from_user===myId()) return false;
+  if(p.kind==="help") return can("lead") || teamKey(LIVE.me.team||"")==="ops";
+  if(p.to_user) return p.to_user===myId();
+  if(p.to_team) return !!LIVE.me.team && p.to_team.toLowerCase()===LIVE.me.team.toLowerCase();
+  return true;
+}
+function liveSubscribe(){
+  LIVE.unsub.forEach(f=>f()); LIVE.unsub = [];
+  LIVE.unsub.push(SB.live("staff","messages", (row, ev)=>{
+    if(ev!=="INSERT" || row.app!==APP || LIVE.msgs.some(m=>m.id===row.id)) return;
+    LIVE.msgs.push(row);
+    if(state.tab==="chat") keepRender(); else if(row.sender!==myId()){ const d = $("#chatDot"); d.hidden = false; d.textContent = "•"; }
+  }));
+  LIVE.unsub.push(SB.live("staff","announcements", (row, ev)=>{
+    if(ev!=="INSERT" || row.app!==APP || LIVE.anns.some(a=>a.id===row.id)) return;
+    LIVE.anns.unshift(row);
+    if(row.created_by!==myId()){ toast((row.priority==="urgent" ? "URGENT: " : "Alert: ") + row.body.slice(0,80)); try{ if(navigator.vibrate) navigator.vibrate(row.priority==="urgent" ? [300,100,300] : 120); }catch(e){} }
+    keepRender();
+  }));
+  LIVE.unsub.push(SB.live("staff","pings", (row, ev)=>{
+    if(!row || row.app!==APP) return;
+    const i = LIVE.pings.findIndex(p=>p.id===row.id); if(i>=0) LIVE.pings[i] = row; else LIVE.pings.unshift(row);
+    if(ev==="INSERT" && forMe(row)){ pingBanner(row); const d = $("#pingDot"); if(d) d.hidden = false; }
+    if(ev==="UPDATE" && row.from_user===myId() && row.acked_by && row.acked_by!==myId()) toast(`${nameOf(row.acked_by)}: ${row.status==="closed" ? "done" : "on it"}`);
+    if(state.tab==="pings") keepRender();
+  }));
+}
+
+// ---------- Status line on My shift, account sheet
+function liveStatus(){
+  if(isLive()) return `<div class="notice" style="border-style:solid;border-color:var(--ok)"><b>Live.</b> Signed in as <b>${esc(LIVE.me.name || LIVE.me.email)}</b> (${esc(LIVE.me.role)}${LIVE.me.team ? " · " + esc(LIVE.me.team) : ", no team yet"}). Chat, pings, alerts and ticket scans go through the staff server.</div>`;
+  return `<div class="notice">Demo mode: nothing here leaves this phone. <button class="btn" type="button" data-signin="1" style="padding:6px 10px;margin-left:6px">Sign in with your work email</button></div>`;
+}
+function liveAccountSheet(){
+  const m = LIVE.me;
+  openSheet("Account", `<p class="sub">Signed in as <b>${esc(m.name || "")}</b> · ${esc(m.email)}</p>
+    <div class="kv"><span><b>Role</b> ${esc(m.role)}</span><span><b>Team</b> ${esc(m.team || "not set")}</span>${m.can_override ? `<span><b>Override</b> yes</span>` : ""}</div>
+    <p class="sub">An admin sets your team and role. Ask Ops if they're wrong.</p>
+    ${can("admin") ? `<button class="btn" type="button" data-admin="comp">Admin panel</button>` : ""}
+    <button class="btn ghost" type="button" data-gateqr="1">Gate check-in codes</button>
+    <button class="btn ghost" type="button" data-signout="1">Sign out</button>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Close</button></div>`);
+}
+
+// ---------- Scan tab
+function liveScanView(){
+  const v = state.verdict, c = LIVE.counts || {};
+  return `<div class="view">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2>Scan tickets</h2><span class="pill" style="background:var(--ok);color:#fff">${c.today_valid ?? 0} admitted today</span></div>
+    <div class="field"><label class="label" for="scanGate">This gate</label><select id="scanGate">${gateList().map(g=>`<option value="${esc(g.code)}"${g.code===LIVE.gate?" selected":""}>${esc(g.name)}</option>`).join("")}</select></div>
+    ${v ? `<div class="verdict ${v.cls}" role="status"><b>${esc(v.title)}</b><span>${esc(v.line1)}</span><span style="font-weight:600;opacity:.9">${esc(v.line2||"")}</span></div>` : `<div class="sub">Point the camera at a guest's ticket QR. Green = admit, amber = already used or wrong time, red = not valid. Every gate checks the same ticket server.</div>`}
+    ${LIVE.queue.length ? `<div class="notice" style="border-color:#d8a32a">${LIVE.queue.length} scan${LIVE.queue.length===1?"":"s"} saved without signal. They check automatically when the connection is back. <button class="btn ghost" type="button" data-syncq="1" style="padding:5px 10px">Sync now</button></div>` : ""}
+    <div class="scanbox" id="scanBox"><video id="scanVid" playsinline muted></video><div class="frame"></div></div>
+    <div class="btns"><button class="btn" type="button" data-scanstart="1">Start camera</button><button class="btn ghost" type="button" data-scanstop="1">Stop</button></div>
+    <div class="field"><label class="label" for="manSer">Can't scan? Type the ticket number${can("staff") ? "" : " (staff and leads)"}</label><div style="display:flex;gap:8px"><input id="manSer" placeholder="WF-1A2B3C4D" autocapitalize="characters" style="flex:1;min-width:0"><button class="btn" type="button" data-scanman="1">Check</button></div></div>
+    <section style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h2>Door sales</h2><button class="btn" type="button" data-doorissue="1">Sell door tickets</button></div>
+      <div class="list">${LIVE.door.length ? LIVE.door.slice(0,10).map((d,i)=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="ti">${esc(d.holder || "Door guest")} · ${esc(d.type || "")}</div><div class="sub">${esc(d.serial)} · ${d.t}${d.claim_token ? "" : " · loaded"}</div></div>${d.claim_token ? `<button class="btn ghost" type="button" data-doorqr="${i}" style="padding:7px 10px">QR</button>` : ""}</div>`).join("") : `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">Sell at the door on the iPad: the guest scans the QR with the Winter Festival app and the ticket loads on their phone.</div></div>`}</div></section>
+    <section style="display:flex;flex-direction:column;gap:8px"><h2>This device's scans</h2>
+      <div class="list">${LIVE.log.slice(0,10).map(r=>`<div class="item" style="grid-template-columns:minmax(0,1fr)"><div><div class="ti">${esc(r.serial)} · ${esc(RESULT_LABEL[r.result] || r.result)}</div><div class="sub">${r.t}${r.synced ? " · synced later" : ""}</div></div></div>`).join("") || `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">No scans yet this shift.</div></div>`}</div></section>
+  </div>`;
+}
+const RESULT_LABEL = {valid:"admitted", already_used:"already used", not_valid:"not valid", wrong_session:"wrong session", queued:"saved offline"};
+function setVerdict(r, serial){
+  const ser = r.serial || serial || "";
+  const who = [r.holder, r.type].filter(Boolean).join(" · ");
+  const V = {
+    valid: {cls:"ok", title:"VALID - ADMIT", line1: who || "Winterfest ticket", line2: ser + (r.is_comp ? " · comp" : "")},
+    already_used: {cls:"used", title:"ALREADY USED", line1: ser, line2: "This ticket was already scanned in. Check ID or send the guest to the box office."},
+    wrong_session: {cls:"used", title:"WRONG SESSION", line1: ser + (who ? " · " + who : ""), line2: "Not valid at this time. Check the session time on the ticket."},
+    not_valid: {cls:"bad", title:"NOT VALID", line1: ser || "Unknown code", line2: "Not a valid Winterfest ticket (refunded, removed or not ours). Send the guest to the box office."}
+  };
+  state.verdict = V[r.result] || V.not_valid;
+  try{ if(navigator.vibrate) navigator.vibrate(r.result==="valid" ? 80 : [200,80,200]); }catch(e){}
+}
+async function liveCheck(raw){
+  const txt = String(raw||"").trim(); if(!txt) return;
+  const full = /^WINTERFEST-TICKET:[^:\s]+:[^:\s]+$/i.test(txt), serial = full ? txt.split(":")[1].toUpperCase() : serialFrom(txt);
+  state.scans++;
+  if(!full && !can("staff")){ state.verdict = {cls:"bad", title:"SCAN THE QR", line1:serial, line2:"Checking by typed number needs a staff or lead login. Scan the QR on the guest's phone, or call a lead."}; render(); return; }
+  const at = new Date().toISOString();
+  try{
+    const r = full ? await SB.rpc("tix","scan",{p_app:APP, p_qr:txt, p_gate:LIVE.gate, p_device:DEVICE})
+                   : await SB.rpc("tix","scan_serial",{p_app:APP, p_serial:serial, p_gate:LIVE.gate, p_device:DEVICE});
+    setVerdict(r, serial); LIVE.log.unshift({serial:r.serial || serial, result:r.result, t:now()});
+    render(); refreshCounts(); if(LIVE.queue.length) flushQueue();
+  }catch(e){
+    if(full && isNetErr(e)){
+      LIVE.queue.push({qr:txt, gate:LIVE.gate, at}); store.set("wfst.scanq", LIVE.queue);
+      LIVE.log.unshift({serial, result:"queued", t:now()});
+      state.verdict = {cls:"used", title:"SAVED - NO SIGNAL", line1:serial, line2:"Can't reach the ticket server. The scan is saved and checks when signal returns. Follow the gate's no-signal rule."};
+    } else state.verdict = {cls:"bad", title:"CHECK FAILED", line1:serial, line2:e.message};
+    render();
+  }
+}
+let flushing = false;
+async function flushQueue(){
+  if(flushing || !isLive() || !LIVE.queue.length) return; flushing = true;
+  try{
+    while(LIVE.queue.length){
+      const q = LIVE.queue[0];
+      try{ const r = await SB.rpc("tix","scan",{p_app:APP, p_qr:q.qr, p_gate:q.gate, p_device:DEVICE, p_scanned_at:q.at});
+        LIVE.log.unshift({serial:r.serial || q.qr.split(":")[1], result:r.result, t:hhmm(q.at), synced:true});
+        if(r.result!=="valid") toast(`Offline scan ${r.serial || ""} came back ${RESULT_LABEL[r.result] || r.result}`);
+      }catch(e){ if(isNetErr(e)) break; LIVE.log.unshift({serial:q.qr.split(":")[1] || "?", result:"not_valid", t:hhmm(q.at), synced:true}); }
+      LIVE.queue.shift(); store.set("wfst.scanq", LIVE.queue);
+    }
+  } finally { flushing = false; refreshCounts(); if(state.tab==="scan") render(); }
+}
+
+// ---------- Door sales (iPad) and claim QRs
+function liveDoorSheet(){
+  if(!can("staff")){ toast("Door sales need a staff, lead or admin login"); return; }
+  const types = LIVE.sellable;
+  openSheet("Sell door tickets", types.length ? `<p class="sub">Take payment first. The guest then scans the QR with the Newport Winter Festival app and the ticket loads on their phone. If you add their email, the tickets also load when they sign in with it.</p>
+    <div class="field"><label class="label" for="dsType">Ticket</label><select id="dsType">${types.map(t=>`<option value="${t.id}">${esc(t.event)} · ${esc(t.name)} · ${dollars(t.price_cents)}</option>`).join("")}</select></div>
+    <div style="display:flex;gap:8px"><div class="field" style="width:110px"><label class="label" for="dsQty">How many</label><input id="dsQty" type="number" min="1" max="20" value="1"></div>
+    <div class="field" style="flex:1"><label class="label" for="dsName">Guest name</label><input id="dsName" placeholder="Optional"></div></div>
+    <div class="field"><label class="label" for="dsEmail">Guest email</label><input id="dsEmail" type="email" placeholder="Optional - tickets load when they sign in with it"></div>
+    <div style="display:flex;gap:8px"><div class="field" style="flex:1"><label class="label" for="dsPay">Paid by</label><select id="dsPay"><option value="cash">Cash</option><option value="card_reader">Card reader</option><option value="other">Other</option></select></div>
+    <div class="field" style="flex:1"><label class="label" for="dsRef">Receipt / reference</label><input id="dsRef" placeholder="Optional"></div></div>
+    <div class="sub" id="dsTotal"></div>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-doorsell="1">Sell and show QR codes</button></div>`
+    : `<p class="sub">No ticket types are set up for Winterfest yet. An admin adds them in the ticket back end.</p><div class="btns" style="justify-content:flex-end"><button class="btn" type="button" data-close="1">Close</button></div>`);
+  doorTotal();
+}
+function doorTotal(){ const el = $("#dsTotal"); if(!el) return; const t = LIVE.sellable.find(x=>x.id===$("#dsType").value), n = Math.max(1, Math.min(20, +$("#dsQty").value || 1)); el.textContent = t ? `Total to collect: ${dollars(t.price_cents * n)}` : ""; }
+document.addEventListener("input", ev=>{ if(ev.target.id==="dsQty" || ev.target.id==="dsType") doorTotal(); });
+document.addEventListener("change", ev=>{ if(ev.target.id==="dsType") doorTotal(); if(ev.target.id==="admType") admPrice(); });
+async function liveDoorSell(btn){
+  const n = Math.max(1, Math.min(20, +$("#dsQty").value || 1)), email = $("#dsEmail").value.trim();
+  if(email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ toast("Check the email"); return; }
+  btn.disabled = true;
+  try{
+    const r = await SB.rpc("tix","door_sale",{p_app:APP, p_ticket_type_id:$("#dsType").value, p_qty:n, p_email:email || null,
+      p_payment_method:$("#dsPay").value, p_payment_ref:$("#dsRef").value.trim() || null, p_buyer_name:$("#dsName").value.trim() || null});
+    const list = (r.tickets || []).map(t=>Object.assign({t:now()}, t));
+    LIVE.door.unshift(...list); refreshCounts();
+    showClaims(list, "Door tickets", email);
+  }catch(e){ toast(e.message); btn.disabled = false; }
+}
+function showClaims(list, title, email){ LIVE.claim = {list, i:0, title, email}; drawClaim(); }
+function drawClaim(){
+  const c = LIVE.claim; if(!c || !c.list.length) return; const t = c.list[c.i], n = c.list.length;
+  const code = t.claim_token ? `WINTERFEST-CLAIM:${t.serial}:${t.claim_token}` : null;
+  openSheet(`${c.title} · ${c.i+1} of ${n}`, `${code ? `<div class="claimqr" id="claimBox" role="img" aria-label="Ticket claim QR code"></div>
+      <div class="gqcode">${esc(t.serial)} · ${esc(t.type || "")}${t.holder ? " · " + esc(t.holder) : ""}</div>
+      <p class="sub" style="text-align:center">Guest: open the Newport Winter Festival app, go to My Tickets and scan this. It loads once and locks to that phone.${c.email || t.reserved_email ? ` Or sign in to the app with <b>${esc(c.email || t.reserved_email)}</b> and it loads by itself.` : ""}</p>`
+      : `<p>${esc(t.serial)} · ${esc(t.type || "")}</p><p class="sub">Already on the guest's phone. Nothing to scan.</p>`}
+    <div class="btns" style="justify-content:space-between"><button class="btn ghost" type="button" data-claimnav="-1"${c.i===0?" disabled":""}>Previous</button><button class="btn" type="button" data-close="1">Done</button><button class="btn ghost" type="button" data-claimnav="1"${c.i>=n-1?" disabled":""}>Next</button></div>`);
+  const box = $("#claimBox");
+  if(box && code){ if(window.QRCode){ try{ new QRCode(box, {text:code, width:260, height:260, colorDark:"#0B1E3F", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M}); }catch(e){ box.textContent = code; } } else box.textContent = code; }
+}
+
+// ---------- Chat, alerts (announcements)
+const CHAN_DB = { all:"all", leads:"leads", ops:"ops" };
+function chanKey(c){ if(c==="team") return LIVE.me.team || null; return CHAN_DB[c] || null; }
+function canPost(c){ if(c==="ann" || c==="all" || c==="leads") return can("lead"); if(c==="team") return !!LIVE.me.team; return true; }
+const CHAN_NOTE = {ann:"Leads and Ops post, everyone reads", all:"Leads post here, everyone reads", leads:"Team leads and Ops", ops:"Goes straight to the Ops desk. They reply here or ping you."};
+function liveChatView(){
+  const c = state.chan, key = chanKey(c), myTeam = LIVE.me.team ? TEAMS[teamKey(LIVE.me.team)] : null;
+  let list;
+  if(c==="ann") list = LIVE.anns.slice().reverse().map(a=>({by:a.created_by, at:a.created_at, txt:(a.priority==="urgent" ? "URGENT · " : "") + (a.title && a.title!=="Announcement" ? a.title + ": " : "") + a.body}));
+  else list = LIVE.msgs.filter(m=>key && m.channel===key).map(m=>({by:m.sender, at:m.created_at, txt:m.body}));
+  const title = c==="team" ? (LIVE.me.team || "My team") : CHANNELS[c].name;
+  const note = c==="team" ? (LIVE.me.team ? `${LIVE.members.filter(m=>m.team===LIVE.me.team).length} people` : "An admin hasn't put you on a team yet") : CHAN_NOTE[c] || CHANNELS[c].note;
+  const unreadable = (c==="leads" && !can("lead"));
+  return `<div class="view">
+    <div class="chan" role="group" aria-label="Channels">${Object.entries(CHANNELS).map(([k,ch])=>`<button type="button" data-chan="${k}" aria-pressed="${k===c}">${k==="team" ? `<span class="sw" style="background:${myTeam ? myTeam.c : "#888"}"></span>${esc(LIVE.me.team || "My team")}` : esc(ch.name)}</button>`).join("")}</div>
+    <div><h2>${esc(title)}</h2><div class="sub">${esc(note)}</div></div>
+    <div class="msgs" id="msgs">${unreadable ? `<div class="sub">Only leads read this channel. Anything you send here goes to them.</div>` : ""}${list.map(m=>{ const mine = m.by===myId(), loc = /^📍 /.test(m.txt); return `<div class="msg${mine?" me":""}${loc?" loc":""}"><div class="by">${mine?"":`<span class="sw" style="background:${teamColor(m.by)}"></span>`}${esc(nameOf(m.by))} · ${hhmm(m.at)}</div><div class="bub">${esc(m.txt)}</div></div>`; }).join("") || `<div class="sub">No messages yet.</div>`}</div>
+    ${canPost(c) ? `<form class="compose" id="composeForm"><button type="button" class="btn ghost" data-shareloc="1" aria-label="Share my location" style="padding:8px 10px">Pin</button><input id="msgIn" placeholder="Message ${esc(title)}" autocomplete="off" maxlength="2000"><button class="btn" type="submit">Send</button></form>`
+      : `<div class="ro">${c==="team" ? "You'll get a team channel once an admin sets your team. Use Ops Desk meanwhile." : "Read-only. Leads and Ops post here."}</div>`}
+  </div>`;
+}
+async function liveSend(txt){
+  const c = state.chan;
+  try{
+    if(c==="ann"){ const a = await SB.insert("staff","announcements",{app:APP, title:"Announcement", body:txt, priority:"normal"}); if(a && !LIVE.anns.some(x=>x.id===a.id)) LIVE.anns.unshift(a); }
+    else { const key = chanKey(c); if(!key){ toast("No team channel yet"); return; }
+      const m = await SB.insert("staff","messages",{app:APP, channel:key, body:txt}); if(m && !LIVE.msgs.some(x=>x.id===m.id)) LIVE.msgs.push(m); }
+    render(); const n = $("#msgIn"); if(n) n.focus();
+  }catch(e){ toast(e.message); }
+}
+function liveShareLoc(){
+  const send = txt => liveSend(txt);
+  if(navigator.geolocation) navigator.geolocation.getCurrentPosition(p=>send(`📍 Shared location: ${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`), ()=>send("📍 Shared location (permission declined)"), {timeout:5000});
+  else send("📍 Shared location (not available on this device)");
+}
+function liveAlertsView(){
+  return `<div class="view">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Dispatch alerts</h2>${can("lead") ? `<button class="btn" type="button" data-compose="1">Send alert</button>` : ""}</div>
+    <div class="list">${LIVE.anns.map(a=>{ const ack = LIVE.acked.has(a.id); return `<div class="alert ${a.priority==="urgent"?"urgent":"info"}${ack?" done":""}"><div class="bar"></div><div style="display:flex;flex-direction:column;gap:6px"><div class="sub">${a.priority==="urgent"?`<span class="pill" style="background:var(--urgent);color:#fff">Urgent</span> `:""}${hhmm(a.created_at)} · ${esc(a.title && a.title!=="Announcement" ? "to " + a.title : "announcement")} · from ${esc(nameOf(a.created_by))}</div><div class="ti">${esc(a.body)}</div>${ack?`<div class="sub">Acknowledged</div>`:`<div><button class="btn ok" type="button" data-ack="${a.id}" style="padding:7px 12px">Acknowledge</button></div>`}</div></div>`; }).join("") || `<div class="alert"><div class="bar"></div><div class="sub">No alerts yet. Leads and Ops send them here.</div></div>`}</div>
+    <div class="notice">Live: alerts reach every signed-in staff phone instantly.</div>
+  </div>`;
+}
+async function liveAnnounce(to, txt, priority){
+  try{ const a = await SB.insert("staff","announcements",{app:APP, title:to || "All staff", body:txt, priority});
+    if(a && !LIVE.anns.some(x=>x.id===a.id)) LIVE.anns.unshift(a); closeSheet(); toast("Alert sent"); render(); }
+  catch(e){ toast(e.message); }
+}
+
+// ---------- Pings, help, directions
+function liveRecipients(){
+  const people = LIVE.members.filter(m=>m.user_id!==myId() && m.active);
+  const teams = [...new Set(Object.values(TEAMS).map(t=>t.name).concat(LIVE.members.map(m=>m.team).filter(Boolean)))];
+  return `${people.length ? `<optgroup label="People">${people.map(m=>`<option value="user:${m.user_id}">${esc(m.name || m.email)}${m.team ? " (" + esc(m.team) + ")" : ""}</option>`).join("")}</optgroup>` : ""}
+    <optgroup label="Teams">${teams.map(t=>`<option value="team:${esc(t)}">${esc(t)}</option>`).join("")}</optgroup><option value="all:">Everyone</option>`;
+}
+function target(v){ const [k, x] = v.split(/:(.*)/s); return {to_user: k==="user" ? x : null, to_team: k==="team" ? x : null}; }
+const toLabel = p => p.to_user ? nameOf(p.to_user) : p.to_team ? p.to_team : "Everyone";
+function livePingsView(){
+  const pings = LIVE.pings.filter(p=>p.kind!=="direction"), dirs = LIVE.pings.filter(p=>p.kind==="direction");
+  const stat = p => p.status==="open" ? `<span class="ackp">open</span>` : `<span class="ackp ok">${p.status==="closed" ? "done" : "on it"}${p.acked_by ? " · " + esc(nameOf(p.acked_by)) : ""}</span>`;
+  const acts = p => (p.status==="open" && forMe(p)) || (p.status==="ack" && p.acked_by===myId()) ? `<div class="btns">${p.status==="open" ? `<button class="btn ok" type="button" data-lping="${p.id}|ack" style="padding:6px 10px">On my way</button>` : ""}<button class="btn ghost" type="button" data-lping="${p.id}|closed" style="padding:6px 10px">Done</button>${p.lat!=null ? `<button class="btn ghost" type="button" data-lping="${p.id}|go" style="padding:6px 10px">Go</button>` : ""}</div>` : (p.lat!=null ? `<div class="btns"><button class="btn ghost" type="button" data-lping="${p.id}|go" style="padding:6px 10px">Map</button></div>` : "");
+  return `<div class="view">
+    <button class="help" type="button" data-help="1">I need help here</button>
+    <div class="btns"><button class="btn" type="button" data-newping="1">Send a ping</button><button class="btn ghost" type="button" data-newdir="1">Send directions</button><button class="btn ghost" type="button" data-gateqr="1">Gate check-in code</button></div>
+    <section style="display:flex;flex-direction:column;gap:10px"><h2>Pings</h2>
+      <div class="list">${pings.length ? pings.map(p=>`<div class="item" style="grid-template-columns:minmax(0,1fr)"><div style="display:flex;flex-direction:column;gap:6px"><div class="sub">${hhmm(p.created_at)} · ${p.kind==="help" ? "<b>HELP</b> · " : ""}${esc(nameOf(p.from_user))} → ${esc(p.kind==="help" ? "Ops and leads" : toLabel(p))}</div><div class="ti">${esc(p.note || "")}</div><div class="acks">${stat(p)}</div>${acts(p)}</div></div>`).join("") : `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">No pings yet. Ping a person, a team or everyone.</div></div>`}</div></section>
+    <section style="display:flex;flex-direction:column;gap:10px"><h2>Directions</h2>
+      <div class="list">${dirs.length ? dirs.map(d=>`<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="sub">${hhmm(d.created_at)} · ${esc(nameOf(d.from_user))} → ${esc(toLabel(d))}</div><div class="ti">${esc(d.note || "Directions")}</div></div><button class="btn ghost" type="button" data-lping="${d.id}|go" style="padding:7px 10px">Open</button></div>`).join("") : `<div class="item" style="grid-template-columns:minmax(0,1fr)"><div class="sub">Send someone directions to a post or a point you drop on the map.</div></div>`}</div></section>
+  </div>`;
+}
+function livePingSheet(){
+  openSheet("Send a ping", `<div class="field"><label class="label" for="pTo">To</label><select id="pTo">${liveRecipients()}</select></div>
+    <div class="field"><label class="label" for="pPre">Message</label><select id="pPre">${PRESETS.map((p,i)=>`<option value="${i}">${esc(p.replace("{post}","a post"))}</option>`).join("")}<option value="custom">Custom…</option></select></div>
+    <div class="field"><label class="label" for="pPost">Post (for "Need you at")</label><select id="pPost">${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
+    <div class="field"><label class="label" for="pTxt">Custom message</label><input id="pTxt" placeholder="Optional" maxlength="300"></div>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-lsendping="1">Send ping</button></div>`);
+}
+async function liveSendPing(){
+  const pre = $("#pPre").value, custom = $("#pTxt").value.trim();
+  const note = pre==="custom" ? (custom || "Ping") : PRESETS[+pre].replace("{post}", $("#pPost").value) + (custom ? " - " + custom : "");
+  try{ const p = await SB.insert("staff","pings", Object.assign({app:APP, kind:"alert", note}, target($("#pTo").value)));
+    if(p && !LIVE.pings.some(x=>x.id===p.id)) LIVE.pings.unshift(p); closeSheet(); toast("Ping sent"); render(); }
+  catch(e){ toast(e.message); }
+}
+function liveHelp(){
+  const who = (LIVE.me.name || LIVE.me.email) + (LIVE.me.team ? " (" + LIVE.me.team + ")" : "");
+  const send = async (ll, how)=>{
+    try{ const p = await SB.insert("staff","pings",{app:APP, kind:"help", note:`Help needed - ${who} · ${how}`, lat:ll ? ll[0] : null, lng:ll ? ll[1] : null});
+      if(p && !LIVE.pings.some(x=>x.id===p.id)) LIVE.pings.unshift(p); toast("Help ping sent to Ops and leads with your location"); if(state.tab==="pings") render(); }
+    catch(e){ toast(e.message); }
+  };
+  if(navigator.geolocation) navigator.geolocation.getCurrentPosition(pos=>send([+pos.coords.latitude.toFixed(6), +pos.coords.longitude.toFixed(6)], "GPS"), ()=>send(null, "location not shared"), {timeout:5000});
+  else send(null, "location not available");
+}
+function liveDirSheet(ll, label){
+  openSheet("Send directions", `<div class="field"><label class="label" for="dDest">Destination</label><select id="dDest">${ll?`<option value="pt">${esc(label||"Point dropped on the map")}</option>`:""}${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
+    ${ll?"":`<button class="btn ghost" type="button" data-pickpoint="1">Drop a point on the map instead</button>`}
+    <div class="field"><label class="label" for="dTo">To</label><select id="dTo">${liveRecipients()}</select></div>
+    <div class="field"><label class="label" for="dNote">Note</label><input id="dNote" placeholder="e.g. Use the side gate by the rink" maxlength="300"></div>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-lsenddir="${ll?ll.join(","):""}">Send</button></div>`);
+}
+async function liveSendDir(llStr){
+  const dest = $("#dDest").value, ll = dest==="pt" ? llStr.split(",").map(Number) : WF_POSTS[dest], label = dest==="pt" ? "Dropped point" : dest, note = $("#dNote").value.trim();
+  try{ const p = await SB.insert("staff","pings", Object.assign({app:APP, kind:"direction", note: label + (note ? " - " + note : ""), lat:ll[0], lng:ll[1]}, target($("#dTo").value)));
+    if(p && !LIVE.pings.some(x=>x.id===p.id)) LIVE.pings.unshift(p); closeSheet(); toast("Directions sent"); render(); }
+  catch(e){ toast(e.message); }
+}
+function pingBanner(p){
+  const b = $("#pingBanner"); try{ if(navigator.vibrate) navigator.vibrate(p.kind==="help" ? [300,100,300] : [200,100,200]); }catch(e){}
+  const head = p.kind==="help" ? "HELP NEEDED" : p.kind==="direction" ? "DIRECTIONS FROM " + nameOf(p.from_user).toUpperCase() : "PING FROM " + nameOf(p.from_user).toUpperCase();
+  const btns = p.kind==="direction" ? [["go","Open"],["dismiss","Got it"]] : p.kind==="help" ? [["go","Go"],["ack","On my way"]] : [["ack","On my way"],["dismiss","Can't"],["closed","Done"]];
+  b.innerHTML = `<div style="font-size:11px;font-weight:800;letter-spacing:.2em">${esc(head)}</div><b>${esc(p.note || "")}</b><div class="btns">${btns.filter(x=>x[0]!=="go" || p.lat!=null).map(([a,l])=>`<button class="btn" type="button" data-lping="${p.id}|${a}" style="background:#fff;color:#1F4E79;padding:8px 12px">${l}</button>`).join("")}</div>`;
+  b.hidden = false;
+}
+async function livePingAction(id, act){
+  const p = LIVE.pings.find(x=>String(x.id)===String(id)); $("#pingBanner").hidden = true; if(!p) return;
+  if(act==="go"){ if(p.lat==null){ toast("No location on this one"); return; } if(p.status==="open" && p.kind==="help" && forMe(p)) livePingAction(id, "ack"); showDir({ll:[p.lat, p.lng], label: p.kind==="help" ? "Help needed" : "Directions", note:p.note}); return; }
+  if(act==="dismiss"){ toast(p.kind==="direction" ? "Saved in Pings" : "Noted. The sender can see it's still open."); return; }
+  try{ const r = await SB.update("staff","pings",{id:p.id},{status:act, acked_by:myId()}); if(r && r[0]) Object.assign(p, r[0]); toast(act==="closed" ? "Marked done" : "They can see you're on it"); if(state.tab==="pings") render(); }
+  catch(e){ toast(e.message); }
+}
+
+// ---------- Teams tab (live roster)
+function liveTeamView(){
+  const groups = {}; LIVE.members.filter(m=>m.active).forEach(m=>{ const k = m.team || "Not on a team yet"; (groups[k] = groups[k] || []).push(m); });
+  const keys = Object.keys(groups).sort((a,b)=>a==="Not on a team yet" ? 1 : b==="Not on a team yet" ? -1 : a.localeCompare(b));
+  return `<div class="view">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2>Staff roster</h2><div class="btns">${can("admin") ? `<button class="btn" type="button" data-admin="roster">Manage roster</button>` : ""}<button class="btn ghost" type="button" data-roster="1">Planning CSV</button></div></div>
+    <div class="sub">${LIVE.members.filter(m=>m.active).length} people signed up. Everyone joins as a volunteer with their work email; an admin sets teams and roles.</div>
+    ${keys.map(k=>{ const t = TEAMS[teamKey(k)] || {c:"#888"}; return `<section class="panel" style="padding:12px;display:flex;flex-direction:column;gap:8px;border-top:5px solid ${k==="Not on a team yet" ? "#555" : t.c}"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font-size:17px">${esc(k)}</h2><span class="sub">${groups[k].length}</span></div>
+      <div class="list">${groups[k].map(m=>`<div class="item" style="grid-template-columns:auto minmax(0,1fr) auto"><div class="av" style="--c:${t.c}">${esc((m.name || m.email).split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase())}</div><div><div class="ti">${esc(m.name || m.email)}${m.user_id===myId() ? " (you)" : ""}</div><div class="sub">${esc(m.role)} · ${esc(m.email)}</div></div>${m.user_id!==myId() ? `<button class="btn ghost" type="button" data-pingto="${m.user_id}" style="padding:6px 10px">Ping</button>` : ""}</div>`).join("")}</div></section>`; }).join("")}
+    ${state.roster.length ? `<div class="notice">Planning roster on this device: ${state.roster.length} people from your CSV. It's a planning aid only; the live roster above is who has actually signed in.</div>` : ""}
+  </div>`;
+}
+
+// ---------- Admin panel (role admin; override actions also need can_override - the database checks both)
+function admTypes(id){ return LIVE.sellable.map(t=>`<option value="${t.id}"${t.id===id?" selected":""}>${esc(t.event)} · ${esc(t.name)}</option>`).join(""); }
+function admPrice(){}
+function adminSheet(tab){
+  if(!can("admin")){ toast("Admins only"); return; }
+  LIVE.adm = tab || LIVE.adm || "comp";
+  const T2 = {comp:"Comps", apply:"Apply tickets", find:"Find tickets", report:"Report", roster:"Roster"};
+  openSheet("Admin panel", `<div class="admtabs" role="group" aria-label="Admin sections">${Object.entries(T2).map(([k,v])=>`<button type="button" data-admin="${k}" aria-pressed="${k===LIVE.adm}">${v}</button>`).join("")}</div><div id="admBody">${admBody()}</div>
+    <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Close</button></div>`);
+  if(LIVE.adm==="report") loadReport(); if(LIVE.adm==="roster") loadRoster();
+}
+function admBody(){
+  const ov = !!LIVE.me.can_override, noTypes = !LIVE.sellable.length ? `<div class="notice">No ticket types exist yet for Winterfest.</div>` : "";
+  if(LIVE.adm==="comp") return `${noTypes}<p class="sub">Comp tickets come as serialized QR codes. The guest scans one once with the Winter Festival app and it locks to that phone. Every comp is logged with who issued it and why.</p>
+    <div class="field"><label class="label" for="admType">Ticket</label><select id="admType">${admTypes()}</select></div>
+    <div style="display:flex;gap:8px"><div class="field" style="width:100px"><label class="label" for="admQty">How many</label><input id="admQty" type="number" min="1" max="50" value="1"></div><div class="field" style="flex:1"><label class="label" for="admWho">For</label><input id="admWho" placeholder="Name or company"></div></div>
+    <div class="field"><label class="label" for="admEmail">Their email</label><input id="admEmail" type="email" placeholder="Optional - loads when they sign in with it"></div>
+    <div class="field"><label class="label" for="admWhy">Reason (required)</label><input id="admWhy" placeholder="e.g. Sponsor hospitality, vendor staff, make-good" maxlength="200"></div>
+    <button class="btn" type="button" data-admgo="comp">Issue comps</button>`;
+  if(LIVE.adm==="apply") return ov ? `${noTypes}<p class="sub">Put tickets straight onto a guest's account by email, no QR needed. If they already use the app they're on the phone now; otherwise they load when the guest signs in with that email. Logged with your reason.</p>
+    <div class="field"><label class="label" for="admType">Ticket</label><select id="admType">${admTypes()}</select></div>
+    <div style="display:flex;gap:8px"><div class="field" style="width:100px"><label class="label" for="admQty">How many</label><input id="admQty" type="number" min="1" max="50" value="1"></div><div class="field" style="flex:1"><label class="label" for="admHolder">Name on tickets</label><input id="admHolder" placeholder="Optional"></div></div>
+    <div class="field"><label class="label" for="admEmail">Guest email (required)</label><input id="admEmail" type="email"></div>
+    <div class="field"><label class="label" for="admWhy">Reason (required)</label><input id="admWhy" placeholder="e.g. Failed purchase, family move to 7:00 skate" maxlength="200"></div>
+    <button class="btn" type="button" data-admgo="apply">Apply tickets</button>`
+    : `<div class="notice">Applying tickets is an override. Your login doesn't have override rights; ask Michael or Katelyn.</div>`;
+  if(LIVE.adm==="find") return `<div style="display:flex;gap:8px"><input id="admQ" placeholder="Email or ticket number" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:9px 10px" value="${esc(LIVE.findQ||"")}"><button class="btn" type="button" data-admgo="find">Search</button></div>
+    ${LIVE.act ? admActForm() : ""}
+    <div class="list">${LIVE.found.map(t=>`<div class="rrow"><div><div class="ti">${esc(t.serial)} · ${esc(t.event || "")} · ${esc(t.type || "")}</div><div class="sub">${esc(t.status)}${t.is_comp ? " · comp" : ""} · ${t.owner_email ? "on " + esc(t.owner_email) + "'s phone" : t.waiting_for ? "waiting for " + esc(t.waiting_for) : "not loaded"}${t.buyer_email ? " · bought by " + esc(t.buyer_email) : ""} · ${t.came_in ? "came in" : "not scanned in"}</div></div>
+      ${t.status==="void" || t.status==="refunded" ? "" : `<div class="ctl">${ov ? `<button class="btn ghost" type="button" data-admact="${t.id}|move" style="padding:5px 9px">Move</button><button class="btn ghost" type="button" data-admact="${t.id}|unlock_phone" style="padding:5px 9px">New phone</button><button class="btn ghost" type="button" data-admact="${t.id}|remove" style="padding:5px 9px">Remove</button>` : ""}<button class="btn ghost" type="button" data-admact="${t.id}|refund" style="padding:5px 9px">Refund</button></div>`}</div>`).join("") || `<div class="rrow"><div class="sub">${LIVE.findQ ? "Nothing found." : "Search by the guest's email or a ticket number (3 or more characters)."}</div></div>`}</div>`;
+  if(LIVE.adm==="report") return `<p class="sub">Every comp and override: who issued it, why, and whether the person actually came in.</p><div class="list" id="admReport">${LIVE.report.map(r=>`<div class="rrow"><div class="ti">${esc(r.kind)} · ${esc(r.serial || "")} · ${r.came_in ? "came in" : "not in yet"}</div><div class="sub">${new Date(r.created_at).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})} · by ${esc(nameOf(r.by_user))}${r.recipient ? " · for " + esc(r.recipient) : ""} · ${esc(r.status || "")}</div><div class="sub">Reason: ${esc(r.reason)}</div></div>`).join("") || `<div class="rrow"><div class="sub">No comps or overrides yet.</div></div>`}</div>`;
+  if(LIVE.adm==="roster") return `<p class="sub">Everyone who signs in with a work email joins as a volunteer. Set their team and role here. Override rights let an admin apply, move and remove tickets.</p>
+    <div class="list">${LIVE.members.map(m=>`<div class="rrow"><div><div class="ti">${esc(m.name || m.email)}${m.user_id===myId() ? " (you)" : ""}</div><div class="sub">${esc(m.email)}</div></div>
+      <div class="ctl"><select aria-label="Role" data-rf="role" data-uid="${m.user_id}">${["volunteer","staff","lead","admin"].map(r=>`<option${r===m.role?" selected":""}>${r}</option>`).join("")}</select>
+      <input type="text" aria-label="Team" data-rf="team" data-uid="${m.user_id}" value="${esc(m.team || "")}" placeholder="Team" list="teamNames" style="width:150px">
+      <label class="sub"><input type="checkbox" data-rf="active" data-uid="${m.user_id}"${m.active?" checked":""}> active</label>
+      ${LIVE.me.can_override ? `<label class="sub"><input type="checkbox" data-rf="can_override" data-uid="${m.user_id}"${m.can_override?" checked":""}> override</label>` : ""}
+      <button class="btn ghost" type="button" data-rsave="${m.user_id}" style="padding:5px 10px">Save</button></div></div>`).join("")}</div>
+    <datalist id="teamNames">${Object.values(TEAMS).map(t=>`<option value="${esc(t.name)}">`).join("")}</datalist>`;
+  return "";
+}
+function admActForm(){
+  const a = LIVE.act, t = LIVE.found.find(x=>x.id===a.id) || {}, L = {move:"Move to another ticket type", unlock_phone:"Unlock for a new phone (issues a fresh claim QR)", remove:"Remove this ticket (stops scanning)", refund:"Refund (stops scanning; card refunds process once payments are live)"};
+  return `<div class="mini"><div class="ti">${esc(L[a.action])} · ${esc(t.serial || "")}</div>
+    ${a.action==="move" ? `<div class="field"><label class="label" for="actType">New ticket type</label><select id="actType">${admTypes()}</select></div>` : ""}
+    <div class="field"><label class="label" for="actWhy">Reason (required)</label><input id="actWhy" maxlength="200"></div>
+    <div class="btns"><button class="btn ghost" type="button" data-admactgo="cancel">Cancel</button><button class="btn${a.action==="remove"||a.action==="refund"?" danger":""}" type="button" data-admactgo="go">Confirm</button></div></div>`;
+}
+function admRedraw(){ const b = $("#admBody"); if(b) b.innerHTML = admBody(); }
+async function loadReport(){ try{ LIVE.report = await SB.select("tix","comp_report", q=>q.eq("app",APP).order("created_at",{ascending:false}).limit(150)); }catch(e){ toast(e.message); } if(LIVE.adm==="report") admRedraw(); }
+async function loadRoster(){ try{ LIVE.members = await SB.select("staff","members", q=>q.eq("app",APP).order("name")); }catch(e){ toast(e.message); } if(LIVE.adm==="roster") admRedraw(); }
+async function admGo(kind, btn){
+  const why = ($("#admWhy") || {}).value, email = (($("#admEmail") || {}).value || "").trim();
+  try{
+    btn.disabled = true;
+    if(kind==="comp"){
+      if(!why || why.trim().length < 3){ toast("Add a reason"); return; }
+      const r = await SB.rpc("tix","issue_comp",{p_app:APP, p_ticket_type_id:$("#admType").value, p_qty:Math.max(1, +$("#admQty").value || 1), p_reason:why.trim(), p_recipient:$("#admWho").value.trim() || null, p_email:email || null});
+      showClaims(r.tickets || [], "Comp tickets", email);
+    } else if(kind==="apply"){
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ toast("Enter the guest's email"); return; }
+      if(!why || why.trim().length < 3){ toast("Add a reason"); return; }
+      const r = await SB.rpc("tix","admin_apply",{p_app:APP, p_ticket_type_id:$("#admType").value, p_qty:Math.max(1, +$("#admQty").value || 1), p_target_email:email, p_reason:why.trim(), p_holder:$("#admHolder").value.trim() || null});
+      toast(r.on_phone_now ? `${(r.tickets||[]).length} ticket(s) are on ${email}'s phone now` : `${(r.tickets||[]).length} ticket(s) will load when ${email} signs in`);
+      if(!r.on_phone_now) showClaims(r.tickets || [], "Applied tickets", email);
+    } else if(kind==="find"){
+      LIVE.findQ = $("#admQ").value.trim(); LIVE.act = null;
+      if(LIVE.findQ.length < 3){ toast("Type at least 3 characters"); return; }
+      LIVE.found = await SB.rpc("tix","find_tickets",{p_app:APP, p_q:LIVE.findQ}) || []; admRedraw();
+    }
+  }catch(e){ toast(e.message); }
+  finally{ btn.disabled = false; }
+}
+async function admActGo(){
+  const a = LIVE.act, why = ($("#actWhy").value || "").trim(); if(why.length < 3){ toast("Add a reason"); return; }
+  try{
+    let t;
+    if(a.action==="refund") t = await SB.rpc("tix","refund_ticket",{p_ticket_id:a.id, p_reason:why});
+    else t = await SB.rpc("tix","admin_change",{p_ticket_id:a.id, p_action:a.action, p_reason:why, p_new_ticket_type_id: a.action==="move" ? $("#actType").value : null});
+    LIVE.act = null; toast({move:"Moved", unlock_phone:"Unlocked - show them the new QR", remove:"Removed", refund:"Refunded - it no longer scans"}[a.action]);
+    if(a.action==="unlock_phone" && t && t.claim_token){ showClaims([t], "New phone", t.reserved_email); return; }
+    LIVE.found = await SB.rpc("tix","find_tickets",{p_app:APP, p_q:LIVE.findQ}) || []; admRedraw();
+  }catch(e){ toast(e.message); }
+}
+async function rosterSave(uid){
+  const f = k => document.querySelector(`[data-rf="${k}"][data-uid="${uid}"]`);
+  const patch = {role:f("role").value, team:f("team").value.trim() || null, active:f("active").checked};
+  if(f("can_override")) patch.can_override = f("can_override").checked;
+  try{ await SB.update("staff","members",{user_id:uid, app:APP}, patch); toast("Saved"); await loadRoster();
+    if(uid===myId()){ const m = member(uid); if(m) Object.assign(LIVE.me, {role:m.role, team:m.team, can_override:m.can_override}); render(); } }
+  catch(e){ toast(e.message); }
+}
+
+// Live-only buttons
+document.addEventListener("click", ev=>{
+  const t = ev.target.closest("button"); if(!t) return; const ds = t.dataset;
+  if(ds.signin){ closeSheet(); setGateMode("signin"); showGate(true); return; }
+  if(!isLive()) return;
+  if(ds.syncq){ flushQueue(); return; }
+  if(ds.doorsell){ liveDoorSell(t); return; }
+  if(ds.doorqr){ showClaims([LIVE.door[+ds.doorqr]], "Door ticket"); return; }
+  if(ds.claimnav){ const c = LIVE.claim; c.i = Math.max(0, Math.min(c.list.length-1, c.i + (+ds.claimnav))); drawClaim(); return; }
+  if(ds.lsendping){ liveSendPing(); return; }
+  if(ds.lsenddir!==undefined && t.matches("[data-lsenddir]")){ liveSendDir(ds.lsenddir); return; }
+  if(ds.lping){ const [id, act] = ds.lping.split("|"); livePingAction(id, act); return; }
+  if(ds.pingto){ livePingSheet(); const s = $("#pTo"); if(s) s.value = "user:" + ds.pingto; return; }
+  if(ds.admin){ if($("#admBody") && !$("#scrim").hidden){ LIVE.adm = ds.admin; LIVE.act = null; document.querySelectorAll("[data-admin]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.admin===LIVE.adm)); admRedraw(); if(LIVE.adm==="report") loadReport(); if(LIVE.adm==="roster") loadRoster(); } else adminSheet(ds.admin); return; }
+  if(ds.admgo){ admGo(ds.admgo, t); return; }
+  if(ds.admact){ const [id, action] = ds.admact.split("|"); LIVE.act = {id, action}; admRedraw(); const w = $("#actWhy"); if(w) w.focus(); return; }
+  if(ds.admactgo){ if(ds.admactgo==="cancel"){ LIVE.act = null; admRedraw(); } else admActGo(); return; }
+  if(ds.rsave){ rosterSave(ds.rsave); return; }
+});
+
 document.addEventListener("click", ev=>{
   const t = ev.target.closest("button"); if(!t) return; const ds = t.dataset;
   if(ds.gateqr){ gateQRSheet(); return; }
@@ -611,20 +1130,24 @@ document.addEventListener("click", ev=>{
   if(ds.savepin){ const ll = ds.savepin.split(",").map(Number); const label = (document.getElementById("pinLabel").value||"").trim() || "Pin"; PINS.push({ll, label, type:document.getElementById("pinType").value, t:now(), by:T().short}); savePins(); closeSheet(); drawPins(); toast("Pin placed. Everyone on staff sees it in the live app."); return; }
   if(ds.delpin){ PINS.splice(Number(ds.delpin),1); savePins(); if(smap) smap.closePopup(); drawPins(); toast("Pin removed"); return; }
   if(ds.chan){ state.chan = ds.chan; render(); return; }
+  if(ds.shareloc && isLive()){ liveShareLoc(); return; }
   if(ds.shareloc){ const post = (nowNext().cur && POSTS[nowNext().cur[3]]) ? POSTS[nowNext().cur[3]].name : null;
     const push = txt => { (state.msgs[state.chan] = state.msgs[state.chan]||[]).push({by:"You", team:state.team, t:now(), txt, me:true, loc:true}); store.set("st.msgs",state.msgs); render(); };
     if(post){ push("Shared location: " + post); return; }
     if(navigator.geolocation){ navigator.geolocation.getCurrentPosition(p=>push(`Shared location: ${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`), ()=>push("Shared location (permission declined)")); } else push("Shared location"); return; }
   if(ds.viewteam){ state.viewTeam = state.viewTeam===ds.viewteam ? null : ds.viewteam; render(); return; }
   if(ds.dm){ state.chan = "ops"; go("chat"); toast("Direct messages open in Ops Desk for this demo"); return; }
+  if(ds.ack && isLive()){ LIVE.acked.add(+ds.ack); store.set("wfst.annAck", [...LIVE.acked]); toast("Acknowledged"); render(); return; }
   if(ds.ack){ const a = state.alerts.find(x=>x.id==ds.ack); a.ack = true; store.set("st.alerts",state.alerts); toast("Acknowledged. Ops can see you've got it."); render(); return; }
-  if(ds.compose){ openSheet("Send alert", `<div class="field"><label class="label" for="aTo">Send to</label><select id="aTo"><option>All staff</option>${Object.values(TEAMS).map(x=>`<option>${esc(x.name)}</option>`).join("")}${Object.values(POSTS).map(p=>`<option>Everyone at ${esc(p.name)}</option>`).join("")}</select></div>
+  if(ds.compose){ if(isLive() && !can("lead")){ toast("Leads and Ops send alerts"); return; } openSheet("Send alert", `<div class="field"><label class="label" for="aTo">Send to</label><select id="aTo"><option>All staff</option>${Object.values(TEAMS).map(x=>`<option>${esc(x.name)}</option>`).join("")}${Object.values(POSTS).map(p=>`<option>Everyone at ${esc(p.name)}</option>`).join("")}</select></div>
       <div class="field"><label class="label" for="aLvl">Priority</label><select id="aLvl"><option value="info">Info</option><option value="urgent">Urgent</option></select></div>
       <div class="field"><label class="label" for="aTxt">Message</label><textarea id="aTxt" rows="3" placeholder="Where to be, when, and what to do"></textarea></div>
       <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-sendalert="1">Send</button></div>`); return; }
+  if(ds.sendalert && isLive()){ const txt = $("#aTxt").value.trim(); if(!txt){ toast("Write the alert first"); return; } liveAnnounce($("#aTo").value, txt, $("#aLvl").value==="urgent" ? "urgent" : "normal"); return; }
   if(ds.sendalert){ const txt = $("#aTxt").value.trim(); if(!txt){ toast("Write the alert first"); return; } state.alerts.unshift({id:Date.now(), lvl:$("#aLvl").value, t:now(), to:$("#aTo").value, txt, ack:false}); store.set("st.alerts",state.alerts); closeSheet(); toast("Alert sent"); render(); return; }
   if(ds.close){ closeSheet(); return; }
-  if(t.id==="whoBtn"){ const ss = session(); openSheet("Account and team", `<p class="sub">Signed in as <b>${esc(ss ? ss.email : "")}</b>.</p><button class="btn ghost" type="button" data-signout="1">Sign out</button><button class="btn ghost" type="button" data-leadtoggle="1">${state.lead ? "Lead mode on (demo)" : "Turn on lead mode (demo)"}</button><p class="sub">Staff see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
+  if(t.id==="whoBtn" && isLive()){ liveAccountSheet(); return; }
+  if(t.id==="whoBtn"){ const ss = session(); openSheet("Account and team", `${ss ? `<p class="sub">Demo sign-in: <b>${esc(ss.email)}</b>.</p>` : `<p class="sub">You're using the demo. Sign in with your work email for live chat, pings, alerts and ticket scanning.</p>`}<button class="btn" type="button" data-signin="1">Sign in with your work email</button><button class="btn ghost" type="button" data-signout="1">Sign out</button><button class="btn ghost" type="button" data-leadtoggle="1">${state.lead ? "Lead mode on (demo)" : "Turn on lead mode (demo)"}</button><p class="sub">Staff see their own team. For the demo, pick any team to see its shifts, posts and chat.</p><div class="teams">${Object.entries(TEAMS).map(([k,x])=>`<button type="button" class="team" style="--c:${x.c}" data-pickteam="${k}" aria-pressed="${k===state.team}"><span class="n">${esc(x.name)}</span><span class="sub">${x.radio}</span></button>`).join("")}</div>`); return; }
   if(ds.pickteam){ state.team = ds.pickteam; store.set("st.team",state.team); state.day=null; closeSheet(); toast("Now viewing as " + T().name); render(); return; }
 });
 document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && !$("#scrim").hidden) closeSheet(); if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g[data-showpost]")){ ev.preventDefault(); showPost(ev.target.dataset.showpost); } });
@@ -632,11 +1155,15 @@ $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeShee
 if(!views[state.tab]) state.tab="shift";
 $("#gateForm").addEventListener("submit", gateSubmit);
 $("#gShow").addEventListener("change", ev=>{ $("#gPass").type = ev.target.checked ? "text" : "password"; });
-$("#gForgot").addEventListener("click", ()=>{ $("#gErr").textContent = "Contact Ops to reset your password."; });
+$("#gForgot").addEventListener("click", ()=>{ $("#gErr").textContent = "Ask an admin or Ops to reset your password."; });
+$("#gMode").addEventListener("click", ()=>setGateMode(gateMode==="create" ? "signin" : "create"));
+$("#gLater").addEventListener("click", ()=>{ showGate(false); render(); });
 Object.keys(TEAMS).forEach(k=>{ const n = state.roster.filter(p=>p.team===k).length; if(n) TEAMS[k].size = n; });
 bgSnow();
-if(STAFF_LOCK && !session()) showGate(true); else showGate(false);
+// STAFF_LOCK true: nothing shows until the staff server confirms a work login. False: the demo runs and sign-in adds the live tools.
+showGate(STAFF_LOCK);
 render();
+liveBoot();
 })();
 </script>
 <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
