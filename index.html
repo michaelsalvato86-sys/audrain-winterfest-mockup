@@ -413,8 +413,8 @@ function village(){
   const happening = VENDORS.filter(v=>v.cat!=="help").slice(0,6);
   return `<section class="hero">
       <div class="herologo"><img src="logo.png" alt="Newport Winter Festival logo"></div><div class="eyebrow">Newport, Rhode Island</div><h1>The winter village by the sea</h1>
-      <div class="status"><span class="pill"><i></i>Feb 12-21, 2027 (expected, to be confirmed)</span><span class="pill">Today's hours: TBA</span></div>
-      <div class="count" id="countdown" aria-label="Countdown to opening day, Feb 12, 2027 (expected)">${countHtml()}</div>
+      <div class="status"><span class="pill"><i></i>Feb 12-21, 2027</span><span class="pill">Today's hours: TBA</span></div>
+      <div class="count" id="countdown" aria-label="Countdown to opening day, Feb 12, 2027">${countHtml()}</div>
       <p class="muted" style="color:#d6e3f3">Skating, a food hall with full menus, holiday shops and heated igloos.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn aurora" type="button" data-tab="tickets">Tickets and skating</button><button class="btn ghost" type="button" data-tab="map">Village map</button></div></section>
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Happening now ${SAMPLE}</h2>
@@ -697,28 +697,35 @@ function showAdmit(o, idxs, g, now){
 // COMMUNITY = events businesses submit; they sell their own tickets (link out). All SAMPLE until the real lineup arrives
 // (signature events from Katelyn; community events about January).
 const FEST_DAYS = Array.from({length:10},(_,i)=>{ const d = new Date(2027, 1, 12+i); return {i, key:"2027-02-"+String(12+i).padStart(2,"0"), wd:d.toLocaleDateString("en-US",{weekday:"short"}), n:12+i}; });
+const MAR = "Newport Marriott", NHI = "Newport Harbor Island Resort", NCB = "Newport Craft Brewery", REEF = "The Reef";
+// Real 2027 lineup from Katelyn McSherry's schedule email, 2026-10-22. tbc:true = highlighted in her email (not yet confirmed).
+// t:"" = time not announced yet. price:null = ticket price not set yet (no checkout until it is).
 const SIG = [
-  {d:0, t:"17:00", name:"Opening night tree lighting", place:"Village green", price:0},
-  {d:0, t:"19:00", name:"Winter Village by the Sea skate night", place:"Rink", price:15},
-  {d:1, t:"18:00", name:"Chowder cook-off", place:"Food hall", price:25},
-  {d:2, t:"11:00", name:"Snow sculpture showcase", place:"West lawn", price:10},
-  {d:3, t:"14:00", name:"Family winter carnival", place:"Village green", price:12},
-  {d:4, t:"19:30", name:"Ice carving after dark", place:"Rinkside", price:15},
-  {d:5, t:"18:30", name:"Cocoa and cookie crawl", place:"Village kiosks", price:20},
-  {d:6, t:"20:00", name:"Winter cabaret", place:"Village tent", price:40},
-  {d:8, t:"12:00", name:"Polar plunge", place:"Harbor beach", price:25},
-  {d:9, t:"18:00", name:"Closing night fireworks", place:"Harbor", price:0}
-].map((e,k)=>Object.assign(e, {id:"sig"+k, layer:"sig"}));
-const COMM = [
-  {d:"all", t:"10:00", name:"Harbor helicopter tours", biz:"Local tour operator", place:"Newport airfield", url:""},
-  {d:"all", t:"11:00", name:"Classic car winter tours", biz:"Local tour company", place:"Downtown pickup", url:""},
-  {d:"all", t:"10:00", name:"Crystal garden exhibit", biz:"Local garden", place:"Bellevue Ave", url:""},
-  {d:1, t:"17:30", name:"Wine tasting by the fire", biz:"Local wine bar", place:"Thames St", url:""},
-  {d:2, t:"09:00", name:"Winter bird walk", biz:"Local nature group", place:"Ocean Drive", url:""},
-  {d:4, t:"20:00", name:"Live music night", biz:"Local pub", place:"Broadway", url:""},
-  {d:7, t:"13:00", name:"Mansion candlelight tour", biz:"Local museum", place:"Bellevue Ave", url:""}
-].map((e,k)=>Object.assign(e, {id:"com"+k, layer:"com"}));
-SIG.forEach(e=>{ PRODUCTS.push({id:e.id, sig:true, name:e.name, sub:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)} \u00b7 ${e.place}`, price:e.price, time:e.t, when:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)}`}); AREA[e.id] = "entry"; });
+  {d:0, t:"", name:"Opening concert - performer to be announced", place:NHI, tbc:true},
+  {d:1, t:"", name:"Annual Chili Cook-off", place:MAR},
+  {d:1, t:"", name:"18+ Comedy Show", place:NCB},
+  {d:2, t:"12:00", name:"Marvels in Motion - Mad Science", place:MAR},
+  {d:2, t:"14:00", name:"Circus and carnival performer - to be announced", place:MAR, tbc:true},
+  {d:3, t:"12:00", name:"Buana the Iguana - Reptile Show", place:MAR},
+  {d:3, t:"14:00", name:"Magic by George", place:MAR},
+  {d:4, t:"", name:"Teddy Bear Hot Chocolate Bar", place:REEF, tbc:true},
+  {d:4, t:"", name:"Night at The Reef: Winter Wonderland", place:REEF, note:"Igloo hopping and more. Details to be announced.", tbc:true},
+  {d:5, t:"13:00", end:"15:00", name:"Annual Princess Party", place:"Ocean Cliff"},
+  {d:5, t:"", name:"Evening event - to be announced", place:"JPT", tbc:true},
+  {d:6, t:"18:00", name:"Toe Jam Puppet Band", place:MAR},
+  {d:6, t:"20:00", name:"Hot Drink Contest", place:"Red Parrot"},
+  {d:7, t:"18:00", name:"Bubble Mania", place:MAR},
+  {d:7, t:"20:00", name:"Evening event - to be announced", place:MAR, tbc:true},
+  {d:8, t:"11:00", name:"Annual Mac & Cheese Cook-off", place:MAR},
+  {d:8, t:"20:00", name:"Changes in Latitude - Jimmy Buffett tribute concert", place:NHI},
+  {d:9, t:"12:00", end:"15:00", name:"2nd Annual Wienerfest - session 1", place:NCB},
+  {d:9, t:"16:00", end:"19:00", name:"2nd Annual Wienerfest - session 2", place:NCB},
+  {d:9, t:"", name:"Super Hero Party", place:MAR, tbc:true}
+].map((e,k)=>Object.assign({price:null}, e, {id:"s27-"+k, layer:"sig"}));
+// Community events are submitted by local businesses and open about January; the sample list was removed 2026-10-22.
+const COMM = [].map((e,k)=>Object.assign(e, {id:"com"+k, layer:"com"}));
+const evTime = e => e.t ? fmt(e.t) + (e.end ? " - " + fmt(e.end) : "") : "Time TBA";
+SIG.filter(e=>e.price!=null && e.t).forEach(e=>{ PRODUCTS.push({id:e.id, sig:true, name:e.name, sub:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)} \u00b7 ${e.place}`, price:e.price, time:e.t, when:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)}`}); AREA[e.id] = "entry"; });
 
 const TREATS = [["Free hot cocoa","Show this at N3 for a free classic cocoa.","voucher"],["Fun fact","The rink holds about 40,000 gallons of water when frozen.","fact"],["Photo prompt","Snap your crew under the village lights and share it.","photo"],["Vendor offer","10% off at Candle Works (S10) today.","offer"]];
 const SCENE = ["tree","lamp","cottage","skaters","lights"];
@@ -731,16 +738,16 @@ function fun(){
 }
 function guideView(){
   const day = S.iday, layer = S.ilayer;
-  const evs = [...SIG, ...COMM].filter(e=>(layer==="all" || e.layer===layer) && (day==="all" ? true : (e.d==="all" || e.d===day))).sort((a,b)=>(a.d==="all"?-1:a.d)-(b.d==="all"?-1:b.d) || mins(a.t)-mins(b.t));
+  const evs = [...SIG, ...COMM].filter(e=>(layer==="all" || e.layer===layer) && (day==="all" ? true : (e.d==="all" || e.d===day))).sort((a,b)=>(a.d==="all"?-1:a.d)-(b.d==="all"?-1:b.d) || (a.t?mins(a.t):1440)-(b.t?mins(b.t):1440));
   const row = e => { const dl = e.d==="all" ? "Daily" : FEST_DAYS[e.d].wd + " " + FEST_DAYS[e.d].n;
-    return `<div class="ev"><span class="tm">${fmt(e.t)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}<br><span class="muted" style="font-size:13px">${esc(e.layer==="com" ? e.biz + " \u00b7 " + e.place : e.place)}</span><br>
-      ${e.layer==="sig" ? `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>` : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}${e.layer==="com" ? comOutExtra(e) : ""}</span>
+    return `<div class="ev"><span class="tm">${evTime(e)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}${e.tbc ? ' <span class="tag">To be confirmed</span>' : ""}<br><span class="muted" style="font-size:13px">${esc(e.layer==="com" ? e.biz + " \u00b7 " + e.place : e.place)}</span>${e.note ? `<br><span class="muted" style="font-size:13px">${esc(e.note)}</span>` : ""}<br>
+      ${e.layer==="sig" ? (e.price==null || !e.t ? `<span class="btn sm ghost" aria-disabled="true" style="margin-top:6px;opacity:.7;cursor:default">Tickets coming soon</span>` : `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>`) : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}${e.layer==="com" ? comOutExtra(e) : ""}</span>
       <button class="heart" type="button" data-evfav="${e.id}" aria-pressed="${S.evfav.has(e.id)}" aria-label="Save ${esc(e.name)}">${HEART(S.evfav.has(e.id))}</button><button class="bell" type="button" data-evrem="${e.id}" aria-pressed="${S.evrem.has(e.id)}" aria-label="Remind me about ${esc(e.name)}"><svg viewBox="0 0 24 24" fill="${S.evrem.has(e.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; };
-  return `<p class="muted" style="font-size:13.5px">Dates to be confirmed - Feb 12-21, 2027 expected. ${SAMPLE}</p>
+  return `<p class="muted" style="font-size:13.5px">February 12-21, 2027. Times and tickets are added as they are confirmed.</p>
     <div class="chips" role="group" aria-label="Event type">${[["all","All"],["sig","Signature"],["com","Community"]].map(([k,l])=>`<button type="button" data-ilayer="${k}" aria-pressed="${layer===k}">${l}</button>`).join("")}</div>
     <div class="chips" role="group" aria-label="Day"><button type="button" data-iday="all" aria-pressed="${day==="all"}">All days</button>${FEST_DAYS.map(f=>`<button type="button" data-iday="${f.i}" aria-pressed="${day===f.i}">${f.wd} ${f.n}</button>`).join("")}</div>
     <div class="glass" style="flex-direction:row;align-items:center;justify-content:space-between;gap:10px"><span class="muted" style="font-size:13.5px">Signature events are Newport Life's and sell here. Community events are run by local businesses, who sell their own tickets.</span></div>
-    ${outRows(day, layer)}${evs.length ? evs.map(row).join("") : `<div class="glass"><p class="muted">Nothing on this day yet.</p></div>`}
+    ${outRows(day, layer)}${evs.length ? evs.map(row).join("") : `<div class="glass"><p class="muted">${layer==="com" ? "The community calendar opens in January. Local businesses can submit events below." : "Nothing on this day yet."}</p></div>`}
     <div class="glass"><b>Running something during Winterfest?</b><span class="muted" style="font-size:13.5px">Local businesses can submit an event to the community calendar.</span><button class="btn sm aurora" type="button" data-submitevent="1" style="align-self:flex-start">Submit your event</button></div>`;
 }
 function submitEventSheet(){
