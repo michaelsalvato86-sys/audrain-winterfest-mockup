@@ -15,6 +15,7 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}.brandlogo{height:40px;width:auto;border-radius:10px;background:#fff;padding:3px 6px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
 .herologo{align-self:center;background:#fff;border-radius:22px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);margin-bottom:6px;max-width:100%}
 .herologo img{display:block;width:min(300px,72vw);height:auto;max-width:100%}
+.linkish{background:none;border:0;padding:0;font:inherit;color:var(--frost);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .outopts{display:flex;flex-direction:column;gap:8px}
 .outopts label.btn{text-align:center;cursor:pointer}
@@ -412,11 +413,11 @@ const GEM = (c, path) => `<span class="gem" style="background:${c}"><svg viewBox
 function village(){
   const happening = VENDORS.filter(v=>v.cat!=="help").slice(0,6);
   return `<section class="hero">
-      <div class="herologo"><img src="logo.png" alt="Newport Winter Festival logo"></div><div class="eyebrow">Newport, Rhode Island</div><h1>The winter village by the sea</h1>
+      <div class="herologo"><img src="logo.png" alt="Newport Winter Festival logo"></div><div class="eyebrow">Newport, Rhode Island</div><h1>All of Newport, in winter</h1>
       <div class="status"><span class="pill"><i></i>Feb 12-21, 2027</span><span class="pill">Today's hours: TBA</span></div>
       <div class="count" id="countdown" aria-label="Countdown to opening day, Feb 12, 2027">${countHtml()}</div>
-      <p class="muted" style="color:#d6e3f3">Skating, a food hall with full menus, holiday shops and heated igloos.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn aurora" type="button" data-tab="tickets">Tickets and skating</button><button class="btn ghost" type="button" data-tab="map">Village map</button></div></section>
+      <p class="muted" style="color:#d6e3f3">Ten days of family shows, cook-offs, concerts and comedy at hotels, restaurants and venues across the whole town.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn aurora" type="button" data-tab="fun" data-fungo="guide">See the itinerary</button><button class="btn ghost" type="button" data-tab="map" data-mapvgo="getting">Venues map</button></div></section>
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Happening now ${SAMPLE}</h2>
       <div class="strip">${happening.map(v=>`<button class="now" type="button" data-vendor="${v.code}" style="text-align:left;color:var(--snow)"><span>${codeChip(v)}</span><b>${esc(v.name)}</b><span class="muted" style="font-size:13px">${isOpen(v)?"Open now":"Opens "+fmt(v.hours[0])} · ${esc(v.sub)}</span></button>`).join("")}</div></section>
     <div class="tiles">
@@ -465,9 +466,16 @@ function plan(){
     <p class="muted" style="font-size:13px">Kiosk codes: ${Object.entries(ZONES).map(([k,z])=>`<b>${k}</b> ${z}`).join(" · ")}.</p>`;
 }
 function mapView(){
-  return `<div class="seg" role="group" aria-label="Map view"><button type="button" data-mapv="plan" aria-pressed="${S.mapv==="plan"}">Village map</button><button type="button" data-mapv="dir" aria-pressed="${S.mapv==="dir"}">Directory</button><button type="button" data-mapv="getting" aria-pressed="${S.mapv==="getting"}">Getting here</button></div>
+  return `<div class="seg" role="group" aria-label="Map view"><button type="button" data-mapv="plan" aria-pressed="${S.mapv==="plan"}">Village map</button><button type="button" data-mapv="dir" aria-pressed="${S.mapv==="dir"}">Directory</button><button type="button" data-mapv="getting" aria-pressed="${S.mapv==="getting"}">Venues</button></div>
     ${S.mapv==="dir" ? directory() : S.mapv==="plan" ? filterBar() + plan()
-      : `<div class="glass"><h2>Getting here</h2><p class="muted">Parking, shuttles and drop-off will be pinned once they're confirmed. Pinch to zoom to street level.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn aurora" href="${TRAFFIC}" target="_blank" rel="noopener">Live traffic</a><button class="btn ghost" type="button" data-locate="1">Show my location</button></div></div><div id="wmap" role="application" aria-label="Map of Newport"></div>`}`;
+      : `<div class="glass"><h2>Venues</h2><p class="muted">Winterfest events happen at venues all over Newport. Tap a pin or a venue for its events and directions. Parking and shuttles will be added once they're confirmed.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn aurora" href="${TRAFFIC}" target="_blank" rel="noopener">Live traffic</a><button class="btn ghost" type="button" data-locate="1">Show my location</button></div></div><div id="wmap" role="application" aria-label="Map of Winterfest venues in Newport"></div>${venueList()}`}`;
+}
+function venueEvents(v){ return SIG.filter(e=>e.place===v).sort((a,b)=>a.d-b.d || (a.t?mins(a.t):1440)-(b.t?mins(b.t):1440)); }
+function venueList(){
+  return Object.keys(VENUES).map(v=>{ const evs = venueEvents(v);
+    return `<div class="glass" id="venue-${Object.keys(VENUES).indexOf(v)}"><b>${esc(v)}</b><span class="muted" style="font-size:13px">${esc(VENUES[v].addr)}</span>
+      ${evs.map(e=>`<span style="font-size:13.5px">${FEST_DAYS[e.d].wd} ${FEST_DAYS[e.d].n} · ${evTime(e)} · ${esc(e.name)}${e.tbc ? ' <span class="tag">To be confirmed</span>' : ""}</span>`).join("")}
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px"><a class="btn sm aurora" href="${dirLink(v)}" target="_blank" rel="noopener">Directions</a><button class="btn sm ghost" type="button" data-venuepin="${esc(v)}">Show on map</button></div></div>`; }).join("");
 }
 function vrow(v, hit){ return `<button type="button" class="vrow" data-vendor="${v.code}">${codeChip(v)}<span><span class="t">${esc(v.name)}</span><br><span class="s">${isOpen(v)?"Open now":"Opens "+fmt(v.hours[0])} · ${esc(v.sub)}</span>${hit?`<br><span class="hit">Menu: ${esc(hit)}</span>`:""}</span>${S.fav.has(v.code)?`<span style="color:var(--rose)">${HEART(true)}</span>`:(v.menu.length?'<span class="tag diet">Menu</span>':"")}</button>`; }
 function directory(){
@@ -724,6 +732,18 @@ const SIG = [
 ].map((e,k)=>Object.assign({price:null}, e, {id:"s27-"+k, layer:"sig"}));
 // Community events are submitted by local businesses and open about January; the sample list was removed 2026-10-22.
 const COMM = [].map((e,k)=>Object.assign(e, {id:"com"+k, layer:"com"}));
+// Event venues (2026-10-23). Coordinates: OpenStreetMap Nominatim; Newport Craft from the US Census geocoder (address-interpolated).
+// "JPT" (Wed 2/17) has no pin until Katelyn says what it is.
+const VENUES = {
+  [MAR]:  {addr:"25 America's Cup Ave, Newport, RI 02840", ll:[41.49008,-71.31824]},
+  [NHI]:  {addr:"1 Goat Island, Newport, RI 02840", ll:[41.49182,-71.32770]},
+  [NCB]:  {addr:"293 JT Connell Hwy, Newport, RI 02840", ll:[41.51358,-71.31704]},
+  [REEF]: {addr:"10 Howard Wharf, Newport, RI 02840", ll:[41.48103,-71.31594]},
+  "Ocean Cliff": {addr:"65 Ridge Rd, Newport, RI 02840", ll:[41.46438,-71.35756]},
+  "Red Parrot":  {addr:"348 Thames St, Newport, RI 02840", ll:[41.48418,-71.31455]}
+};
+const dirLink = v => "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(v + ", " + VENUES[v].addr);
+const placeHtml = pl => VENUES[pl] ? `<button type="button" class="linkish" data-venue="${esc(pl)}">${esc(pl)}</button>` : esc(pl);
 const evTime = e => e.t ? fmt(e.t) + (e.end ? " - " + fmt(e.end) : "") : "Time TBA";
 SIG.filter(e=>e.price!=null && e.t).forEach(e=>{ PRODUCTS.push({id:e.id, sig:true, name:e.name, sub:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)} \u00b7 ${e.place}`, price:e.price, time:e.t, when:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)}`}); AREA[e.id] = "entry"; });
 
@@ -740,7 +760,7 @@ function guideView(){
   const day = S.iday, layer = S.ilayer;
   const evs = [...SIG, ...COMM].filter(e=>(layer==="all" || e.layer===layer) && (day==="all" ? true : (e.d==="all" || e.d===day))).sort((a,b)=>(a.d==="all"?-1:a.d)-(b.d==="all"?-1:b.d) || (a.t?mins(a.t):1440)-(b.t?mins(b.t):1440));
   const row = e => { const dl = e.d==="all" ? "Daily" : FEST_DAYS[e.d].wd + " " + FEST_DAYS[e.d].n;
-    return `<div class="ev"><span class="tm">${evTime(e)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}${e.tbc ? ' <span class="tag">To be confirmed</span>' : ""}<br><span class="muted" style="font-size:13px">${esc(e.layer==="com" ? e.biz + " \u00b7 " + e.place : e.place)}</span>${e.note ? `<br><span class="muted" style="font-size:13px">${esc(e.note)}</span>` : ""}<br>
+    return `<div class="ev"><span class="tm">${evTime(e)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}${e.tbc ? ' <span class="tag">To be confirmed</span>' : ""}<br><span class="muted" style="font-size:13px">${e.layer==="com" ? esc(e.biz + " \u00b7 " + e.place) : placeHtml(e.place)}</span>${e.note ? `<br><span class="muted" style="font-size:13px">${esc(e.note)}</span>` : ""}<br>
       ${e.layer==="sig" ? (e.price==null || !e.t ? `<span class="btn sm ghost" aria-disabled="true" style="margin-top:6px;opacity:.7;cursor:default">Tickets coming soon</span>` : `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>`) : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}${e.layer==="com" ? comOutExtra(e) : ""}</span>
       <button class="heart" type="button" data-evfav="${e.id}" aria-pressed="${S.evfav.has(e.id)}" aria-label="Save ${esc(e.name)}">${HEART(S.evfav.has(e.id))}</button><button class="bell" type="button" data-evrem="${e.id}" aria-pressed="${S.evrem.has(e.id)}" aria-label="Remind me about ${esc(e.name)}"><svg viewBox="0 0 24 24" fill="${S.evrem.has(e.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; };
   return `<p class="muted" style="font-size:13.5px">February 12-21, 2027. Times and tickets are added as they are confirmed.</p>
@@ -829,10 +849,17 @@ function startGame(){
 }
 const views = {village, map:mapView, fun, tickets, visit};
 
-let wmap = null;
+let wmap = null, wmarks = {};
 function initMap(){ const el = document.getElementById("wmap"); if(!el || !window.L) return; if(wmap) wmap.remove();
-  wmap = L.map(el, {scrollWheelZoom:false}).setView([41.4835,-71.3125], 14); wmap.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  wmap = L.map(el, {scrollWheelZoom:false}).setView([41.4900,-71.3250], 13); wmap.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(wmap);
+  wmarks = {};
+  Object.entries(VENUES).forEach(([v,o])=>{ const n = venueEvents(v).length;
+    wmarks[v] = L.circleMarker(o.ll, {radius:10, color:"#F4FAFD", weight:2, fillColor:"#C9A86A", fillOpacity:.95}).addTo(wmap)
+      .bindPopup(`<b>${esc(v)}</b><br>${n} event${n===1?"":"s"}<br><a href="${dirLink(v)}" target="_blank" rel="noopener">Directions</a>`); });
+  wmap.fitBounds(Object.values(VENUES).map(o=>o.ll), {padding:[28,28]});
+  if(S.venueFocus && wmarks[S.venueFocus]){ const f = S.venueFocus; setTimeout(()=>{ if(wmap && wmarks[f]){ wmap.setView(VENUES[f].ll, 16); wmarks[f].openPopup(); } }, 120); }
+  S.venueFocus = null;
   setTimeout(()=>wmap && wmap.invalidateSize(), 60); }
 function render(){
   document.querySelectorAll(".nav button").forEach(b=>{ if(b.dataset.tab===S.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
@@ -962,6 +989,7 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.feature){ const x = S.snow.find(e=>e.id===d.feature); if(x){ x.featured = !x.featured; st.set("wf.snow", S.snow); render(); } return; }
   if(d.gotab){ closeSheet(); go(d.gotab); return; }
   if(d.mapv){ S.mapv = d.mapv; render(); return; }
+  if(d.venue || d.venuepin){ S.venueFocus = d.venue || d.venuepin; S.tab = "map"; S.mapv = "getting"; go("map"); if(d.venuepin) document.getElementById("wmap")?.scrollIntoView({behavior:"smooth", block:"center"}); return; }
   if(d.locate){ if(!navigator.geolocation){ toast("Location isn't available on this device"); return; } navigator.geolocation.getCurrentPosition(p=>{ if(!wmap) return; const ll = [p.coords.latitude, p.coords.longitude]; L.circleMarker(ll, {radius:8, color:"#0B1E3F", weight:2, fillColor:"#5EE6C8", fillOpacity:1}).addTo(wmap).bindPopup("You are here").openPopup(); wmap.setView(ll, 16); }, ()=>toast("Location permission was declined"), {enableHighAccuracy:true, timeout:10000}); return; }
   if(d.evfav){ const k = d.evfav; S.evfav.has(k) ? S.evfav.delete(k) : S.evfav.add(k); st.set("wf.evfav", [...S.evfav]); render(); return; }
   if(d.evrem){ const k = d.evrem; S.evrem.has(k) ? S.evrem.delete(k) : S.evrem.add(k); st.set("wf.evrem", [...S.evrem]); toast(S.evrem.has(k) ? "Reminder set for 30 minutes before" : "Reminder off"); render(); return; }
