@@ -257,7 +257,7 @@ const state = {
 };
 // SAMPLE recipients and posts for pings and directions until the real roster and site plan exist.
 const PEOPLE = ["Ops Lead","Guest Services Lead","Venue Lead","Volunteer Coordinator","Staff A","Staff B","Volunteer A"];
-const WF_POSTS = {"W1 Welcome Lodge":[41.4842,-71.3122], "R1 Skate Rentals":[41.4836,-71.3116], "N3 Hot Cocoa Bar":[41.4848,-71.3119], "E9 Chowder Shack":[41.4839,-71.3104]};
+const WF_POSTS = {"W1 Welcome Lodge":[41.4842,-71.3122], "N3 Hot Cocoa Bar":[41.4848,-71.3119], "E9 Chowder Shack":[41.4839,-71.3104]};
 const PRESETS = ["Need you at {post} now","Running 10 min late","Break relief needed","All clear"];
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -380,10 +380,9 @@ const views = {
 // Gate check-in codes. Must match tix.gates in the staff server (seeded 2026-10-09) and the attendee app's parser.
 const GATES_WF = [
   {code:"WINTERFEST-CHECKIN:ENTRY:1", name:"Village entry", pin:"1201"},
-  {code:"WINTERFEST-CHECKIN:RINK:1", name:"Rink gate", pin:"1202"},
   {code:"WINTERFEST-CHECKIN:IGLOO:1", name:"Igloo lounges", pin:"1203"}
 ];
-const gateList = () => (LIVE.gates && LIVE.gates.length ? LIVE.gates : GATES_WF);
+const gateList = () => (LIVE.gates && LIVE.gates.length ? LIVE.gates : GATES_WF).filter(g=>!/:RINK:/.test(g.code));   // no ice rink (2026-10-26)
 function gateQRSheet(){
   openSheet("Gate check-in code", `<p class="sub">Guests open their tickets and scan this code to check themselves in. Post it at the gate (print it) or hold this screen up.</p>
     <div class="field"><label class="label" for="gqArea">Gate</label><select id="gqArea">${gateList().map(g=>`<option value="${esc(g.code)}">${esc(g.name)}</option>`).join("")}</select></div>
@@ -556,7 +555,7 @@ function dirSheet(ll, label){
   openSheet("Send directions", `<div class="field"><label class="label" for="dDest">Destination</label><select id="dDest">${ll?`<option value="pt">${esc(label||"Point dropped on the map")}</option>`:""}${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
     ${ll?"":`<button class="btn ghost" type="button" data-pickpoint="1">Drop a point on the map instead</button>`}
     <div class="field"><label class="label" for="dTo">To</label><select id="dTo">${recipients()}</select></div>
-    <div class="field"><label class="label" for="dNote">Note</label><input id="dNote" placeholder="e.g. Use the side gate by the rink"></div>
+    <div class="field"><label class="label" for="dNote">Note</label><input id="dNote" placeholder="e.g. Use the side door by the parking lot"></div>
     <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-senddir="${ll?ll.join(","):""}">Send</button></div>`);
 }
 function sendDir(llStr){
@@ -945,7 +944,7 @@ function liveDirSheet(ll, label){
   openSheet("Send directions", `<div class="field"><label class="label" for="dDest">Destination</label><select id="dDest">${ll?`<option value="pt">${esc(label||"Point dropped on the map")}</option>`:""}${Object.keys(WF_POSTS).map(k=>`<option>${esc(k)}</option>`).join("")}</select></div>
     ${ll?"":`<button class="btn ghost" type="button" data-pickpoint="1">Drop a point on the map instead</button>`}
     <div class="field"><label class="label" for="dTo">To</label><select id="dTo">${liveRecipients()}</select></div>
-    <div class="field"><label class="label" for="dNote">Note</label><input id="dNote" placeholder="e.g. Use the side gate by the rink" maxlength="300"></div>
+    <div class="field"><label class="label" for="dNote">Note</label><input id="dNote" placeholder="e.g. Use the side door by the parking lot" maxlength="300"></div>
     <div class="btns" style="justify-content:flex-end"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn" type="button" data-lsenddir="${ll?ll.join(","):""}">Send</button></div>`);
 }
 async function liveSendDir(llStr){
@@ -1005,7 +1004,7 @@ function admBody(){
     <div class="field"><label class="label" for="admType">Ticket</label><select id="admType">${admTypes()}</select></div>
     <div style="display:flex;gap:8px"><div class="field" style="width:100px"><label class="label" for="admQty">How many</label><input id="admQty" type="number" min="1" max="50" value="1"></div><div class="field" style="flex:1"><label class="label" for="admHolder">Name on tickets</label><input id="admHolder" placeholder="Optional"></div></div>
     <div class="field"><label class="label" for="admEmail">Guest email (required)</label><input id="admEmail" type="email"></div>
-    <div class="field"><label class="label" for="admWhy">Reason (required)</label><input id="admWhy" placeholder="e.g. Failed purchase, family move to 7:00 skate" maxlength="200"></div>
+    <div class="field"><label class="label" for="admWhy">Reason (required)</label><input id="admWhy" placeholder="e.g. Failed purchase, family moved to a later show" maxlength="200"></div>
     <button class="btn" type="button" data-admgo="apply">Apply tickets</button>`
     : `<div class="notice">Applying tickets is an override. Your login doesn't have override rights; ask Michael or Katelyn.</div>`;
   if(LIVE.adm==="find") return `<div style="display:flex;gap:8px"><input id="admQ" placeholder="Email or ticket number" style="flex:1;min-width:0;border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:9px 10px" value="${esc(LIVE.findQ||"")}"><button class="btn" type="button" data-admgo="find">Search</button></div>
@@ -1113,7 +1112,7 @@ document.addEventListener("click", ev=>{
   if(ds.roster){ rosterSheet(); return; }
   if(ds.rostergo){ importRoster(); return; }
   if(ds.sendping){ sendPing(); return; }
-  if(ds.simping){ incomingPing("Need you at R1 Skate Rentals now", "Ops Lead"); return; }
+  if(ds.simping){ incomingPing("Need you at W1 Welcome Lodge now", "Ops Lead"); return; }
   if(ds.pingreply){ const [id, r] = ds.pingreply.split("|"); const p = state.pings.find(x=>x.id==id); if(p){ p.acks["You"] = r; store.set("wfst.pings", state.pings); } $("#pingBanner").hidden = true; toast("Replied: " + r); if(state.tab==="pings") render(); return; }
   if(ds.newdir){ dirSheet(null); return; }
   if(ds.pickpoint){ closeSheet(); state.dirPick = true; go("map"); toast("Tap the map where they should go"); return; }
