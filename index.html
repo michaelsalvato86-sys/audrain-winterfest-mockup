@@ -231,7 +231,7 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
     <div class="brand" id="brand" style="display:flex;align-items:center;gap:10px"><img src="logo-header.png" alt="Newport Winter Festival" class="brandlogo"><span class="sr-only">Newport Winter Festival</span></div>
     <div class="tools">
       <button class="ib" type="button" id="infoBtn" aria-label="Info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
-      <button class="ib" type="button" id="alertBtn" aria-label="Alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="dot" id="alertDot">4</span></button>
+      <button class="ib" type="button" id="alertBtn" aria-label="Alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="dot" id="alertDot">1</span></button>
       <button class="ib" type="button" id="acctBtn" aria-label="Account"><svg id="acctIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span id="acctTxt" hidden></span></button>
     </div>
   </header>
@@ -241,7 +241,7 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
   <button type="button" data-tab="village" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></svg>Home</button>
   <button type="button" data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Map</button>
   <button type="button" data-tab="tickets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4z"/></svg>My Tickets</button>
-  <button type="button" data-tab="fun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/></svg>Fun</button>
+  <button type="button" data-tab="fun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/></svg>Events</button>
   <button type="button" data-tab="visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>My Visit</button>
 </nav>
 <div id="admit" hidden role="dialog" aria-modal="true" aria-label="Admitted"></div>
@@ -424,12 +424,7 @@ function village(){
       <div id="wmap" class="homemap" role="application" aria-label="Map of Winterfest venues in Newport"></div>
       <p class="muted" style="font-size:13px">Tap a pin for the venue's events and directions.</p></section>
     <section style="display:flex;flex-direction:column;gap:8px"><h2>The dates</h2>${datesAtGlance()}</section>
-    <section style="display:flex;flex-direction:column;gap:8px"><h2>Fun</h2><div class="funrow">
-      <button class="tile" type="button" data-tab="fun" data-fungo="guide">${GEM("#C9B8F0",'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/>')}<b>Itinerary</b></button>
-      <button class="tile" type="button" data-tab="fun" data-fungo="snow">${GEM("#F4FAFD",'<circle cx="12" cy="15" r="5"/><circle cx="12" cy="7" r="3.2"/>')}<b>Snowman contest</b></button>
-      <button class="tile" type="button" data-tab="fun" data-fungo="advent">${GEM("#D8C27A",'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/>')}<b>Advent</b></button>
-      <button class="tile" type="button" data-tab="fun" data-fungo="games">${GEM("#5EE6C8",'<path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/>')}<b>Games</b></button>
-    </div></section>`;
+    <button class="prod" type="button" data-tab="fun" data-fungo="snow" style="text-align:left;color:var(--snow);font:inherit;cursor:pointer"><div><b>Snowman contest</b><div class="muted" style="font-size:13.5px">Build one or draw one. Details coming before the festival.</div></div><span class="tag">Soon</span></button>`;
 }
 function datesAtGlance(){
   return `<div class="days">${FEST_DAYS.map(f=>{ const evs = SIG.filter(e=>e.d===f.i).sort((a,b)=>(a.t?mins(a.t):1440)-(b.t?mins(b.t):1440));
@@ -489,7 +484,6 @@ function directory(){
 }
 function tickets(){
   return `<h1 style="font-size:26px">Tickets</h1>
-    ${walletCard()}
     <div class="glass"><p class="muted">Tickets for Signature events go on sale soon, paid with Apple Pay or Google Pay. Everything you buy lands here, each ticket with its own QR.</p></div>
     <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>My tickets</h2><button class="btn sm ghost" type="button" data-claimopen="1">Add a ticket I was sent</button></div>
       ${S.live.length || S.visits.filter(v=>v.kind==="booking").length ? S.live.concat(S.visits.filter(v=>v.kind==="booking")).map(orderCard).join("") : `<div class="glass"><p class="muted">Tickets you buy for yourself and your family land here, each with its own QR. Check in by scanning the code posted at the gate.</p></div>`}</section>
@@ -497,19 +491,18 @@ function tickets(){
       ${S.outside.length ? S.outside.map(outCard).join("") : `<div class="glass"><p class="muted">Bought a ticket from a local business on Eventbrite, Square or their own site? Add it here so all your Winterfest tickets are in one place.</p></div>`}
       <p class="muted" style="font-size:12.5px">Saved on this phone only.</p></section>
     <div class="prod"><div><b>Igloos at The Reef</b><div class="muted" style="font-size:13.5px">Heated igloos for groups at The Reef, booked on Resy.</div></div>${resyBtn("sm aurora")}</div>
-    <div class="prod"><div><b>Signature events</b><div class="muted" style="font-size:13.5px">Newport Life's ticketed events, by day.</div></div><button class="btn sm ghost" type="button" data-tab="fun" data-fungo="guide">See itinerary</button></div>
+    <div class="prod"><div><b>Signature events</b><div class="muted" style="font-size:13.5px">The festival's ticketed events, by day.</div></div><button class="btn sm ghost" type="button" data-tab="fun" data-fungo="guide">See itinerary</button></div>
     <h2>Buy</h2>
     ${PRODUCTS.filter(p=>!p.sig).map(p=>`<div class="prod"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:13.5px">${esc(p.sub)}</div><div style="color:var(--frost);font-weight:800;margin-top:4px">${p.price?"$"+p.price:"Free"}</div></div><button class="btn sm aurora" type="button" data-book="${p.id}">Book</button></div>`).join("")}`;
 }
 function visit(){
-  const favs = VENDORS.filter(v=>S.fav.has(v.code));
+  const favs = SIG.filter(e=>S.evfav.has(e.id) || S.evrem.has(e.id)).sort((a,b)=>a.d-b.d || (a.t?mins(a.t):1440)-(b.t?mins(b.t):1440));
   return `<h1 style="font-size:26px">My Visit</h1>
-    ${walletCard()}
-    ${S.vouchers.length ? `<section style="display:flex;flex-direction:column;gap:8px"><h2>Rewards</h2>${S.vouchers.map(v=>`<div class="prod"><div><b>${esc(v.name)}</b><div class="muted" style="font-size:13.5px">${esc(v.from)} · ${esc(v.ref)}</div></div><span class="tag sample">Sample</span></div>`).join("")}</section>` : ""}
+
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Bookings and orders</h2>
       ${S.live.length || S.visits.length ? S.live.concat(S.visits).map(b=> b.kind==="booking" ? orderCard(b) : `<div class="prod"><div><b>${esc(b.name)}</b><div class="muted" style="font-size:13.5px">${esc(b.when)} · ${esc(b.ref)}</div></div><span class="tag diet ${b.status==="pending"?"st-pending":""}">${b.status==="pending"?"pending":b.kind}</span></div>`).join("") : `<div class="glass"><p class="muted">Save events from the itinerary and add your tickets. It all lands here.</p></div>`}</section>
-    <section style="display:flex;flex-direction:column;gap:8px"><h2>Favourites</h2>
-      ${favs.length ? favs.map(v=>vrow(v)).join("") : `<div class="glass"><p class="muted">Tap the heart on any vendor to save it here.</p></div>`}</section>`;
+    <section style="display:flex;flex-direction:column;gap:8px"><h2>Saved events</h2>
+      ${favs.length ? favs.map(e=>`<div class="prod"><div><b>${esc(e.name)}</b><div class="muted" style="font-size:13.5px">${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n} \u00b7 ${evTime(e)}</div><div class="muted" style="font-size:13px">${esc(e.place)}${VENUES[e.place] ? " \u00b7 " + esc(VENUES[e.place].addr) : ""}</div></div>${S.evrem.has(e.id) ? '<span class="tag">Alert on</span>' : ""}</div>`).join("") : `<div class="glass"><p class="muted">Tap the heart or the bell on any event in the itinerary. Bell = we alert you when it starts.</p></div>`}</section>`;
 }
 function walletCard(){ return `<div class="wallet"><span class="eyebrow" style="color:#E6F4FA">Village credit ${'<span class="tag" style="border-color:#fff;color:#fff">Sample</span>'}</span><span style="font-size:12.5px;opacity:.9">If Newport Life offers a stored-value card (to be decided)</span><b>$${S.credit.toFixed(2)}</b><span style="font-size:14px">Use at games and participating vendors. Top up with Apple Pay or Google Pay.</span><div style="display:flex;gap:8px;flex-wrap:wrap">${[10,25,50].map(a=>`<button class="btn sm" type="button" data-topup="${a}" style="background:#fff;color:#1F4E79">+ $${a}</button>`).join("")}</div></div>`; }
 
@@ -743,7 +736,7 @@ const VENUES = {
   "Red Parrot":  {addr:"348 Thames St, Newport, RI 02840", ll:[41.48418,-71.31455]}
 };
 const dirLink = v => "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(v + ", " + VENUES[v].addr);
-const placeHtml = pl => VENUES[pl] ? `<button type="button" class="linkish" data-venue="${esc(pl)}">${esc(pl)}</button>` : esc(pl);
+const placeHtml = pl => VENUES[pl] ? `<button type="button" class="linkish" data-venue="${esc(pl)}">${esc(pl)}</button><br><span style="font-size:12.5px">${esc(VENUES[pl].addr)}</span>` : `${esc(pl)}<br><span style="font-size:12.5px">Location to be confirmed</span>`;
 const evTime = e => e.t ? fmt(e.t) + (e.end ? " - " + fmt(e.end) : "") : "Time TBA";
 SIG.filter(e=>e.price!=null && e.t).forEach(e=>{ PRODUCTS.push({id:e.id, sig:true, name:e.name, sub:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)} \u00b7 ${e.place}`, price:e.price, time:e.t, when:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)}`}); AREA[e.id] = "entry"; });
 
@@ -751,22 +744,21 @@ const TREATS = [["Plan your day","Open the itinerary and save an event you want 
 const SCENE = ["tree","lamp","cottage","lights"];
 const HIDDEN = [["mitten",62,212],["lantern",318,96],["sled",250,236],["owl",36,120],["candy cane",188,140],["star",378,60]];
 function fun(){
-  const sec = S.fun;
-  return `<div class="seg" role="group" aria-label="Fun"><button type="button" data-fungo="guide" aria-pressed="${sec==="guide"}">Itinerary</button><button type="button" data-fungo="advent" aria-pressed="${sec==="advent"}">Advent</button><button type="button" data-fungo="games" aria-pressed="${sec==="games"}">Games</button><button type="button" data-fungo="snow" aria-pressed="${sec==="snow"}">Snowman</button></div>
-    ${sec==="guide" || sec==="snow" ? "" : `<div class="glass"><span class="eyebrow">This week's challenge ${SAMPLE}</span><b>Find three kiosks with vegan menu items, then try one.</b><span class="muted" style="font-size:13.5px">Use the Directory's dietary filter. Reward: $2 village credit.</span></div>`}
-    ${sec==="guide" ? guideView() : sec==="advent" ? adventView() : sec==="snow" ? snowView() : gamesView()}`;
+  const sec = S.fun==="snow" ? "snow" : "guide";
+  return `<div class="seg" role="group" aria-label="Events"><button type="button" data-fungo="guide" aria-pressed="${sec==="guide"}">Itinerary</button><button type="button" data-fungo="snow" aria-pressed="${sec==="snow"}">Snowman contest</button></div>
+    ${sec==="guide" ? guideView() : snowView()}`;
 }
 function guideView(){
   const day = S.iday, layer = S.ilayer;
   const evs = [...SIG, ...COMM].filter(e=>(layer==="all" || e.layer===layer) && (day==="all" ? true : (e.d==="all" || e.d===day))).sort((a,b)=>(a.d==="all"?-1:a.d)-(b.d==="all"?-1:b.d) || (a.t?mins(a.t):1440)-(b.t?mins(b.t):1440));
   const row = e => { const dl = e.d==="all" ? "Daily" : FEST_DAYS[e.d].wd + " " + FEST_DAYS[e.d].n;
     return `<div class="ev"><span class="tm">${evTime(e)}<br><span style="font-size:11px;color:var(--frost)">${dl}</span></span><span><b>${esc(e.name)}</b> ${e.layer==="sig"?'<span class="tag" style="border-color:var(--gold);color:var(--gold)">Signature</span>':'<span class="tag">Community</span>'}${e.tbc ? ' <span class="tag">To be confirmed</span>' : ""}<br><span class="muted" style="font-size:13px">${e.layer==="com" ? esc(e.biz + " \u00b7 " + e.place) : placeHtml(e.place)}</span>${e.note ? `<br><span class="muted" style="font-size:13px">${esc(e.note)}</span>` : ""}<br>
-      ${e.layer==="sig" ? (e.price==null || !e.t ? `<span class="btn sm ghost" aria-disabled="true" style="margin-top:6px;opacity:.7;cursor:default">Tickets coming soon</span>` : `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>`) : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}${e.layer==="com" ? comOutExtra(e) : ""}</span>
-      <button class="heart" type="button" data-evfav="${e.id}" aria-pressed="${S.evfav.has(e.id)}" aria-label="Save ${esc(e.name)}">${HEART(S.evfav.has(e.id))}</button><button class="bell" type="button" data-evrem="${e.id}" aria-pressed="${S.evrem.has(e.id)}" aria-label="Remind me about ${esc(e.name)}"><svg viewBox="0 0 24 24" fill="${S.evrem.has(e.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; };
+      ${e.layer==="sig" ? (e.price==null || !e.t ? `<span class="btn sm ghost" aria-disabled="true" style="margin-top:6px;opacity:.7;cursor:default">Tickets coming soon</span>${VENUES[e.place] ? ` <a class="btn sm ghost" href="${dirLink(e.place)}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Directions</a>` : ""}` : `<button class="btn sm aurora" type="button" data-book="${e.id}" style="margin-top:6px">${e.price ? "Tickets \u00b7 $" + e.price : "Reserve free"}</button>`) : (e.url ? `<a class="btn sm ghost" href="${e.url}" target="_blank" rel="noopener" style="margin-top:6px;text-decoration:none">Tickets / info</a>` : `<button class="btn sm ghost" type="button" data-commlink="${e.id}" style="margin-top:6px">Tickets / info</button>`)}${e.layer==="com" ? comOutExtra(e) : ""}</span>
+      <button class="heart" type="button" data-evfav="${e.id}" aria-pressed="${S.evfav.has(e.id)}" aria-label="Save ${esc(e.name)}">${HEART(S.evfav.has(e.id))}</button><button class="bell" type="button" data-evrem="${e.id}" aria-pressed="${S.evrem.has(e.id)}" aria-label="Alert me when ${esc(e.name)} starts"><svg viewBox="0 0 24 24" fill="${S.evrem.has(e.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/></svg></button></div>`; };
   return `<p class="muted" style="font-size:13.5px">February 12-21, 2027. Times and tickets are added as they are confirmed.</p>
     <div class="chips" role="group" aria-label="Event type">${[["all","All"],["sig","Signature"],["com","Community"]].map(([k,l])=>`<button type="button" data-ilayer="${k}" aria-pressed="${layer===k}">${l}</button>`).join("")}</div>
     <div class="chips" role="group" aria-label="Day"><button type="button" data-iday="all" aria-pressed="${day==="all"}">All days</button>${FEST_DAYS.map(f=>`<button type="button" data-iday="${f.i}" aria-pressed="${day===f.i}">${f.wd} ${f.n}</button>`).join("")}</div>
-    <div class="glass" style="flex-direction:row;align-items:center;justify-content:space-between;gap:10px"><span class="muted" style="font-size:13.5px">Signature events are Newport Life's and sell here. Community events are run by local businesses, who sell their own tickets.</span></div>
+    <div class="glass" style="flex-direction:row;align-items:center;justify-content:space-between;gap:10px"><span class="muted" style="font-size:13.5px">Signature events are the festival's own and sell here. Community events are run by local businesses, who sell their own tickets.</span></div>
     ${outRows(day, layer)}${evs.length ? evs.map(row).join("") : `<div class="glass"><p class="muted">${layer==="com" ? "The community calendar opens in January. Local businesses can submit events below." : "Nothing on this day yet."}</p></div>`}
     <div class="glass"><b>Running something during Winterfest?</b><span class="muted" style="font-size:13.5px">Local businesses can submit an event to the community calendar.</span><button class="btn sm aurora" type="button" data-submitevent="1" style="align-self:flex-start">Submit your event</button></div>`;
 }
@@ -777,15 +769,7 @@ function submitEventSheet(){
     <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-submitgo="1">Send for review</button></div>`); }
 // Snowman contest: entries crowdsource photos Newport Life can use in marketing (with consent).
 function snowView(){
-  const feat = S.snow.filter(x=>x.featured), card = x => `<figure class="snowcard"><img src="${x.img}" alt="${esc(x.title)}"><figcaption><b>${esc(x.title)}</b><br><span class="muted" style="font-size:12.5px">${esc(x.kind)} \u00b7 ${esc(x.by)}</span><br><button class="btn sm ghost" type="button" data-feature="${x.id}">${x.featured?"Unfeature":"Feature"} (Newport Life demo)</button></figcaption></figure>`;
-  return `<div class="glass"><h2>Snowman contest</h2><span class="muted" style="font-size:13.5px">Build a snowman or draw one, snap a photo and enter. Newport Life features the best. ${SAMPLE}</span>
-      <label class="muted" for="snTitle" style="font-size:13px">Name your snowman</label><input class="inp" id="snTitle" placeholder="e.g. Frosty by the Sea">
-      <label class="muted" for="snKind" style="font-size:13px">Entry type</label><select class="inp" id="snKind"><option>Built snowman</option><option>Drawing</option></select>
-      <label class="muted" for="snFile" style="font-size:13px">Photo</label><input class="inp" id="snFile" type="file" accept="image/*">
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:13.5px"><input type="checkbox" id="snConsent" style="margin-top:3px"> I agree Newport Life may use my photo in Winterfest marketing.</label>
-      <button class="btn aurora" type="button" data-snowsubmit="1" style="align-self:flex-start">Enter the contest</button></div>
-    <h2>Featured</h2>${feat.length ? `<div class="snowgrid">${feat.map(card).join("")}</div>` : `<div class="glass"><p class="muted">Newport Life picks featured entries during the festival.</p></div>`}
-    <h2>All entries (${S.snow.length})</h2>${S.snow.length ? `<div class="snowgrid">${S.snow.map(card).join("")}</div>` : `<div class="glass"><p class="muted">No entries yet. Be the first.</p></div>`}`;
+  return `<div class="glass"><h2>Snowman contest</h2><span class="muted" style="font-size:13.5px">Build a snowman or draw one during the festival and enter it here. How to enter, the dates and the prizes will be posted before the festival opens.</span></div>`;
 }
 function thumb(file){ return new Promise((res, rej)=>{ const r = new FileReader(); r.onload = ()=>{ const im = new Image(); im.onload = ()=>{ const c = document.createElement("canvas"), k = Math.min(1, 360/Math.max(im.width, im.height)); c.width = Math.round(im.width*k); c.height = Math.round(im.height*k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL("image/jpeg", .78)); }; im.onerror = rej; im.src = r.result; }; r.onerror = rej; r.readAsDataURL(file); }); }
 function countHtml(){ const target = new Date(2027, 1, 12, 10, 0).getTime(), ms = Math.max(0, target - Date.now()), dd = Math.floor(ms/864e5), hh = Math.floor(ms%864e5/36e5), mm = Math.floor(ms%36e5/6e4);
@@ -889,7 +873,52 @@ function bgSnow(){
 function openSheet(t, h){ $("#sheetTitle").textContent = t; $("#sheetBody").innerHTML = h; $("#scrim").hidden = false; const f = $("#sheetBody button, #sheetBody a, #sheetBody input"); if(f) f.focus(); }
 function closeSheet(){ stopCamera(); stopOutCam(); $("#scrim").hidden = true; }
 function claimSheet(code){ openSheet("Add a ticket I was sent", `<p class="muted">Scan the code, or paste the link someone sent you.</p>${liveOn() ? `<div class="scanbox"><video id="scanVid" playsinline muted></video><div class="frame"></div></div><div class="scanmsg" id="scanMsg">Point your camera at the ticket code.</div>` : ""}<input class="inp" id="claimCode" value="${esc(code)}" placeholder="Link or code" aria-label="Ticket code" autocapitalize="off"><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button><button class="btn aurora" type="button" data-claim="1">Add ticket</button></div>`); if(liveOn()) claimScan(); }
-let tt = null; function toast(m){ const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(()=>t.hidden=true, 2600); }
+let tt = null; // ---------- Event alerts (2026-10-26). Two alerts per saved event: 30 minutes before, and when it starts.
+// Store app: the phone schedules them (Capacitor Local Notifications), so they go off with the app closed.
+// Web: they go off while the app is open (service-worker notification), and "Add to calendar" gives a phone-calendar alert.
+const evStart = e => { if(!e.t) return null; const [h,m] = e.t.split(":").map(Number); return new Date(2027, 1, 12 + e.d, h, m); };
+const LN = () => window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() && window.Capacitor.Plugins && window.Capacitor.Plugins.LocalNotifications;
+const alertIds = e => { const n = Number(String(e.id).replace(/\D/g,"")) || 0; return [27000 + n*2, 27001 + n*2]; };
+function alertPlan(e){ const s = evStart(e); if(!s) return [];
+  const [a,b] = alertIds(e), where = e.place + (VENUES[e.place] ? ", " + VENUES[e.place].addr : "");
+  return [{id:a, at:new Date(s.getTime() - 30*6e4), title:e.name + " starts in 30 minutes", body:where},
+          {id:b, at:s, title:e.name + " is starting now", body:where}].filter(x=>x.at.getTime() > Date.now()); }
+async function scheduleAlerts(e){ const ln = LN(), plan = alertPlan(e); if(!plan.length) return "notime";
+  if(ln){ try{ const p = await ln.requestPermissions(); if(p.display !== "granted") return "denied";
+      await ln.schedule({notifications: plan.map(x=>({id:x.id, title:x.title, body:x.body, schedule:{at:x.at, allowWhileIdle:true}}))}); return "native"; }catch(_){ return "error"; } }
+  if("Notification" in window){ if(Notification.permission === "default"){ try{ await Notification.requestPermission(); }catch(_){} } return Notification.permission === "granted" ? "web" : "denied"; }
+  return "denied"; }
+async function cancelAlerts(e){ const ln = LN(); if(ln){ try{ await ln.cancel({notifications: alertIds(e).map(id=>({id}))}); }catch(_){} } }
+async function toggleEventAlert(id){ const e = SIG.find(x=>x.id===id); if(!e) return;
+  if(S.evrem.has(id)){ S.evrem.delete(id); st.set("wf.evrem", [...S.evrem]); await cancelAlerts(e); toast("Alert off"); render(); return; }
+  S.evrem.add(id); st.set("wf.evrem", [...S.evrem]); render();
+  const r = await scheduleAlerts(e);
+  if(r === "native") toast("We'll alert you 30 minutes before and when it starts");
+  else if(r === "notime") toast("Alert saved. It switches on when the start time is announced");
+  else openSheet("Alert on", `<p class="muted">${r === "web" ? "We'll alert you 30 minutes before and when it starts, while the app is open." : "Notifications are off for this app, so we can't alert you on screen."} To get an alert on your phone even when the app is closed, add it to your calendar.</p>
+      <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Done</button><button class="btn aurora" type="button" data-ics="${e.id}">Add to calendar</button></div>`); }
+function rescheduleAll(){ SIG.filter(e=>S.evrem.has(e.id) && e.t).forEach(e=>{ if(LN()) scheduleAlerts(e); }); }
+const firedKey = "wf.fired";
+function webAlertTick(){ if(LN() || !("Notification" in window) || Notification.permission !== "granted") return;
+  const fired = new Set(st.get(firedKey, [])), now = Date.now();
+  SIG.filter(e=>S.evrem.has(e.id)).forEach(e=>{ const s = evStart(e); if(!s) return;
+    [[s.getTime() - 30*6e4, "30", " starts in 30 minutes"], [s.getTime(), "0", " is starting now"]].forEach(([t, k, msg])=>{
+      const key = e.id + ":" + k; if(now >= t && now < t + 15*6e4 && !fired.has(key)){ fired.add(key);
+        const where = e.place + (VENUES[e.place] ? ", " + VENUES[e.place].addr : "");
+        (navigator.serviceWorker && navigator.serviceWorker.ready ? navigator.serviceWorker.ready.then(r=>r.showNotification(e.name + msg, {body:where, icon:"icon-192.png", tag:key})) : Promise.reject()).catch(()=>{ try{ new Notification(e.name + msg, {body:where}); }catch(_){} }); } }); });
+  st.set(firedKey, [...fired]); }
+setInterval(webAlertTick, 30000); setTimeout(webAlertTick, 3000); setTimeout(rescheduleAll, 1500);
+function downloadIcs(id){ const e = SIG.find(x=>x.id===id); if(!e) return; const s = evStart(e);
+  const pad = n => String(n).padStart(2,"0"), dt = d => d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate()) + "T" + pad(d.getHours()) + pad(d.getMinutes()) + "00";
+  const day = new Date(2027, 1, 12 + e.d), end = e.end ? evStart(Object.assign({}, e, {t:e.end})) : s ? new Date(s.getTime() + 2*36e5) : null;
+  const loc = (e.place + (VENUES[e.place] ? ", " + VENUES[e.place].addr : "")).replace(/,/g, "\\,");
+  const lines = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Newport Winter Festival//EN","BEGIN:VEVENT","UID:" + e.id + "@newport-winter-festival",
+    "DTSTAMP:" + dt(new Date()), s ? "DTSTART:" + dt(s) : "DTSTART;VALUE=DATE:" + dt(day).slice(0,8), s ? "DTEND:" + dt(end) : "DTEND;VALUE=DATE:" + dt(new Date(day.getTime() + 864e5)).slice(0,8),
+    "SUMMARY:" + e.name.replace(/,/g, "\\,"), "LOCATION:" + loc, "DESCRIPTION:Newport Winter Festival 2027",
+    ...(s ? ["BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:" + e.name.replace(/,/g, "\\,"),"END:VALARM","BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY","DESCRIPTION:" + e.name.replace(/,/g, "\\,"),"END:VALARM"] : []),
+    "END:VEVENT","END:VCALENDAR"];
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([lines.join("\r\n")], {type:"text/calendar"})); a.download = "winterfest-" + e.id + ".ics"; document.body.appendChild(a); a.click(); a.remove(); closeSheet(); }
+function toast(m){ const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(()=>t.hidden=true, 2600); }
 
 function vendorSheet(code){ const v = VENDORS.find(x=>x.code===code), c = CATS[v.cat];
   openSheet(`${v.code} · ${v.name}`, `
@@ -959,7 +988,7 @@ function alertsSheet(){ S.seenAlerts = true; st.set("wf.seen", true); $("#alertD
   openSheet("Alerts", `${ALERTS.map(a=>`<div class="prod"><div><b>${esc(a[0])}</b><div class="muted" style="font-size:13.5px">${esc(a[1])}</div></div><span class="tag">${a[2]}</span></div>`).join("")}<p class="muted" style="font-size:12.5px">Weather changes, sold-out notices and schedule updates appear here.</p><div class="sheetfoot"><button class="btn" type="button" data-close="1">Done</button></div>`); }
 function infoSheet(){
   openSheet("Info", `<div class="glass"><h3>Accessibility</h3><p class="muted">Accessibility details for each venue will be added once confirmed.</p></div>
-    <div class="glass"><h3>Parking and drop-off</h3><p class="muted">Lots, shuttle stops and rideshare drop-off to be confirmed. See Map, then Getting here, for live traffic.</p></div>
+    <div class="glass"><h3>Parking and drop-off</h3><p class="muted">Lots, shuttle stops and rideshare drop-off to be confirmed. See the Map tab for live traffic.</p></div>
     <div class="glass"><h3>FAQ</h3><p class="muted">Hours, weather policy, what to bring, pets and re-entry: to be confirmed.</p></div>
     <div class="glass"><h3>Lost and found</h3><p class="muted">Details to be confirmed.</p></div>
     <div class="sheetfoot"><button class="btn" type="button" data-close="1">Done</button></div>`); }
@@ -992,7 +1021,8 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.venue || d.venuepin){ S.venueFocus = d.venue || d.venuepin; S.tab = "map"; S.mapv = "getting"; go("map"); if(d.venuepin) document.getElementById("wmap")?.scrollIntoView({behavior:"smooth", block:"center"}); return; }
   if(d.locate){ if(!navigator.geolocation){ toast("Location isn't available on this device"); return; } navigator.geolocation.getCurrentPosition(p=>{ if(!wmap) return; const ll = [p.coords.latitude, p.coords.longitude]; L.circleMarker(ll, {radius:8, color:"#0B1E3F", weight:2, fillColor:"#5EE6C8", fillOpacity:1}).addTo(wmap).bindPopup("You are here").openPopup(); wmap.setView(ll, 16); }, ()=>toast("Location permission was declined"), {enableHighAccuracy:true, timeout:10000}); return; }
   if(d.evfav){ const k = d.evfav; S.evfav.has(k) ? S.evfav.delete(k) : S.evfav.add(k); st.set("wf.evfav", [...S.evfav]); render(); return; }
-  if(d.evrem){ const k = d.evrem; S.evrem.has(k) ? S.evrem.delete(k) : S.evrem.add(k); st.set("wf.evrem", [...S.evrem]); toast(S.evrem.has(k) ? "Reminder set for 30 minutes before" : "Reminder off"); render(); return; }
+  if(d.evrem){ toggleEventAlert(d.evrem); return; }
+  if(d.ics){ downloadIcs(d.ics); return; }
   if(d.demo){ S.demo = !S.demo; render(); return; }
   if(d.door){ const n = +d.door, t = TREATS[(n-1)%TREATS.length], first = !S.doors.has(n); S.doors.add(n); st.set("wf.doors", [...S.doors]);
     if(first && t[2]==="voucher") reward("Free hot cocoa (sample)", "Advent door " + n);
