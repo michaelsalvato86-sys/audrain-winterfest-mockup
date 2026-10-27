@@ -86,26 +86,10 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 .seg{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--mid2);border:1px solid var(--edge)}
 .seg button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 10px;font-weight:800;font-size:13.5px;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:linear-gradient(135deg,#2A6F97,#6b55c9);color:#fff}
-.plan{border-radius:22px;overflow:hidden;border:1px solid var(--edge);background:#0d2449}
-.plan svg{display:block;width:100%;height:auto}
-.kiosk{cursor:pointer;transition:opacity .2s}
-.kiosk.dim{opacity:.22}
-.legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;font-size:13.5px;color:var(--muted)}
-.legend span{display:flex;gap:8px;align-items:center}
 .sw{width:14px;height:14px;border-radius:4px;flex:0 0 auto}
-.code{display:inline-grid;place-items:center;min-width:38px;height:28px;padding:0 6px;border-radius:8px;font-weight:800;font-size:13px;color:var(--mid)}
-.vrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--edge);border-radius:16px;background:var(--mid2);text-align:left;width:100%;color:var(--snow)}
-.vrow .t{font-weight:800}
-.vrow .s{font-size:13px;color:var(--muted)}
-.vrow .hit{font-size:12.5px;color:var(--mint)}
-.group{font-family:var(--display);font-size:13px;letter-spacing:.14em;color:var(--frost);margin:6px 2px -4px}
-.search{width:100%;border:1px solid var(--edge);background:var(--mid2);color:var(--snow);border-radius:14px;padding:12px 14px}
-.search::placeholder{color:#8fa3c2}
 .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid var(--edge);color:var(--snow)}
-.tag.sample{border-color:var(--gold);color:var(--gold)}
 .tag.diet{border-color:var(--mint);color:var(--mint)}
 .tag.alg{border-color:var(--rose);color:var(--rose)}
-.mi{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--edge)}
 .mi .p{font-weight:800;color:var(--frost);font-variant-numeric:tabular-nums}
 .heart{background:none;border:0;padding:4px;color:var(--muted)} .heart svg{width:22px;height:22px}
 .heart[aria-pressed="true"]{color:var(--rose)}
@@ -147,25 +131,6 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 .ev{display:grid;grid-template-columns:62px minmax(0,1fr) auto auto;gap:8px;align-items:center;padding:10px 12px;border:1px solid var(--edge);border-radius:14px;background:var(--mid2)}
 .ev .tm{font-weight:800;color:var(--frost);font-size:13.5px}
 .bell{background:none;border:0;padding:4px;color:var(--muted)} .bell svg{width:20px;height:20px} .bell[aria-pressed="true"]{color:var(--gold)}
-.advent{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
-.door{aspect-ratio:1/1;border-radius:10px;border:1px solid var(--edge);background:linear-gradient(150deg,#173563,#11284F);font-family:var(--display);font-weight:700;font-size:16px;color:var(--snow);padding:0}
-.door.open{background:linear-gradient(150deg,#A8D8EA,#C9B8F0);color:#0B1E3F}
-.door:disabled{opacity:.45;cursor:not-allowed}
-.scene{border-radius:20px;overflow:hidden;border:1px solid var(--edge);background:#0d2449}
-.scene svg{display:block;width:100%;height:auto}
-.hid{cursor:pointer}
-.hid.found{opacity:.35}
-.game{position:relative;height:320px;border-radius:20px;overflow:hidden;border:1px solid var(--edge);background:linear-gradient(180deg,#11284F,#0B1E3F);touch-action:manipulation}
-.flk{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border:0;background:none;padding:0;color:#F4FAFD}
-.flk svg{width:100%;height:100%}
-.gamebar{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:800}
-.match{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.mt{aspect-ratio:1/1;border-radius:14px;border:1px solid var(--edge);background:var(--mid3);display:grid;place-items:center;padding:0;color:var(--snow)}
-.mt svg{width:56%;height:56%}
-.mt[aria-pressed="true"]{background:var(--frost);color:#0B1E3F}
-.mt.gone{visibility:hidden}
-.wallet{background:linear-gradient(135deg,#2A6F97,#6b55c9);border-radius:22px;padding:18px;color:#fff;display:flex;flex-direction:column;gap:8px}
-.wallet b{font-family:var(--display);font-size:28px}
 @media (prefers-reduced-motion: reduce){ .hero::before{animation:none} *{transition:none!important} }
 
 .pms{display:flex;gap:6px;flex-wrap:wrap}
@@ -252,64 +217,41 @@ h1{font-size:32px;line-height:1.1} h2{font-size:19px} h3{font-size:15px}
 // Brand shown in the app. The App Store name is Katelyn's call (Newport Life owns Winterfest); rename here only.
 const APP_BRAND = "Newport Winter Festival"; // official name from the logo Katelyn sent 2026-10-09; App Store name is still her call
 const TRAFFIC = "https://www.google.com/maps/@41.4815,-71.3150,14z/data=!5m1!1e1";
-// SAMPLE village: layout, vendors, menus, hours and prices are placeholders until the real lineup is set.
-const CATS = {food:["Food","#A8D8EA"], sweets:["Sweets","#F2B8C6"], drinks:["Warm drinks","#C9B8F0"], shops:["Holiday shops","#5EE6C8"], play:["Experiences","#D8C27A"], help:["Guest services","#F4FAFD"]};
-const DIET = {V:"Vegan", VG:"Vegetarian", GF:"Gluten-free", NF:"Nut-free", D:"Contains dairy", N:"Contains nuts", A:"21+"};
-const ZONES = {N:"North promenade", E:"East terrace", S:"South promenade", W:"West lawn", R:"Rinkside"};
 const PAY_ACCEPTED = ["Card", "Apple Pay", "Google Pay"];
-const VENDORS = [
-  {code:"W1", cat:"help", name:"Welcome Lodge", x:70, y:300, hours:["10:00","22:00"], sub:"Info, tickets, lost and found", menu:[]},
-  {code:"N3", cat:"drinks", name:"Hot Cocoa Bar", x:120, y:110, hours:["11:00","22:00"], sub:"Cocoa with toppings", order:true, menu:[["Classic hot cocoa","$6",["VG","GF","D"]],["Oat-milk peppermint cocoa","$7",["V","GF","NF"]],["Toasted marshmallow add-on","$1",["GF"]]]},
-  {code:"N7", cat:"food", name:"Crêpe Kiosk", x:200, y:95, hours:["11:00","21:00"], sub:"Sweet and savory crêpes", order:true, menu:[["Hazelnut chocolate and strawberry","$11",["VG","N","D"]],["Ham and gruyère","$13",["D","NF"]],["Lemon sugar","$9",["VG","D","NF"]]]},
-  {code:"N12", cat:"food", name:"Wood-Fired Pizza", x:285, y:110, hours:["11:30","21:30"], sub:"Personal pies from the oven", order:true, menu:[["Margherita","$14",["VG","D","NF"]],["Pepperoni","$15",["D","NF"]],["Roasted vegetable (vegan cheese)","$15",["V","NF"]]]},
-  {code:"E4", cat:"drinks", name:"Mulled Cider Hut", x:370, y:180, hours:["12:00","22:00"], sub:"Hot cider and mulled wine", order:true, menu:[["Hot spiced cider","$6",["V","GF","NF"]],["Mulled wine","$12",["V","GF","NF","A"]]]},
-  {code:"E9", cat:"food", name:"Chowder Shack", x:370, y:270, hours:["11:00","21:00"], sub:"Chowder and lobster rolls", order:true, menu:[["New England clam chowder","$9",["D","NF"]],["Gluten-free chowder bowl","$10",["GF","D","NF"]],["Warm lobster roll","$28",["D","NF"]]]},
-  {code:"W5", cat:"sweets", name:"Churro and Waffle Cart", x:60, y:200, hours:["11:00","22:00"], sub:"Churros, Liège waffles", order:true, menu:[["Churros with chocolate","$8",["VG","D","NF"]],["Vegan cinnamon churros","$8",["V","NF"]],["Liège waffle","$9",["VG","D","NF"]]]},
-  {code:"S2", cat:"shops", name:"Ornament Studio", x:110, y:480, hours:["11:00","20:00"], sub:"Hand-painted glass ornaments", menu:[]},
-  {code:"S6", cat:"shops", name:"Knit and Wool", x:195, y:500, hours:["11:00","20:00"], sub:"Scarves, hats, mittens", menu:[]},
-  {code:"S10", cat:"shops", name:"Candle Works", x:285, y:490, hours:["11:00","20:00"], sub:"Hand-poured winter candles", menu:[]},
-  {code:"W9", cat:"play", name:"Kids' Craft Tent", x:60, y:400, hours:["10:00","18:00"], sub:"Ornaments, cards, cookie decorating", menu:[]},
-  {code:"R1", cat:"play", name:"Skate Rentals", x:175, y:300, hours:["10:00","22:00"], sub:"Rentals, lockers, skate aids", menu:[]},
-  {code:"R4", cat:"play", name:"Igloos at The Reef", x:300, y:370, hours:["12:00","22:00"], sub:"Heated igloos at The Reef - book on Resy", resy:true, menu:[]},
-  {code:"R7", cat:"drinks", name:"Rinkside Bar", x:300, y:250, hours:["14:00","22:00"], sub:"Warm drinks by the ice", order:true, menu:[["Hot toddy","$14",["V","GF","NF","A"]],["Spiced hot chocolate","$7",["VG","GF","D"]]]}
-];
-const LANDMARKS = [{t:"i", name:"Info", x:70, y:340}, {t:"WC", name:"Restrooms", x:130, y:400}, {t:"+", name:"First aid", x:345, y:430}, {t:"WC", name:"Restrooms", x:345, y:130}];
 const PRODUCTS = [];   // no ice rink (Michael, 2026-10-26); Signature events are added from SIG below
 // Igloos are at The Reef and are booked on Resy (Katelyn, 2026-10-09). Paste the Resy link here when Newport Life has it.
 const RESY_REEF_URL = "";
 function resyBtn(cls){ return RESY_REEF_URL ? `<a class="btn ${cls||"aurora"}" href="${RESY_REEF_URL}" target="_blank" rel="noopener" style="text-decoration:none">Book on Resy</a>` : `<button class="btn ${cls||"ghost"}" type="button" data-resy="1">Resy link coming</button>`; }
 const SLOTS = ["4:00","5:30","7:00","8:30"];
-// ---------- Payments. Demo rail = Audrain's Shopify store; Newport Life's own payment account is to be decided (its checkout shows Shop Pay, PayPal, Google Pay, Venmo and card; Apple Pay on Apple devices).
+// ---------- Payments. Rail to be set (Stripe, per Katelyn 2026-10-23); legacy note: Audrain's Shopify store; Newport Life's own payment account is to be decided (its checkout shows Shop Pay, PayPal, Google Pay, Venmo and card; Apple Pay on Apple devices).
 // Every Winterfest item is "pending" until Audrain creates it in Shopify. To go live: create the item (no shipping),
-// paste one variant id per ticket type below, and set rail:"shopify". Example: skate:{rail:"shopify", variants:{adult:44000000000001, child:44000000000002, infant:44000000000003}}
+// paste one variant id per ticket type below, and set rail:"shopify". Example: "s27-1":{rail:"shopify", variants:{adult:44000000000001, child:44000000000002, infant:44000000000003}}
 const STORE = "https://shop.audrainautomuseum.org";
 const PAY = {
-  entry:{rail:"pending"}, skate:{rail:"pending"}, rental:{rail:"pending"}, lesson:{rail:"pending"}, igloo:{rail:"pending"},
-  order:{rail:"pending"}, credit:{rail:"pending"}
+  entry:{rail:"pending"}
 };
 const TYPES = [{k:"adult", n:"Adult", f:1}, {k:"child", n:"Child (3-12)", f:0.6}, {k:"infant", n:"Under 3", f:0}];
-const AREA = {entry:"entry", skate:"rink", rental:"rink", lesson:"rink", igloo:"igloo"};
-const AREA_NAME = {entry:"Village entry", rink:"Rink", igloo:"Igloo lounges"};
-const AREA_SHORT = {entry:"ENT", rink:"RNK", igloo:"IGL"};
-const SHORT_AREA = {ENT:"entry", RNK:"rink", IGL:"igloo"};
+const AREA = {entry:"entry"};
+const AREA_NAME = {entry:"Event entry"};
+const AREA_SHORT = {entry:"ENT"};
+const SHORT_AREA = {ENT:"entry"};
 function cartLink(items){ return STORE + "/cart/" + items.map(i=>i.variant + ":" + i.qty).join(","); }
 function isApple(){ const u = navigator.userAgent; return !!window.ApplePaySession || /iPhone|iPad|iPod/.test(u) || (/Macintosh/.test(u) && /Safari/.test(u) && !/Chrome|Chromium|Edg|Firefox/.test(u)); }
 const money = n => "$" + (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0);
 const ALERTS = [["The 2027 lineup is posted","See the itinerary for every event, Feb 12-21. Events marked To be confirmed may change.","news"]];
 const st = { get(k,f){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : f; }catch(e){ return f; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
-const S = { tab:"village", mapv:"getting", cat:"all", open:false, diet:"", q:"", fav:new Set(st.get("wf.fav",[])), visits:st.get("wf.visits",[]), account:st.get("wf.account",null), cart:null, slot:SLOTS[0], seenAlerts:st.get("wf.seen",false),
-  fun:"guide", evfav:new Set(st.get("wf.evfav",[])), evrem:new Set(st.get("wf.evrem",[])), doors:new Set(st.get("wf.doors",[])), found:new Set(st.get("wf.found",[])), demo:false,
-  best:st.get("wf.best",0), mtiles:[], msel:[], credit:st.get("wf.credit",0), vouchers:st.get("wf.vouchers",[]),
+const S = { tab:"village", mapv:"getting", visits:st.get("wf.visits",[]), account:st.get("wf.account",null), cart:null, slot:SLOTS[0], seenAlerts:st.get("wf.seen",false),
+  fun:"guide", evfav:new Set(st.get("wf.evfav",[])), evrem:new Set(st.get("wf.evrem",[])),
   payMethod:null, qty:{adult:1, child:0, infant:0}, expanded:new Set(), iday:"all", ilayer:"all", snow:st.get("wf.snow",[]) };
 S.outside = st.get("wf.outside", []);
-S.visits = S.visits.map(v => (v.kind!=="booking" || v.tickets) ? v : Object.assign({}, v, {area: /igloo/i.test(v.name) ? "igloo" : /skate|lesson/i.test(v.name) ? "rink" : "entry", slot: (v.when||"").replace(" PM",""), status:"paid", tickets:[{serial:v.ref + "-1", type:"Adult", holder:"", used:false, checkins:[], transferred:false}]}));
+S.visits = S.visits.map(v => (v.kind!=="booking" || v.tickets) ? v : Object.assign({}, v, {area: "entry", slot: (v.when||"").replace(" PM",""), status:"paid", tickets:[{serial:v.ref + "-1", type:"Adult", holder:"", used:false, checkins:[], transferred:false}]}));
 const $ = s => document.querySelector(s);
 
 // ---------- Live tickets (Supabase, newport-life-events). Tickets issued by Newport Life (comps, door sales, admin,
 // later in-app purchases) come from tix.my_tickets and lock to this phone. Without a connection the app keeps its
-// sample bookings only. Live QR: WINTERFEST-TICKET:<serial>:<token>. Claim code: WINTERFEST-CLAIM:<serial>:<token>.
+// own bookings only. Live QR: WINTERFEST-TICKET:<serial>:<token>. Claim code: WINTERFEST-CLAIM:<serial>:<token>.
 const LIVE = window.SB || null;
-const LIVE_AREA = {entry:"entry", skate:"rink", rental:"rink", lesson:"rink", igloo:"igloo"};
+const LIVE_AREA = {entry:"entry"};
 S.live = [];
 const liveOn = () => !!(LIVE && LIVE.ok);
 const findOrder = id => S.visits.find(v=>v.id===id) || S.live.find(v=>v.id===id);
@@ -403,13 +345,8 @@ function liveAuthSheet(mode, why){
     <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Not now</button></div>`);
 }
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const SAMPLE = '<span class="tag sample">Sample</span>';
 const mins = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
 const fmt = t => { const [h,m] = t.split(":").map(Number); return ((h%12)||12) + ":" + String(m).padStart(2,"0") + (h>=12?" PM":" AM"); };
-const isOpen = v => { const d = new Date(), n = d.getHours()*60 + d.getMinutes(); return n >= mins(v.hours[0]) && n < mins(v.hours[1]); };
-const dietOk = v => !S.diet || v.menu.some(m=>m[2].includes(S.diet));
-const tagHtml = tags => tags.map(t=>`<span class="tag ${["D","N","A"].includes(t)?"alg":"diet"}">${DIET[t]}</span>`).join(" ");
-const codeChip = v => `<span class="code" style="background:${CATS[v.cat][1]}">${v.code}</span>`;
 const HEART = on => `<svg viewBox="0 0 24 24" fill="${on?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`;
 const GEM = (c, path) => `<span class="gem" style="background:${c}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">${path}</svg></span>`;
 
@@ -430,38 +367,6 @@ function datesAtGlance(){
   return `<div class="days">${FEST_DAYS.map(f=>{ const evs = SIG.filter(e=>e.d===f.i).sort((a,b)=>(a.t?mins(a.t):1440)-(b.t?mins(b.t):1440));
     return `<button type="button" class="day" data-tab="fun" data-fungo="guide" data-idaygo="${f.i}"><span class="dd"><b>${f.n}</b><small>${f.wd}</small></span><span class="de">${evs.map(e=>`<span><b>${esc(e.name)}</b>${e.tbc ? ' <span class="tag">TBC</span>' : ""}<br><small>${e.t ? evTime(e) + " \u00b7 " : ""}${esc(e.place)}</small></span>`).join("") || '<span class="muted">To be announced</span>'}</span></button>`; }).join("")}</div>`;
 }
-function filterBar(){
-  return `<div class="chips" role="group" aria-label="Filters">
-    ${[["all","All"],...Object.entries(CATS).map(([k,c])=>[k,c[0]])].map(([k,l])=>`<button type="button" data-cat="${k}" aria-pressed="${S.cat===k}">${l}</button>`).join("")}
-    <button type="button" data-openf="1" aria-pressed="${S.open}">Open now</button>
-    <select id="dietSel" aria-label="Dietary filter"><option value="">Any diet</option>${["V","VG","GF","NF"].map(k=>`<option value="${k}" ${S.diet===k?"selected":""}>${DIET[k]}</option>`).join("")}</select></div>`;
-}
-const matches = v => (S.cat==="all" || v.cat===S.cat) && (!S.open || isOpen(v)) && dietOk(v);
-function plan(){
-  const pins = VENDORS.map(v=>{ const c = CATS[v.cat][1], w = v.code.length>2 ? 40 : 34;
-    return `<g class="kiosk${matches(v)?"":" dim"}" data-vendor="${v.code}" tabindex="0" role="button" aria-label="${v.code} ${esc(v.name)}">
-      <rect x="${v.x-w/2}" y="${v.y-13}" width="${w}" height="26" rx="8" fill="${c}" stroke="#0B1E3F" stroke-width="2"/>
-      <text x="${v.x}" y="${v.y+5}" text-anchor="middle" font-family="Nunito Sans, sans-serif" font-size="13" font-weight="800" fill="#0B1E3F">${v.code}</text></g>`; }).join("");
-  const lms = LANDMARKS.map(l=>`<g aria-label="${l.name}"><circle cx="${l.x}" cy="${l.y}" r="12" fill="#0B1E3F" stroke="#F4FAFD" stroke-width="2"/><text x="${l.x}" y="${l.y+4.5}" text-anchor="middle" font-family="Nunito Sans, sans-serif" font-size="${l.t.length>1?9:13}" font-weight="800" fill="#F4FAFD">${l.t}</text></g>`).join("");
-  return `<div class="plan"><svg viewBox="0 0 430 560" role="img" aria-label="Illustrated village plan with kiosk codes">
-    <defs><radialGradient id="rink" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#E6F4FA"/><stop offset="1" stop-color="#A8D8EA"/></radialGradient>
-    <linearGradient id="aur" x1="0" x2="1"><stop offset="0" stop-color="#5EE6C8" stop-opacity=".18"/><stop offset="1" stop-color="#C9B8F0" stop-opacity=".18"/></linearGradient></defs>
-    <rect width="430" height="560" fill="#0B1E3F"/>
-    <rect x="25" y="45" width="380" height="490" rx="34" fill="#102a52" stroke="#24427a" stroke-width="2"/>
-    <rect x="25" y="45" width="380" height="90" rx="34" fill="url(#aur)"/>
-    <path d="M70 300 H360 M215 140 V460 M95 150 Q215 200 335 150 M95 450 Q215 410 335 450" fill="none" stroke="#1d3f73" stroke-width="22" stroke-linecap="round"/>
-    <path d="M70 300 H215 V460" fill="none" stroke="#D8C27A" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round"/>
-    <ellipse cx="235" cy="310" rx="78" ry="48" fill="url(#rink)" stroke="#F4FAFD" stroke-width="2"/>
-    <text x="235" y="315" text-anchor="middle" font-family="Cinzel, serif" font-size="13" font-weight="700" fill="#0B1E3F" letter-spacing="3">RINK</text>
-    ${[[45,75],[395,75],[45,515],[395,515],[395,380]].map(([x,y])=>`<path d="M${x} ${y-16} L${x+11} ${y+6} L${x-11} ${y+6} Z" fill="#2d6b5e"/><path d="M${x} ${y-6} L${x+14} ${y+18} L${x-14} ${y+18} Z" fill="#245a4f"/>`).join("")}
-    <text x="215" y="30" text-anchor="middle" font-family="Cinzel, serif" font-size="14" fill="#A8D8EA" letter-spacing="4">THE VILLAGE</text>
-    ${["N","E","S","W"].map((z,i)=>`<text x="${[215,416,215,14][i]}" y="${[64,300,550,300][i]}" text-anchor="middle" font-family="Cinzel, serif" font-size="12" fill="#B9C8DE">${z}</text>`).join("")}
-    ${lms}${pins}
-    <g aria-label="You are here (sample)"><circle cx="125" cy="335" r="16" fill="#5EE6C8" opacity=".25"><animate attributeName="r" values="10;18;10" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="125" cy="335" r="7" fill="#5EE6C8" stroke="#0B1E3F" stroke-width="2"/><text x="125" y="362" text-anchor="middle" font-family="Nunito Sans, sans-serif" font-size="11" font-weight="800" fill="#5EE6C8">You are here</text></g>
-    <text x="420" y="555" text-anchor="end" font-family="Nunito Sans, sans-serif" font-size="10" fill="#B9C8DE">Sample layout</text></svg></div>
-    <div class="legend">${Object.entries(CATS).map(([k,c])=>`<span><i class="sw" style="background:${c[1]}"></i>${c[0]}</span>`).join("")}<span><i class="sw" style="background:#0B1E3F;border:2px solid #F4FAFD;border-radius:50%"></i>Info, WC, first aid</span><span><i class="sw" style="background:repeating-linear-gradient(90deg,#D8C27A 0 5px,transparent 5px 9px)"></i>Accessible route</span></div>
-    <p class="muted" style="font-size:13px">Kiosk codes: ${Object.entries(ZONES).map(([k,z])=>`<b>${k}</b> ${z}`).join(" · ")}.</p>`;
-}
 function mapView(){
   return `<div class="glass"><h2>Map of Newport</h2><p class="muted">Winterfest events happen at venues all over Newport. Tap a pin or a venue for its events and directions. Parking and shuttles will be added once they're confirmed.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn aurora" href="${TRAFFIC}" target="_blank" rel="noopener">Live traffic</a><button class="btn ghost" type="button" data-locate="1">Show my location</button></div></div><div id="wmap" role="application" aria-label="Map of Winterfest venues in Newport"></div>${venueList()}`;
 }
@@ -471,16 +376,6 @@ function venueList(){
     return `<div class="glass" id="venue-${Object.keys(VENUES).indexOf(v)}"><b>${esc(v)}</b><span class="muted" style="font-size:13px">${esc(VENUES[v].addr)}</span>
       ${evs.map(e=>`<span style="font-size:13.5px">${FEST_DAYS[e.d].wd} ${FEST_DAYS[e.d].n} · ${evTime(e)} · ${esc(e.name)}${e.tbc ? ' <span class="tag">To be confirmed</span>' : ""}</span>`).join("")}
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px"><a class="btn sm aurora" href="${dirLink(v)}" target="_blank" rel="noopener">Directions</a><button class="btn sm ghost" type="button" data-venuepin="${esc(v)}">Show on map</button></div></div>`; }).join("");
-}
-function vrow(v, hit){ return `<button type="button" class="vrow" data-vendor="${v.code}">${codeChip(v)}<span><span class="t">${esc(v.name)}</span><br><span class="s">${isOpen(v)?"Open now":"Opens "+fmt(v.hours[0])} · ${esc(v.sub)}</span>${hit?`<br><span class="hit">Menu: ${esc(hit)}</span>`:""}</span>${S.fav.has(v.code)?`<span style="color:var(--rose)">${HEART(true)}</span>`:(v.menu.length?'<span class="tag diet">Menu</span>':"")}</button>`; }
-function directory(){
-  const q = S.q.trim().toLowerCase();
-  const rows = VENDORS.filter(matches).map(v=>{ if(!q) return [v,null]; if(v.name.toLowerCase().includes(q) || v.sub.toLowerCase().includes(q)) return [v,null]; const m = v.menu.find(m=>m[0].toLowerCase().includes(q)); return m ? [v,m[0]] : null; }).filter(Boolean);
-  const groups = {}; rows.forEach(([v,h])=>{ (groups[v.cat] = groups[v.cat] || []).push([v,h]); });
-  return `<input class="search" id="q" type="search" placeholder="Search vendors and menu items, e.g. chowder" value="${esc(S.q)}" aria-label="Search vendors and menu items">
-    ${filterBar()}
-    <p class="muted" style="font-size:13px">A to Z by category. Vendors, menus, prices and hours are ${SAMPLE}</p>
-    ${Object.keys(CATS).filter(k=>groups[k]).map(k=>`<div class="group">${CATS[k][0].toUpperCase()}</div>${groups[k].sort((a,b)=>a[0].name.localeCompare(b[0].name)).map(([v,h])=>vrow(v,h)).join("")}`).join("") || `<div class="glass"><p class="muted">No vendors match. Try another search or filter.</p></div>`}`;
 }
 function tickets(){
   return `<h1 style="font-size:26px">Tickets</h1>
@@ -504,7 +399,6 @@ function visit(){
     <section style="display:flex;flex-direction:column;gap:8px"><h2>Saved events</h2>
       ${favs.length ? favs.map(e=>`<div class="prod"><div><b>${esc(e.name)}</b><div class="muted" style="font-size:13.5px">${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n} \u00b7 ${evTime(e)}</div><div class="muted" style="font-size:13px">${esc(e.place)}${VENUES[e.place] ? " \u00b7 " + esc(VENUES[e.place].addr) : ""}</div></div>${S.evrem.has(e.id) ? '<span class="tag">Alert on</span>' : ""}</div>`).join("") : `<div class="glass"><p class="muted">Tap the heart or the bell on any event in the itinerary. Bell = we alert you when it starts.</p></div>`}</section>`;
 }
-function walletCard(){ return `<div class="wallet"><span class="eyebrow" style="color:#E6F4FA">Village credit ${'<span class="tag" style="border-color:#fff;color:#fff">Sample</span>'}</span><span style="font-size:12.5px;opacity:.9">If Newport Life offers a stored-value card (to be decided)</span><b>$${S.credit.toFixed(2)}</b><span style="font-size:14px">Use at games and participating vendors. Top up with Apple Pay or Google Pay.</span><div style="display:flex;gap:8px;flex-wrap:wrap">${[10,25,50].map(a=>`<button class="btn sm" type="button" data-topup="${a}" style="background:#fff;color:#1F4E79">+ $${a}</button>`).join("")}</div></div>`; }
 
 // ---------- Ticket orders: one card per family/group order, swipeable individual tickets
 function eligible(o){ return o.tickets.map((t,i)=>i).filter(i=>{ const t = o.tickets[i]; return !t.transferred && ((o.area==="entry" && !o.live) || !t.used); }); }
@@ -648,7 +542,7 @@ function checkInSheet(orderId, idxs){
     <div class="scanbox"><video id="scanVid" playsinline muted></video><div class="frame"></div></div>
     <div class="scanmsg" id="scanMsg">Point your camera at the Winterfest check-in code posted at the ${AREA_NAME[o.area].toLowerCase()} gate.</div>
     <div style="display:flex;gap:8px"><input class="inp" id="gateCode" placeholder="Or type the gate code, e.g. ${AREA_SHORT[o.area]}-1" aria-label="Gate code" autocapitalize="characters" style="flex:1"><button class="btn" type="button" data-gatecode="1">Enter</button></div>
-    ${o.live ? `<p class="muted" style="font-size:12.5px">Or type the 4-digit code on the gate sign.</p>` : `<button class="btn ghost" type="button" data-simscan="1">Simulate gate scan (demo)</button>`}
+    <p class="muted" style="font-size:12.5px">Or type the 4-digit code on the gate sign.</p>
     <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button></div>`);
   startCamera();
 }
@@ -669,15 +563,13 @@ async function startCamera(){
   }catch(e){ msg("Camera permission was declined. Type the gate code instead."); }
 }
 function parseGate(code){ const t = String(code||"").trim().toUpperCase();
-  let m = t.match(/^WINTERFEST-CHECKIN:(ENTRY|RINK|IGLOO):([A-Z0-9-]{1,12})$/); if(m) return {area:m[1].toLowerCase(), gate:m[2]};
-  m = t.match(/^(ENT|RNK|IGL)-([A-Z0-9]{1,6})$/); if(m) return {area:SHORT_AREA[m[1]], gate:m[2]}; return null; }
-function inWindow(o){ if(o.area!=="rink") return true; const [h,mm] = o.slot.split(":").map(Number), start = (h%12 + 12)*60 + mm, d = new Date(), n = d.getHours()*60 + d.getMinutes(); return n >= start - 15 && n <= start + 50; }
-function handleGate(code, override){
+  let m = t.match(/^WINTERFEST-CHECKIN:(ENTRY):([A-Z0-9-]{1,12})$/); if(m) return {area:m[1].toLowerCase(), gate:m[2]};
+  m = t.match(/^(ENT)-([A-Z0-9]{1,6})$/); if(m) return {area:SHORT_AREA[m[1]], gate:m[2]}; return null; }
+function handleGate(code){
   const o = findOrder(scan.order); if(!o) return; if(o.live){ liveCheckIn(o, code); return; } const g = parseGate(code);
   const msg = (t, extra) => { const m = document.getElementById("scanMsg"); if(m) m.innerHTML = esc(t) + (extra||""); };
   if(!g){ msg("That isn't a Winterfest check-in code."); return; }
   if(g.area !== o.area){ msg(`This code is for the ${AREA_NAME[g.area].toLowerCase()} gate. Your tickets are for the ${AREA_NAME[o.area].toLowerCase()}.`); return; }
-  if(!override && !inWindow(o)){ stopCamera(); msg(`Your rink session is at ${o.slot} PM. Check-in opens 15 minutes before. `, `<button class="btn sm" type="button" data-override="${esc(code)}">Check in anyway (demo)</button>`); return; }
   const now = new Date().toLocaleTimeString("en-US", {hour:"numeric", minute:"2-digit"});
   const admitted = scan.idxs.filter(i=>!o.tickets[i].transferred && (o.area==="entry" || !o.tickets[i].used));
   admitted.forEach(i=>{ const t = o.tickets[i]; t.used = true; t.checkins.push({t:now, gate:g.gate}); });
@@ -693,10 +585,10 @@ function showAdmit(o, idxs, g, now){
   a.hidden = false; const b = a.querySelector("button"); if(b) b.focus();
 }
 
-// ---------- Fun: event guide, advent calendar with a building village and hidden objects, games
+// ---------- Events: itinerary and snowman contest
 // Itinerary: two layers (Katelyn, 2026-10-09). SIGNATURE = Newport Life's ~10 ticketed events (sold in this app).
-// COMMUNITY = events businesses submit; they sell their own tickets (link out). All SAMPLE until the real lineup arrives
-// (signature events from Katelyn; community events about January).
+// COMMUNITY = events businesses submit; they sell their own tickets (link out). Signature events are Katelyn's
+// 2027 schedule (2026-10-22); community events open about January.
 const FEST_DAYS = Array.from({length:10},(_,i)=>{ const d = new Date(2027, 1, 12+i); return {i, key:"2027-02-"+String(12+i).padStart(2,"0"), wd:d.toLocaleDateString("en-US",{weekday:"short"}), n:12+i}; });
 const MAR = "Newport Marriott", NHI = "Newport Harbor Island Resort", NCB = "Newport Craft Brewery", REEF = "The Reef";
 // Real 2027 lineup from Katelyn McSherry's schedule email, 2026-10-22. tbc:true = highlighted in her email (not yet confirmed).
@@ -740,9 +632,6 @@ const placeHtml = pl => VENUES[pl] ? `<button type="button" class="linkish" data
 const evTime = e => e.t ? fmt(e.t) + (e.end ? " - " + fmt(e.end) : "") : "Time TBA";
 SIG.filter(e=>e.price!=null && e.t).forEach(e=>{ PRODUCTS.push({id:e.id, sig:true, name:e.name, sub:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)} \u00b7 ${e.place}`, price:e.price, time:e.t, when:`${FEST_DAYS[e.d].wd} Feb ${FEST_DAYS[e.d].n}, ${fmt(e.t)}`}); AREA[e.id] = "entry"; });
 
-const TREATS = [["Plan your day","Open the itinerary and save an event you want to see.","tip"],["Photo prompt","Snap your crew in the snow and share it.","photo"],["Explore Newport","Open the map of Newport and pick a venue you have not been to.","tip"]];
-const SCENE = ["tree","lamp","cottage","lights"];
-const HIDDEN = [["mitten",62,212],["lantern",318,96],["sled",250,236],["owl",36,120],["candy cane",188,140],["star",378,60]];
 function fun(){
   const sec = S.fun==="snow" ? "snow" : "guide";
   return `<div class="seg" role="group" aria-label="Events"><button type="button" data-fungo="guide" aria-pressed="${sec==="guide"}">Itinerary</button><button type="button" data-fungo="snow" aria-pressed="${sec==="snow"}">Snowman contest</button></div>
@@ -775,62 +664,6 @@ function thumb(file){ return new Promise((res, rej)=>{ const r = new FileReader(
 function countHtml(){ const target = new Date(2027, 1, 12, 10, 0).getTime(), ms = Math.max(0, target - Date.now()), dd = Math.floor(ms/864e5), hh = Math.floor(ms%864e5/36e5), mm = Math.floor(ms%36e5/6e4);
   return `<div><b>${dd}</b><span>days</span></div><div><b>${hh}</b><span>hrs</span></div><div><b>${mm}</b><span>min</span></div>`; }
 setInterval(()=>{ const c = document.getElementById("countdown"); if(c) c.innerHTML = countHtml(); }, 30000);
-function doorOpenable(n){ const d = new Date(); if(d.getMonth()===11) return n <= d.getDate(); return S.demo && n <= 3; }
-function sceneSvg(){
-  const parts = [...S.doors].sort((a,b)=>a-b).map(n=>{ const type = SCENE[(n-1)%SCENE.length], x = 30 + ((n*67)%360), y = 170 + ((n*29)%60);
-    if(type==="tree") return `<path d="M${x} ${y-40} L${x+18} ${y} L${x-18} ${y} Z" fill="#2d6b5e"/><path d="M${x} ${y-56} L${x+12} ${y-30} L${x-12} ${y-30} Z" fill="#3a8574"/>`;
-    if(type==="lamp") return `<rect x="${x-2}" y="${y-44}" width="4" height="44" fill="#B9C8DE"/><circle cx="${x}" cy="${y-48}" r="7" fill="#D8C27A"/><circle cx="${x}" cy="${y-48}" r="16" fill="#D8C27A" opacity=".18"/>`;
-    if(type==="cottage") return `<rect x="${x-20}" y="${y-26}" width="40" height="26" fill="#173563" stroke="#A8D8EA"/><path d="M${x-26} ${y-24} L${x} ${y-46} L${x+26} ${y-24} Z" fill="#E6F4FA"/><rect x="${x-6}" y="${y-16}" width="10" height="12" fill="#D8C27A"/>`;
-    if(type==="skaters") return `<circle cx="${x}" cy="${y-30}" r="5" fill="#F2B8C6"/><path d="M${x} ${y-25} L${x} ${y-10} M${x} ${y-10} L${x-7} ${y} M${x} ${y-10} L${x+7} ${y} M${x-8} ${y-20} L${x+8} ${y-18}" stroke="#F4FAFD" stroke-width="2.4"/>`;
-    return `<path d="M${x-30} ${y-60} Q${x} ${y-40} ${x+30} ${y-60}" fill="none" stroke="#24427a"/>${[-24,-12,0,12,24].map((dx,i)=>`<circle cx="${x+dx}" cy="${y-56+Math.abs(dx)/3}" r="3" fill="${["#5EE6C8","#C9B8F0","#D8C27A","#F2B8C6","#A8D8EA"][i]}"/>`).join("")}`; }).join("");
-  const hid = HIDDEN.map(([name,x,y])=>{ const f = S.found.has(name); const icon = {
-      mitten:`<path d="M${x-6} ${y+8} V${y-4} a6 6 0 0 1 12 0 V${y+8} Z M${x+6} ${y} l5 -3" stroke="#F2B8C6" stroke-width="2" fill="#F2B8C6" fill-opacity=".5"/>`,
-      lantern:`<rect x="${x-5}" y="${y-7}" width="10" height="13" rx="2" fill="#D8C27A" fill-opacity=".55" stroke="#D8C27A"/><path d="M${x-3} ${y-10} h6" stroke="#D8C27A" stroke-width="2"/>`,
-      sled:`<path d="M${x-12} ${y+4} h22 q4 0 4 -4 M${x-8} ${y} v4 M${x+6} ${y} v4 M${x-10} ${y} h18" stroke="#A8D8EA" stroke-width="2" fill="none"/>`,
-      owl:`<ellipse cx="${x}" cy="${y}" rx="7" ry="9" fill="#E6F4FA" fill-opacity=".55"/><circle cx="${x-3}" cy="${y-2}" r="1.6" fill="#0B1E3F"/><circle cx="${x+3}" cy="${y-2}" r="1.6" fill="#0B1E3F"/>`,
-      "candy cane":`<path d="M${x+4} ${y+10} V${y-4} a4 4 0 0 0 -8 0" stroke="#F2B8C6" stroke-width="3" fill="none" stroke-dasharray="3 2"/>`,
-      star:`<path d="M${x} ${y-8} l2.4 5 5.5 .8 -4 3.9 1 5.4 -4.9 -2.6 -4.9 2.6 1 -5.4 -4 -3.9 5.5 -.8 z" fill="#D8C27A" fill-opacity=".6"/>`}[name];
-    return `<g class="hid${f?" found":""}" data-hid="${name}" tabindex="0" role="button" aria-label="Hidden ${name}${f?" (found)":""}"><rect x="${x-16}" y="${y-16}" width="32" height="32" fill="transparent"/>${icon}</g>`; }).join("");
-  return `<div class="scene"><svg viewBox="0 0 420 260" role="img" aria-label="Your winter village, which grows as you open doors">
-    <rect width="420" height="260" fill="#0d2449"/><circle cx="360" cy="40" r="18" fill="#E6F4FA" opacity=".8"/>
-    <path d="M0 205 Q105 185 210 200 T420 195 V260 H0 Z" fill="#E6F4FA" opacity=".9"/>${parts}${hid}</svg></div>`;
-}
-function adventView(){
-  const dec = new Date().getMonth()===11;
-  return `<p class="muted" style="font-size:13.5px">Open a door each day. Every door adds something to your village and hides a treat. ${SAMPLE}</p>
-    ${dec ? "" : `<div class="glass" style="flex-direction:row;align-items:center;justify-content:space-between"><span class="muted" style="font-size:13.5px">Off-season demo: doors 1 to 3 can be opened.</span><button class="btn sm ${S.demo?"aurora":"ghost"}" type="button" data-demo="1">${S.demo?"Demo on":"Try the demo"}</button></div>`}
-    ${sceneSvg()}
-    <div class="gamebar"><span>Hidden-object hunt: find the 6 winter items</span><span style="color:var(--mint)">${S.found.size}/6</span></div>
-    <div class="advent">${Array.from({length:24},(_,i)=>i+1).map(n=>`<button class="door${S.doors.has(n)?" open":""}" type="button" data-door="${n}" ${doorOpenable(n)||S.doors.has(n)?"":"disabled"} aria-label="Door ${n}${S.doors.has(n)?", opened":""}">${n}</button>`).join("")}</div>`;
-}
-function gamesView(){
-  return `<section style="display:flex;flex-direction:column;gap:8px"><h2>Catch the snowflakes</h2>
-      <div class="gamebar"><span id="gScore">Score 0</span><span id="gTime">30s</span><span style="color:var(--gold)">Best ${S.best}</span></div>
-      <div class="game" id="gArea"><div style="position:absolute;inset:0;display:grid;place-items:center"><button class="btn aurora" type="button" data-gstart="1" id="gStart">Start</button></div></div></section>
-    <section style="display:flex;flex-direction:column;gap:8px"><h2>Winter match</h2>
-      <p class="muted" style="font-size:13.5px">Tap three of the same to clear them.</p>
-      <div class="match" id="mGrid">${S.mtiles.map((t,i)=>`<button class="mt${t.gone?" gone":""}" type="button" data-mt="${i}" aria-pressed="${S.msel.includes(i)}" aria-label="${t.k}">${MICON[t.k]}</button>`).join("")}</div>
-      <button class="btn ghost sm" type="button" data-mreset="1" style="align-self:flex-start">New board</button></section>`;
-}
-const MICON = {flake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/></svg>', star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/></svg>', tree:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l6 9h-3l4 6H5l4-6H6z"/><rect x="11" y="17" width="2" height="4"/></svg>', bell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>'};
-function newBoard(){ const ks = ["flake","star","tree","bell"]; const t = ks.flatMap(k=>[k,k,k]).map(k=>({k, gone:false})); for(let i=t.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [t[i],t[j]] = [t[j],t[i]]; } S.mtiles = t; S.msel = []; }
-function reward(name, from){ S.vouchers.unshift({name, from, ref:ref("RWD")}); st.set("wf.vouchers", S.vouchers); toast(name + " added to My Visit"); }
-let gTimer = null, gRaf = null;
-function stopGame(){ clearInterval(gTimer); cancelAnimationFrame(gRaf); gTimer = null; }
-function startGame(){
-  const area = document.getElementById("gArea"); if(!area) return; area.innerHTML = ""; let score = 0, left = 30, flakes = [], last = 0;
-  const W = area.clientWidth, H = area.clientHeight, sc = document.getElementById("gScore"), tm = document.getElementById("gTime");
-  gTimer = setInterval(()=>{ left--; if(tm) tm.textContent = left + "s"; if(left<=0) end(); }, 1000);
-  function spawn(){ const b = document.createElement("button"); b.type = "button"; b.className = "flk"; b.setAttribute("aria-label","Snowflake"); b.innerHTML = MICON.flake;
-    const f = {el:b, x:20+Math.random()*(W-40), y:-20, v:0.9+Math.random()*1.4}; b.style.left = f.x+"px"; b.style.top = f.y+"px";
-    b.addEventListener("pointerdown", e=>{ e.preventDefault(); score++; if(sc) sc.textContent = "Score " + score; b.remove(); f.dead = true; }); area.appendChild(b); flakes.push(f); }
-  function loop(t){ if(t - last > 520){ spawn(); last = t; } flakes.forEach(f=>{ if(f.dead) return; f.y += f.v; f.el.style.top = f.y+"px"; if(f.y > H+20){ f.el.remove(); f.dead = true; } }); flakes = flakes.filter(f=>!f.dead); gRaf = requestAnimationFrame(loop); }
-  gRaf = requestAnimationFrame(loop);
-  function end(){ stopGame(); flakes.forEach(f=>f.el.remove()); if(score > S.best){ S.best = score; st.set("wf.best", score); }
-    area.innerHTML = `<div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><h2>Time!</h2><p class="muted">You caught ${score}. Best ${S.best}.</p><button class="btn aurora" type="button" data-gstart="1">Play again</button></div></div>`;
-    const best = document.querySelector(".gamebar span:last-child"); if(best && document.getElementById("gScore")) best.textContent = "Best " + S.best;
-    if(score >= 15 && !S.vouchers.some(v=>v.from==="Catch the snowflakes")) reward("$1 village credit", "Catch the snowflakes"); }
-}
 const views = {village, map:mapView, fun, tickets, visit};
 
 let wmap = null, wmarks = {};
@@ -850,11 +683,10 @@ function render(){
   $("#alertDot").hidden = S.seenAlerts;
   $("#main").innerHTML = views[S.tab]();
   if(document.getElementById("wmap")) initMap(); else if(wmap){ wmap.remove(); wmap = null; }
-  const q = document.getElementById("q"); if(q){ q.addEventListener("input", ()=>{ S.q = q.value; const pos = q.selectionStart; render(); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(pos,pos); }); }
   paintAcct();
   drawQRs();
 }
-function go(t){ stopGame(); S.tab = t; render(); window.scrollTo(0,0); }
+function go(t){ S.tab = t; render(); window.scrollTo(0,0); }
 // Full-screen falling snow behind every screen: one persistent canvas, two depth layers, DPR-aware, pauses when hidden.
 function bgSnow(){
   const c = document.getElementById("bgsnow"); if(!c) return; const x = c.getContext("2d");
@@ -920,14 +752,6 @@ function downloadIcs(id){ const e = SIG.find(x=>x.id===id); if(!e) return; const
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([lines.join("\r\n")], {type:"text/calendar"})); a.download = "winterfest-" + e.id + ".ics"; document.body.appendChild(a); a.click(); a.remove(); closeSheet(); }
 function toast(m){ const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(()=>t.hidden=true, 2600); }
 
-function vendorSheet(code){ const v = VENDORS.find(x=>x.code===code), c = CATS[v.cat];
-  openSheet(`${v.code} · ${v.name}`, `
-    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="tag" style="border-color:${c[1]};color:${c[1]}">${c[0]}</span>${SAMPLE}<span class="tag">${ZONES[v.code[0]]}</span>
-      <button class="heart" type="button" data-fav="${v.code}" aria-pressed="${S.fav.has(v.code)}" aria-label="Save to favourites" style="margin-left:auto">${HEART(S.fav.has(v.code))}</button></div>
-    <p class="muted">${esc(v.sub)}</p>
-    <div class="muted" style="font-size:14px"><b style="color:var(--snow)">Hours</b> ${fmt(v.hours[0])} to ${fmt(v.hours[1])} · ${isOpen(v)?'<span style="color:var(--mint);font-weight:800">Open now</span>':"Closed now"}<br><b style="color:var(--snow)">Pays with</b> ${PAY_ACCEPTED.join(", ")}</div>
-    ${v.menu.length ? `<h3>Menu</h3><div>${v.menu.map(m=>`<div class="mi"><div><div>${esc(m[0])}</div><div style="margin-top:4px">${tagHtml(m[2])}</div></div><span class="p">${m[1]}</span></div>`).join("")}</div><p class="muted" style="font-size:12.5px">Sample menu, prices and allergen tags. Always confirm allergens with the vendor.</p>` : ""}
-    <div class="sheetfoot" style="justify-content:flex-start">${v.resy ? resyBtn() : ""}${v.order ? `<button class="btn aurora" type="button" data-order="${v.code}">Order ahead</button>` : ""}<button class="btn ghost" type="button" data-showonmap="${v.code}">Show on map</button><button class="btn ghost" type="button" data-close="1">Close</button></div>`); }
 
 let payPaint = null;
 function payWith(o, onDone){
@@ -946,8 +770,8 @@ function payWith(o, onDone){
     ${live ? `<a class="btn aurora" href="${cartLink(items)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Pay ${money(o.total)} with ${mName}</a>
       <p class="muted" style="font-size:12.5px">Opens the secure checkout (Shopify), where ${mName} is offered with PayPal, Venmo and card. Come back when you're done.</p>
       <button class="btn ghost" type="button" data-paidext="1">I've paid - add my tickets</button>`
-    : `<button class="btn aurora" type="button" data-paynow="1">Pay ${money(o.total)} with ${mName}</button>
-      <p class="muted" style="font-size:12.5px">Payments open when Newport Life adds this to the store. Demo: no payment is taken.</p>`}
+    : `<span class="btn aurora" aria-disabled="true" style="opacity:.6;cursor:default;text-align:center">Payments open soon</span>
+      <p class="muted" style="font-size:12.5px">Tickets go on sale once checkout is live.</p>`}
     <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Cancel</button></div>`); };
   payPaint();
 }
@@ -955,7 +779,7 @@ let pendingPay = null, afterSignIn = null;
 function priceOf(p, t){ return Math.round(p.price * t.f); }
 function bookSheet(id){ const p = PRODUCTS.find(x=>x.id===id);
   const paint = () => { const total = TYPES.reduce((a,t)=>a + S.qty[t.k]*priceOf(p,t), 0), n = TYPES.reduce((a,t)=>a + S.qty[t.k], 0);
-    openSheet(p.name, `<p class="muted">${esc(p.sub)} ${SAMPLE}</p>
+    openSheet(p.name, `<p class="muted">${esc(p.sub)}</p>
     ${p.sig ? `<div class="muted" style="font-size:13px">When: <b style="color:var(--snow)">${esc(p.when)}</b></div>` : `<div class="muted" style="font-size:13px">Pick a time</div>
     <div class="slots" role="group" aria-label="Times">${SLOTS.map(s=>`<button type="button" data-slot="${s}" aria-pressed="${S.slot===s}">${s} PM</button>`).join("")}</div>`}
     <div class="muted" style="font-size:13px">Who's coming? One person can buy for the whole family.</div>
@@ -968,14 +792,9 @@ const ref = p => p + "-" + Math.random().toString(36).slice(2,7).toUpperCase();
 
 function signInSheet(why){
   if(liveOn()) return liveAuthSheet("up", why);
-  openSheet("Sign in", `<p class="muted">${esc(why || "Sign in to keep your tickets, bookings and favourites on this phone.")}</p>
-    <button class="btn apple" type="button" data-auth="apple">Continue with Apple</button>
-    <button class="btn gpay" type="button" data-auth="google">Continue with Google</button>
-    <div class="or">or use email</div>
-    <input class="inp" id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" aria-label="Email">
-    <button class="btn" type="button" data-sendcode="1">Email me a code</button>
-    <p class="muted" style="font-size:12.5px">No passwords. Mockup: nothing is sent and no account is created on a server.</p>
-    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Not now</button></div>`);
+  openSheet("Sign in", `<p class="muted">${esc(why || "Sign in to keep your tickets and saved events.")}</p>
+    <p class="muted">Signing in needs an internet connection. Check your connection and try again.</p>
+    <div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Close</button></div>`);
 }
 function signedIn(acc){ S.account = acc; st.set("wf.account", acc); closeSheet(); toast("Signed in"); render(); const f = afterSignIn; afterSignIn = null; if(f) setTimeout(f, 150); }
 function paintAcct(){ const t = $("#acctTxt"), i = $("#acctIcon"); if(S.account){ t.textContent = (S.account.name||"?").slice(0,1).toUpperCase(); t.hidden = false; i.style.display = "none"; } else { t.hidden = true; i.style.display = ""; } }
@@ -993,9 +812,9 @@ function infoSheet(){
     <div class="glass"><h3>Lost and found</h3><p class="muted">Details to be confirmed.</p></div>
     <div class="sheetfoot"><button class="btn" type="button" data-close="1">Done</button></div>`); }
 
-document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.kiosk, g.hid"); if(!b) return; const d = b.dataset;
-  if(d.tab){ if(d.idaygo!=null){ S.iday = Number(d.idaygo); } if(d.catgo){ S.cat = d.catgo; } if(d.mapvgo){ S.mapv = d.mapvgo; } if(d.fungo){ S.fun = d.fungo; } go(d.tab); return; }
-  if(d.fungo){ stopGame(); S.fun = d.fungo; render(); return; }
+document.addEventListener("click", ev=>{ const b = ev.target.closest("button"); if(!b) return; const d = b.dataset;
+  if(d.tab){ if(d.idaygo!=null){ S.iday = Number(d.idaygo); } if(d.mapvgo){ S.mapv = d.mapvgo; } if(d.fungo){ S.fun = d.fungo; } go(d.tab); return; }
+  if(d.fungo){ S.fun = d.fungo; render(); return; }
   if(d.iday){ S.iday = d.iday==="all" ? "all" : Number(d.iday); render(); return; }
   if(d.ilayer){ S.ilayer = d.ilayer; render(); return; }
   if(d.commlink){ toast("The business adds its ticket link when it submits the event"); return; }
@@ -1023,22 +842,6 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.evfav){ const k = d.evfav; S.evfav.has(k) ? S.evfav.delete(k) : S.evfav.add(k); st.set("wf.evfav", [...S.evfav]); render(); return; }
   if(d.evrem){ toggleEventAlert(d.evrem); return; }
   if(d.ics){ downloadIcs(d.ics); return; }
-  if(d.demo){ S.demo = !S.demo; render(); return; }
-  if(d.door){ const n = +d.door, t = TREATS[(n-1)%TREATS.length], first = !S.doors.has(n); S.doors.add(n); st.set("wf.doors", [...S.doors]);
-    if(first && t[2]==="voucher") reward("Free hot cocoa (sample)", "Advent door " + n);
-    openSheet(`Door ${n}: ${t[0]}`, `<p>${esc(t[1])}</p><p class="muted" style="font-size:13px">A ${SCENE[(n-1)%SCENE.length]} was added to your village. ${SAMPLE}</p><div class="sheetfoot"><button class="btn aurora" type="button" data-close="1">See my village</button></div>`); render(); return; }
-  if(d.hid){ if(!S.found.has(d.hid)){ S.found.add(d.hid); st.set("wf.found", [...S.found]); toast(`Found the ${d.hid}! ${S.found.size}/6`); if(S.found.size===6) reward("$2 village credit", "Hidden-object hunt"); render(); } return; }
-  if(d.gstart){ startGame(); return; }
-  if(d.mt!==undefined && b.classList.contains("mt")){ const i = +d.mt; if(S.mtiles[i].gone || S.msel.includes(i)) return; S.msel.push(i); render();
-    if(S.msel.length===3){ const same = S.msel.every(j=>S.mtiles[j].k===S.mtiles[S.msel[0]].k); setTimeout(()=>{ if(same){ S.msel.forEach(j=>S.mtiles[j].gone = true); toast("Matched!"); } S.msel = []; if(S.mtiles.every(t=>t.gone)){ reward("Winter match badge", "Winter match"); newBoard(); } render(); }, 350); } return; }
-  if(d.mreset){ newBoard(); render(); return; }
-  if(d.topup){ const a = +d.topup; payWith({label:`Top up village credit by $${a}`, total:a, key:"credit", lines:[]}, (res)=>{ if(res.status==="pending"){ toast("Top-up pending confirmation"); return; } S.credit += a; st.set("wf.credit", S.credit); toast(`$${a} added to your village credit`); }); return; }
-  if(d.cat){ S.cat = d.cat; render(); return; }
-  if(d.openf){ S.open = !S.open; render(); return; }
-  if(d.vendor && !b.classList.contains("hid")){ vendorSheet(d.vendor); return; }
-  if(d.fav){ S.fav.has(d.fav) ? S.fav.delete(d.fav) : S.fav.add(d.fav); st.set("wf.fav", [...S.fav]); b.setAttribute("aria-pressed", S.fav.has(d.fav)); b.innerHTML = HEART(S.fav.has(d.fav)); toast(S.fav.has(d.fav) ? "Saved to My Visit" : "Removed"); return; }
-  if(d.showonmap){ closeSheet(); S.tab = "map"; S.mapv = "plan"; S.cat = "all"; S.open = false; S.diet = ""; render(); const g = document.querySelector(`g.kiosk[data-vendor="${d.showonmap}"] rect`); if(g){ g.setAttribute("stroke","#5EE6C8"); g.setAttribute("stroke-width","5"); g.closest("svg").scrollIntoView({behavior:"smooth",block:"center"}); } return; }
-  if(d.order){ const v = VENDORS.find(x=>x.code===d.order), it = v.menu[0], pr = Number(String(it[1]).replace(/[^0-9.]/g,""))||0; payWith({label:`Order ahead from ${v.code} ${v.name}`, total:pr, key:"order", lines:[{type:"adult", qty:1, name:it[0], price:pr}]}, (res)=>{ addVisit({name:`Order from ${v.name}`, when:`Pick up at ${v.code}`, ref:ref("ORD"), kind:"order", status:res.status}); toast(res.status==="pending" ? "Order pending confirmation" : `Order placed. Pick up at ${v.code}.`); }); return; }
   if(d.book){ const bp = PRODUCTS.find(x=>x.id===d.book); S.slot = SLOTS[0]; if(bp && bp.sig) S.slot = bp.time; S.qty = {adult:1, child:0, infant:0}; bookSheet(d.book); return; }
   if(d.qty){ const [k, dv] = d.qty.split("|"); S.qty[k] = Math.max(0, Math.min(10, S.qty[k] + Number(dv))); bookPaint(); return; }
   if(d.slot){ S.slot = d.slot; bookPaint(); return; }
@@ -1055,9 +858,7 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.expand){ S.expanded.has(d.expand) ? S.expanded.delete(d.expand) : S.expanded.add(d.expand); render(); return; }
   if(d.checkall){ const o = findOrder(d.checkall); checkInSheet(o.id, eligible(o)); return; }
   if(d.checkone){ const [id, i] = d.checkone.split("|"); checkInSheet(id, [Number(i)]); return; }
-  if(d.simscan){ const o = findOrder(scan.order); handleGate(`WINTERFEST-CHECKIN:${o.area}:1`); return; }
   if(d.gatecode){ handleGate(($("#gateCode").value||"")); return; }
-  if(d.override){ handleGate(d.override, true); return; }
   if(d.admitdone){ $("#admit").hidden = true; return; }
   if(d.send && (findOrder(d.send.split("|")[0])||{}).live){ const [id, i] = d.send.split("|"), o = findOrder(id); liveSendSheet(o, o.tickets[Number(i)]); return; }
   if(d.livesend){ const to = ($("#sendTo").value||"").trim(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(to)){ toast("Enter their email"); return; }
@@ -1074,40 +875,34 @@ document.addEventListener("click", ev=>{ const b = ev.target.closest("button, g.
   if(d.send){ const [id, i] = d.send.split("|"), o = findOrder(id), t = o.tickets[Number(i)], code = `WFX-${AREA_SHORT[o.area]}-${t.serial}`, link = location.href.split("#")[0] + "#claim-" + code;
     openSheet("Send this ticket", `<p class="muted">${esc(t.holder || t.type)} · ${esc(o.name)} · ${esc(o.when)}</p><p>Share this code or link. Whoever adds it gets the ticket on their phone, and it stops working on yours.</p>
       <div class="glass" style="padding:12px;font-family:ui-monospace,Consolas,monospace;word-break:break-all">${esc(code)}<br><span style="font-size:12px;color:var(--frost)">${esc(link)}</span></div>
-      <div class="sheetfoot"><button class="btn ghost" type="button" data-copy="${esc(link)}">Copy link</button><button class="btn aurora" type="button" data-dosend="${id}|${i}">Mark as sent</button></div><p class="muted" style="font-size:12.5px">Demo: transfers stay on this phone until the ticketing backend is live.</p>`); return; }
+      <div class="sheetfoot"><button class="btn ghost" type="button" data-copy="${esc(link)}">Copy link</button><button class="btn aurora" type="button" data-dosend="${id}|${i}">Mark as sent</button></div><p class="muted" style="font-size:12.5px">Transfers stay on this phone until ticketing is live.</p>`); return; }
   if(d.copy){ (navigator.clipboard ? navigator.clipboard.writeText(d.copy) : Promise.reject()).then(()=>toast("Link copied")).catch(()=>toast("Copy the code shown")); return; }
   if(d.dosend){ const [id, i] = d.dosend.split("|"), o = findOrder(id); o.tickets[Number(i)].transferred = true; st.set("wf.visits", S.visits); closeSheet(); toast("Ticket sent. It now shows Transferred."); render(); return; }
   if(d.claimopen){ claimSheet(""); return; }
-  if(d.claim){ if(liveClaim($("#claimCode").value)) return; const c = ($("#claimCode").value||"").trim().toUpperCase(), m = c.match(/^WFX-(ENT|RNK|IGL)-(WF-[A-Z0-9]{5}-\d+)$/);
+  if(d.claim){ if(liveClaim($("#claimCode").value)) return; const c = ($("#claimCode").value||"").trim().toUpperCase(), m = c.match(/^WFX-(ENT)-(WF-[A-Z0-9]{5}-\d+)$/);
     if(!m){ toast("That code doesn't look right. It starts with WFX-"); return; }
     if(S.visits.some(v=>v.tickets && v.tickets.some(t=>t.serial===m[2] && !t.transferred))){ toast("That ticket is already on this phone"); return; }
     const r = ref("WF"); addVisit({id:r, ref:r, kind:"booking", name:"Ticket sent to you", when:"See the booking details", slot:"7:00", area:SHORT_AREA[m[1]], status:"paid", received:true, tickets:[{serial:m[2], type:"Shared ticket", holder:"", used:false, checkins:[], transferred:false}]});
     S.expanded.add(r); closeSheet(); toast("Ticket added to My tickets"); S.tab = "tickets"; render(); return; }
-  if(d.paynow){ closeSheet(); const f = pendingPay; pendingPay = null; if(f) f({status:"paid"}); render(); return; }
-  if(d.auth){ signedIn(d.auth==="apple" ? {name:"Apple ID user", email:"private relay (hidden by Apple)", method:"Apple"} : {name:"Google user", email:"you@gmail.com", method:"Google"}); return; }
-  if(d.sendcode){ const e = ($("#authEmail").value||"").trim(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ toast("Enter a valid email"); return; }
-    openSheet("Enter your code", `<p class="muted">We sent a 6-digit code to <b style="color:var(--snow)">${esc(e)}</b>.</p><input class="inp" id="authCode" inputmode="numeric" maxlength="6" placeholder="000000" aria-label="Code" style="letter-spacing:.5em;text-align:center;font-size:20px"><p class="muted" style="font-size:12.5px">Demo: any 6 digits work.</p><div class="sheetfoot"><button class="btn ghost" type="button" data-signin="1">Back</button><button class="btn aurora" type="button" data-verify="${esc(e)}">Sign in</button></div>`); return; }
-  if(d.verify){ if(!/^\d{6}$/.test(($("#authCode").value||"").trim())){ toast("Enter the 6-digit code"); return; } signedIn({name:d.verify.split("@")[0], email:d.verify, method:"email code"}); return; }
   if(d.signin){ signInSheet(); return; }
   if(d.signout && liveOn()){ LIVE.signOut().then(()=>{ S.account = null; st.set("wf.account", null); S.live = []; closeSheet(); toast("Signed out"); refreshLive(); render(); }).catch(e=>toast(e.message)); return; }
   if(d.signout){ S.account = null; st.set("wf.account", null); closeSheet(); toast("Signed out"); render(); return; }
   if(d.delacct){ openSheet("Delete your account?", `<p class="muted">This removes your account, favourites and saved bookings from ${APP_BRAND}. Paid tickets stay valid with your order email.</p><div class="sheetfoot"><button class="btn ghost" type="button" data-close="1">Keep account</button><button class="btn" type="button" data-delconfirm="1" style="background:#b23a48">Delete account</button></div>`); return; }
-  if(d.delconfirm){ S.account = null; st.set("wf.account", null); S.fav = new Set(); st.set("wf.fav", []); S.visits = []; st.set("wf.visits", []); closeSheet(); toast("Account deleted"); render(); return; }
+  if(d.delconfirm){ S.account = null; st.set("wf.account", null); S.visits = []; st.set("wf.visits", []); closeSheet(); toast("Account deleted"); render(); return; }
   if(d.close){ closeSheet(); return; }
   if(b.id==="alertBtn"){ alertsSheet(); return; }
   if(b.id==="infoBtn"){ infoSheet(); return; }
   if(b.id==="acctBtn"){ S.account ? accountSheet() : signInSheet(); return; }
 });
-document.addEventListener("change", ev=>{ if(ev.target.id==="dietSel"){ S.diet = ev.target.value; render(); }
+document.addEventListener("change", ev=>{
   if(ev.target.id==="oEvent"){ const c = comById(ev.target.value); if(c){ $("#oName").value = c.name; $("#oSeller").value = c.biz; $("#oPlace").value = c.place; $("#oTime").value = c.t; if(c.d!=="all") $("#oDate").value = FEST_DAYS[c.d].key; } }
   if(ev.target.id==="oImg" && ev.target.files && ev.target.files[0]){ fileToCanvas(ev.target.files[0]).then(onOutFile).catch(()=>toast("Couldn't read that image")); }
   if(ev.target.id==="oPdf" && ev.target.files && ev.target.files[0]){ toast("Reading the PDF..."); pdfToCanvas(ev.target.files[0]).then(onOutFile).catch(()=>toast("Couldn't read that PDF - try a screenshot instead")); }
   if(ev.target.dataset && ev.target.dataset.holder){ const [id, i] = ev.target.dataset.holder.split("|"), o = findOrder(id);
     if(o && o.live){ const t = o.tickets[Number(i)], nm = ev.target.value.trim().slice(0,40); LIVE.rpc("tix","set_holder",{p_ticket_id:t.id, p_name:nm}).then(()=>{ t.holder = nm; toast("Name saved"); }).catch(e=>toast(e.message)); return; }
     if(o){ o.tickets[Number(i)].holder = ev.target.value.trim().slice(0,40); st.set("wf.visits", S.visits); toast("Name saved"); } } });
-document.addEventListener("keydown", ev=>{ if(ev.key==="Escape"){ closeSheet(); $("#admit").hidden = true; } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.kiosk")){ ev.preventDefault(); vendorSheet(ev.target.dataset.vendor); } if((ev.key==="Enter"||ev.key===" ") && ev.target.matches && ev.target.matches("g.hid")){ ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); } });
+document.addEventListener("keydown", ev=>{ if(ev.key==="Escape"){ closeSheet(); $("#admit").hidden = true; } });
 $("#scrim").addEventListener("click", ev=>{ if(ev.target.id==="scrim") closeSheet(); });
-newBoard();
 bgSnow();
 (function(){ document.title = APP_BRAND; const i = document.querySelector('#brand img'); if(i) i.alt = APP_BRAND; })();
 render();
