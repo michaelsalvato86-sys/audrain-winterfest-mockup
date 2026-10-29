@@ -238,7 +238,7 @@ const SHORT_AREA = {ENT:"entry"};
 function cartLink(items){ return STORE + "/cart/" + items.map(i=>i.variant + ":" + i.qty).join(","); }
 function isApple(){ const u = navigator.userAgent; return !!window.ApplePaySession || /iPhone|iPad|iPod/.test(u) || (/Macintosh/.test(u) && /Safari/.test(u) && !/Chrome|Chromium|Edg|Firefox/.test(u)); }
 const money = n => "$" + (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0);
-const ALERTS = [["The 2027 lineup is posted","See the itinerary for every event, Feb 12-21. Events marked To be confirmed may change.","news"]];
+const ALERTS = [["The final 2027 schedule is posted","16 events over ten days, Feb 12-21. Ticket links are coming soon.","news"]];
 const st = { get(k,f){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : f; }catch(e){ return f; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
 const S = { tab:"village", mapv:"getting", visits:st.get("wf.visits",[]), account:st.get("wf.account",null), cart:null, slot:SLOTS[0], seenAlerts:st.get("wf.seen",false),
   fun:"guide", evfav:new Set(st.get("wf.evfav",[])), evrem:new Set(st.get("wf.evrem",[])),
@@ -591,34 +591,30 @@ function showAdmit(o, idxs, g, now){
 // 2027 schedule (2026-10-22); community events open about January.
 const FEST_DAYS = Array.from({length:10},(_,i)=>{ const d = new Date(2027, 1, 12+i); return {i, key:"2027-02-"+String(12+i).padStart(2,"0"), wd:d.toLocaleDateString("en-US",{weekday:"short"}), n:12+i}; });
 const MAR = "Newport Marriott", NHI = "Newport Harbor Island Resort", NCB = "Newport Craft Brewery", REEF = "The Reef";
-// Real 2027 lineup from Katelyn McSherry's schedule email, 2026-10-22. tbc:true = highlighted in her email (not yet confirmed).
-// t:"" = time not announced yet. price:null = ticket price not set yet (no checkout until it is).
+// FINAL 2027 lineup: Katelyn McSherry's "2027 WINTERFEST SCHEDULE" email, 2026-10-27 ("Here is the confirmed schedule").
+// Replaces the 2026-10-22 draft; the TBC items (opening act, Night at The Reef, JPT, Fri evening, Super Hero Party) were dropped.
+// Descriptions, photos and ticket links: Katelyn said 2026-10-28 they are coming. price:null = no checkout until set.
 const SIG = [
-  {d:0, t:"", name:"Opening concert - performer to be announced", place:NHI, tbc:true},
-  {d:1, t:"", name:"Annual Chili Cook-off", place:MAR},
-  {d:1, t:"", name:"18+ Comedy Show", place:NCB},
+  {d:0, t:"20:00", name:"Draw the Line - Aerosmith Tribute Band", place:NHI},
+  {d:1, t:"11:00", name:"Annual Chili Cook-off", place:MAR},
+  {d:1, t:"20:00", name:"18+ Comedy Show", place:NCB},
   {d:2, t:"12:00", name:"Marvels in Motion - Mad Science", place:MAR},
-  {d:2, t:"14:00", name:"Circus and carnival performer - to be announced", place:MAR, tbc:true},
+  {d:2, t:"14:00", name:"Circus Stage Show", place:MAR},
   {d:3, t:"12:00", name:"Buana the Iguana - Reptile Show", place:MAR},
   {d:3, t:"14:00", name:"Magic by George", place:MAR},
-  {d:4, t:"", name:"Teddy Bear Hot Chocolate Bar", place:REEF, tbc:true},
-  {d:4, t:"", name:"Night at The Reef: Winter Wonderland", place:REEF, note:"Igloo hopping and more. Details to be announced.", tbc:true},
+  {d:4, t:"11:00", name:"Teddy Bear Story Time", place:REEF},
   {d:5, t:"13:00", end:"15:00", name:"Annual Princess Party", place:"Ocean Cliff"},
-  {d:5, t:"", name:"Evening event - to be announced", place:"JPT", tbc:true},
   {d:6, t:"18:00", name:"Toe Jam Puppet Band", place:MAR},
   {d:6, t:"20:00", name:"Hot Drink Contest", place:"Red Parrot"},
   {d:7, t:"18:00", name:"Bubble Mania", place:MAR},
-  {d:7, t:"20:00", name:"Evening event - to be announced", place:MAR, tbc:true},
   {d:8, t:"11:00", name:"Annual Mac & Cheese Cook-off", place:MAR},
-  {d:8, t:"20:00", name:"Changes in Latitude - Jimmy Buffett tribute concert", place:NHI},
-  {d:9, t:"12:00", end:"15:00", name:"2nd Annual Wienerfest - session 1", place:NCB},
-  {d:9, t:"16:00", end:"19:00", name:"2nd Annual Wienerfest - session 2", place:NCB},
-  {d:9, t:"", name:"Super Hero Party", place:MAR, tbc:true}
+  {d:8, t:"20:00", name:"Changes in Latitude - Jimmy Buffett Tribute Band Concert", place:NHI},
+  {d:9, t:"12:00", name:"2nd Annual Wienerfest - session 1", place:NCB},
+  {d:9, t:"16:00", name:"2nd Annual Wienerfest - session 2", place:NCB}
 ].map((e,k)=>Object.assign({price:null}, e, {id:"s27-"+k, layer:"sig"}));
 // Community events are submitted by local businesses and open about January; the sample list was removed 2026-10-22.
 const COMM = [].map((e,k)=>Object.assign(e, {id:"com"+k, layer:"com"}));
 // Event venues (2026-10-23). Coordinates: OpenStreetMap Nominatim; Newport Craft from the US Census geocoder (address-interpolated).
-// "JPT" (Wed 2/17) has no pin until Katelyn says what it is.
 const VENUES = {
   [MAR]:  {addr:"25 America's Cup Ave, Newport, RI 02840", ll:[41.49008,-71.31824]},
   [NHI]:  {addr:"1 Goat Island, Newport, RI 02840", ll:[41.49182,-71.32770]},
