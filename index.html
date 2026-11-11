@@ -219,11 +219,12 @@ const APP_BRAND = "Newport Winter Festival"; // official name from the logo Kate
 const TRAFFIC = "https://www.google.com/maps/@41.4815,-71.3150,14z/data=!5m1!1e1";
 const PAY_ACCEPTED = ["Card", "Apple Pay", "Google Pay"];
 // Bracelet (Square) and business participation form: Katelyn's "TICKET LINKS" reply, 2026-10-31.
+const TRIPLE_BITE_URL = "https://square.link/u/BRIDCouh"; // Katelyn 2026-11-03
 const BRACELET_URL = "https://square.link/u/Unxu34ln", PARTICIPATION_URL = "https://2027nwfparticipation.paperform.co/";
 const PRODUCTS = [];   // no ice rink (Michael, 2026-10-26); Signature events are added from SIG below
-// Igloos are at The Reef and are booked on Resy (Katelyn, 2026-10-09). Paste the Resy link here when Newport Life has it.
-const RESY_REEF_URL = "";
-function resyBtn(cls){ return RESY_REEF_URL ? `<a class="btn ${cls||"aurora"}" href="${RESY_REEF_URL}" target="_blank" rel="noopener" style="text-decoration:none">Book on Resy</a>` : `<button class="btn ${cls||"ghost"}" type="button" data-resy="1">Resy link coming</button>`; }
+// Igloos at The Reef are booked through The Reef's Toast reservations page (Ashley Chiorgno, 2026-10-31; was Resy).
+const RESY_REEF_URL = "https://toast.app/r/the-reef-hrg";
+function resyBtn(cls){ return RESY_REEF_URL ? `<a class="btn ${cls||"aurora"}" href="${RESY_REEF_URL}" target="_blank" rel="noopener" style="text-decoration:none">Book an igloo</a>` : `<button class="btn ${cls||"ghost"}" type="button" data-resy="1">Resy link coming</button>`; }
 const SLOTS = ["4:00","5:30","7:00","8:30"];
 // ---------- Payments. Rail to be set (Stripe, per Katelyn 2026-10-23); legacy note: Audrain's Shopify store; Newport Life's own payment account is to be decided (its checkout shows Shop Pay, PayPal, Google Pay, Venmo and card; Apple Pay on Apple devices).
 // Every Winterfest item is "pending" until Audrain creates it in Shopify. To go live: create the item (no shipping),
@@ -383,14 +384,15 @@ function tickets(){
   return `<h1 style="font-size:26px">Tickets</h1>
     <div class="glass"><p class="muted">Festival tickets are sold on Eventbrite: tap Buy tickets on any event. Family shows at the Newport Marriott and The Reef are paid at the door. Add your Eventbrite tickets below to keep them all in one place.</p></div>
     <div class="prod"><div><b>Festival bracelet - $10</b><div class="muted" style="font-size:13.5px">One bracelet, ten days, hundreds in savings: discounts at every official Winter Festival event, plus special offers at participating restaurants, shops and businesses.</div></div><a class="btn sm aurora" href="${BRACELET_URL}" target="_blank" rel="noopener" style="text-decoration:none">Buy</a></div>
+    <div class="prod"><div><b>Triple Bite Pass - $48</b><div class="muted" style="font-size:13.5px">Three events, one ticket: adult admission to the Chili Cook-Off, the Mac &amp; Cheese Smackdown and one session of the 2nd Annual Newport WienerFest. Online only.</div></div><a class="btn sm aurora" href="${TRIPLE_BITE_URL}" target="_blank" rel="noopener" style="text-decoration:none">Buy</a></div>
     <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>My tickets</h2><button class="btn sm ghost" type="button" data-claimopen="1">Add a ticket I was sent</button></div>
       ${S.live.length || S.visits.filter(v=>v.kind==="booking").length ? S.live.concat(S.visits.filter(v=>v.kind==="booking")).map(orderCard).join("") : `<div class="glass"><p class="muted">Tickets you buy for yourself and your family land here, each with its own QR. Check in by scanning the code posted at the gate.</p></div>`}</section>
     <section style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h2>From other sites</h2><button class="btn sm aurora" type="button" data-addout="1">Add a ticket from another site</button></div>
       ${S.outside.length ? S.outside.map(outCard).join("") : `<div class="glass"><p class="muted">Bought a ticket from a local business on Eventbrite, Square or their own site? Add it here so all your Winterfest tickets are in one place.</p></div>`}
       <p class="muted" style="font-size:12.5px">Saved on this phone only.</p></section>
-    <div class="prod"><div><b>Igloos at The Reef</b><div class="muted" style="font-size:13.5px">Heated igloos for groups at The Reef, booked on Resy.</div></div>${resyBtn("sm aurora")}</div>
+    <div class="prod"><div><b>Igloos at The Reef</b><div class="muted" style="font-size:13.5px">Heated igloos for groups at The Reef, 10 Howard Wharf. Book a time online.</div></div>${resyBtn("sm aurora")}</div>
     <div class="prod"><div><b>Signature events</b><div class="muted" style="font-size:13.5px">The festival's ticketed events, by day.</div></div><button class="btn sm ghost" type="button" data-tab="fun" data-fungo="guide">See itinerary</button></div>
-    <h2>Buy</h2>
+    ${PRODUCTS.some(p=>!p.sig) ? "<h2>Buy</h2>" : ""}
     ${PRODUCTS.filter(p=>!p.sig).map(p=>`<div class="prod"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:13.5px">${esc(p.sub)}</div><div style="color:var(--frost);font-weight:800;margin-top:4px">${p.price?"$"+p.price:"Free"}</div></div><button class="btn sm aurora" type="button" data-book="${p.id}">Book</button></div>`).join("")}`;
 }
 function visit(){
